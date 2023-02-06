@@ -128,7 +128,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mNavigationView = findViewById(R.id.navigation_view);
+        mNavigationView = findViewById(R.id.navigation_view;
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer,toolbar,R.string.open_drawer, R.string.close_drawer);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
