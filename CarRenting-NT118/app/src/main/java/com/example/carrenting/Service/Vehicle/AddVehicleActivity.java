@@ -76,7 +76,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(FullFill() == true)
+                if(FullFill())
                 {
                     addVehicle();
                 }
