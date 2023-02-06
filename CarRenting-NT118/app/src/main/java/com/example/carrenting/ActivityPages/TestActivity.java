@@ -1,70 +1,78 @@
 package com.example.carrenting.ActivityPages;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 
+import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 
-/*
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-import android.util.Log;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class TestActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    FirebaseFirestore dtb;
+    String id, owner, location, phone, time, Car, imageuri;
+    private ImageView imgCar;
+    private ConstraintLayout Layout;
+    private TestActivity mMainActivity = this;
+    TextView  textlocation, textphone, texttime, textCarname, textOwner;
+    ImageView back_button, carimage;
 
+    Vehicle temp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_detail_car);
+        Layout = findViewById(R.id.layout);
+        back_button = findViewById(R.id.image_back);
 
-    public void basicReadWrite() {
-        // [START write_message]
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        carimage = findViewById(R.id.image_car);
+        textOwner = findViewById(R.id.tv_way);
+        textCarname = findViewById(R.id.tv_car_name);
+        textlocation = findViewById(R.id.tv_location);
+        textphone = findViewById(R.id.tv_phone);
+        texttime = findViewById(R.id.tv_schedule_time);
 
-        myRef.setValue("Hello, World!");
-        // [END write_message]
+        dtb = FirebaseFirestore.getInstance();
 
-        // [START read_message]
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-            }
+        dtb.collection("Vehicles")
+                .whereEqualTo("vehicle_id", "123")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                temp.setVehicle_id(document.getId().toString());
+                                temp.setOwner_name(document.get("owner").toString());
+                                temp.setVehicle_name(document.get("name").toString());
+                                temp.setOwner_address(document.get("address").toString());
+                                temp.setVehicle_availability(document.get("schedule").toString());
+                                temp.setOwner_phone(document.get("phone").toString());
+                                textCarname.setText(id);
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-        // [END read_message]
+                                textOwner.setText(temp.getOwner_name());
+                                textlocation.setText(temp.getOwner_address());
+                                textphone.setText(temp.getOwner_phone());
+                                texttime.setText(temp.getVehicle_availability());
+
+                                Toast.makeText(TestActivity.this, "Success", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(TestActivity.this, "Error getting documents: ", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
     }
 }
