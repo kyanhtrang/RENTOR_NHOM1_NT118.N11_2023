@@ -86,7 +86,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(FullFill() == true)
+                if(FullFill())
                 {
                     addVehicle();
                 }
@@ -117,8 +117,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("owner_name", vehicle_owner.getText().toString());
         vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
-        vehicle.put("imageURL", "");
-
+        vehicle.put("imageURL", downloadUrl);
         dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
