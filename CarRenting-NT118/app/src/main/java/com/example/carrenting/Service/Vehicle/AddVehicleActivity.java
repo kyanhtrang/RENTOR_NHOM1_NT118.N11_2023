@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
-    private String documentId, path;
+    private String documentId;
     private Uri mImageURI, downloadUri;
     private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number;
     private CheckBox vehicle_available;
@@ -108,7 +108,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("number", vehicle_number.getText().toString());
         vehicle.put("imageURL", "");
         vehicle.put("availability", availability);
-        dtb_vehicle.collection("Vehicle")
+        dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
