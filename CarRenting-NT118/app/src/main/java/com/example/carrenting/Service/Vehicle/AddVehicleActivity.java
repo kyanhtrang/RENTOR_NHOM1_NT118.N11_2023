@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
@@ -36,6 +38,7 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
@@ -49,6 +52,7 @@ public class AddVehicleActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private DocumentReference documentRef;
+    private String imageID;
 
     ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
@@ -58,6 +62,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                         mImageURI = result;
                         vehicle_imgView.setImageURI(result);
                     }
+                    uploadImage();
                 }
             });
 
@@ -112,33 +117,16 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("owner_name", vehicle_owner.getText().toString());
         vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
-        vehicle.put("imageURL", "");
+        vehicle.put("imageURL", downloadUrl);
 
         dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        DocumentReference documentRef = documentReference;
+                        documentRef = documentReference;
                         documentId = documentReference.getId();
-                        uploadImage();
-
-                        DocumentReference updating = dtb_vehicle.collection("Vehicles").document(documentId);
-                        updating
-                                .update("imageURL",downloadUrl)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                       toast("Thêm xe thành công");
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        toast("Thêm xe thất bại");
-                                        dtb_vehicle.collection("Vehicles").document(documentId).delete();
-                                    }
-                                });
+                        toast("Thêm xe thành công");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -166,51 +154,54 @@ public class AddVehicleActivity extends AppCompatActivity {
         toast.show();
     }
 
+
     private void uploadImage() {
-        // Check if an image was selected
-        if (vehicle_imgView.getDrawable() == null) {
-            Toast.makeText(AddVehicleActivity.this, "Hãy chọn một hình ảnh", Toast.LENGTH_LONG).show();
-            return;
-        }
 
-        // Get image from ImageView as bitmap
-        Bitmap bitmap = ((BitmapDrawable) vehicle_imgView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+        //Firebase
+        FirebaseStorage storage;
+        StorageReference storageReference;
 
-        // Initialize storage reference
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
+        storageReference = storage.getReference();
 
-        // Create a reference to "VehicleImages/documentId.jpg"
-        StorageReference imageRef = storageRef.child("VehicleImages/" + documentId + ".jpg");
+        if(mImageURI != null)
+        {
+            imageID = UUID.randomUUID().toString();
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-        // Upload image
-        UploadTask uploadTask = imageRef.putBytes(data);
-
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                toast("Không thể tải ảnh lên");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                toast("Tải ảnh lên thành công");
-            }
-        });
-        imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                downloadUrl = uri.toString();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                toast("Tải lên thất bại");
-            }
-        });
-
+            StorageReference ref = storageReference.child("VehicleImages/"+ imageID);
+            ref.putFile(mImageURI)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl = uri.toString();
+                                    Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
     }
 }
