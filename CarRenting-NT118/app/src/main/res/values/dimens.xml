@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttonSize">@dimen/_35sdp</dimen>
+    <dimen name="widthLarge">@dimen/_231sdp</dimen>
+    <dimen name="custom_marker_image">50dp</dimen>
+    <dimen name="custom_marker_padding">2dp</dimen>
+</resources>

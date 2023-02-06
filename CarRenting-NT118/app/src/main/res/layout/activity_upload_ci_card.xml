@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sky">
+
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_142sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:background="@drawable/rectangle_quarter_radius"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintEnd_toEndOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/cicard_upload_icon1" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="@dimen/_271sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <ImageView
+            android:id="@+id/vCardFront"
+            android:layout_width="@dimen/_271sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="@+id/view5"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
+        <ImageView
+            android:id="@+id/illCardFront"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginBottom="@dimen/_28sdp"
+            android:background="@color/white"
+            android:contentDescription="@string/ci_card_upload_image"
+            app:layout_constraintBottom_toBottomOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="@+id/vCardFront"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/view5"
+            app:layout_constraintTop_toTopOf="@+id/vCardFront"
+            app:layout_constraintVertical_bias="0.777"
+            app:srcCompat="@drawable/cicard_upload_icon2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Tải lên CCCD mặt trước"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/view5"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="@dimen/_271sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_23sdp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Tải lên CCCD mặt sau"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/view8"
+            app:layout_constraintTop_toTopOf="@+id/view8" />
+
+        <ImageView
+            android:id="@+id/vCardBehind"
+            android:layout_width="@dimen/_271sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/view8"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/view8"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <ImageView
+            android:id="@+id/illCardBehind"
+            android:layout_width="220dp"
+            android:layout_height="86dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view8"
+            app:layout_constraintEnd_toEndOf="@+id/view8"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="@+id/view8"
+            app:layout_constraintTop_toTopOf="@+id/vCardBehind"
+            app:layout_constraintVertical_bias="0.186"
+            app:srcCompat="@drawable/cicard_upload_icon2" />
+
+        <ImageButton
+            android:id="@+id/imgBtnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="38dp"
+            android:background="@color/sky"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnUpload"
+            app:layout_constraintTop_toBottomOf="@+id/view8"
+            app:srcCompat="@drawable/cicard_upload_icon3" />
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="70dp"
+            android:backgroundTint="@color/white"
+            android:text="Tải lên"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtnNext"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vCardBehind" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

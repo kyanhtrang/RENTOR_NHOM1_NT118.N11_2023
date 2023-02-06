@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_175sdp"
+        android:background="@drawable/rectangle_quarter_radius"
+        android:backgroundTint="@color/sky"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:fontFamily="@font/inter"
+        android:text="@string/create_account"
+        android:textColor="@color/sunflower"
+        android:textSize="@dimen/_28ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_100sdp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/create_account_text_1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/create_account_arrow" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_475sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPasswordAgainLayout"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout"
+        app:passwordToggleDrawable="@drawable/sign_in_eye_hint">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtPasswordAgain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPersonName"
+            android:textColor="@color/sky"
+            android:textColorHint="@color/sky"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxt_emailLayout"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPhoneLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhoneLayout"
+        >
+    <EditText
+        android:id="@+id/edtTxtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="@color/sky"
+        android:textColorHint="@color/sky"
+        tools:ignore="HardcodedText,TextFields" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPasswordLayout"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxt_emailLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_emailLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/sign_in_eye_hint"        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Mật khẩu"
+            android:textColor="@color/sky"
+            android:textColorHint="@color/sky"
+            tools:ignore="HardcodedText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPhoneLayout"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        android:textColor="@color/sky"
+        android:textColorHint="@color/sky"
+        >
+
+        <EditText
+            android:id="@+id/edtTxtCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Số điện thoại"
+            android:inputType="textPersonName"
+
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSendCode"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:background="@drawable/blue_round_button"
+        android:text="Đăng ký"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordAgainLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordAgainLayout"
+        tools:ignore="HardcodedText" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

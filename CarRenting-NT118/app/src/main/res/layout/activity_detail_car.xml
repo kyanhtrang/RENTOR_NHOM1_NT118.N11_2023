@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/action_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/sky"
+        android:elevation="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Thông tin chi tiết"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22sdp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vehicle_info_card"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action_bar_container">
+
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_car"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            app:layout_constraintDimensionRatio="2:1.2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+       />
+
+        <TextView
+            android:id="@+id/tv_car_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/_28ssp"
+            app:layout_constraintStart_toStartOf="@id/image_car"
+            app:layout_constraintTop_toBottomOf="@id/image_car"
+            tools:text="Max way(Hal)" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_368sdp"
+            android:background="@drawable/rectangle_quarter_radius_top_right"
+            android:backgroundTint="@color/sky"
+            app:layout_constraintTop_toBottomOf="@id/tv_car_name" />
+
+        <RelativeLayout
+            android:id="@+id/container_way"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginHorizontal="4dp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_car_name">
+
+            <ImageView
+                android:id="@+id/image_way"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_send"
+
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_way"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_toEndOf="@id/image_way"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_17ssp"
+                tools:ignore="RelativeOverlap"
+                tools:text="Tashkent Yunusobod r-n" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/container_way">
+
+            <ImageView
+                android:id="@+id/image_location"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_locate_white"
+
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_toEndOf="@id/image_location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_17ssp"
+                tools:ignore="RelativeOverlap"
+                tools:text="Mega planet,Macro " />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginHorizontal="4dp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/container_location">
+
+            <ImageView
+                android:id="@+id/image_phone"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_call_white"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/image_phone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_17ssp"
+                tools:ignore="RelativeOverlap"
+                tools:text="+998 90 714 41 02 " />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_schedule_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:padding="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/container_phone">
+
+            <ImageView
+                android:id="@+id/image_schedule_time"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_date_white"
+
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_schedule_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_toEndOf="@id/image_schedule_time"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_17ssp"
+                tools:ignore="RelativeOverlap"
+                tools:text="in 09:00 - 23:00" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_chon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Chọn xe"
+            android:textSize="@dimen/_20ssp"
+            android:background="@drawable/round_card"
+            android:backgroundTint="@color/sunflower"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="@dimen/_30sdp"
+
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
