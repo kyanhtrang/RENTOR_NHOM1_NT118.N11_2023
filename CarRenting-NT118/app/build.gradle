@@ -1,0 +1,141 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    compileSdk 32
+
+    viewBinding {
+        enabled = true
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.example.carrenting"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    namespace 'com.example.carrenting'
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Picasso lib
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v13:28.0.0'
+
+    implementation fileTree(dir: '..\\app\\src\\main\\java\\com\\example\\carrenting\\Service\\ZaloPay\\ZPDK', include: ['*.aar', '*.jar'], exclude: [])
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //Firebase lib
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+
+    //Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+
+    //Firebase push notification
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    //Firestore database
+
+    implementation 'com.google.firebase:firebase-database'
+
+    //Firebase storage
+    implementation 'com.google.firebase:firebase-storage'
+
+
+    // Support multidex
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+    // Firebase firestore
+    implementation 'com.google.firebase:firebase-firestore:17.0.4'
+
+    // Firebase Admin
+    // implementation 'com.google.firebase:firebase-admin:1.32.0'
+
+    // Google API Client
+    // implementation 'com.google.api-client:google-api-client:1.32.1'
+
+    //responsive size
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    //responsive text-size
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    //validate password
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
+
+    //Load image from url
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+
+    //Circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //MOMO Payment
+    implementation 'com.github.momo-wallet:mobile-sdk:1.0.7'
+
+    //Google Map
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    //Google Location
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+
+    // Maps utils (required for custom markers)
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+
+    // Google Maps Services (needed for directions)
+    implementation 'com.google.maps:google-maps-services:0.2.9'
+    implementation 'org.slf4j:slf4j-nop:1.7.25'
+
+    //ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    //ZaloPay
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("commons-codec:commons-codec:1.14")
+
+    //Image Slideshow
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
+}
+apply plugin: 'com.google.gms.google-services'

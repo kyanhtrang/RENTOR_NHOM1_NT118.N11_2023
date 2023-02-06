@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sky"
+    tools:context=".Service.UserAuthentication.Register.SignProfileActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="-4dp"
+                tools:layout_editor_absoluteY="210dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_avatar_profile"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:src="@drawable/ic_avatar_default"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registration" />
+
+                <TextView
+                    android:id="@+id/firstNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_125sdp"
+                    android:text="Tên người dùng *"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
+                    app:layout_constraintTop_toBottomOf="@+id/registration"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
+
+                <TextView
+                    android:id="@+id/middleNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Bằng lái xe"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtUserName"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtLicense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtUserName"
+                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
+                    app:layout_constraintTop_toBottomOf="@+id/middleNameText" />
+
+                <TextView
+                    android:id="@+id/lastNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Tên đường *"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/middleNameText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtLicense"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtStreet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtLicense"
+                    app:layout_constraintStart_toStartOf="@+id/edtLicense"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Thành phố"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/lastNameText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtStreet"
+                    app:layout_constraintStart_toStartOf="@+id/edtStreet"
+                    app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+                <TextView
+                    android:id="@+id/licenseText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Mã bưu chính *"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/emailText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtCity"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtPostalCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtCity"
+                    app:layout_constraintStart_toStartOf="@+id/edtCity"
+                    app:layout_constraintTop_toBottomOf="@+id/licenseText" />
+
+                <TextView
+                    android:id="@+id/expiryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Ngày sinh *"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/licenseText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtPostalCode"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/expiryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Ngày sinh *"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@+id/licenseText"
+                    app:layout_constraintTop_toBottomOf="@+id/edtPostalCode"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtBirthDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtPostalCode"
+                    app:layout_constraintStart_toStartOf="@+id/edtPostalCode"
+                    app:layout_constraintTop_toBottomOf="@+id/expiryText"
+                    tools:ignore="TextFields" />
+
+                <TextView
+                    android:id="@+id/tvBirthDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="YYYY-MM-DD"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/edtBirthDate"
+                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
+                    app:layout_constraintTop_toTopOf="@+id/edtBirthDate"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/buttonSize"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:background="@drawable/round_button"
+                    android:text="Cập nhật thông tin"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18ssp"
+                    app:fontFamily="@font/roboto_medium"
+                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
+                    app:layout_constraintTop_toBottomOf="@+id/edtBirthDate"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/registration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:text="THÔNG TIN NGƯỜI DÙNG"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="@dimen/_22ssp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/nunito"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout >

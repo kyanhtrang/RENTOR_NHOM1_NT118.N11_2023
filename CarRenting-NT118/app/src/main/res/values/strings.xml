@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">CarRenting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="google_maps_api_key">AIzaSyAPzOsCzNVbsbCZp8S0PXpGwk-Mmtn-j9o</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="getStarted">Bắt đầu</string>
+    <string name="signIn">Đăng nhập</string>
+    <string name="signUp">Đăng ký</string>
+    <string name="sign_in_hint_email">Email</string>
+    <string name="sign_in_hint_password">Mật khẩu</string>
+    <string name="sign_in_remember">Lưu mật khẩu</string>
+    <string name="sign_in_forget">Quên mật khẩu ?</string>
+    <string name="create_account">Create an account</string>
+    <string name="create_account_text_1">Start with your information!</string>
+    <string name="ci_card_upload_image">Upload citizen identification front card</string>
+
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_activity">Hoạt động</string>
+    <string name="nav_message">Tin nhắn</string>
+    <string name="nav_setting">Cài đặt</string>
+
+    <string name="nav_user">Người dùng</string>
+    <string name="nav_infor">Thông tin tài khoản</string>
+    <string name="nav_sign_owner">Đăng ký nhà cung cấp</string>
+    <string name="nav_payment_infor">Thông tin thanh toán</string>
+    <string name="nav_sign_out">Đăng xuất</string>
+
+    <string name="open_drawer">Open navigation drawer</string>
+    <string name="close_drawer">Close navigation drawer</string>
+
+    <!-- Owner -->
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- Map -->
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_out">Sign out</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="resend_verification_email">Resend Verification Email</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="tabian_consulting_logo">Tabian Consulting Logo</string>
+    <string name="email_registration">Email Registration</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <!-- Firestore Strings -->
+    <string name="collection_users">Users</string>
+    <string name="collection_chatrooms">Chatrooms</string>
+    <string name="collection_chat_messages">Chat Messages</string>
+    <string name="collection_chatroom_user_list">User List</string>
+    <string name="collection_user_locations">User Locations</string>
+    <string name="collection_user_location_list">User Location List</string>
+
+    <!-- Intent extras -->
+    <string name="intent_chatroom">intent_chatroom</string>
+    <string name="intent_user_list">intent_user_list</string>
+    <string name="intent_user_locations">intent_user_locations</string>
+    <string name="intent_location">intent_location</string>
+
+    <!-- Service and Broadcasts -->
+    <string name="gps_location">gps_location</string>
+
+
+    <!-- Fragments Names -->
+    <string name="fragment_user_list">User List</string>
+    <string name="fragment_image_list">Image List</string>
+
+    <!-- Other Strings -->
+    <string name="action_create_chatroom">Create Chatroom</string>
+    <string name="action_leave_chatroom">Leave chatroom</string>
+    <string name="action_chatroom_user_list">User list</string>
+    <string name="action_profile">Profile</string>
+</resources>
