@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -19,22 +20,30 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.carrenting.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
-    private String documentId;
-    private Uri mImageURI, downloadUri;
+    private String documentId, downloadUrl;
+    private Uri mImageURI;
     private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number;
     private CheckBox vehicle_available;
     private Button btnAdd;
@@ -43,6 +52,7 @@ public class AddVehicleActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private DocumentReference documentRef;
+    private String imageID;
 
     ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
@@ -96,32 +106,32 @@ public class AddVehicleActivity extends AppCompatActivity {
     }
 
     private void addVehicle() {
-        dtb_vehicle = FirebaseFirestore.getInstance();
 
+        dtb_vehicle = FirebaseFirestore.getInstance();
         String availability = vehicle_available.isChecked() ? "available" : "unavailable";
 
         Map<String, Object> vehicle = new HashMap<>();
-        vehicle.put("name", vehicle_name.getText().toString());
+        vehicle.put("vehicle_name", vehicle_name.getText().toString());
         vehicle.put("seats", vehicle_seats.getText().toString());
-        vehicle.put("price", vehicle_price.getText().toString());
-        vehicle.put("owner", vehicle_owner.getText().toString());
-        vehicle.put("number", vehicle_number.getText().toString());
-        vehicle.put("imageURL", "");
+        vehicle.put("vehicle_price", vehicle_price.getText().toString());
+        vehicle.put("owner_name", vehicle_owner.getText().toString());
+        vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
+        vehicle.put("imageURL", downloadUrl);
         dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        DocumentReference documentRef = documentReference;
                         documentId = documentReference.getId();
-                        documentRef = dtb_vehicle.document("Vehicle/" + documentId);
-                        Toast.makeText(AddVehicleActivity.this, "Vehicle added successfully", Toast.LENGTH_LONG).show();
+                        toast("Thêm xe thành công");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("Error adding document", e);
+                        toast("Thêm xe thất bại");
                     }
                 });
     }
@@ -143,48 +153,55 @@ public class AddVehicleActivity extends AppCompatActivity {
         toast.show();
     }
 
-    private void uploadImage() {
-        // Check if an image was selected
-        if (vehicle_imgView.getDrawable() == null) {
-            Toast.makeText(AddVehicleActivity.this, "Please select an image", Toast.LENGTH_LONG).show();
-            return;
-        }
 
-        // Get image from ImageView as bitmap
-        Bitmap bitmap = ((BitmapDrawable) vehicle_imgView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+    private void uploadImage() {
+
+        //Firebase
+        FirebaseStorage storage;
+        StorageReference storageReference;
 
         // Initialize storage reference
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
+        storageReference = storage.getReference();
 
-        // Create a reference to "VehicleImages/documentId.jpg"
-        StorageReference imageRef = storageRef.child("VehicleImages/" + documentId + ".jpg");
+        if(mImageURI != null)
+        {
+            imageID = UUID.randomUUID().toString();
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-        // Upload image
-        UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.w("Error uploading image", exception);
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // Get the public URL of the uploaded image
-                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        downloadUri = uri;
-                        documentRef.update("imageURL", downloadUri.toString());
-                    }
-                });
-
-                Toast.makeText(AddVehicleActivity.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
-            }
-        });
+            StorageReference ref = storageReference.child("VehicleImages/"+ imageID);
+            ref.putFile(mImageURI)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl = uri.toString();
+                                    Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
     }
-
 }

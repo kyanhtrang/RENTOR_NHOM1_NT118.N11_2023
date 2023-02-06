@@ -1,9 +1,12 @@
 package com.example.carrenting.Model;
 
+import android.net.Uri;
+
 public class Vehicle {
     String vehicle_id;
     String owner_name, owner_gmail, owner_phone, owner_address;
-    String vehicle_name, vehicle_price, vehicle_seats, vehicle_number, vehicle_availability, vehicle_imageURL;
+    String vehicle_name, vehicle_price, vehicle_seats, vehicle_number, vehicle_availability;
+    String vehicle_imageURL;
 
     public Vehicle() {
     }

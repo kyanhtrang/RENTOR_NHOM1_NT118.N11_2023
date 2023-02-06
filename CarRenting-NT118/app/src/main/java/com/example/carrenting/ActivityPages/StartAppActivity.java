@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +18,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
+import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
+import com.example.carrenting.Service.Vehicle.VehicleCardActivity;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -96,13 +101,13 @@ public class StartAppActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
-                        Log.d(TAG, "onComplete: successfully set the user client.");
+                        //Toast.makeText(StartAppActivity.this, "Success", Toast.LENGTH_LONG).show();
                         User user = task.getResult().toObject(User.class);
                         ((UserClient)(getApplicationContext())).setUser(user);
                     }
                 }
             });
-            Intent intent = new Intent(this, AddVehicleActivity.class);
+            Intent intent = new Intent(this, CustomerMainActivity.class);
             startActivity(intent);
         }
 
