@@ -106,7 +106,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("price", vehicle_price.getText().toString());
         vehicle.put("owner", vehicle_owner.getText().toString());
         vehicle.put("number", vehicle_number.getText().toString());
-        /*        vehicle.put("imageURL", "null");*/
+        vehicle.put("imageURL", "");
         vehicle.put("availability", availability);
         dtb_vehicle.collection("Vehicle")
                 .add(vehicle)

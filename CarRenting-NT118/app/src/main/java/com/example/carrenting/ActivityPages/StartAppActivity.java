@@ -21,6 +21,7 @@ import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
+import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -101,7 +102,7 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
-            Intent intent = new Intent(this, CustomerMainActivity.class);
+            Intent intent = new Intent(this, AddVehicleActivity.class);
             startActivity(intent);
         }
 
