@@ -58,9 +58,6 @@ public class RecyclerViewOnClickSupport {
 
     private RecyclerViewOnClickSupport(RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
-        // the ID must be declared in XML, used to avoid
-        // replacing the ItemClickSupport without removing
-        // the old one from the RecyclerView
         mRecyclerView.setTag(R.id.tv_car_name, this);
         mRecyclerView.addOnChildAttachStateChangeListener(mAttachListener);
     }

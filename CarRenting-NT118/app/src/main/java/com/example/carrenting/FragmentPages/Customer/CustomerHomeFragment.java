@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +19,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.Adapter.VehicleAdapter;
+import com.example.carrenting.Model.RecyclerViewOnClickSupport;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Map.MapMainActivity;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
+import com.example.carrenting.databinding.ActivityDetailCarBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,6 +38,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -47,6 +55,7 @@ public class CustomerHomeFragment extends Fragment {
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
 
+
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +67,7 @@ public class CustomerHomeFragment extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
         progressDialog.show();
+
         recyclerView = mView.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -65,18 +75,28 @@ public class CustomerHomeFragment extends Fragment {
         dtb_vehicle = FirebaseFirestore.getInstance();
         vehicles = new ArrayList<Vehicle>();
         adapter = new VehicleAdapter(CustomerHomeFragment.this, vehicles);
-
         recyclerView.setAdapter(adapter);
-        EventChangeListener();
+
+        try {
+            EventChangeListener();
+            //Toast.makeText(getContext(),"Catching...", Toast.LENGTH_LONG).show();
+        } catch (Exception exception){
+            Toast.makeText(getContext(), "Exception", Toast.LENGTH_LONG).show();
+        }
+        RecyclerViewOnClickSupport.addTo(recyclerView).setOnItemLongClickListener(new RecyclerViewOnClickSupport.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
+
+                return true;
+            }
+        });
         progressDialog.dismiss();
         return  mView;
     }
 
-
     private void initUI() {
         /*btnMap =  mView.findViewById(R.id.locate_card);*/
     }
-
     private void LoadImage(String docId) {
         if (docId == null) {
             Log.e("LoadImage", "docId is null, returning");
@@ -106,36 +126,30 @@ public class CustomerHomeFragment extends Fragment {
             }
         });
     }
-
     private void EventChangeListener()
     {
-        dtb_vehicle.collection("Image").orderBy("name", Query.Direction.ASCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @SuppressLint("NotifyDataSetChanged")
+        dtb_vehicle.collection("Vehicles")
+                .orderBy("vehicle_name", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null)
-                        {
-                            if(progressDialog.isShowing())
-                            {
-                                progressDialog.dismiss();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Vehicle temp = new Vehicle();
+                                temp.setVehicle_id(document.getId());
+                                temp.setVehicle_name(document.get("vehicle_name").toString());
+                                temp.setVehicle_price(document.get("vehicle_price").toString());
+                                temp.setVehicle_imageURL(document.get("imageURL").toString());
+                                temp.setVehicle_availability(document.get("availability").toString());
+                                temp.setVehicle_number(document.get("plate_number").toString());
+                                temp.setVehicle_seats(document.get("seats").toString());
+                                temp.setOwner_name(document.get("owner_name").toString());
+                                vehicles.add(temp);
+                                adapter.notifyDataSetChanged();
                             }
-                            Log.e("Lỗi", error.getMessage());
-                            return;
-                        }
-
-                        for(DocumentChange dc : value.getDocumentChanges())
-                        {
-                            if(dc.getType() == DocumentChange.Type.ADDED)
-                            {
-                                vehicles.add(dc.getDocument().toObject(Vehicle.class));
-                            }
-
-                            adapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing())
-                            {
-                                progressDialog.dismiss();
-                            }
+                        } else {
+                            Toast.makeText(getContext(), "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

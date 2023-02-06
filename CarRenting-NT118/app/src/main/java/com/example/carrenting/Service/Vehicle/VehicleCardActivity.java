@@ -58,13 +58,11 @@ public class VehicleCardActivity extends AppCompatActivity {
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
                                 temp.setVehicle_imageURL(document.get("imageURL").toString());
 
-
                                 Picasso.get().load(temp.getVehicle_imageURL()).into(imgCar);
 
                                 vehicle_name.setText(temp.getVehicle_name());
                                 vehicle_price.setText(temp.getVehicle_price());
 
-                                //Toast.makeText(VehicleCardActivity.this, "Success", Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(VehicleCardActivity.this, "Error getting documents ", Toast.LENGTH_LONG).show();

@@ -117,14 +117,14 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("owner_name", vehicle_owner.getText().toString());
         vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
-        vehicle.put("imageURL", downloadUrl);
+        vehicle.put("imageURL", "");
 
         dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        documentRef = documentReference;
+                        DocumentReference documentRef = documentReference;
                         documentId = documentReference.getId();
                         toast("Thêm xe thành công");
                     }
@@ -161,6 +161,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         FirebaseStorage storage;
         StorageReference storageReference;
 
+        // Initialize storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 

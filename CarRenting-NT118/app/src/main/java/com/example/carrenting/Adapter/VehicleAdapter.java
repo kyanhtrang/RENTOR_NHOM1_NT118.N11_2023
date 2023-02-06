@@ -16,6 +16,7 @@ import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHolder>{
 
