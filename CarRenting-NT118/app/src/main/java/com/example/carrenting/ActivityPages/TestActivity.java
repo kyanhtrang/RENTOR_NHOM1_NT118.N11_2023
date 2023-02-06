@@ -45,19 +45,6 @@ public class TestActivity extends AppCompatActivity {
         texttime = findViewById(R.id.tv_schedule_time);
 
         dtb = FirebaseFirestore.getInstance();
-
-   /*     dtb.collection("Vehicles")
-                        .whereEqualTo("vehicle_id", "123")
-                                .get()
-                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                if (!queryDocumentSnapshots.isEmpty()){
-
-                                                }
-                                            }
-                                        });*/
-
         dtb.collection("Vehicles")
                 .whereEqualTo("vehicle_id", "123")
                 .get()

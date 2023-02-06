@@ -63,7 +63,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private static final int FRAGMENT_ACTIVITY = 1;
     private static final int FRAGMENT_MESSAGE = 2;
     private static final int FRAGMENT_SETTING = 3;
-
     private static final int FRAGMENT_MY_PROFILE = 4;
 
 
