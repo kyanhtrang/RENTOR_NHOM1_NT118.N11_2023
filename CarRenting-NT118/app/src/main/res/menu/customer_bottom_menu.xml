@@ -19,9 +19,9 @@
         tools:ignore="HardcodedText" />-->
 
     <item
-        android:id="@+id/notifications"
-        android:title="Notifications"
-        android:icon="@drawable/ic_notifications"
+        android:id="@+id/message"
+        android:title="Message"
+        android:icon="@drawable/ic_message"
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/setting"
