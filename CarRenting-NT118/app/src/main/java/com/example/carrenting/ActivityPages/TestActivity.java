@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,7 +29,7 @@ public class TestActivity extends AppCompatActivity {
     TextView  textlocation, textphone, texttime, textCarname, textOwner;
     ImageView back_button, carimage;
 
-    Vehicle temp;
+    Vehicle temp = new Vehicle();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,18 @@ public class TestActivity extends AppCompatActivity {
 
         dtb = FirebaseFirestore.getInstance();
 
+   /*     dtb.collection("Vehicles")
+                        .whereEqualTo("vehicle_id", "123")
+                                .get()
+                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                if (!queryDocumentSnapshots.isEmpty()){
+
+                                                }
+                                            }
+                                        });*/
+
         dtb.collection("Vehicles")
                 .whereEqualTo("vehicle_id", "123")
                 .get()
@@ -53,14 +66,14 @@ public class TestActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                temp.setVehicle_id(document.getId().toString());
+                                temp.setVehicle_id(document.getId());
                                 temp.setOwner_name(document.get("owner").toString());
                                 temp.setVehicle_name(document.get("name").toString());
                                 temp.setOwner_address(document.get("address").toString());
                                 temp.setVehicle_availability(document.get("schedule").toString());
                                 temp.setOwner_phone(document.get("phone").toString());
-                                textCarname.setText(id);
 
+                                textCarname.setText(temp.getVehicle_name());
                                 textOwner.setText(temp.getOwner_name());
                                 textlocation.setText(temp.getOwner_address());
                                 textphone.setText(temp.getOwner_phone());

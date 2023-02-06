@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -96,13 +97,13 @@ public class StartAppActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
-                        Log.d(TAG, "onComplete: successfully set the user client.");
+                        Toast.makeText(StartAppActivity.this, "Success", Toast.LENGTH_LONG).show();
                         User user = task.getResult().toObject(User.class);
                         ((UserClient)(getApplicationContext())).setUser(user);
                     }
                 }
             });
-            Intent intent = new Intent(this, AddVehicleActivity.class);
+            Intent intent = new Intent(this, TestActivity.class);
             startActivity(intent);
         }
 

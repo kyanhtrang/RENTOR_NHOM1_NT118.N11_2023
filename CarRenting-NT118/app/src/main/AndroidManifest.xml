@@ -16,6 +16,7 @@
     <application
         android:name=".Model.UserClient"
         android:allowBackup="true"
+
         android:requestLegacyExternalStorage="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -47,6 +48,11 @@
         <activity
             android:name=".Service.UserAuthentication.Register.UploadCiCardActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ActivityPages.TestActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+
         </activity>
         <activity
             android:name=".Service.UserAuthentication.Register.SignProfileActivity"

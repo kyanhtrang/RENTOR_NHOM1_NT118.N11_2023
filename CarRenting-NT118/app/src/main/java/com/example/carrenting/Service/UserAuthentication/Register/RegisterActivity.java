@@ -39,11 +39,11 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
 
-    @Pattern(regex = "[0-9]{9}", message = "Please enter valid Phone number")
+    @Pattern(regex = "[0-9]{9}", message = "Vui lòng nhập đúng số điện thoại")
     private EditText edtTxtPhone;
     @Email
     private EditText edtTxtEmail;
-    @Password(min = 6, message = "Password must have at-least 6 characters")
+    @Password(min = 6, message = "Mật khẩu phải có ít nhất 6 kí tự")
     private EditText edtTxtPassword, edtTxtPasswordAgain;
     private Button btnSignUp;
     private FirebaseAuth mAuth;
@@ -137,7 +137,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
+                            Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công", Toast.LENGTH_LONG).show();
 
                             User user = new User();
                             user.setEmail(strEmail);
