@@ -85,7 +85,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.customer_activity_main);
         mDb = FirebaseFirestore.getInstance();
         mMainActivity = this;
 
@@ -110,7 +110,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
 /*                case R.id.user:
                     replaceFragment(new UserFragment());
                     break;*/
-                case R.id.message:
+                case R.id.notifications:
                     replaceFragment(new CustomerNotificationFragment());
                     mNavigationView.setCheckedItem(R.id.nav_message);
                     mCurrentFragment = FRAGMENT_MESSAGE;
@@ -128,7 +128,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mNavigationView = findViewById(R.id.navigation_view;
+        mNavigationView = findViewById(R.id.navigation_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer,toolbar,R.string.open_drawer, R.string.close_drawer);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -213,7 +213,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         else if (id == R.id.nav_message)
         {
             openMessageFragment();
-            mbottomNavigationView.getMenu().findItem(R.id.message).setChecked(true);
+            mbottomNavigationView.getMenu().findItem(R.id.notifications).setChecked(true);
         }
         else if (id == R.id.nav_setting)
         {
