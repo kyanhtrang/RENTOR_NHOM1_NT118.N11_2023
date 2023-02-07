@@ -71,13 +71,13 @@ dependencies {
 
     //Firebase Authentication
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
 
     //Firebase push notification
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-analytics'
 
     //Firestore database
-
     implementation 'com.google.firebase:firebase-database'
 
     //Firebase storage

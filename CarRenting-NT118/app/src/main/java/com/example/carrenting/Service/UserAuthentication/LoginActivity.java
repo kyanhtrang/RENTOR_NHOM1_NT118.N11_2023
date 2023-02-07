@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvForgotPassword;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @SuppressLint("MissingInflatedId")
@@ -50,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        mAuth = FirebaseAuth.getInstance();
+        /*mAuth = FirebaseAuth.getInstance();
         txtSignUp = findViewById(R.id.txtSignUp);
         edtTxt_email = findViewById(R.id.edtTxt_email);
         edtTxt_password = findViewById(R.id.edtText_password);
@@ -78,10 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                 forgotPassword();
             }
         });
+
         setupFirebaseAuth();
         hideSoftKeyboard();
     }
-
     private void forgotPassword() {
         progressDialog.show();
         Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
@@ -177,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Đăng nhập không thành công", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        });*/
     }
 
 

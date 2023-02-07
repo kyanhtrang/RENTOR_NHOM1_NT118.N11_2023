@@ -9,10 +9,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_45sdp"
         android:id="@+id/frame_layout_customer"/>
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_45sdp"
         android:id="@+id/bottomAppBar"
         android:layout_gravity="bottom"
         app:fabCradleMargin="@dimen/_10sdp"
