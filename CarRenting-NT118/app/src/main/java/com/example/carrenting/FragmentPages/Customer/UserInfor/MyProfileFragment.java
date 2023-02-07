@@ -129,8 +129,6 @@ public class MyProfileFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         setUserInformation();
         initListener();
-
-
         return mView;
     }
 
