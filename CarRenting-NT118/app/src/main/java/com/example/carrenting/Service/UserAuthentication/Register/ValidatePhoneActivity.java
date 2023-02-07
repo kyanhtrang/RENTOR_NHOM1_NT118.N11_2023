@@ -15,9 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carrenting.ActivityPages.CustomerMainActivity;
-import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
-import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,20 +36,14 @@ public class ValidatePhoneActivity extends AppCompatActivity {
     private EditText otpNumberOne, getOtpNumberTwo, getOtpNumberThree, getOtpNumberFour, getOtpNumberFive, otpNumberSix;
     private Button btnSendCode;
     private TextView tvResend;
-
     private String mVerificationId;
     PhoneAuthProvider.ForceResendingToken mResendToken;
-
     String phoneNumber;
     Boolean otpValid = true;
-
     private FirebaseAuth mAuth;
-
     FirebaseAuth firebaseAuth;
     private FirebaseFirestore mDb;
     PhoneAuthCredential phoneAuthCredential;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
