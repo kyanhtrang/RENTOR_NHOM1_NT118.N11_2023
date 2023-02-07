@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/vehicle"
+        android:title="Vehicle"
+        android:icon="@drawable/ic_car"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/activity"
+        android:title="Activity"
+        android:icon="@drawable/ic_activity"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/notifications"
+        android:title="Notifications"
+        android:icon="@drawable/ic_notifications"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/setting"
+        android:title="Setting"
+        android:icon="@drawable/ic_setting"
+        tools:ignore="HardcodedText" />
+</menu>
