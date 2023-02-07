@@ -71,17 +71,18 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        >
+        app:layout_constraintTop_toTopOf="@+id/view"        >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:background="#ffffff"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/white"
+            android:textSize="@dimen/_14ssp"
             android:drawableStart="@drawable/ic_mail"
             android:hint="Email"
             android:inputType="text"
-            android:padding="5dp"/>
+            android:padding="@dimen/_5sdp"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
