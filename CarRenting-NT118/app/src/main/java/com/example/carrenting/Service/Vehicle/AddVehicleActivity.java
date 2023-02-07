@@ -113,7 +113,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         Map<String, Object> vehicle = new HashMap<>();
         vehicle.put("vehicle_name", vehicle_name.getText().toString());
         vehicle.put("seats", vehicle_seats.getText().toString());
-        vehicle.put("vehicle_price", vehicle_price.getText().toString());
+        vehicle.put("vehicle_price", vehicle_price.getText().toString() + " VND");
         vehicle.put("owner_name", vehicle_owner.getText().toString());
         vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
