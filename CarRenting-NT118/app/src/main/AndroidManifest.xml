@@ -86,10 +86,6 @@
         <activity
             android:name=".ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity
-            android:name=".ActivityPages.OwnerMainActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />
