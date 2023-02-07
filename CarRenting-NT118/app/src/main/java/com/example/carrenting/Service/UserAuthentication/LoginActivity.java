@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvForgotPassword;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @SuppressLint("MissingInflatedId")
@@ -78,10 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                 forgotPassword();
             }
         });
+
         setupFirebaseAuth();
         hideSoftKeyboard();
     }
-
     private void forgotPassword() {
         progressDialog.show();
         Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);

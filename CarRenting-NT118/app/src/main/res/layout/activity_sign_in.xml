@@ -10,7 +10,6 @@
         android:id="@+id/btn_signIn"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_50sdp"
         android:background="@drawable/blue_round_button"
         android:backgroundTint="@color/sky"
         android:text="@string/signIn"
@@ -19,8 +18,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/edtText_passwordLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
     <TextView
         android:id="@+id/textView"
@@ -75,15 +73,15 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
         >
-        <EditText
-            android:id="@+id/edtTxt_email"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_edit_text"
-            android:hint="@string/sign_in_hint_email"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/sky"
-            tools:ignore="TextFields" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:drawableStart="@drawable/ic_mail"
+            android:hint="Email"
+            android:inputType="text"
+            android:padding="5dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -97,20 +95,19 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt_emailLayout"
-        app:passwordToggleDrawable="@drawable/sign_in_eye_hint"
+        app:passwordToggleDrawable="@drawable/show_password_selector"
         app:passwordToggleEnabled="true">
 
-        <EditText
-            android:id="@+id/edtText_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_edit_text"
-            android:drawableEnd="@drawable/sign_in_eye_hint"
-            android:hint="@string/sign_in_hint_password"
-            android:inputType="textPersonName"
-            android:textColor="@color/sky"
-            android:textColorHint="@color/sky"
-            tools:ignore="TextFields" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="5dp">
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -146,19 +143,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chưa có tài khoản ? Hãy "
+        android:layout_marginTop="@dimen/_7sdp"
         app:layout_constraintEnd_toEndOf="@+id/btn_signIn"
         app:layout_constraintStart_toStartOf="@+id/btn_signIn"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
-        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signIn"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/txtSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-1dp"
         android:clickable="true"
         android:text="Đăng ký"
+        android:textSize="@dimen/_12ssp"
         android:textColor="@color/sky"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintStart_toEndOf="@+id/textView11"
@@ -167,21 +164,6 @@
         android:focusable="true"
         tools:ignore="HardcodedText" />
 
-
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15ssp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Quên mật khẩu ?"
-        android:textColor="@color/sky"
-        android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_signIn"
-        app:layout_constraintStart_toStartOf="@+id/btn_signIn"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signIn"
-        tools:ignore="HardcodedText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,7 +93,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
 
         progressDialog = new ProgressDialog(this);
 
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,9 +101,16 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                 {
                     signUp();
                 }
+
             }
         });
     }
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        //updateUI(currentUser);
+//    }
 
     private void checkPassword() {
         validator.validate();
