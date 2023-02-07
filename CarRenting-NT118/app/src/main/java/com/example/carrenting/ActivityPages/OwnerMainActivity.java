@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 import com.example.carrenting.FragmentPages.Owner.OwnerActicityFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
@@ -13,6 +14,7 @@ import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
+
 
 public class OwnerMainActivity extends AppCompatActivity {
 
