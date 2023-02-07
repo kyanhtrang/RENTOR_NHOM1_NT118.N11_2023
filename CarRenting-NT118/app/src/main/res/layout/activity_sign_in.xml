@@ -87,8 +87,7 @@
         android:layout_marginTop="@dimen/_75sdp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintBottom_toBottomOf="">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
     </View>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtTxt_emailLayout"
@@ -170,9 +169,5 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintTop_toBottomOf="@+id/edtText_passwordLayout" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
