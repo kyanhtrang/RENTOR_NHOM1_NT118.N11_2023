@@ -44,7 +44,7 @@ public class OwnerMainActivity extends AppCompatActivity {
         mbottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId())
             {
-                case R.id.home:
+                case R.id.vehicle:
                     replaceFragment(new OwnerVehicleFragment());
                     mCurrentFragment = FRAGMENT_VEHICLE;
                     break;
