@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:layout_gravity="center"
-                    android:text="Chuyển sang nhà cung cấp"
+                    android:text="Giao diện nhà cung cấp"
                     app:layout_constraintTop_toBottomOf="@+id/tv_noti"
                     android:textSize="24sp"
                     android:textColor="@color/sky"

@@ -28,7 +28,7 @@
         tools:replace="android:theme"
         tools:targetApi="31">
         <activity
-            android:name=".OwnerMainActivity"
+            android:name=".ActivityPages.OwnerMainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
