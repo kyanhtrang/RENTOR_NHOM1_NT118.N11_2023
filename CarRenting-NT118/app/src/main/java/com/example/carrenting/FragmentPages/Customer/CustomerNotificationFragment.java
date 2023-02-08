@@ -96,7 +96,10 @@ public class CustomerNotificationFragment extends Fragment {
     private void EventChangeListener()
     {
         dtb_noti.collection("Notification")
-                .orderBy("ProvideID", Query.Direction.ASCENDING)
+//                .orderBy("ProvideID", Query.Direction.ASCENDING)
+//                .WhereEqualTo("CustomerID","2")
+
+                .whereEqualTo("CustomerID", "2")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -115,7 +118,7 @@ public class CustomerNotificationFragment extends Fragment {
                                 notificationAdapter.notifyDataSetChanged();
                             }
                         } else {
-                            Toast.makeText(getContext(), "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Không thể lấy thông tin đơn hàng ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

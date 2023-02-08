@@ -9,19 +9,29 @@ public class Notification {
     private String Name_Provide;
     private String Name_customer;
     private String Status;
+    private String OrderID;
 
     
     public Notification()
     {
 
     }
-    public Notification(String customerID, String name_customer, String provideID, String name_Provide, String status)
+    public Notification(String customerID, String name_customer, String provideID, String name_Provide, String status, String orderID)
     {
         this.CustomerID=customerID;
         this.ProvideID=provideID;
         this.Name_customer=name_customer;
         this.Name_Provide=name_Provide;
         this.Status=status;
+        this.OrderID=orderID;
+    }
+
+    public String getOrderID() {
+        return OrderID;
+    }
+
+    public void setOrderID(String orderID) {
+        OrderID = orderID;
     }
 
     public String getName_Provide() {

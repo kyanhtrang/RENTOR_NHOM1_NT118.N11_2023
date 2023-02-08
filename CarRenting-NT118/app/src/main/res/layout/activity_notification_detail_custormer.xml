@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context=".Service.Booking.ConfirmAndPaymentActivity">
 
     <ScrollView
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="CHI TIẾT ĐƠN HÀNG"
-                    android:textColor="@color/white"
+                    android:textColor="@color/sky"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="ID:"
-                    android:textColor="@color/Grey"
+                    android:textColor="@color/sky"
                     android:textSize="20sp"
 
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="id giao dich"
-                    android:textColor="@color/Grey"
+                    android:textColor="@color/sky"
                     android:textSize="20sp"
 
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_id"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="Trạng thái: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/sky"
                     android:layout_marginLeft="70dp"
                     android:textSize="20dp"
 
@@ -92,7 +92,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_id"
                     app:layout_constraintLeft_toRightOf="@+id/status"
                     android:text="đang chờ "
-                    android:textColor="@color/white"
+                    android:textColor="@color/sky"
                     android:layout_marginLeft="5dp"
                     android:textSize="20dp"
                     ></TextView>
@@ -114,7 +114,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
 
-                    app:cardBackgroundColor="@color/colorPrimary"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_car">
@@ -122,7 +122,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
+                        android:background="@drawable/blue_round_button"
                         android:paddingBottom="10dp">
 
                         <View
@@ -131,7 +131,7 @@
                             android:layout_height="0.3dp"
                             android:layout_marginTop="4dp"
                             android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
+                            android:scrollbarThumbHorizontal="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +145,7 @@
                             android:layout_marginTop="4dp"
 
                             android:text="Thông tin nhà cung cấp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -169,6 +169,7 @@
                                     android:id="@+id/nameText"
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
 
                                     android:text="Name:" />
 
@@ -178,8 +179,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
-                                    android:text="Mr. Jenil Vekaria"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -194,6 +195,7 @@
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
 
+                                    android:textColor="@color/white"
                                     android:text="Email:" />
 
                                 <TextView
@@ -202,8 +204,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
-                                    android:text="jenilvekaria@yahoo.ca"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -218,6 +220,7 @@
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
 
+                                    android:textColor="@color/white"
                                     android:text="Phone:" />
 
                                 <TextView
@@ -226,8 +229,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
-                                    android:text="(416) 000 0000"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -245,7 +248,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rental_time">
@@ -253,7 +256,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
+                        android:background="@drawable/blue_round_button"
                         android:paddingBottom="10dp">
 
                         <View
@@ -277,7 +280,7 @@
                             android:layout_marginTop="4dp"
 
                             android:text="Thông tin xe"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -304,8 +307,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:text="2020 Toyota Avalon"
-                                    android:textColor="@color/colorPrimary"
+
+                                    android:textColor="@color/white"
                                     android:textSize="18sp" />
                             </LinearLayout>
 
@@ -320,16 +323,17 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
 
+                                    android:textColor="@color/white"
                                     android:text="Giá:" />
 
                                 <TextView
-                                    android:id="@+id/rate"
+                                    android:id="@+id/tv_Gia"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
                                     android:paddingLeft="15dp"
-                                    android:text="100.000(VNĐ)/Ngày"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -342,17 +346,18 @@
                                     android:id="@+id/totalDaysText"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
 
                                     android:text="Địa điểm:" />
 
                                 <TextView
-                                    android:id="@+id/totalDays"
+                                    android:id="@+id/tv_DiaDiem"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
                                     android:paddingLeft="15dp"
-                                    android:text="Đà Lạt"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white"/>
                             </LinearLayout>
 
 
@@ -366,6 +371,7 @@
                                     android:id="@+id/pickupText"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
 
                                     android:text="Nhận xe:" />
                                 <TextView
@@ -373,8 +379,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="15dp"
-                                    android:text="11:00PM\t\tWeb, Dec 05"
-                                    android:textColor="@color/colorPrimary"
+
+                                    android:textColor="@color/white"
                                     tools:layout_editor_absoluteX="125dp"
                                     tools:layout_editor_absoluteY="269dp"
                                     />
@@ -391,6 +397,7 @@
                                     android:id="@+id/dropoffText"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
 
                                     android:text="Trả xe:" />
 
@@ -400,8 +407,8 @@
                                     android:layout_height="wrap_content"
 
                                     android:paddingLeft="15dp"
-                                    android:text="03:00PM\t\tWeb, Dec 17"
-                                    android:textColor="@color/colorPrimary" />
+
+                                    android:textColor="@color/white" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -411,7 +418,7 @@
                             android:layout_height="0.3dp"
                             android:layout_marginTop="8dp"
                             android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
+                            android:scrollbarThumbHorizontal="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -445,6 +452,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:textColor="@color/white"
 
                                         android:text="Tổng tiền cần thanh toán:" />
 
@@ -454,8 +462,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
 
-                                        android:text="1.200.000 VNĐ"
-                                        android:textColor="@color/sky"
+
+                                        android:textColor="@color/white"
                                         android:textSize="24sp" />
                                 </LinearLayout>
                             </LinearLayout>
