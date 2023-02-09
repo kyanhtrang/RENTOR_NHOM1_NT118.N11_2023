@@ -32,7 +32,6 @@ import java.util.ArrayList;
 public class NotificationActivity extends AppCompatActivity {
 
     DatabaseReference reference;
-    FirebaseFirestore dtb;
     FirebaseFirestore dtb, dtbVehicle;
     Intent intent;
     String ProvideID, vehicle_id;
@@ -43,18 +42,9 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail_custormer);
-        diachi();
-
-        intent=getIntent();
-
-        String OrderID=intent.getStringExtra("OrderID");
-
-        dtb=FirebaseFirestore.getInstance();
 
         init();
-
         intent = getIntent();
-
         String OrderID = intent.getStringExtra("OrderID");
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Order")
@@ -79,7 +69,6 @@ public class NotificationActivity extends AppCompatActivity {
                     }
                 });
 
-        dtb.collection("Vehicles")
         dtbVehicle = FirebaseFirestore.getInstance();
         dtbVehicle.collection("Vehicles")
                 .whereEqualTo("vehicle_id", vehicle_id)

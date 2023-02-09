@@ -68,6 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
