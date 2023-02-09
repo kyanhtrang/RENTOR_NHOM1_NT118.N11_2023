@@ -66,6 +66,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 validateField(otpNumberOne);
                 validateField(getOtpNumberTwo);
                 validateField(getOtpNumberThree);
@@ -125,7 +126,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                        //verifyAuthentication(phoneAuthCredential);
+                        verifyAuthentication(phoneAuthCredential);
                         tvResend.setVisibility(View.GONE);
 
                     }
@@ -135,11 +136,11 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         Toast.makeText(ValidatePhoneActivity.this, "OTP Verification Failed.", Toast.LENGTH_SHORT).show();
                     }
 
-                    @SuppressLint("RestrictedApi")
+                    //@SuppressLint("RestrictedApi")
                     @Override
                     public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verificationId, forceResendingToken);
-                        Log.d(TAG, "onCodeSent:" + forceResendingToken);
+                        Toast.makeText(ValidatePhoneActivity.this, "onCodeSent:" + forceResendingToken, Toast.LENGTH_SHORT).show();
                         mVerificationId = verificationId;
                         mResendToken = forceResendingToken;
                         tvResend.setVisibility(View.GONE);
@@ -165,7 +166,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(ValidatePhoneActivity.this, "Acccount Created and Linked.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ValidatePhoneActivity.this, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
                 // send to dashboard.
             }
         });
@@ -173,7 +174,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
     public void validateField(EditText field){
         if(field.getText().toString().isEmpty()){
-            field.setError("Required");
+            field.setError("Cần nhập OTP");
             otpValid = false;
         }else {
             otpValid = true;
@@ -187,7 +188,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         getOtpNumberFive = findViewById(R.id.otpNumberFive);
         otpNumberSix = findViewById(R.id.optNumberSix);
 
-        btnSendCode = findViewById(R.id.btnSendCode);
+        btnSendCode = findViewById(R.id.btnValidate);
         tvResend = findViewById(R.id.tvResend);
     }
 }

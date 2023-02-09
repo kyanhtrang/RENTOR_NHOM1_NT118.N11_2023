@@ -49,12 +49,12 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        /*mAuth = FirebaseAuth.getInstance();
-        txtSignUp = findViewById(R.id.txtSignUp);
-        edtTxt_email = findViewById(R.id.edtTxt_email);
-        edtTxt_password = findViewById(R.id.edtText_password);
+        mAuth = FirebaseAuth.getInstance();
+        txtSignUp = findViewById(R.id.btn_signUp);
+        edtTxt_email = findViewById(R.id.email);
+        edtTxt_password = findViewById(R.id.password);
         btn_signIn = findViewById(R.id.btn_signIn);
-        tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        tvForgotPassword = findViewById(R.id.btn_forget);
         progressDialog = new ProgressDialog(this);
 
         overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
@@ -176,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Đăng nhập không thành công", Toast.LENGTH_LONG).show();
                 }
             }
-        });*/
+        });
     }
 
 

@@ -75,7 +75,7 @@
         app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordLayout"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout"
-        app:passwordToggleDrawable="@drawable/sign_in_eye_hint">
+        app:passwordToggleDrawable="@drawable/show_password_selector">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtPasswordAgain"
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Nhập lại mật khẩu"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColor="@color/sky"
             android:textColorHint="@color/sky"
             tools:ignore="HardcodedText" />
@@ -104,7 +104,6 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
         tools:ignore="HardcodedText,TextFields" />
@@ -117,8 +116,8 @@
         android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="@+id/edtTxt_emailLayout"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt_emailLayout"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleDrawable="@drawable/sign_in_eye_hint"        >
+        app:passwordToggleDrawable="@drawable/show_password_selector"
+        app:passwordToggleEnabled="true"        >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtPassword"
             android:layout_width="match_parent"
@@ -126,6 +125,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Mật khẩu"
+            android:inputType="textPassword"
             android:textColor="@color/sky"
             android:textColorHint="@color/sky"
             tools:ignore="HardcodedText" />
@@ -151,14 +151,14 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Số điện thoại"
-            android:inputType="textPersonName"
+            android:inputType="text|phone"
 
             tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSendCode"
+        android:id="@+id/btnValidate"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_35sdp"

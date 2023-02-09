@@ -1,8 +1,5 @@
 package com.example.carrenting.Service.UserAuthentication.Register;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +8,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +22,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
@@ -88,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         edtTxtPhone = findViewById(R.id.edtTxtCode);
         edtTxtPassword = findViewById(R.id.edtTxtPassword);
         edtTxtPasswordAgain = findViewById(R.id.edtTxtPasswordAgain);
-        btnSignUp = findViewById(R.id.btnSendCode);
+        btnSignUp = findViewById(R.id.btnValidate);
         mDb = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(this);
@@ -101,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                 {
                     signUp();
                 }
-
             }
         });
     }
@@ -138,13 +133,11 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful()){
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công", Toast.LENGTH_LONG).show();
-
                             User user = new User();
                             user.setEmail(strEmail);
                             user.setUsername(strEmail.substring(0, strEmail.indexOf("@")));
@@ -156,30 +149,31 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                             mDb.setFirestoreSettings(settings);
 
                             DocumentReference newUserRef = mDb
-                                    .collection(getString(R.string.collection_users))
+                                    .collection("Users")
                                     .document(FirebaseAuth.getInstance().getUid());
 
                             newUserRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    progressDialog.dismiss();
+
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
+                                        Intent intent = new Intent(RegisterActivity.this, CustomerMainActivity.class);
                                         intent.putExtra("phone", strPhone);
                                         startActivity(intent);
+
                                     }else{
                                         View parentLayout = findViewById(android.R.id.content);
                                         Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
                                     }
+                                    progressDialog.cancel();
                                 }
                             });
 
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(RegisterActivity.this, "Đăng ký thất bại",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
