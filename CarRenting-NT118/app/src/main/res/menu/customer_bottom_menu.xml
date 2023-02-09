@@ -12,16 +12,15 @@
         android:title="Activity"
         android:icon="@drawable/ic_activity"
         tools:ignore="HardcodedText" />
-<!--    <item
-        android:id="@+id/user"
-        android:title="user"
-        android:icon="@drawable/ic_user"
-        tools:ignore="HardcodedText" />-->
 
     <item
         android:id="@+id/notifications"
         android:title="Notifications"
+<<<<<<< Updated upstream
         android:icon="@drawable/ic_message"
+=======
+        android:icon="@drawable/ic_notifications"
+>>>>>>> Stashed changes
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/setting"

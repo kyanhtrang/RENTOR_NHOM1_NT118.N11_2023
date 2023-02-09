@@ -14,7 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< Updated upstream
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
+=======
+import com.example.carrenting.ActivityPages.ProfileActivity;
+>>>>>>> Stashed changes
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -100,12 +104,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
             }
         });
     }
-//    @Override
-//    public void onStart(){
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        //updateUI(currentUser);
-//    }
+
 
     private void checkPassword() {
         validator.validate();
@@ -157,7 +156,12 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
+<<<<<<< Updated upstream
                                         Intent intent = new Intent(RegisterActivity.this, CustomerMainActivity.class);
+=======
+                                        Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+
+>>>>>>> Stashed changes
                                         intent.putExtra("phone", strPhone);
                                         startActivity(intent);
 

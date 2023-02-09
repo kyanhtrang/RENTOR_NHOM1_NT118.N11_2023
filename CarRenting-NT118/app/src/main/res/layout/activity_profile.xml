@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityPages.ProfileActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_avatar_profile_input_fragment"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:src="@drawable/ic_person"
+                    android:background="@drawable/blue_circle_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="Số điện thoại *"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_input_fragment"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/profile_input_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email *"
+                    android:textColor="@color/sky"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_phone"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/profile_input_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+                <TextView
+                    android:id="@+id/fullnameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Tên người dùng *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_email"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/profile_input_fullname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/fullnameText" />
+                
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Tên đường *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_fullname"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/edtStreet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/addressText" />
+
+                <TextView
+                    android:id="@+id/cityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Thành phố"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/profile_input_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
+
+                <TextView
+                    android:id="@+id/dateofBirthText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Ngày sinh *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/dateofBirthtv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Ngày sinh *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/profile_input_dateofbirth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/dateofBirthText"
+                    tools:ignore="KeyboardInaccessibleWidget" />
+
+                <TextView
+                    android:id="@+id/tvBirthDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:inputType="datetime"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toTopOf="@+id/profile_input_dateofbirth"
+                    tools:ignore="TextViewEdits" />
+
+
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Mặt trước CCCD *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_dateofbirth"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/ivFrontCiCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/input_image"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toBottomOf="@+id/text3"/>
+
+                <View
+                    android:id="@+id/viewFrontCiCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/stroke"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Mặt sau CCCD *"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:id="@+id/viewBehindCiCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/stroke"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/text4"/>
+                <ImageView
+                    android:id="@+id/ivBehindCiCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/input_image"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toBottomOf="@+id/text4"  />
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/buttonSize"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:background="@drawable/round_button"
+                    android:text="Cập nhật thông tin"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+                    tools:ignore="HardcodedText" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
