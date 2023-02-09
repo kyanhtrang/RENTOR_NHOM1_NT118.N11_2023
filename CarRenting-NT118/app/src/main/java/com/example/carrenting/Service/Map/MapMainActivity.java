@@ -479,7 +479,7 @@ public class MapMainActivity extends AppCompatActivity implements
                 return true;
             }
             case R.id.action_profile:{
-                startActivity(new Intent(this, ProfileActivity.class));
+               /* startActivity(new Intent(this, ProfileActivity.class));*/
                 return true;
             }
             default:{

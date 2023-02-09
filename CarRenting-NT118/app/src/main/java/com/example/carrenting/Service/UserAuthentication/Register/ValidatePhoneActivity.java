@@ -1,20 +1,17 @@
 package com.example.carrenting.Service.UserAuthentication.Register;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -95,13 +92,11 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(ValidatePhoneActivity.this, ProfileActivity.class);
+                                startActivity(intent);
                             }
                         }
                     });
-
-/*                    Intent intent = new Intent(ValidatePhoneActivity.this, SignProfileActivity.class);
-                    startActivity(intent);
-                    finishAffinity();*/
                 }
             }
         });
@@ -187,7 +182,6 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         getOtpNumberFour = findViewById(R.id.otpNumberFour);
         getOtpNumberFive = findViewById(R.id.otpNumberFive);
         otpNumberSix = findViewById(R.id.optNumberSix);
-
         btnSendCode = findViewById(R.id.btnValidate);
         tvResend = findViewById(R.id.tvResend);
     }
