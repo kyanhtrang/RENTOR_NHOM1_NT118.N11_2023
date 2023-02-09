@@ -41,6 +41,10 @@
             android:name=".Service.Vehicle.VehicleDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".Service.Notification.NotificationActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Service.Vehicle.AddVehicleActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
