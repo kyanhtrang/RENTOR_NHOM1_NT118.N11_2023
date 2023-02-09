@@ -59,7 +59,7 @@
         <activity
             android:name=".ActivityPages.TestActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity
+<!--        <activity
             android:name=".Service.UserAuthentication.Register.SignProfileActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
@@ -68,7 +68,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
+        </activity>-->
         <activity android:name=".Service.Map.MapMainActivity" />
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity android:name=".Service.Map.ProfileActivity" />
