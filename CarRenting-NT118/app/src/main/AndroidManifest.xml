@@ -67,7 +67,6 @@
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity android:name=".Service.Map.MapMainActivity" />
         <activity android:name=".Service.Map.ChatroomActivity" />
-        <activity android:name=".Service.Map.ProfileActivity" />
         <activity
             android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
             android:exported="false"
