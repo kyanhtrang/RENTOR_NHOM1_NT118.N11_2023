@@ -1,3 +1,4 @@
+/*
 package com.example.carrenting.Service.UserAuthentication.Register;
 
 
@@ -248,4 +249,4 @@ public class SignProfileActivity extends AppCompatActivity {
     }
 
 
-}
+}*/

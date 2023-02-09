@@ -98,9 +98,9 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         }
                     });
 
-                    Intent intent = new Intent(ValidatePhoneActivity.this, SignProfileActivity.class);
+/*                    Intent intent = new Intent(ValidatePhoneActivity.this, SignProfileActivity.class);
                     startActivity(intent);
-                    finishAffinity();
+                    finishAffinity();*/
                 }
             }
         });

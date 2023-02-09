@@ -16,54 +16,42 @@ import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragmen
 import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.example.carrenting.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class CustomerMainActivity extends AppCompatActivity{
 
-    public static final int AVATAR_REQUEST_CODE = 99;
-    private static final int FRAGMENT_HOME = 0;
-    private static final int FRAGMENT_ACTIVITY = 1;
-    private static final int FRAGMENT_MESSAGE = 2;
-    private static final int FRAGMENT_SETTING = 3;
-    private int mCurrentFragment = FRAGMENT_HOME;
-    private BottomNavigationView mbottomNavigationView;
-    private FirebaseFirestore mDb;
-
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mDb = FirebaseFirestore.getInstance();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        // Bottom Navigation
-        mbottomNavigationView = findViewById(R.id.bottomNavigationView);
-        mbottomNavigationView.setBackground(null);
-        mbottomNavigationView.setOnItemSelectedListener(item -> {
+        replaceFragment(new CustomerHomeFragment());
+        binding.bottomNavigationView.setBackground(null);
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId())
             {
                 case R.id.home:
                     replaceFragment(new CustomerHomeFragment());
-                    mCurrentFragment = FRAGMENT_HOME;
                     break;
                 case R.id.activity:
                     replaceFragment(new CustomerActivityFragment());
-                    mCurrentFragment = FRAGMENT_ACTIVITY;
                     break;
-                case R.id.message:
+                case R.id.notifications:
                     replaceFragment(new CustomerNotificationFragment());
-                    mCurrentFragment = FRAGMENT_MESSAGE;
                     break;
                 case R.id.setting:
                     replaceFragment(new CustomerSettingFragment());
-                    mCurrentFragment = FRAGMENT_SETTING;
             }
             return true;
-        }
-        );
+        });
     }
-    // Hàm thay trang
+
     private void replaceFragment(Fragment fragment)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
