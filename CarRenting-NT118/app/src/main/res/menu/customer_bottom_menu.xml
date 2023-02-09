@@ -16,11 +16,7 @@
     <item
         android:id="@+id/notifications"
         android:title="Notifications"
-<<<<<<< Updated upstream
-        android:icon="@drawable/ic_message"
-=======
         android:icon="@drawable/ic_notifications"
->>>>>>> Stashed changes
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/setting"
