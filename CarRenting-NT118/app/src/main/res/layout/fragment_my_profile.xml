@@ -49,11 +49,11 @@
                     android:layout_marginStart="4dp"
                     android:text="Số điện thoại *"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
+                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
                     app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_fragment" />
 
                 <EditText
-                    android:id="@+id/edtPhone"
+                    android:id="@+id/profile_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -76,11 +76,11 @@
                     android:layout_marginStart="4dp"
                     android:text="Email *"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
+                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_phone" />
 
                 <EditText
-                    android:id="@+id/edtEmail"
+                    android:id="@+id/profile_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -104,11 +104,11 @@
                     android:layout_marginTop="8dp"
                     android:text="Tên người dùng *"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_email" />
 
                 <EditText
-                    android:id="@+id/edtUserName"
+                    android:id="@+id/profile_fullname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -132,7 +132,7 @@
                     android:text="Bằng lái xe"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/firstNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
+                    app:layout_constraintTop_toBottomOf="@+id/profile_fullname" />
 
                 <EditText
                     android:id="@+id/edtLicense"
@@ -143,8 +143,8 @@
                     android:inputType="textPersonName"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtUserName"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_fullname"
+                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
                     app:layout_constraintTop_toBottomOf="@+id/middleNameText" />
 
                 <TextView
@@ -279,7 +279,7 @@
                     android:layout_width="0dp"
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
-                    android:background="#FFFFFF"
+                    android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
                     app:layout_constraintHorizontal_bias="0.476"
                     app:layout_constraintStart_toStartOf="@+id/edtBirthDate"

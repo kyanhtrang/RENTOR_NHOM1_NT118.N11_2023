@@ -51,7 +51,7 @@
                     android:layout_marginLeft="130dp"
                     />
                 <TextView
-                    android:id="@+id/tv_id"
+                    android:id="@+id/txtview_noti_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/status"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_id"
+                    app:layout_constraintTop_toBottomOf="@+id/txtview_noti_id"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="Trạng thái: "
                     android:textColor="@color/sky"
@@ -88,8 +88,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_status"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_id"
+                    android:id="@+id/txtview_noti_status"
+                    app:layout_constraintTop_toBottomOf="@+id/txtview_noti_id"
                     app:layout_constraintLeft_toRightOf="@+id/status"
                     android:text="đang chờ "
                     android:textColor="@color/sky"
@@ -171,10 +171,10 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/white"
 
-                                    android:text="Name:" />
+                                    android:text="Họ tên:" />
 
                                 <TextView
-                                    android:id="@+id/name"
+                                    android:id="@+id/txtview_noti_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -199,7 +199,7 @@
                                     android:text="Email:" />
 
                                 <TextView
-                                    android:id="@+id/email"
+                                    android:id="@+id/txtview_noti_email"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -221,10 +221,10 @@
                                     android:layout_height="wrap_content"
 
                                     android:textColor="@color/white"
-                                    android:text="Phone:" />
+                                    android:text="SĐT:" />
 
                                 <TextView
-                                    android:id="@+id/phoneNumber"
+                                    android:id="@+id/txtview_noti_phoneNumber"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -303,7 +303,7 @@
                                 android:paddingBottom="5dp">
 
                                 <TextView
-                                    android:id="@+id/tv_BrandCar"
+                                    android:id="@+id/txtview_noti_BrandCar"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
@@ -327,7 +327,7 @@
                                     android:text="Giá:" />
 
                                 <TextView
-                                    android:id="@+id/tv_Gia"
+                                    android:id="@+id/txtview_noti_Gia"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
@@ -351,7 +351,7 @@
                                     android:text="Địa điểm:" />
 
                                 <TextView
-                                    android:id="@+id/tv_DiaDiem"
+                                    android:id="@+id/txtview_noti_DiaDiem"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
@@ -375,7 +375,7 @@
 
                                     android:text="Nhận xe:" />
                                 <TextView
-                                    android:id="@+id/pickup"
+                                    android:id="@+id/txtview_noti_pickup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="15dp"
@@ -402,7 +402,7 @@
                                     android:text="Trả xe:" />
 
                                 <TextView
-                                    android:id="@+id/dropoff"
+                                    android:id="@+id/txtview_noti_dropoff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
@@ -448,21 +448,18 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/totalText"
+                                        android:id="@+id/txtview_noti_totalText"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:textColor="@color/white"
-
                                         android:text="Tổng tiền cần thanh toán:" />
 
                                     <TextView
-                                        android:id="@+id/totalCost"
+                                        android:id="@+id/txtview_noti_totalCost"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-
-
                                         android:textColor="@color/white"
                                         android:textSize="24sp" />
                                 </LinearLayout>

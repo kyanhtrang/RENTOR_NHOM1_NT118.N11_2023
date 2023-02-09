@@ -1,10 +1,15 @@
 package com.example.carrenting.FragmentPages.Customer;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -39,29 +44,33 @@ public class CustomerNotificationFragment extends Fragment {
     NotificationAdapter notificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
-
-
+    ProgressDialog progressDialog;
+    FirebaseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Đang lấy dữ liệu...");
+        progressDialog.show();
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
         recyclerView=view.findViewById(R.id.frame_layout_noti);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        mNoti=new ArrayList<>();
 
-        dtb_noti=FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        dtb_noti = FirebaseFirestore.getInstance();
         notifications = new ArrayList<Notification>();
-        notificationAdapter=new NotificationAdapter(CustomerNotificationFragment.this,notifications);
+        notificationAdapter = new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
 //        readNotification();
-
+        progressDialog.cancel();
         EventChangeListener();
-
-
-
 //        return inflater.inflate(R.layout.customer_fragment_notification, container, false);
         return view;
     }
@@ -96,9 +105,6 @@ public class CustomerNotificationFragment extends Fragment {
     private void EventChangeListener()
     {
         dtb_noti.collection("Notification")
-//                .orderBy("ProvideID", Query.Direction.ASCENDING)
-//                .WhereEqualTo("CustomerID","2")
-
                 .whereEqualTo("CustomerID", "2")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -122,5 +128,6 @@ public class CustomerNotificationFragment extends Fragment {
                         }
                     }
                 });
+
     }
 }

@@ -1,7 +1,5 @@
 package com.example.carrenting.Service.Notification;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +32,7 @@ import java.util.ArrayList;
 public class NotificationActivity extends AppCompatActivity {
 
     DatabaseReference reference;
-    FirebaseFirestore dtb;
+    FirebaseFirestore dtb, dtbVehicle;
     Intent intent;
     String ProvideID, vehicle_id;
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
@@ -44,14 +42,11 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail_custormer);
-        diachi();
 
-        intent=getIntent();
-
-        String OrderID=intent.getStringExtra("OrderID");
-
-        dtb=FirebaseFirestore.getInstance();
-
+        init();
+        intent = getIntent();
+        String OrderID = intent.getStringExtra("OrderID");
+        dtb = FirebaseFirestore.getInstance();
         dtb.collection("Order")
                 .whereEqualTo("OrderID", OrderID)
                 .get()
@@ -63,6 +58,9 @@ public class NotificationActivity extends AppCompatActivity {
 
                                 ProvideID=document.get("ProvideID").toString();
                                 vehicle_id=document.get("vehicle_id").toString();
+                                ProvideID = document.get("ProvideID").toString();
+                                vehicle_id = document.get("vehicle_id").toString();
+                                tv_id.setText(ProvideID);
 
                             }
                         } else {
@@ -71,7 +69,8 @@ public class NotificationActivity extends AppCompatActivity {
                     }
                 });
 
-        dtb.collection("Vehicles")
+        dtbVehicle = FirebaseFirestore.getInstance();
+        dtbVehicle.collection("Vehicles")
                 .whereEqualTo("vehicle_id", vehicle_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -85,6 +84,7 @@ public class NotificationActivity extends AppCompatActivity {
                                 totalCost.setText(document.get("vehicle_price").toString());
 
 
+                                Toast.makeText(NotificationActivity.this, tv_BrandCar + " " + tv_Gia + " " + totalCost, Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
@@ -116,18 +116,18 @@ public class NotificationActivity extends AppCompatActivity {
 //        });
 
     }
-    public void diachi(){
-        tv_id=findViewById(R.id.tv_id);
-        email=findViewById(R.id.email);
-        name=findViewById(R.id.name);
-        phoneNumber=findViewById(R.id.phoneNumber);
-        tv_BrandCar=findViewById(R.id.tv_BrandCar);
-        tv_DiaDiem=findViewById(R.id.tv_DiaDiem);
-        tv_Gia=findViewById(R.id.tv_Gia);
-        pickup=findViewById(R.id.pickup);
-        dropoff=findViewById(R.id.dropoff);
-        totalCost=findViewById(R.id.totalCost);
-        tv_status=findViewById(R.id.tv_status);
+    public void init(){
+        tv_id=findViewById(R.id.txtview_noti_id);
+        email=findViewById(R.id.txtview_noti_email);
+        name=findViewById(R.id.txtview_noti_name);
+        phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
+        tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
+        tv_DiaDiem=findViewById(R.id.txtview_noti_DiaDiem);
+        tv_Gia=findViewById(R.id.txtview_noti_Gia);
+        pickup=findViewById(R.id.txtview_noti_pickup);
+        dropoff=findViewById(R.id.txtview_noti_dropoff);
+        totalCost=findViewById(R.id.txtview_noti_totalCost);
+        tv_status=findViewById(R.id.txtview_noti_status);
     }
 
 
