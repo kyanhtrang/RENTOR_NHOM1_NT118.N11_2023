@@ -28,7 +28,7 @@ public class CustomerMainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        FirebaseFirestore mDb;
         mDb = FirebaseFirestore.getInstance();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
