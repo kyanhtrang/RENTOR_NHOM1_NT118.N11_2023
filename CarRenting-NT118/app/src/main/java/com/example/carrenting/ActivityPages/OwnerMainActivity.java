@@ -23,42 +23,29 @@ import com.google.android.material.navigation.NavigationView;
 public class OwnerMainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    private static final int FRAGMENT_VEHICLE = 0;
-    private static final int FRAGMENT_ACTIVITY = 1;
-    private static final int FRAGMENT_NOTIFICATION = 2;
-    private static final int FRAGMENT_SETTING = 3;
-    private int mCurrentFragment = FRAGMENT_VEHICLE;
-    private NavigationView mNavigationView;
-    private OwnerMainActivity mMainActivity;
-    private BottomNavigationView mbottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.owner_activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mMainActivity = this;
-        // Bottom Navigation
-        mbottomNavigationView = findViewById(R.id.bottomNavigationView);
-        mbottomNavigationView.setBackground(null);
+        replaceFragment(new CustomerHomeFragment());
+        binding.bottomNavigationView.setBackground(null);
 
-        mbottomNavigationView.setOnItemSelectedListener(item -> {
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId())
             {
                 case R.id.vehicle:
                     replaceFragment(new OwnerVehicleFragment());
-                    mCurrentFragment = FRAGMENT_VEHICLE;
                     break;
                 case R.id.activity:
                     replaceFragment(new OwnerActivityFragment());
-                    mCurrentFragment = FRAGMENT_ACTIVITY;
                     break;
                 case R.id.notifications:
                     replaceFragment(new OwnerNotificationsFragment());
-                    mCurrentFragment = FRAGMENT_NOTIFICATION;
                     break;
                 case R.id.setting:
                     replaceFragment(new OwnerSettingFragment());
-                    mCurrentFragment = FRAGMENT_SETTING;
             }
             return true;
         });
@@ -68,8 +55,7 @@ public class OwnerMainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.frame_layout_owner, fragment, null);
+        fragmentTransaction.replace(R.id.frame_layout_owner, fragment);
         fragmentTransaction.commit();
     }
 }
