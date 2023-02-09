@@ -28,6 +28,9 @@
         tools:replace="android:theme"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityPages.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityPages.OwnerMainActivity"
             android:exported="false">
             <meta-data
@@ -41,6 +44,12 @@
             android:name=".Service.Vehicle.VehicleDetailActivity"
             android:exported="false" />
         <activity
+<<<<<<< Updated upstream
+=======
+            android:name=".Service.Notification.NotificationActivity"
+            android:exported="false" />
+        <activity
+>>>>>>> Stashed changes
             android:name=".Service.Vehicle.AddVehicleActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
@@ -59,6 +68,10 @@
         <activity
             android:name=".ActivityPages.TestActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
+<<<<<<< Updated upstream
+=======
+        <!--
+>>>>>>> Stashed changes
         <activity
             android:name=".Service.UserAuthentication.Register.SignProfileActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
@@ -69,6 +82,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+<<<<<<< Updated upstream
+=======
+        -->
+>>>>>>> Stashed changes
         <activity android:name=".Service.Map.MapMainActivity" />
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity android:name=".Service.Map.ProfileActivity" />
@@ -86,6 +103,7 @@
         <activity
             android:name=".ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />

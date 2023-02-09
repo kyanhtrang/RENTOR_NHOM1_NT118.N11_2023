@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_my_profile"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky"
-    tools:context=".Service.UserAuthentication.Register.SignProfileActivity">
+    tools:context=".ActivityPages.ProfileActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -22,8 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -33,7 +30,7 @@
                 tools:layout_editor_absoluteY="210dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_avatar_profile_fragment"
+                    android:id="@+id/img_avatar_profile_input_fragment"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_avatar_default"
@@ -49,12 +46,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="Số điện thoại *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
-                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_fragment" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_input_fragment" />
 
                 <EditText
-                    android:id="@+id/profile_phone"
+                    android:id="@+id/profile_input_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -76,12 +73,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="Email *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_phone" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_phone" />
 
                 <EditText
-                    android:id="@+id/profile_email"
+                    android:id="@+id/profile_input_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -98,18 +95,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/text1" />
 
                 <TextView
-                    android:id="@+id/firstNameText"
+                    android:id="@+id/fullnameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="8dp"
                     android:text="Tên người dùng *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_email" />
 
                 <EditText
-                    android:id="@+id/profile_fullname"
+                    android:id="@+id/profile_input_fullname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -123,40 +120,17 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/fullnameText" />
+                
                 <TextView
-                    android:id="@+id/middleNameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Bằng lái xe"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/firstNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_fullname" />
-
-                <EditText
-                    android:id="@+id/edtLicense"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_fullname"
-                    app:layout_constraintStart_toStartOf="@+id/profile_fullname"
-                    app:layout_constraintTop_toBottomOf="@+id/middleNameText" />
-
-                <TextView
-                    android:id="@+id/lastNameText"
+                    android:id="@+id/addressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Tên đường *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/middleNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtLicense" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/fullnameText"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_fullname" />
 
                 <EditText
                     android:id="@+id/edtStreet"
@@ -167,22 +141,22 @@
                     android:inputType="textPersonName"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtLicense"
-                    app:layout_constraintStart_toStartOf="@+id/edtLicense"
-                    app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_fullname"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/addressText" />
 
                 <TextView
-                    android:id="@+id/emailText"
+                    android:id="@+id/cityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Thành phố"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/lastNameText"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/addressText"
                     app:layout_constraintTop_toBottomOf="@+id/edtStreet" />
 
                 <EditText
-                    android:id="@+id/edtCity"
+                    android:id="@+id/profile_input_city"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
@@ -192,53 +166,31 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/edtStreet"
                     app:layout_constraintStart_toStartOf="@+id/edtStreet"
-                    app:layout_constraintTop_toBottomOf="@+id/emailText" />
+                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
 
                 <TextView
-                    android:id="@+id/licenseText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Mã bưu chính *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/emailText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtCity" />
-
-                <EditText
-                    android:id="@+id/edtPostalCode"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtCity"
-                    app:layout_constraintStart_toStartOf="@+id/edtCity"
-                    app:layout_constraintTop_toBottomOf="@+id/licenseText" />
-
-                <TextView
-                    android:id="@+id/expiryText"
+                    android:id="@+id/dateofBirthText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Ngày sinh *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtPostalCode" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/cityText"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city" />
 
                 <TextView
-                    android:id="@+id/expiryText2"
+                    android:id="@+id/dateofBirthText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Ngày sinh *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtPostalCode" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/cityText"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city" />
 
                 <EditText
-                    android:id="@+id/edtBirthDate"
+                    android:id="@+id/profile_input_dateofbirth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
@@ -248,20 +200,20 @@
                     android:inputType="textPersonName"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtPostalCode"
-                    app:layout_constraintStart_toStartOf="@+id/edtPostalCode"
-                    app:layout_constraintTop_toBottomOf="@+id/expiryText" />
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_city"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_city"
+                    app:layout_constraintTop_toBottomOf="@+id/dateofBirthText" />
 
                 <TextView
                     android:id="@+id/tvBirthDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="YYYY-MM-DD"
+                    android:inputType="datetime"
                     android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtBirthDate"
-                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
-                    app:layout_constraintTop_toTopOf="@+id/edtBirthDate" />
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toTopOf="@+id/profile_input_dateofbirth" />
 
 
 
@@ -271,19 +223,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Mặt trước CCCD *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtBirthDate" />
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/dateofBirthText2"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_dateofbirth" />
 
                 <ImageView
                     android:id="@+id/ivFrontCiCard"
                     android:layout_width="0dp"
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
-                    android:background="@color/white"
-                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
+                    android:background="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintHorizontal_bias="0.476"
-                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintTop_toBottomOf="@+id/text3"
                     />
                 <TextView
@@ -292,8 +244,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Mặt sau CCCD *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/text3"
                     app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard" />
 
                 <ImageView
@@ -302,9 +254,9 @@
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
                     android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintHorizontal_bias="0.476"
-                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintTop_toBottomOf="@+id/text4"
                     />
 
@@ -318,7 +270,6 @@
                     android:text="Cập nhật thông tin"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    app:fontFamily="@font/roboto_medium"
                     app:layout_constraintEnd_toEndOf="@+id/ivBehindCiCard"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/ivBehindCiCard"
@@ -331,5 +282,4 @@
         </LinearLayout>
     </ScrollView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout >
+</androidx.constraintlayout.widget.ConstraintLayout>
