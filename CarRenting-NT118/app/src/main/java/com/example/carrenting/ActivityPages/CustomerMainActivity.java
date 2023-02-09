@@ -1,5 +1,6 @@
 package com.example.carrenting.ActivityPages;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class CustomerMainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDb = FirebaseFirestore.getInstance();
+        Init();
 
         // Bottom Navigation
         mbottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -70,5 +72,9 @@ public class CustomerMainActivity extends AppCompatActivity{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void Init(){
+      //  startActivity();
     }
 }
