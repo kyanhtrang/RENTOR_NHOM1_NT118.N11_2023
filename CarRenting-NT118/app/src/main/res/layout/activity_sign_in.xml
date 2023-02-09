@@ -105,7 +105,7 @@
             android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_45sdp"
             android:background="@color/white"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_12ssp"
             android:drawableStart="@drawable/ic_mail"
             android:hint="Email"
             android:inputType="text"
@@ -134,7 +134,7 @@
             android:background="@color/white"
             android:drawableStart="@drawable/ic_lock"
             android:hint="Password"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_12ssp"
             android:inputType="textPassword"
             android:padding="@dimen/_5sdp"
             tools:ignore="HardcodedText">
