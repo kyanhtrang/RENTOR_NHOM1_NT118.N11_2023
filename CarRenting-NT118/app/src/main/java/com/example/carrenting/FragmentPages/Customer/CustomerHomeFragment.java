@@ -56,6 +56,7 @@ public class CustomerHomeFragment extends Fragment {
     ProgressDialog progressDialog;
 
 
+
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

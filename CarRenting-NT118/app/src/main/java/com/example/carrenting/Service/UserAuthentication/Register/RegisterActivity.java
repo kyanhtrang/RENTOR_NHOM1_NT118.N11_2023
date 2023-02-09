@@ -17,12 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-<<<<<<< Updated upstream
-=======
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.ActivityPages.ProfileActivity;
->>>>>>> Stashed changes
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -93,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         edtTxtPhone = findViewById(R.id.edtTxtCode);
         edtTxtPassword = findViewById(R.id.edtTxtPassword);
         edtTxtPasswordAgain = findViewById(R.id.edtTxtPasswordAgain);
-        btnSignUp = findViewById(R.id.btnSendCode);
+        btnSignUp = findViewById(R.id.btnValidate);
         mDb = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(this);
@@ -110,12 +106,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
             }
         });
     }
-//    @Override
-//    public void onStart(){
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        //updateUI(currentUser);
-//    }
+
 
     private void checkPassword() {
         validator.validate();
@@ -143,7 +134,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -161,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                             mDb.setFirestoreSettings(settings);
 
                             DocumentReference newUserRef = mDb
-                                    .collection(getString(R.string.collection_users))
+                                    .collection("Users")
                                     .document(FirebaseAuth.getInstance().getUid());
 
                             newUserRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -169,17 +159,15 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                                 public void onComplete(@NonNull Task<Void> task) {
                                     progressDialog.dismiss();
                                     if(task.isSuccessful()){
-<<<<<<< Updated upstream
                                         Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
-=======
-                                        Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
->>>>>>> Stashed changes
                                         intent.putExtra("phone", strPhone);
                                         startActivity(intent);
+
                                     }else{
                                         View parentLayout = findViewById(android.R.id.content);
                                         Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
                                     }
+                                    progressDialog.cancel();
                                 }
                             });
 
@@ -187,7 +175,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                            Toast.makeText(RegisterActivity.this, "Đăng ký thất bại",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

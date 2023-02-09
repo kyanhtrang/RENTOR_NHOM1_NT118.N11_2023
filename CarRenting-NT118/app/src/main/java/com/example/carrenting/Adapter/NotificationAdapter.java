@@ -34,6 +34,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerNotificationFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
+
         return new MyViewHolder(v);
     }
 
@@ -67,6 +68,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             status=itemView.findViewById(R.id.tv_Status);
+
+
         }
     }
 

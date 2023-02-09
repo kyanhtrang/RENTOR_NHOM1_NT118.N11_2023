@@ -48,15 +48,6 @@ public class StartAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_app);
 
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                nextActivity();
-//            }
-//        }, 2000);
-
-
         imageSlider = (ImageSlider) findViewById(R.id.imageView3);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.start_app_background, ScaleTypes.FIT));

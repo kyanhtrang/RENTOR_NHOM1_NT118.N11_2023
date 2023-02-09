@@ -44,14 +44,11 @@
             android:name=".Service.Vehicle.VehicleDetailActivity"
             android:exported="false" />
         <activity
-<<<<<<< Updated upstream
-=======
             android:name=".Service.Notification.NotificationActivity"
             android:exported="false" />
         <activity
->>>>>>> Stashed changes
             android:name=".Service.Vehicle.AddVehicleActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".ActivityPages.StartAppActivity"
             android:exported="true"
@@ -68,24 +65,6 @@
         <activity
             android:name=".ActivityPages.TestActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
-<<<<<<< Updated upstream
-=======
-        <!--
->>>>>>> Stashed changes
-        <activity
-            android:name=".Service.UserAuthentication.Register.SignProfileActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity
-            android:name=".Service.UserAuthentication.ForgotPasswordActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-<<<<<<< Updated upstream
-=======
-        -->
->>>>>>> Stashed changes
         <activity android:name=".Service.Map.MapMainActivity" />
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity android:name=".Service.Map.ProfileActivity" />

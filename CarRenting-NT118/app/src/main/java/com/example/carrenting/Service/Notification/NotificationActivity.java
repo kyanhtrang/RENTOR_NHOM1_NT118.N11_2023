@@ -2,17 +2,27 @@ package com.example.carrenting.Service.Notification;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Order;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -22,6 +32,7 @@ import java.util.ArrayList;
 public class NotificationActivity extends AppCompatActivity {
 
     DatabaseReference reference;
+    FirebaseFirestore dtb;
     FirebaseFirestore dtb, dtbVehicle;
     Intent intent;
     String ProvideID, vehicle_id;
@@ -32,6 +43,14 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail_custormer);
+        diachi();
+
+        intent=getIntent();
+
+        String OrderID=intent.getStringExtra("OrderID");
+
+        dtb=FirebaseFirestore.getInstance();
+
         init();
 
         intent = getIntent();
@@ -47,6 +66,8 @@ public class NotificationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
+                                ProvideID=document.get("ProvideID").toString();
+                                vehicle_id=document.get("vehicle_id").toString();
                                 ProvideID = document.get("ProvideID").toString();
                                 vehicle_id = document.get("vehicle_id").toString();
                                 tv_id.setText(ProvideID);
@@ -57,6 +78,8 @@ public class NotificationActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        dtb.collection("Vehicles")
         dtbVehicle = FirebaseFirestore.getInstance();
         dtbVehicle.collection("Vehicles")
                 .whereEqualTo("vehicle_id", vehicle_id)
@@ -70,6 +93,8 @@ public class NotificationActivity extends AppCompatActivity {
                                 tv_BrandCar.setText(document.get("vehicle_name").toString());
                                 tv_Gia.setText(document.get("vehicle_price").toString());
                                 totalCost.setText(document.get("vehicle_price").toString());
+
+
                                 Toast.makeText(NotificationActivity.this, tv_BrandCar + " " + tv_Gia + " " + totalCost, Toast.LENGTH_LONG).show();
                             }
                         } else {
