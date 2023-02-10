@@ -22,6 +22,8 @@ import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
@@ -48,11 +50,13 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     private EditText edtTxtPassword, edtTxtPasswordAgain;
     private Button btnSignUp;
     private FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
     private Validator validator;
-
+    private String strPhone, strEmail, strPassword;
     private ProgressDialog progressDialog;
     Boolean isValid = true;
     private FirebaseFirestore mDb;
+    User user;
 
 
     @Override
@@ -127,9 +131,9 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     }
 
     private void signUp() {
-        String strPhone = edtTxtPhone.getText().toString().trim();
-        String strEmail = edtTxtEmail.getText().toString().trim();
-        String strPassword = edtTxtPassword.getText().toString().trim();
+        strPhone = edtTxtPhone.getText().toString().trim();
+        strEmail = edtTxtEmail.getText().toString().trim();
+        strPassword = edtTxtPassword.getText().toString().trim();
         Log.d(strEmail,strPassword);
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
@@ -137,44 +141,12 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
+                            //emailverify();
+                            send();
+
                             Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công", Toast.LENGTH_LONG).show();
-
-                            User user = new User();
-                            user.setEmail(strEmail);
-                            user.setUsername(strEmail.substring(0, strEmail.indexOf("@")));
-                            user.setUser_id(FirebaseAuth.getInstance().getUid());
-                            user.setPassword(strPassword);
-
-                            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                                    .build();
-                            mDb.setFirestoreSettings(settings);
-
-                            DocumentReference newUserRef = mDb
-                                    .collection("Users")
-                                    .document(FirebaseAuth.getInstance().getUid());
-
-                            newUserRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    progressDialog.dismiss();
-                                    if(task.isSuccessful()){
-                                        Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
-                                        intent.putExtra("phone", strPhone);
-                                        startActivity(intent);
-
-                                    }else{
-                                        View parentLayout = findViewById(android.R.id.content);
-                                        Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
-                                    }
-                                    progressDialog.cancel();
-                                }
-                            });
-
-
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Đăng ký thất bại",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -183,6 +155,64 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
 
     }
 
+    private void emailverify(){
+        firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser.isEmailVerified())  {
+            createUser();
+            return;
+        }
+        else {
+            send();
+            emailverify();
+        }
+    }
 
+    private void send(){
+        firebaseUser.sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(RegisterActivity.this, "Gửi yêu cầu xác thực email", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegisterActivity.this, "Không thể gửi yêu cầu xác thực email", Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void createUser(){
+        user = new User();
+        user.setEmail(strEmail);
+        user.setUsername(strEmail.substring(0, strEmail.indexOf("@")));
+        user.setUser_id(FirebaseAuth.getInstance().getUid());
+        user.setPassword(strPassword);
+
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .build();
+        mDb.setFirestoreSettings(settings);
+
+        DocumentReference newUserRef = mDb
+                .collection("Users")
+                .document(FirebaseAuth.getInstance().getUid());
+        newUserRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                progressDialog.dismiss();
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
+                    intent.putExtra("phone", strPhone);
+                    startActivity(intent);
+
+                }else{
+                    View parentLayout = findViewById(android.R.id.content);
+                    Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
+                }
+                progressDialog.cancel();
+            }
+        });
+    }
 
 }
