@@ -80,21 +80,25 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         return;
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        mAuth = FirebaseAuth.getInstance();
-
-        validator = new Validator(this);
-        validator.setValidationListener(this);
-
+    private void findViewbyIds(){
         edtTxtEmail = findViewById(R.id.edtTxtEmail);
         edtTxtPhone = findViewById(R.id.edtTxtCode);
         edtTxtPassword = findViewById(R.id.edtTxtPassword);
         edtTxtPasswordAgain = findViewById(R.id.edtTxtPasswordAgain);
         btnSignUp = findViewById(R.id.btnValidate);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+        mAuth = FirebaseAuth.getInstance();
         mDb = FirebaseFirestore.getInstance();
+
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
+        findViewbyIds();
 
         progressDialog = new ProgressDialog(this);
 
@@ -104,17 +108,24 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                 checkPassword();
                 if (isValid)
                 {
-                    signUp();
+
                 }
 
             }
         });
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        strPhone = edtTxtPhone.getText().toString().trim();
+        strEmail = edtTxtEmail.getText().toString().trim();
+        strPassword = edtTxtPassword.getText().toString().trim();
+    }
+
 
     private void checkPassword() {
         validator.validate();
-        String strPassword = edtTxtPassword.getText().toString().trim();
         String strPasswordAgain = edtTxtPasswordAgain.getText().toString().trim();
         if (strPassword.equals(strPasswordAgain) == false || strPassword.equals("") == true)
         {
@@ -131,9 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     }
 
     private void signUp() {
-        strPhone = edtTxtPhone.getText().toString().trim();
-        strEmail = edtTxtEmail.getText().toString().trim();
-        strPassword = edtTxtPassword.getText().toString().trim();
+
         Log.d(strEmail,strPassword);
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
