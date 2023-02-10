@@ -95,9 +95,5 @@ public class CustomerNotificationFragment extends Fragment {
 
     //
     }
-    public String getNotiID()
-    {
-        return this.NotiID;
-    }
 
 }
