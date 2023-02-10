@@ -15,6 +15,7 @@ import com.example.carrenting.Adapter.NotificationAdapter;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,9 +40,16 @@ public class CustomerNotificationFragment extends Fragment {
     NotificationAdapter notificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
+<<<<<<< Updated upstream
 
 
+=======
+    ProgressDialog progressDialog;
+    FirebaseUser user;
+    String NotiID="3";
+>>>>>>> Stashed changes
 
+    NotificationActivity notificationActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,7 +60,12 @@ public class CustomerNotificationFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        mNoti=new ArrayList<>();
 
+<<<<<<< Updated upstream
         dtb_noti=FirebaseFirestore.getInstance();
+=======
+//        user = FirebaseAuth.getInstance().getCurrentUser();
+        dtb_noti = FirebaseFirestore.getInstance();
+>>>>>>> Stashed changes
         notifications = new ArrayList<Notification>();
         notificationAdapter=new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
@@ -60,41 +73,19 @@ public class CustomerNotificationFragment extends Fragment {
 
         EventChangeListener();
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 //        return inflater.inflate(R.layout.customer_fragment_notification, container, false);
         return view;
     }
-//    private void readNotification(){
-//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notification");
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                mNoti.clear();
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    Notification notification = snapshot.getValue(Notification.class);
-//                    if (!notification.getProvideID().equals(firebaseUser.getUid())){
-//                        mNoti.add(notification);
-//                    }
-//                }
-//
-//                notificationAdapter = new NotificationAdapter(getContext(),mNoti);
-//                recyclerView.setAdapter(notificationAdapter);
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+
 
     private void EventChangeListener()
     {
+
         dtb_noti.collection("Notification")
 //                .orderBy("ProvideID", Query.Direction.ASCENDING)
 //                .WhereEqualTo("CustomerID","2")
@@ -108,11 +99,13 @@ public class CustomerNotificationFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 Notification temp = new Notification();
+                                temp.setNotiID(document.get("NotiID").toString());
                                 temp.setProvideID(document.get("ProvideID").toString());
                                 temp.setName_Provide(document.get("Name_Provide").toString());
                                 temp.setCustomerID(document.get("CustomerID").toString());
                                 temp.setName_customer(document.get("Name_customer").toString());
                                 temp.setStatus(document.get("Status").toString());
+
 
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
@@ -123,4 +116,14 @@ public class CustomerNotificationFragment extends Fragment {
                     }
                 });
     }
+    public String getNotiID()
+    {
+
+//        String notiID = notificationAdapter.getNotiID();
+//        NotiID = notiID;
+        return NotiID;
+    }
+
+
+
 }

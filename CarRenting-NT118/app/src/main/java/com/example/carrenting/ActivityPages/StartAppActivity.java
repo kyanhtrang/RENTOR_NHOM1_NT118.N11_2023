@@ -23,6 +23,7 @@ import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
 import com.example.carrenting.Service.Vehicle.VehicleCardActivity;
@@ -108,7 +109,11 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
+<<<<<<< Updated upstream
             Intent intent = new Intent(this, CustomerMainActivity.class);
+=======
+            Intent intent = new Intent(this, NotificationActivity.class);
+>>>>>>> Stashed changes
             startActivity(intent);
         }
 

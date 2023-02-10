@@ -22,6 +22,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     CustomerNotificationFragment customerNotificationFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
+    NotificationActivity notificationActivity;
+    String NotiIDAdapter="";
 
 
     public NotificationAdapter(CustomerNotificationFragment mContext, ArrayList<Notification>mNoti){
@@ -49,8 +51,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(customerNotificationFragment.getActivity(), NotificationActivity.class);
-                intent.putExtra("OrderID",noti.getOrderID());
+//                intent.putExtra("NotiID",noti.getNotiID());
                 customerNotificationFragment.startActivity(intent);
+
+                String NotiID=noti.getNotiID();
+                NotiIDAdapter=NotiID;
+
+
             }
         });
     }
@@ -72,6 +79,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         }
     }
+
+
+    public String getNotiID()
+    {
+        return NotiIDAdapter;
+    }
+
 
 
 }

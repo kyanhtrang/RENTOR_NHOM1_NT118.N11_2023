@@ -9,29 +9,38 @@ public class Notification {
     private String Name_Provide;
     private String Name_customer;
     private String Status;
-    private String OrderID;
+    private String NotiID;
+    private String vehicle_id;
 
-    
     public Notification()
     {
 
     }
-    public Notification(String customerID, String name_customer, String provideID, String name_Provide, String status, String orderID)
-    {
-        this.CustomerID=customerID;
-        this.ProvideID=provideID;
-        this.Name_customer=name_customer;
-        this.Name_Provide=name_Provide;
-        this.Status=status;
-        this.OrderID=orderID;
+
+    public Notification(String customerID, String provideID, String name_Provide, String name_customer, String status, String notiID, String vehicl_id) {
+        CustomerID = customerID;
+        ProvideID = provideID;
+        Name_Provide = name_Provide;
+        Name_customer = name_customer;
+        Status = status;
+        NotiID = notiID;
+        vehicle_id = vehicl_id;
     }
 
-    public String getOrderID() {
-        return OrderID;
+    public String getVehicle_id() {
+        return vehicle_id;
     }
 
-    public void setOrderID(String orderID) {
-        OrderID = orderID;
+    public void setVehicle_id(String vehicle_id) {
+        this.vehicle_id = vehicle_id;
+    }
+
+    public String getNotiID() {
+        return NotiID;
+    }
+
+    public void setNotiID(String notiID) {
+        NotiID = notiID;
     }
 
     public String getName_Provide() {
