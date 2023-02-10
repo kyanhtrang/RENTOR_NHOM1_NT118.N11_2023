@@ -29,7 +29,7 @@ public class OwnerMainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new CustomerHomeFragment());
+        replaceFragment(new OwnerVehicleFragment());
         binding.bottomNavigationView.setBackground(null);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -55,7 +55,7 @@ public class OwnerMainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout_owner, fragment);
+        fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
         fragmentTransaction.commit();
     }
 }

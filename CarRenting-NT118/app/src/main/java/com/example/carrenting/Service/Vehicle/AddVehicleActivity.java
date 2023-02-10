@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -125,6 +127,8 @@ public class AddVehicleActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         DocumentReference documentRef = documentReference;
                         documentId = documentReference.getId();
+                        Intent intent = new Intent(AddVehicleActivity.this, OwnerMainActivity.class);
+                        startActivity(intent);
                         toast("Thêm xe thành công");
                     }
                 })
