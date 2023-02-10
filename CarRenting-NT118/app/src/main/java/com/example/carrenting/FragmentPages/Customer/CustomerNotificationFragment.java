@@ -1,5 +1,6 @@
 package com.example.carrenting.FragmentPages.Customer;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,14 +41,7 @@ public class CustomerNotificationFragment extends Fragment {
     NotificationAdapter notificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
-<<<<<<< Updated upstream
-
-
-=======
-    ProgressDialog progressDialog;
-    FirebaseUser user;
-    String NotiID="3";
->>>>>>> Stashed changes
+    String NotiID;
 
     NotificationActivity notificationActivity;
     @Override
@@ -55,42 +49,28 @@ public class CustomerNotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
-        recyclerView=view.findViewById(R.id.frame_layout_noti);
+        recyclerView = view.findViewById(R.id.frame_layout_noti);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        mNoti=new ArrayList<>();
-
-<<<<<<< Updated upstream
-        dtb_noti=FirebaseFirestore.getInstance();
-=======
-//        user = FirebaseAuth.getInstance().getCurrentUser();
         dtb_noti = FirebaseFirestore.getInstance();
->>>>>>> Stashed changes
         notifications = new ArrayList<Notification>();
-        notificationAdapter=new NotificationAdapter(CustomerNotificationFragment.this,notifications);
+        notificationAdapter = new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
-//        readNotification();
-
+        setvalue();
         EventChangeListener();
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
-//        return inflater.inflate(R.layout.customer_fragment_notification, container, false);
         return view;
     }
 
+    private void setvalue(){
+        NotiID = "2";
+    }
 
     private void EventChangeListener()
     {
 
         dtb_noti.collection("Notification")
-//                .orderBy("ProvideID", Query.Direction.ASCENDING)
-//                .WhereEqualTo("CustomerID","2")
 
-                .whereEqualTo("CustomerID", "2")
+                .whereEqualTo("NotiID", NotiID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -100,13 +80,10 @@ public class CustomerNotificationFragment extends Fragment {
 
                                 Notification temp = new Notification();
                                 temp.setNotiID(document.get("NotiID").toString());
-                                temp.setProvideID(document.get("ProvideID").toString());
-                                temp.setName_Provide(document.get("Name_Provide").toString());
+                                temp.setProvideID(document.get("ProviderID").toString());
                                 temp.setCustomerID(document.get("CustomerID").toString());
-                                temp.setName_customer(document.get("Name_customer").toString());
                                 temp.setStatus(document.get("Status").toString());
-
-
+                                temp.setCustomerID(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
                             }
@@ -115,15 +92,12 @@ public class CustomerNotificationFragment extends Fragment {
                         }
                     }
                 });
+
+    //
     }
     public String getNotiID()
     {
-
-//        String notiID = notificationAdapter.getNotiID();
-//        NotiID = notiID;
-        return NotiID;
+        return this.NotiID;
     }
-
-
 
 }

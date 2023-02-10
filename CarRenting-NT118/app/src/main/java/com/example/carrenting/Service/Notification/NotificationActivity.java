@@ -15,10 +15,13 @@ import androidx.fragment.app.FragmentManager;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.Order;
+import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,21 +35,17 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.PrimitiveIterator;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    DatabaseReference reference;
-<<<<<<< Updated upstream
     FirebaseFirestore dtb;
-=======
-    FirebaseFirestore dtb, dtb_vehicle;
->>>>>>> Stashed changes
     Intent intent;
     String ProvideID, vehicle_id;
     String NotiID;
     FragmentManager fragmentManager;
 
-    private CustomerNotificationFragment customerNotificationFragment;
+    private CustomerNotificationFragment customerNotification;
 
 
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
@@ -56,25 +55,17 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail_custormer);
-        diachi();
 
-        intent=getIntent();
+        intent = getIntent();
 
-        String OrderID=intent.getStringExtra("OrderID");
-
-        dtb=FirebaseFirestore.getInstance();
-
-<<<<<<< Updated upstream
-        dtb.collection("Order")
-                .whereEqualTo("OrderID", OrderID)
-=======
+        String OrderID = intent.getStringExtra("NotiID");
         init();
-        customerNotificationFragment.getActivity();
+        dtb = FirebaseFirestore.getInstance();
 
-        NotiID=customerNotificationFragment.getNotiID();
+        NotiID = OrderID;
 //        intent = getIntent();
 //        NotiID = intent.getStringExtra("NotiID");
-        if(NotiID==null)
+        if(NotiID == null)
         {
             Toast.makeText(NotificationActivity.this, "Không thể lấy NotiID", Toast.LENGTH_SHORT).show();
         }
@@ -82,7 +73,6 @@ public class NotificationActivity extends AppCompatActivity {
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
                 .whereEqualTo("NotiID", NotiID)
->>>>>>> Stashed changes
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -90,32 +80,64 @@ public class NotificationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-<<<<<<< Updated upstream
-                                ProvideID=document.get("ProvideID").toString();
-                                vehicle_id=document.get("vehicle_id").toString();
-=======
                                 Notification temp = new Notification();
                                 temp.setNotiID(document.getId());
-                                temp.setProvideID(document.get("ProvideID").toString());
+                                temp.setProvideID(document.get("ProviderID").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
-                                ProvideID=temp.getProvideID();
-                                vehicle_id=temp.getVehicle_id();
->>>>>>> Stashed changes
+                                temp.setStatus(document.get("Status").toString());
+                                ProvideID = temp.getProvideID();
+                                vehicle_id = temp.getVehicle_id();
 
-                                Toast.makeText(NotificationActivity.this, temp.getVehicle_id(), Toast.LENGTH_SHORT).show();
+                                tv_id.setText(NotiID);
+                                if (temp.getStatus() == "Đang chờ"){
+                                     tv_status.setText("Đang chờ");
+                                } else {
+                                    if (temp.getStatus() == "Đã xác nhận"){
+                                        tv_status.setText("Đã xác nhận");
+                                    }
+                                    else tv_status.setText("Không được xác nhận");
+                                }
+
+                                getuser(ProvideID);
+                                getvehicle(vehicle_id);
                             }
                         } else {
-                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin noti", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-<<<<<<< Updated upstream
+
+    }
+
+    private void getuser(String ProvideID){
+        dtb.collection("Users")
+                .whereEqualTo("user_id", ProvideID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                User user = new User();
+                                user.setUser_id(document.get("user_id").toString());
+                                user.setUsername(document.get("user_fullname").toString());
+                                user.setEmail(document.get("email").toString());
+                                user.setPhoneNumber(document.get("phonenumber").toString());
+                                name.setText(user.getUsername());
+                                email.setText(user.getEmail());
+                                phoneNumber.setText(user.getPhoneNumber());
+                                //Toast.makeText(NotificationActivity.this, user.getUsername(),Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin nhà cung cấp", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    private void getvehicle(String vehicle_id){
         dtb.collection("Vehicles")
-=======
-        dtb_vehicle = FirebaseFirestore.getInstance();
-        dtb_vehicle.collection("Vehicles")
->>>>>>> Stashed changes
                 .whereEqualTo("vehicle_id", vehicle_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -124,65 +146,24 @@ public class NotificationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-<<<<<<< Updated upstream
-
-=======
                                 Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
-                                temp.setOwner_name(document.get("owner").toString());
-                                temp.setVehicle_name(document.get("name").toString());
-                                temp.setOwner_address(document.get("address").toString());
-                                temp.setVehicle_availability(document.get("schedule").toString());
-                                temp.setOwner_phone(document.get("phone").toString());
+                                temp.setVehicle_name(document.get("vehicle_name").toString());
+                                temp.setVehicle_availability(document.get("availability").toString());
+                                temp.setVehicle_price(document.get("vehicle_price").toString());
+                                temp.setOwner_address(document.get("vehicle_address").toString());
                                 tv_BrandCar.setText(temp.getVehicle_name());
-                                tv_Gia.setText(temp.getVehicle_price());
-                                Toast.makeText(NotificationActivity.this, temp.getVehicle_id(), Toast.LENGTH_LONG).show();
->>>>>>> Stashed changes
+                                tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
+                                tv_DiaDiem.setText(temp.getOwner_address());
+                                //Toast.makeText(NotificationActivity.this, temp.getVehicle_name(),Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
-
-
-
-//        noti= FirebaseAuth.getInstance().getCurrentUser();
-
-
-//        reference= FirebaseDatabase.getInstance().getReference("Notification").child(ProvideID);
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-//                Notification notification= datasnapshot.getValue(Notification.class);
-//                tv_status.setText(notification.getStatus());
-//                tv_name.setText(notification.getName_Provide());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
     }
-<<<<<<< Updated upstream
-    public void diachi(){
-        tv_id=findViewById(R.id.tv_id);
-        email=findViewById(R.id.email);
-        name=findViewById(R.id.name);
-        phoneNumber=findViewById(R.id.phoneNumber);
-        tv_BrandCar=findViewById(R.id.tv_BrandCar);
-        tv_DiaDiem=findViewById(R.id.tv_DiaDiem);
-        tv_Gia=findViewById(R.id.tv_Gia);
-        pickup=findViewById(R.id.pickup);
-        dropoff=findViewById(R.id.dropoff);
-        totalCost=findViewById(R.id.totalCost);
-        tv_status=findViewById(R.id.tv_status);
-=======
+
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         email=findViewById(R.id.txtview_noti_email);
@@ -190,7 +171,7 @@ public class NotificationActivity extends AppCompatActivity {
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
         tv_DiaDiem=findViewById(R.id.txtview_noti_DiaDiem);
-        tv_Gia=findViewById(R.id.txtview_noti_Gia);
+        tv_Gia=findViewById(R.id.txtview_noti_price);
         pickup=findViewById(R.id.txtview_noti_pickup);
         dropoff=findViewById(R.id.txtview_noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
@@ -198,11 +179,5 @@ public class NotificationActivity extends AppCompatActivity {
 
 //        fragmentManager=getSupportFragmentManager();
 //        customerNotificationFragment= (CustomerNotificationFragment) fragmentManager.findFragmentById(R.id.frame_layout_customer);
-    }
-    public String getNotiID(String noti)
-    {
-        NotiID=noti;
-        return NotiID;
->>>>>>> Stashed changes
     }
 }

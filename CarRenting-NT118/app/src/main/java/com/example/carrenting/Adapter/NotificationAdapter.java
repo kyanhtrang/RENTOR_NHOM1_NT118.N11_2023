@@ -36,14 +36,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerNotificationFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
-
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        noti=mNoti.get(position);
+        noti = mNoti.get(position);
         holder.name.setText(noti.getName_Provide());
         holder.status.setText(noti.getStatus());
 
@@ -51,13 +50,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(customerNotificationFragment.getActivity(), NotificationActivity.class);
-//                intent.putExtra("NotiID",noti.getNotiID());
+                intent.putExtra("NotiID", noti.getNotiID());
                 customerNotificationFragment.startActivity(intent);
-
-                String NotiID=noti.getNotiID();
-                NotiIDAdapter=NotiID;
-
-
             }
         });
     }

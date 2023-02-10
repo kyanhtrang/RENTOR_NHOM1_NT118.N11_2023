@@ -36,7 +36,7 @@ public class Notification {
     }
 
     public String getNotiID() {
-        return NotiID;
+        return this.NotiID;
     }
 
     public void setNotiID(String notiID) {

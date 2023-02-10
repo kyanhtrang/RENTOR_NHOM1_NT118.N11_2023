@@ -109,11 +109,7 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
-<<<<<<< Updated upstream
             Intent intent = new Intent(this, CustomerMainActivity.class);
-=======
-            Intent intent = new Intent(this, NotificationActivity.class);
->>>>>>> Stashed changes
             startActivity(intent);
         }
 
