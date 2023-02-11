@@ -1,20 +1,17 @@
 package com.example.carrenting.Service.UserAuthentication.Register;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +63,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 validateField(otpNumberOne);
                 validateField(getOtpNumberTwo);
                 validateField(getOtpNumberThree);
@@ -94,13 +92,11 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(ValidatePhoneActivity.this, ProfileActivity.class);
+                                startActivity(intent);
                             }
                         }
                     });
-
-                    Intent intent = new Intent(ValidatePhoneActivity.this, SignProfileActivity.class);
-                    startActivity(intent);
-                    finishAffinity();
                 }
             }
         });
@@ -125,7 +121,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                        //verifyAuthentication(phoneAuthCredential);
+                        verifyAuthentication(phoneAuthCredential);
                         tvResend.setVisibility(View.GONE);
 
                     }
@@ -135,11 +131,11 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         Toast.makeText(ValidatePhoneActivity.this, "OTP Verification Failed.", Toast.LENGTH_SHORT).show();
                     }
 
-                    @SuppressLint("RestrictedApi")
+                    //@SuppressLint("RestrictedApi")
                     @Override
                     public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verificationId, forceResendingToken);
-                        Log.d(TAG, "onCodeSent:" + forceResendingToken);
+                        Toast.makeText(ValidatePhoneActivity.this, "onCodeSent:" + forceResendingToken, Toast.LENGTH_SHORT).show();
                         mVerificationId = verificationId;
                         mResendToken = forceResendingToken;
                         tvResend.setVisibility(View.GONE);
@@ -165,7 +161,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(ValidatePhoneActivity.this, "Acccount Created and Linked.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ValidatePhoneActivity.this, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
                 // send to dashboard.
             }
         });
@@ -173,7 +169,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
     public void validateField(EditText field){
         if(field.getText().toString().isEmpty()){
-            field.setError("Required");
+            field.setError("Cần nhập OTP");
             otpValid = false;
         }else {
             otpValid = true;
@@ -186,8 +182,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         getOtpNumberFour = findViewById(R.id.otpNumberFour);
         getOtpNumberFive = findViewById(R.id.otpNumberFive);
         otpNumberSix = findViewById(R.id.optNumberSix);
-
-        btnSendCode = findViewById(R.id.btnSendCode);
+        btnSendCode = findViewById(R.id.btnValidate);
         tvResend = findViewById(R.id.tvResend);
     }
 }

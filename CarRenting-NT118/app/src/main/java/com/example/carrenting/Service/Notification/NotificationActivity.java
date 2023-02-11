@@ -1,7 +1,5 @@
 package com.example.carrenting.Service.Notification;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,20 +53,12 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail_custormer);
-
         intent = getIntent();
 
         String OrderID = intent.getStringExtra("NotiID");
-        init();
-        dtb = FirebaseFirestore.getInstance();
-
         NotiID = OrderID;
-//        intent = getIntent();
-//        NotiID = intent.getStringExtra("NotiID");
-        if(NotiID == null)
-        {
-            Toast.makeText(NotificationActivity.this, "Không thể lấy NotiID", Toast.LENGTH_SHORT).show();
-        }
+        
+        init();
 
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
@@ -107,7 +97,6 @@ public class NotificationActivity extends AppCompatActivity {
                     }
                 });
 
-
     }
 
     private void getuser(String ProvideID){
@@ -128,7 +117,6 @@ public class NotificationActivity extends AppCompatActivity {
                                 name.setText(user.getUsername());
                                 email.setText(user.getEmail());
                                 phoneNumber.setText(user.getPhoneNumber());
-                                //Toast.makeText(NotificationActivity.this, user.getUsername(),Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin nhà cung cấp", Toast.LENGTH_SHORT).show();
@@ -155,7 +143,6 @@ public class NotificationActivity extends AppCompatActivity {
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getOwner_address());
-                                //Toast.makeText(NotificationActivity.this, temp.getVehicle_name(),Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
@@ -176,8 +163,5 @@ public class NotificationActivity extends AppCompatActivity {
         dropoff=findViewById(R.id.txtview_noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         tv_status=findViewById(R.id.txtview_noti_status);
-
-//        fragmentManager=getSupportFragmentManager();
-//        customerNotificationFragment= (CustomerNotificationFragment) fragmentManager.findFragmentById(R.id.frame_layout_customer);
     }
 }

@@ -48,15 +48,11 @@ public class CustomerHomeFragment extends Fragment {
 
     ImageView imageView;
     DocumentReference imageRef;
-    String documentId;
     RecyclerView recyclerView;
     ArrayList<Vehicle> vehicles;
     VehicleAdapter adapter;
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
-
-
-
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

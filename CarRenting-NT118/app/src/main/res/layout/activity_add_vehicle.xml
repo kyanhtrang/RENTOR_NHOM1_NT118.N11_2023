@@ -187,7 +187,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/img_card"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_235sdp"
+                    android:layout_height="@dimen/_120sdp"
                     android:background="@drawable/yellow_line"
                     app:layout_constraintEnd_toEndOf="@+id/et_number"
                     app:layout_constraintStart_toStartOf="@+id/et_number"
@@ -195,7 +195,9 @@
                     <ImageView
                         android:id="@+id/img_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
                         android:background="@drawable/yellow_line"
                         app:layout_constraintEnd_toEndOf="@+id/img_card"
                         app:layout_constraintStart_toStartOf="@+id/img_card"

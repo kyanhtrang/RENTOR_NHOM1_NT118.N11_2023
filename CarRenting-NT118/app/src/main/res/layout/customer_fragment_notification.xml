@@ -6,7 +6,7 @@
     android:background="@color/sky"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentPages.Customer.CustomerMessageFragment">
+    tools:context=".FragmentPages.Customer.CustomerNotificationFragment">
 
     <TextView
         android:id="@+id/tv_title"
@@ -68,6 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

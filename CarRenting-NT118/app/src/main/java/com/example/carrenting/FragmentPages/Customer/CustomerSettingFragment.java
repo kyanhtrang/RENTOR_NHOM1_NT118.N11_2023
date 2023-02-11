@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.R;
 
 public class CustomerSettingFragment extends Fragment {
@@ -19,15 +20,15 @@ public class CustomerSettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.customer_fragment_setting,
                 container, false);
-        LinearLayout info = (LinearLayout) view.findViewById(R.id.layout_information);
+        LinearLayout info = (LinearLayout) view.findViewById(R.id.layout_connect);
         info.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                /*Intent i = new Intent(getActivity(), OwnerMainActivity.class);
+                Intent i = new Intent(getActivity(), OwnerMainActivity.class);
                 startActivity(i);
-                ((Activity) getActivity()).overridePendingTransition(0, 0);*/
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
             }
         });
         return view;
