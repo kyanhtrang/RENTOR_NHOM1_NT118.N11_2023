@@ -55,7 +55,7 @@ public class OwnerMainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
+        fragmentTransaction.replace(R.id.frame_layout_owner, fragment);
         fragmentTransaction.commit();
     }
 }
