@@ -2,7 +2,6 @@ package com.example.carrenting.Service.Notification;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,34 +9,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
-import com.example.carrenting.Model.Order;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.PrimitiveIterator;
 
-public class NotificationActivity extends AppCompatActivity {
+public class OwnerNotificationActivity extends AppCompatActivity {
 
     FirebaseFirestore dtb;
     Intent intent;
@@ -45,22 +30,19 @@ public class NotificationActivity extends AppCompatActivity {
     String NotiID,noti_status;
 
 
-    private CustomerNotificationFragment customerNotification;
-
-
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
     private TextView tv_id,name,email,phoneNumber, tv_status;// Thông tin nhà cung cấp
     private TextView tv_BrandCar,tv_Gia,tv_DiaDiem,pickup,dropoff,totalCost;// Thông tin xe
-    private Button btn_payment;
+    private Button btn_xacnhan,btn_huy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification_detail_custormer);
+        setContentView(R.layout.activity_notification_detail_provide);
         intent = getIntent();
 
         String OrderID = intent.getStringExtra("NotiID");
         NotiID = OrderID;
-
+        
         init();
 
         dtb = FirebaseFirestore.getInstance();
@@ -80,25 +62,22 @@ public class NotificationActivity extends AppCompatActivity {
                                 temp.setStatus(document.get("Status").toString());
                                 ProvideID = temp.getProvideID();
                                 vehicle_id = temp.getVehicle_id();
-                                noti_status=temp.getStatus();
 
                                 tv_id.setText(NotiID);
-                                if (noti_status == "Đang chờ"){
-                                    tv_status.setText("Đang chờ");
+                                if (temp.getStatus() == "Đang chờ"){
+                                     tv_status.setText("Đang chờ");
                                 } else {
-                                    if (noti_status == "Đã xác nhận"){
+                                    if (temp.getStatus() == "Đã xác nhận"){
                                         tv_status.setText("Đã xác nhận");
                                     }
                                     else tv_status.setText("Không được xác nhận");
                                 }
 
-
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
-                                payment(noti_status);
                             }
                         } else {
-                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -125,7 +104,7 @@ public class NotificationActivity extends AppCompatActivity {
                                 phoneNumber.setText(user.getPhoneNumber());
                             }
                         } else {
-                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin nhà cung cấp", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông tin nhà cung cấp", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -151,32 +130,28 @@ public class NotificationActivity extends AppCompatActivity {
                                 tv_DiaDiem.setText(temp.getOwner_address());
                             }
                         } else {
-                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
-    private void payment(String status)
+    private void OwnerConfirm(String status)
     {
-        btn_payment.setOnClickListener(new View.OnClickListener() {
+        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(status=="đang chờ")
-                {
-                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp chưa xác nhận", Toast.LENGTH_SHORT).show();
-                }
-                else if(status=="Không được xác nhận")
-                {
-                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    // Payment
-                }
+
+            }
+        });
+        btn_huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
+
 
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
@@ -184,11 +159,16 @@ public class NotificationActivity extends AppCompatActivity {
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.txtview_noti_DiaDiem);
+        tv_DiaDiem=findViewById(R.id.noti_DiaDiem);
+
+
         tv_Gia=findViewById(R.id.txtview_noti_price);
-        pickup=findViewById(R.id.txtview_noti_pickup);
-        dropoff=findViewById(R.id.txtview_noti_dropoff);
+        pickup=findViewById(R.id.noti_pickup);
+        dropoff=findViewById(R.id.noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         tv_status=findViewById(R.id.txtview_noti_status);
+
+        btn_xacnhan=findViewById(R.id.btn_noti_XacNhan);
+        btn_huy=findViewById(R.id.btn_noti_huy);
     }
 }
