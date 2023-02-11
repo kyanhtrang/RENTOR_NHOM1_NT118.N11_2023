@@ -20,6 +20,7 @@ import com.example.carrenting.Adapter.NotificationAdapter;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,9 +45,9 @@ public class CustomerNotificationFragment extends Fragment {
     NotificationAdapter notificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
-    ProgressDialog progressDialog;
-    FirebaseUser user;
+    String NotiID;
 
+    NotificationActivity notificationActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,68 +59,39 @@ public class CustomerNotificationFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
-        recyclerView=view.findViewById(R.id.frame_layout_noti);
+        recyclerView = view.findViewById(R.id.frame_layout_noti);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        mNoti=new ArrayList<>();
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
         dtb_noti = FirebaseFirestore.getInstance();
         notifications = new ArrayList<Notification>();
         notificationAdapter = new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
-//        readNotification();
-        progressDialog.cancel();
+        setvalue();
         EventChangeListener();
-//        return inflater.inflate(R.layout.customer_fragment_notification, container, false);
         return view;
     }
-//    private void readNotification(){
-//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notification");
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                mNoti.clear();
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    Notification notification = snapshot.getValue(Notification.class);
-//                    if (!notification.getProvideID().equals(firebaseUser.getUid())){
-//                        mNoti.add(notification);
-//                    }
-//                }
-//
-//                notificationAdapter = new NotificationAdapter(getContext(),mNoti);
-//                recyclerView.setAdapter(notificationAdapter);
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+
+    private void setvalue(){
+        NotiID = "2";
+    }
 
     private void EventChangeListener()
     {
+
         dtb_noti.collection("Notification")
-                .whereEqualTo("CustomerID", "2")
+                .whereEqualTo("NotiID", NotiID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
                                 Notification temp = new Notification();
-                                temp.setProvideID(document.get("ProvideID").toString());
-                                temp.setName_Provide(document.get("Name_Provide").toString());
+                                temp.setNotiID(document.get("NotiID").toString());
+                                temp.setProvideID(document.get("ProviderID").toString());
                                 temp.setCustomerID(document.get("CustomerID").toString());
-                                temp.setName_customer(document.get("Name_customer").toString());
                                 temp.setStatus(document.get("Status").toString());
-
+                                temp.setCustomerID(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
                             }
@@ -130,4 +102,5 @@ public class CustomerNotificationFragment extends Fragment {
                 });
 
     }
+
 }

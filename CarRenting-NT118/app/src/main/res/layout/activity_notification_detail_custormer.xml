@@ -169,9 +169,8 @@
                                     android:id="@+id/nameText"
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
-
-                                    android:text="Họ tên:" />
+                                    android:text="Họ Tên:"
+                                    android:textColor="@color/white" />
 
                                 <TextView
                                     android:id="@+id/txtview_noti_name"
@@ -219,7 +218,6 @@
                                     android:id="@+id/phoneNumberText"
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
-
                                     android:textColor="@color/white"
                                     android:text="SĐT:" />
 
@@ -319,7 +317,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/rateText"
+                                    android:id="@+id/txtview_noti_price"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
 
@@ -343,12 +341,12 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/totalDaysText"
+                                    android:id="@+id/txtview_noti_DiaDiem"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
+                                    android:text="Nơi đỗ xe:"
 
-                                    android:text="Địa điểm:" />
+                                    android:textColor="@color/white" />
 
                                 <TextView
                                     android:id="@+id/txtview_noti_DiaDiem"
@@ -368,12 +366,12 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/pickupText"
+                                    android:id="@+id/txtview_noti_pickup"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
+                                    android:text="Ngày nhận:"
 
-                                    android:text="Nhận xe:" />
+                                    android:textColor="@color/white" />
                                 <TextView
                                     android:id="@+id/txtview_noti_pickup"
                                     android:layout_width="wrap_content"
@@ -394,12 +392,12 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/dropoffText"
+                                    android:id="@+id/txtview_noti_dropoff"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
+                                    android:text="Ngày trả:"
 
-                                    android:text="Trả xe:" />
+                                    android:textColor="@color/white" />
 
                                 <TextView
                                     android:id="@+id/txtview_noti_dropoff"

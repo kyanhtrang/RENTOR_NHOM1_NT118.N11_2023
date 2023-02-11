@@ -22,6 +22,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     CustomerNotificationFragment customerNotificationFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
+    NotificationActivity notificationActivity;
+    String NotiIDAdapter="";
 
 
     public NotificationAdapter(CustomerNotificationFragment mContext, ArrayList<Notification>mNoti){
@@ -34,14 +36,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerNotificationFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
-
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        noti=mNoti.get(position);
+        noti = mNoti.get(position);
         holder.name.setText(noti.getName_Provide());
         holder.status.setText(noti.getStatus());
 
@@ -49,7 +50,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(customerNotificationFragment.getActivity(), NotificationActivity.class);
-                intent.putExtra("OrderID",noti.getOrderID());
+                intent.putExtra("NotiID", noti.getNotiID());
                 customerNotificationFragment.startActivity(intent);
             }
         });
@@ -72,6 +73,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         }
     }
+
+
+    public String getNotiID()
+    {
+        return NotiIDAdapter;
+    }
+
 
 
 }
