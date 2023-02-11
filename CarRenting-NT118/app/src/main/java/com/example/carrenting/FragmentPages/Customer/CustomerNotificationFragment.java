@@ -45,6 +45,7 @@ public class CustomerNotificationFragment extends Fragment {
     NotificationAdapter notificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
+    ProgressDialog progressDialog;
     String NotiID;
 
     NotificationActivity notificationActivity;
