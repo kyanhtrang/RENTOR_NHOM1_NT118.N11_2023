@@ -62,12 +62,13 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 temp.setStatus(document.get("Status").toString());
                                 ProvideID = temp.getProvideID();
                                 vehicle_id = temp.getVehicle_id();
+                                noti_status=temp.getStatus();
 
                                 tv_id.setText(NotiID);
-                                if (temp.getStatus() == "Đang chờ"){
-                                     tv_status.setText("Đang chờ");
+                                if (noti_status == "Đang chờ"){
+                                    tv_status.setText("Đang chờ");
                                 } else {
-                                    if (temp.getStatus() == "Đã xác nhận"){
+                                    if (noti_status == "Đã xác nhận"){
                                         tv_status.setText("Đã xác nhận");
                                     }
                                     else tv_status.setText("Không được xác nhận");
@@ -75,6 +76,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
 
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
+                                OwnerConfirm(noti_status);
                             }
                         } else {
                             Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -141,6 +143,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
             }
         });

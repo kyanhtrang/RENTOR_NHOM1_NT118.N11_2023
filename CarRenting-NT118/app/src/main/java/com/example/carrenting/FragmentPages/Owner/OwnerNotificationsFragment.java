@@ -47,10 +47,10 @@ public class OwnerNotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Đang lấy dữ liệu...");
+//        progressDialog.show();
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);

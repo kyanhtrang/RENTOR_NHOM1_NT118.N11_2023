@@ -341,11 +341,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-<<<<<<< Updated upstream
-                                    android:id="@+id/txtview_noti_DiaDiem"
-=======
                                     android:id="@+id/noti_DiaDiem"
->>>>>>> Stashed changes
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Nơi đỗ xe:"
@@ -353,11 +349,7 @@
                                     android:textColor="@color/white" />
 
                                 <TextView
-<<<<<<< Updated upstream
                                     android:id="@+id/txtview_noti_DiaDiem"
-=======
-                                    android:id="@+id/tv_noti_DiaDiem"
->>>>>>> Stashed changes
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
@@ -374,22 +366,14 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-<<<<<<< Updated upstream
-                                    android:id="@+id/txtview_noti_pickup"
-=======
                                     android:id="@+id/noti_pickup"
->>>>>>> Stashed changes
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Ngày nhận:"
 
                                     android:textColor="@color/white" />
                                 <TextView
-<<<<<<< Updated upstream
                                     android:id="@+id/txtview_noti_pickup"
-=======
-                                    android:id="@+id/tv_noti_pickup"
->>>>>>> Stashed changes
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="15dp"
@@ -408,11 +392,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-<<<<<<< Updated upstream
-                                    android:id="@+id/txtview_noti_dropoff"
-=======
                                     android:id="@+id/noti_dropoff"
->>>>>>> Stashed changes
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Ngày trả:"
@@ -420,11 +400,7 @@
                                     android:textColor="@color/white" />
 
                                 <TextView
-<<<<<<< Updated upstream
                                     android:id="@+id/txtview_noti_dropoff"
-=======
-                                    android:id="@+id/tv_noti_dropoff"
->>>>>>> Stashed changes
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
