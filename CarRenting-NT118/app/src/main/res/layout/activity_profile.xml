@@ -212,67 +212,6 @@
                     app:layout_constraintTop_toTopOf="@+id/birthday"
                     tools:ignore="TextViewEdits" />
 
-                <TextView
-                    android:id="@+id/tv_front_CCCD"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Mặt trước CCCD *"
-                    android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/birthday"
-                    tools:ignore="HardcodedText" />
-
-                <ImageView
-                    android:id="@+id/img_front_CCCD"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/birthday"
-                    app:layout_constraintStart_toStartOf="@+id/birthday"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"/>
-
-                <View
-                    android:id="@+id/front_CCCD"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/stroke"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD" />
-
-                <TextView
-                    android:id="@+id/text4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Mặt sau CCCD *"
-                    android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD"
-                    tools:ignore="HardcodedText" />
-
-                <View
-                    android:id="@+id/viewBehindCiCard"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/stroke"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"/>
-                <ImageView
-                    android:id="@+id/behind_CCCD"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/birthday"
-                    app:layout_constraintStart_toStartOf="@+id/birthday"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"  />
-
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
@@ -286,7 +225,7 @@
                     android:textSize="@dimen/_16ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBirthDate"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
 
