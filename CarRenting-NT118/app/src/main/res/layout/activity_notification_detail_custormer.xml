@@ -107,7 +107,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/rental_time"
+                    android:id="@+id/provide_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -240,7 +240,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/personalInfoText"
+                    android:id="@+id/Vehicle_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -249,13 +249,14 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rental_time">
+                    app:layout_constraintTop_toBottomOf="@+id/provide_info">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/blue_round_button"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="10dp"
+                        android:id="@+id/layout_noti_Vehicle">
 
                         <View
                             android:id="@+id/divider1"
@@ -470,18 +471,21 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_noti_Payment"
-                    android:layout_width="0dp"
+                    android:layout_width="350dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_16sdp"
+                    android:layout_marginLeft="30dp"
                     android:background="@drawable/round_card"
                     android:enabled="false"
                     android:text="XÁC NHẬN VÀ THANH TOÁN"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_18ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
-                    app:layout_constraintStart_toStartOf="@+id/personalInfoText"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Vehicle_info"
+
+
                     tools:ignore="HardcodedText" />
 
 
