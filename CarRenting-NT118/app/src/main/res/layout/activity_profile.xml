@@ -112,20 +112,20 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@+id/fullnameText" />
-                
+
                 <TextView
                     android:id="@+id/addressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Tên đường *"
+                    android:text="Địa chỉ *"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
                     app:layout_constraintTop_toBottomOf="@+id/profile_input_fullname"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/edtStreet"
+                    android:id="@+id/profile_input_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
@@ -145,7 +145,7 @@
                     android:text="Thành phố"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_address"
                     tools:ignore="HardcodedText" />
 
                 <EditText
@@ -184,21 +184,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/profile_input_city"
                     tools:ignore="HardcodedText" />
 
-                <EditText
+                <Button
                     android:id="@+id/profile_input_dateofbirth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/sky"
-                    android:clickable="true"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:text="MM DD YYYY"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
+                    style="?android:spinnerStyle"
                     app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
                     app:layout_constraintStart_toStartOf="@id/profile_input_phone"
                     app:layout_constraintTop_toBottomOf="@+id/dateofBirthText"
-                    tools:ignore="KeyboardInaccessibleWidget" />
+                    tools:ignore="KeyboardInaccessibleWidget"
+                    android:onClick="openDatePicker"/>
 
                 <TextView
                     android:id="@+id/tvBirthDate"
@@ -243,7 +241,8 @@
                     android:background="@drawable/stroke"
                     app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
                     app:layout_constraintStart_toStartOf="@id/profile_input_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/text3" />
+                    app:layout_constraintTop_toBottomOf="@+id/text3"
+                    tools:ignore="ContentDescription"/>
 
                 <TextView
                     android:id="@+id/text4"
@@ -273,10 +272,11 @@
                     android:background="@drawable/input_image"
                     app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"  />
+                    app:layout_constraintTop_toBottomOf="@+id/text4"
+                    tools:ignore="ContentDescription"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/profile_btnupdate"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_30sdp"
@@ -291,6 +291,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
+
+                <Switch
+                    android:id="@+id/profile_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="76dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Thay đổi CCCD"
+                    app:layout_constraintStart_toEndOf="@+id/text3"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_dateofbirth"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
