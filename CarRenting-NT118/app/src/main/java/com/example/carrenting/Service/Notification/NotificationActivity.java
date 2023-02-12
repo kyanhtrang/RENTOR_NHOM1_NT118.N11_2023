@@ -63,123 +63,73 @@ public class NotificationActivity extends AppCompatActivity {
 
         init();
 
-//        dtb = FirebaseFirestore.getInstance();
-//        dtb.collection("Notification")
-//            .whereEqualTo("NotiID", NotiID)
-//            .get()
-//            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                    if (task.isSuccessful()) {
-//                        for (QueryDocumentSnapshot document : task.getResult()) {
-//
-//                            Notification temp = new Notification();
-//                            temp.setNotiID(document.getId());
-//                            temp.setProvideID(document.get("ProviderID").toString());
-//                            temp.setVehicle_id(document.get("vehicle_id").toString());
-//                            temp.setStatus(document.get("Status").toString());
-//                            ProvideID = temp.getProvideID();
-//                            vehicle_id = temp.getVehicle_id();
-//                            noti_status=temp.getStatus();
-//
-//                            tv_id.setText(NotiID);
-//                            if (noti_status == "Đang chờ"){
-//                                tv_status.setText("Đang chờ");
-//                            } else {
-//                                if (noti_status == "Đã xác nhận"){
-//                                    tv_status.setText("Đã xác nhận");
-//                                }
-//                                else tv_status.setText("Không được xác nhận");
-//                            }
-//
-//
-//                            getuser(ProvideID);
-//                            getvehicle(vehicle_id);
-//
-//
-//                        }
-//                    } else {
-//                        Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
+        dtb = FirebaseFirestore.getInstance();
+        dtb.collection("Notification")
+            .whereEqualTo("NotiID", NotiID)
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            Notification temp = new Notification();
+                            temp.setNotiID(document.getId());
+                            temp.setProvideID(document.get("ProviderID").toString());
+                            temp.setVehicle_id(document.get("vehicle_id").toString());
+                            temp.setStatus(document.get("Status").toString());
+                            ProvideID = temp.getProvideID();
+                            vehicle_id = temp.getVehicle_id();
+                            noti_status=temp.getStatus();
+
+                            tv_id.setText(NotiID);
+                            if (noti_status == "Đang chờ"){
+                                tv_status.setText("Đang chờ");
+                            } else {
+                                if (noti_status == "Đã xác nhận"){
+                                    tv_status.setText("Đã xác nhận");
+                                }
+                                else tv_status.setText("Không được xác nhận");
+                            }
+
+
+                            getuser(ProvideID);
+                            getvehicle(vehicle_id);
+
+
+                        }
+                    } else {
+                        Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
 
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(NotificationActivity.this, "Thanh toan", Toast.LENGTH_SHORT).show();
 
-//                if(noti_status=="đang chờ")
-//                {
-//                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp chưa xác nhận", Toast.LENGTH_SHORT).show();
-//                }
-//                else if(noti_status=="Không được xác nhận")
-//                {
-//                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
-//                }
-//                else
-//                {
-//                    // Payment
-//                    Toast.makeText(NotificationActivity.this, "Thanh toan", Toast.LENGTH_SHORT).show();
-//                }
+                if(noti_status=="đang chờ")
+                {
+                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp chưa xác nhận", Toast.LENGTH_SHORT).show();
+                }
+                else if(noti_status=="Không được xác nhận")
+                {
+                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    // Payment
+                    Toast.makeText(NotificationActivity.this, "Thanh toan", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        setFirebase();
 
 
 
     }
 
-    private void setFirebase()
-    {
-        dtb = FirebaseFirestore.getInstance();
-        dtb.collection("Notification")
-                .whereEqualTo("NotiID", NotiID)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                Notification temp = new Notification();
-                                temp.setNotiID(document.getId());
-                                temp.setProvideID(document.get("ProviderID").toString());
-                                temp.setVehicle_id(document.get("vehicle_id").toString());
-                                temp.setStatus(document.get("Status").toString());
-                                ProvideID = temp.getProvideID();
-                                vehicle_id = temp.getVehicle_id();
-                                noti_status=temp.getStatus();
-
-                                tv_id.setText(NotiID);
-                                if (noti_status == "Đang chờ"){
-                                    tv_status.setText("Đang chờ");
-                                } else {
-                                    if (noti_status == "Đã xác nhận"){
-                                        tv_status.setText("Đã xác nhận");
-                                    }
-                                    else tv_status.setText("Không được xác nhận");
-                                }
-
-
-                                getuser(ProvideID);
-                                getvehicle(vehicle_id);
-
-
-                            }
-                        } else {
-                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
-    }
-
-
-
-
+    
     private void getuser(String ProvideID){
         dtb.collection("Users")
                 .whereEqualTo("user_id", ProvideID)
