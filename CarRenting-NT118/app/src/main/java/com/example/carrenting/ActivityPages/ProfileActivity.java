@@ -42,46 +42,22 @@ import java.util.UUID;
 
 public class ProfileActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
-    private Switch cccdswitch;
     private Button dateButton, updatebtn;
     private Uri mImageURI;
-    private ImageView imgBehide, imgFront, imgAvatar;
+    private ImageView  imgAvatar;
     private String imageID;
     private String documentId, downloadUrl, uploadtype;
     private FirebaseUser firebaseUser;
     private FirebaseFirestore dtb_user;
     private EditText phonenumber, email, fullname, address, city;
     private User user = new User();
-    ActivityResultLauncher<String> BehidepickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
-            , new ActivityResultCallback<Uri>() {
-                @Override
-                public void onActivityResult(Uri result) {
-                    if (result != null){
-                        Uri url = result;
-                        user.setCiCardBehind(url.toString());
-                        imgBehide.setImageURI(result);
-                    }
-                    uploadImage(uploadtype);
-                }
-            });
-    ActivityResultLauncher<String> FrontpickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
-            , new ActivityResultCallback<Uri>() {
-                @Override
-                public void onActivityResult(Uri result) {
-                    if (result != null){
-                        mImageURI = result;
-                        imgFront.setImageURI(result);
-                    }
-                    uploadImage(uploadtype);
-                }
-            });
     ActivityResultLauncher<String> AvatarpickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri result) {
                     if (result != null){
                         mImageURI = result;
-                        imgBehide.setImageURI(result);
+                        imgAvatar.setImageURI(result);
                     }
                     uploadImage(uploadtype);
                 }
@@ -96,20 +72,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateinfo();
-            }
-        });
-        imgBehide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadtype = "IDCards/";
-                BehidepickImagesFromGallery.launch("image/*");
-            }
-        });
-        imgFront.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadtype = "IDCards/";
-                FrontpickImagesFromGallery.launch("image/*");
             }
         });
         imgAvatar.setOnClickListener(new View.OnClickListener() {
@@ -132,13 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
         address = findViewById(R.id.profile_input_address);
         city = findViewById(R.id.profile_input_city);
         updatebtn = findViewById(R.id.profile_btnupdate);
-        imgBehide = findViewById(R.id.ivBehindCiCard);
-        imgFront = findViewById(R.id.ivFrontCiCard);
         imgAvatar = findViewById(R.id.img_avatar_profile_input_fragment);
-        cccdswitch = findViewById(R.id.profile_switch);
-        cccdswitch.setChecked(true);
-        cccdswitch.setVisibility(View.GONE);
-        cccdswitch.setEnabled(false);
 
         dtb_user = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -293,16 +249,6 @@ public class ProfileActivity extends AppCompatActivity {
                                 }
                                 else {
                                     user.setAvatarURL("");
-                                }
-                                if (document.get("ciCardBehind").toString() == null || document.get("ciCardFront") == null){
-                                    user.setCiCardBehind(document.get("ciCardBehind").toString());
-                                    user.setCiCardFront(document.get("ciCardFront").toString());
-                                    Picasso.get().load(user.getCiCardBehind()).into(imgBehide);
-                                    Picasso.get().load(user.getCiCardFront()).into(imgFront);
-                                    cccdswitch.setChecked(false);
-                                }
-                                else {
-                                    //
                                 }
                             }
                         }
