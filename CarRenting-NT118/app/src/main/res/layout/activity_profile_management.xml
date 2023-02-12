@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityPages.ProfileActivity">
-
+    tools:context=".Service.UserAuthentication.ProfileManagement">
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -42,83 +41,96 @@
                     android:id="@+id/tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:text="Số điện thoại *"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:text="Số điện thoại: "
                     android:layout_marginTop="@dimen/_25sdp"
                     android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/fullname"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_input_fragment"
                     tools:ignore="HardcodedText" />
 
-                <EditText
+                <TextView
                     android:id="@+id/phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
-                    android:inputType="phone"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:text="0123456789"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+                    app:layout_constraintStart_toEndOf="@+id/tv_phone"
+                    app:layout_constraintTop_toTopOf="@+id/tv_phone"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_phone"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email *"
+                    android:text="Email:"
                     android:textColor="@color/sky"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
                     app:layout_constraintTop_toBottomOf="@+id/phone"
                     tools:ignore="HardcodedText" />
 
-                <EditText
-                    android:id="@+id/profile_input_email"
+                <TextView
+                    android:id="@+id/email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:text="string@gmail.com"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_email"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_email"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/tv_fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Tên người dùng *"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Tên người dùng:"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_input_email"
+                    app:layout_constraintTop_toBottomOf="@+id/email"
                     tools:ignore="HardcodedText" />
 
-                <EditText
+                <TextView
                     android:id="@+id/fullname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
                     android:backgroundTint="@color/sky"
+                    android:text="Trang Kỳ Anh"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fullname" />
-                
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintTop_toTopOf="@+id/tv_fullname"
+                    tools:ignore="HardcodedText" />
+
                 <TextView
                     android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Tên đường *"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Tên đường:"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
                     app:layout_constraintTop_toBottomOf="@+id/fullname"
@@ -293,5 +305,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
