@@ -101,7 +101,7 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
-            Intent intent = new Intent(this, ProfileActivity.class);
+            Intent intent = new Intent(this, CustomerMainActivity.class);
             startActivity(intent);
         }
 
