@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:text="Tên đường:"
+                    android:text="Địa chỉ: :"
                     android:textStyle="bold"
                     android:textSize="@dimen/_14ssp"
                     android:textColor="@color/sky"
@@ -136,81 +136,79 @@
                     app:layout_constraintTop_toBottomOf="@+id/fullname"
                     tools:ignore="HardcodedText" />
 
-                <EditText
-                    android:id="@+id/edtStreet"
+                <TextView
+                    android:id="@+id/address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:text="117/6 Hải Thượng Lãn Ông"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_address"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_address"/>
 
                 <TextView
-                    android:id="@+id/cityText"
+                    android:id="@+id/tv_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
                     android:text="Thành phố"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                    app:layout_constraintTop_toBottomOf="@+id/address"
                     tools:ignore="HardcodedText" />
 
-                <EditText
-                    android:id="@+id/profile_input_city"
+                <TextView
+                    android:id="@+id/city"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:text="Phan Rang - Tháp Chàm"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_city"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_city"
+                    tools:ignore="HardcodedText" />
 
 
                 <TextView
-                    android:id="@+id/dateofBirthText"
+                    android:id="@+id/tv_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Ngày sinh *"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:text="Ngày sinh:"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city"
+                    app:layout_constraintTop_toBottomOf="@+id/city"
                     tools:ignore="HardcodedText" />
+
 
                 <TextView
-                    android:id="@+id/dateofBirthtv_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Ngày sinh *"
-                    android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_input_city"
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/profile_input_dateofbirth"
+                    android:id="@+id/birthday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:clickable="true"
                     android:ems="10"
                     android:enabled="false"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:text="04/06/2002"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/dateofBirthText"
-                    tools:ignore="KeyboardInaccessibleWidget" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_birthday"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_birthday"
+                    tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
 
                 <TextView
                     android:id="@+id/tvBirthDate"
@@ -219,89 +217,92 @@
                     android:layout_marginStart="4dp"
                     android:inputType="datetime"
                     android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toTopOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintBottom_toBottomOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/birthday"
+                    app:layout_constraintTop_toTopOf="@+id/birthday"
                     tools:ignore="TextViewEdits" />
 
                 <TextView
-                    android:id="@+id/text3"
+                    android:id="@+id/tv_front_CCCD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Mặt trước CCCD *"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="Mặt trước CCCD:"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toBottomOf="@+id/birthday"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
-                    android:id="@+id/ivFrontCiCard"
+                    android:id="@+id/img_front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toBottomOf="@+id/text3"/>
+                    app:layout_constraintEnd_toEndOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/tv_front_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"/>
 
                 <View
-                    android:id="@+id/viewFrontCiCard"
+                    android:id="@+id/front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/stroke"
                     app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/text3" />
+                    app:layout_constraintStart_toStartOf="@id/tv_front_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD" />
 
                 <TextView
-                    android:id="@+id/text4"
+                    android:id="@+id/tv_behind_CCCD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Mặt sau CCCD *"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Mặt sau CCCD: "
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard"
+                    app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD"
                     tools:ignore="HardcodedText" />
 
                 <View
-                    android:id="@+id/viewBehindCiCard"
+                    android:id="@+id/view_behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/stroke"
                     app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"/>
+                    app:layout_constraintStart_toStartOf="@id/tv_behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"/>
                 <ImageView
-                    android:id="@+id/ivBehindCiCard"
+                    android:id="@+id/behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"  />
+                    app:layout_constraintEnd_toEndOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/tv_behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"  />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btn_update"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_50sdp"
                     android:background="@drawable/blue_round_button"
                     android:backgroundTint="@color/sunset"
-                    android:text="Cập nhật thông tin"
+                    android:text="Chỉnh sửa thông tin"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_16ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
+                    app:layout_constraintStart_toStartOf="@id/tv_behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

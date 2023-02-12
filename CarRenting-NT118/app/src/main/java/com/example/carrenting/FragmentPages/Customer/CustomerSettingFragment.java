@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.ProfileManagement;
 
 public class CustomerSettingFragment extends Fragment {
 
@@ -33,7 +34,15 @@ public class CustomerSettingFragment extends Fragment {
             }
         });
 
-
+        LinearLayout profile = (LinearLayout) view.findViewById(R.id.layout_information);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ProfileManagement.class);
+                startActivity(i);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
+            }
+        });
 
         return view;
 /*        return inflater.inflate(R.layout.customer_fragment_user, container, false);*/

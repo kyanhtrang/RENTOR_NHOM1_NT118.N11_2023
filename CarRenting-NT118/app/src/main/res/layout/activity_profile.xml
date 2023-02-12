@@ -125,7 +125,7 @@
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/edtStreet"
+                    android:id="@+id/address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
@@ -138,14 +138,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
                 <TextView
-                    android:id="@+id/cityText"
+                    android:id="@+id/tv_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:text="Thành phố"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                    app:layout_constraintTop_toBottomOf="@+id/address"
                     tools:ignore="HardcodedText" />
 
                 <EditText
@@ -159,7 +159,7 @@
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_city" />
 
 
                 <TextView
@@ -174,7 +174,7 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/dateofBirthtv_phone"
+                    android:id="@+id/tv_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -185,7 +185,7 @@
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/profile_input_dateofbirth"
+                    android:id="@+id/birthday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
@@ -207,41 +207,41 @@
                     android:layout_marginStart="4dp"
                     android:inputType="datetime"
                     android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toTopOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintBottom_toBottomOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/birthday"
+                    app:layout_constraintTop_toTopOf="@+id/birthday"
                     tools:ignore="TextViewEdits" />
 
                 <TextView
-                    android:id="@+id/text3"
+                    android:id="@+id/tv_front_CCCD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:text="Mặt trước CCCD *"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toBottomOf="@+id/birthday"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
-                    android:id="@+id/ivFrontCiCard"
+                    android:id="@+id/img_front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintTop_toBottomOf="@+id/text3"/>
+                    app:layout_constraintEnd_toEndOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/birthday"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"/>
 
                 <View
-                    android:id="@+id/viewFrontCiCard"
+                    android:id="@+id/front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/stroke"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/text3" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD" />
 
                 <TextView
                     android:id="@+id/text4"
@@ -251,7 +251,7 @@
                     android:text="Mặt sau CCCD *"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard"
+                    app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD"
                     tools:ignore="HardcodedText" />
 
                 <View
@@ -264,13 +264,13 @@
                     app:layout_constraintStart_toStartOf="@id/phone"
                     app:layout_constraintTop_toBottomOf="@+id/text4"/>
                 <ImageView
-                    android:id="@+id/ivBehindCiCard"
+                    android:id="@+id/behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_input_dateofbirth"
-                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintEnd_toEndOf="@+id/birthday"
+                    app:layout_constraintStart_toStartOf="@+id/birthday"
                     app:layout_constraintTop_toBottomOf="@+id/text4"  />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -286,7 +286,7 @@
                     android:textSize="@dimen/_16ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
+                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
 

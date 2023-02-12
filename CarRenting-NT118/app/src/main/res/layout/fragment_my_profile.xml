@@ -158,7 +158,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/edtLicense" />
 
                 <EditText
-                    android:id="@+id/edtStreet"
+                    android:id="@+id/address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
@@ -178,7 +178,7 @@
                     android:text="Thành phố"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/lastNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStreet" />
+                    app:layout_constraintTop_toBottomOf="@+id/address" />
 
                 <EditText
                     android:id="@+id/edtCity"
@@ -189,8 +189,8 @@
                     android:inputType="textEmailAddress"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtStreet"
-                    app:layout_constraintStart_toStartOf="@+id/edtStreet"
+                    app:layout_constraintEnd_toEndOf="@+id/address"
+                    app:layout_constraintStart_toStartOf="@+id/address"
                     app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
                 <TextView
@@ -265,7 +265,7 @@
 
 
                 <TextView
-                    android:id="@+id/text3"
+                    android:id="@+id/tv_front_CCCD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -275,7 +275,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/edtBirthDate" />
 
                 <ImageView
-                    android:id="@+id/ivFrontCiCard"
+                    android:id="@+id/img_front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
@@ -283,7 +283,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
                     app:layout_constraintHorizontal_bias="0.476"
                     app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
-                    app:layout_constraintTop_toBottomOf="@+id/text3"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"
                     />
                 <TextView
                     android:id="@+id/text4"
@@ -293,10 +293,10 @@
                     android:text="Mặt sau CCCD *"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD" />
 
                 <ImageView
-                    android:id="@+id/ivBehindCiCard"
+                    android:id="@+id/behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
@@ -318,10 +318,10 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:fontFamily="@font/roboto_medium"
-                    app:layout_constraintEnd_toEndOf="@+id/ivBehindCiCard"
+                    app:layout_constraintEnd_toEndOf="@+id/behind_CCCD"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/ivBehindCiCard"
-                    app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
+                    app:layout_constraintStart_toStartOf="@+id/behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     />
 
