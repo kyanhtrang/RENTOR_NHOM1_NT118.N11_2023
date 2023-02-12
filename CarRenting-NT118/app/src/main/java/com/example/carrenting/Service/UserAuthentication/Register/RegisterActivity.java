@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                 checkPassword();
                 if (isValid)
                 {
-
+                    signUp();
                 }
 
             }
@@ -152,10 +152,20 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            //emailverify();
-                            send();
+                            firebaseUser.sendEmailVerification()
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    Toast.makeText(RegisterActivity.this, "Gửi yêu cầu xác thực email", Toast.LENGTH_LONG).show();
 
-                            Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công", Toast.LENGTH_LONG).show();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(RegisterActivity.this, "Không thể gửi yêu cầu xác thực email", Toast.LENGTH_LONG).show();
+
+                                        }
+                                    });
                         } else {
                             Toast.makeText(RegisterActivity.this, "Đăng ký thất bại",
                                     Toast.LENGTH_SHORT).show();

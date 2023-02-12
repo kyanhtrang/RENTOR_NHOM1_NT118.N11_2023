@@ -1,3 +1,4 @@
+/*
 package com.example.carrenting.Service.UserAuthentication.Register;
 
 import androidx.annotation.NonNull;
@@ -51,7 +52,9 @@ public class UploadCiCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_ci_card);
+*/
+/*        setContentView(R.layout.activity_upload_ci_card);*//*
+
         mDb = FirebaseFirestore.getInstance();
         storageReference_front = FirebaseStorage.getInstance().getReference("Citizen Card Front");
         storageReference_behind = FirebaseStorage.getInstance().getReference("Citizen Card Behind");
@@ -191,4 +194,4 @@ public class UploadCiCardActivity extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
-}
+}*/
