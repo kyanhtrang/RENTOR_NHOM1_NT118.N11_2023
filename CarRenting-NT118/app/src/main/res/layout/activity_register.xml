@@ -153,6 +153,8 @@
             android:hint="Số điện thoại"
             android:inputType="text|phone"
 
+            android:textColor="@color/sky"
+            android:textColorHint="@color/sky"
             tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -342,7 +342,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/noti_DiaDiem"
+                                    android:id="@+id/tv_noti_DiaDiem"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Nơi đỗ xe:"
@@ -350,7 +350,7 @@
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/txtview_noti_DiaDiem"
+                                    android:id="@+id/noti_DiaDiem"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
@@ -367,14 +367,14 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/noti_pickup"
+                                    android:id="@+id/tv_noti_pickup"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Ngày nhận:"
 
                                     android:textColor="@color/white" />
                                 <TextView
-                                    android:id="@+id/txtview_noti_pickup"
+                                    android:id="@+id/noti_pickup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="15dp"
@@ -393,7 +393,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/noti_dropoff"
+                                    android:id="@+id/tv_noti_dropoff"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:text="Ngày trả:"
@@ -401,7 +401,7 @@
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/txtview_noti_dropoff"
+                                    android:id="@+id/noti_dropoff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 

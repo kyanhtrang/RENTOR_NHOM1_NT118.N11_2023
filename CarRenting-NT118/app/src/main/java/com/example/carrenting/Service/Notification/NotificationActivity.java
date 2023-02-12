@@ -185,10 +185,10 @@ public class NotificationActivity extends AppCompatActivity {
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.txtview_noti_DiaDiem);
+        tv_DiaDiem=findViewById(R.id.noti_DiaDiem);
         tv_Gia=findViewById(R.id.txtview_noti_price);
-        pickup=findViewById(R.id.txtview_noti_pickup);
-        dropoff=findViewById(R.id.txtview_noti_dropoff);
+        pickup=findViewById(R.id.noti_pickup);
+        dropoff=findViewById(R.id.noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         tv_status=findViewById(R.id.txtview_noti_status);
         btn_payment=findViewById(R.id.btn_noti_Payment);

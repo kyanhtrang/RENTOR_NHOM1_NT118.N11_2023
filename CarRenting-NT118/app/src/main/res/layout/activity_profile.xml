@@ -275,13 +275,14 @@
                     app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
                     app:layout_constraintTop_toBottomOf="@+id/text4"  />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_50sdp"
-                    android:background="@drawable/round_button"
+                    android:background="@drawable/blue_round_button"
+                    android:backgroundTint="@color/sunset"
                     android:text="Cập nhật thông tin"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_16ssp"
@@ -290,7 +291,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

@@ -20,8 +20,9 @@ public class CustomerSettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.customer_fragment_setting,
                 container, false);
-        LinearLayout info = (LinearLayout) view.findViewById(R.id.layout_connect);
-        info.setOnClickListener(new View.OnClickListener()
+
+        LinearLayout connect = (LinearLayout) view.findViewById(R.id.layout_connect);
+        connect.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -31,6 +32,9 @@ public class CustomerSettingFragment extends Fragment {
                 ((Activity) getActivity()).overridePendingTransition(0, 0);
             }
         });
+
+
+
         return view;
 /*        return inflater.inflate(R.layout.customer_fragment_user, container, false);*/
     }

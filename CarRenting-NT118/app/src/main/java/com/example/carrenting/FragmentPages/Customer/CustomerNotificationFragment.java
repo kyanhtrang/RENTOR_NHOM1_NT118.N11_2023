@@ -52,7 +52,6 @@ public class CustomerNotificationFragment extends Fragment {
     StorageReference storageReference;
     FirebaseAuth firebaseAuth;
 
-
     NotificationActivity notificationActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
