@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
+import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
@@ -33,7 +35,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
     private TextView tv_id,name,email,phoneNumber, tv_status;// Thông tin nhà cung cấp
     private TextView tv_BrandCar,tv_Gia,tv_DiaDiem,pickup,dropoff,totalCost;// Thông tin xe
-    private Button btn_xacnhan,btn_huy;
+    private Button btn_xacnhan,btn_huy,btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,42 +49,49 @@ public class OwnerNotificationActivity extends AppCompatActivity {
 
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
-                .whereEqualTo("NotiID", NotiID)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
+            .whereEqualTo("NotiID", NotiID)
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Notification temp = new Notification();
-                                temp.setNotiID(document.getId());
-                                temp.setProvideID(document.get("ProviderID").toString());
-                                temp.setVehicle_id(document.get("vehicle_id").toString());
-                                temp.setStatus(document.get("Status").toString());
-                                ProvideID = temp.getProvideID();
-                                vehicle_id = temp.getVehicle_id();
-                                noti_status=temp.getStatus();
+                            Notification temp = new Notification();
+                            temp.setNotiID(document.getId());
+                            temp.setProvideID(document.get("ProviderID").toString());
+                            temp.setVehicle_id(document.get("vehicle_id").toString());
+                            temp.setStatus(document.get("Status").toString());
+                            ProvideID = temp.getProvideID();
+                            vehicle_id = temp.getVehicle_id();
+                            noti_status=temp.getStatus();
 
-                                tv_id.setText(NotiID);
-                                if (noti_status == "Đang chờ"){
-                                    tv_status.setText("Đang chờ");
-                                } else {
-                                    if (noti_status == "Đã xác nhận"){
-                                        tv_status.setText("Đã xác nhận");
-                                    }
-                                    else tv_status.setText("Không được xác nhận");
+                            tv_id.setText(NotiID);
+                            if (noti_status == "Đang chờ"){
+                                tv_status.setText("Đang chờ");
+                            } else {
+                                if (noti_status == "Đã xác nhận"){
+                                    tv_status.setText("Đã xác nhận");
                                 }
-
-                                getuser(ProvideID);
-                                getvehicle(vehicle_id);
-                                OwnerConfirm(noti_status);
+                                else tv_status.setText("Không được xác nhận");
                             }
-                        } else {
-                            Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
+
+                            getuser(ProvideID);
+                            getvehicle(vehicle_id);
+                            OwnerConfirm(noti_status);
                         }
+                    } else {
+                        Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OwnerNotificationActivity.this, OwnerMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -173,5 +182,6 @@ public class OwnerNotificationActivity extends AppCompatActivity {
 
         btn_xacnhan=findViewById(R.id.btn_noti_XacNhan);
         btn_huy=findViewById(R.id.btn_noti_huy);
+        btn_back=findViewById(R.id.btn_noti_back);
     }
 }

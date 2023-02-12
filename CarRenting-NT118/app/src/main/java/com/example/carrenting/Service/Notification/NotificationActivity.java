@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.Order;
@@ -44,14 +45,11 @@ public class NotificationActivity extends AppCompatActivity {
     String ProvideID, vehicle_id;
     String NotiID,noti_status;
 
-
     private CustomerNotificationFragment customerNotification;
-
-
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
     private TextView tv_id,name,email,phoneNumber, tv_status;// Thông tin nhà cung cấp
     private TextView tv_BrandCar,tv_Gia,tv_DiaDiem,pickup,dropoff,totalCost;// Thông tin xe
-    private Button btn_payment;
+    private Button btn_payment, btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +58,6 @@ public class NotificationActivity extends AppCompatActivity {
 
         String OrderID = intent.getStringExtra("NotiID");
         NotiID = OrderID;
-
         init();
 
         dtb = FirebaseFirestore.getInstance();
@@ -91,12 +88,8 @@ public class NotificationActivity extends AppCompatActivity {
                                 }
                                 else tv_status.setText("Không được xác nhận");
                             }
-
-
                             getuser(ProvideID);
                             getvehicle(vehicle_id);
-
-
                         }
                     } else {
                         Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -124,12 +117,16 @@ public class NotificationActivity extends AppCompatActivity {
                 }
             }
         });
-
-
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NotificationActivity.this, CustomerMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    
     private void getuser(String ProvideID){
         dtb.collection("Users")
                 .whereEqualTo("user_id", ProvideID)
@@ -182,7 +179,6 @@ public class NotificationActivity extends AppCompatActivity {
                 });
     }
 
-
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         email=findViewById(R.id.txtview_noti_email);
@@ -196,5 +192,6 @@ public class NotificationActivity extends AppCompatActivity {
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         tv_status=findViewById(R.id.txtview_noti_status);
         btn_payment=findViewById(R.id.btn_noti_Payment);
+        btn_back=findViewById(R.id.btn_noti_back);
     }
 }
