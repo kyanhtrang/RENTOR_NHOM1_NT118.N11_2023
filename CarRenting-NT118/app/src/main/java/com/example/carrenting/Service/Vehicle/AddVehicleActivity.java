@@ -186,7 +186,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     downloadUrl = uri.toString();
-                                    Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
