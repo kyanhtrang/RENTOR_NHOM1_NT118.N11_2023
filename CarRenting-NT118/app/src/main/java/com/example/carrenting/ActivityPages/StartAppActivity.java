@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -100,11 +101,7 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
-<<<<<<< Updated upstream
-            Intent intent = new Intent(this, LoginActivity.class);
-=======
             Intent intent = new Intent(this, CustomerMainActivity.class);
->>>>>>> Stashed changes
             startActivity(intent);
         }
 

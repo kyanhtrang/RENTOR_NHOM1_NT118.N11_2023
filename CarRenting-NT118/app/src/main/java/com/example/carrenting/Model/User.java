@@ -1,6 +1,5 @@
 package com.example.carrenting.Model;
 
-import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -16,7 +15,7 @@ public class User implements Parcelable{
 
     private String phoneNumber;
 
-    private String street;
+    private String address;
     private String city;
     private String postalCode;
 
@@ -38,7 +37,7 @@ public class User implements Parcelable{
         driverLicense = in.readString();
         dateOfBirth = in.readString();
         phoneNumber = in.readString();
-        street = in.readString();
+        address = in.readString();
         city = in.readString();
         postalCode = in.readString();
         ciCardFront = in.readString();
@@ -134,12 +133,12 @@ public class User implements Parcelable{
         this.phoneNumber = phoneNumber;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -167,7 +166,7 @@ public class User implements Parcelable{
     }
 
 
-    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String street, String city, String postalCode, String password, String ciCardFront, String ciCardBehind) {
+    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String address, String city, String postalCode, String password, String ciCardFront, String ciCardBehind) {
         this.email = email;
         this.user_id = user_id;
         this.username = username;
@@ -175,7 +174,7 @@ public class User implements Parcelable{
         this.driverLicense = driverLicense;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
-        this.street = street;
+        this.address = address;
         this.city = city;
         this.postalCode = postalCode;
         this.password = password;
@@ -208,7 +207,7 @@ public class User implements Parcelable{
         dest.writeString(driverLicense);
         dest.writeString(dateOfBirth);
         dest.writeString(phoneNumber);
-        dest.writeString(street);
+        dest.writeString(address);
         dest.writeString(city);
         dest.writeString(postalCode);
         dest.writeString(ciCardFront);
