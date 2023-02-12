@@ -34,6 +34,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,41 +48,45 @@ public class CustomerNotificationFragment extends Fragment {
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
     ProgressDialog progressDialog;
-    String NotiID;
+    String current_user_id;
+    StorageReference storageReference;
+    FirebaseAuth firebaseAuth;
 
     NotificationActivity notificationActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Đang lấy dữ liệu...");
+//        progressDialog.show();
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
         recyclerView = view.findViewById(R.id.frame_layout_noti);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        storageReference = FirebaseStorage.getInstance().getReference();
         dtb_noti = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        current_user_id = firebaseAuth.getCurrentUser().getUid();
+
         notifications = new ArrayList<Notification>();
         notificationAdapter = new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
-        setvalue();
+
         EventChangeListener();
         return view;
     }
 
-    private void setvalue(){
-        NotiID = "2";
-    }
 
     private void EventChangeListener()
     {
 
         dtb_noti.collection("Notification")
-                .whereEqualTo("NotiID", NotiID)
+                .whereEqualTo("CustomerID", current_user_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
