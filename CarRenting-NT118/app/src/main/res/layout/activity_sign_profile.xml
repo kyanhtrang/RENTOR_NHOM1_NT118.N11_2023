@@ -103,6 +103,7 @@
 
                 <EditText
                     android:id="@+id/profile_input_address"
+
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
