@@ -46,12 +46,12 @@
                     android:text="Số điện thoại *"
                     android:layout_marginTop="@dimen/_25sdp"
                     android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/fullname"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_fullname"
                     app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_input_fragment"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/profile_input_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_30sdp"
@@ -59,21 +59,21 @@
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:inputType="phone"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
 
                 <TextView
-                    android:id="@+id/tv_email"
+                    android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email *"
                     android:textColor="@color/sky"
                     android:layout_marginTop="@dimen/_8sdp"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/phone"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_phone"
                     tools:ignore="HardcodedText" />
 
                 <EditText
@@ -83,14 +83,14 @@
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/text1" />
 
                 <TextView
-                    android:id="@+id/tv_fullname"
+                    android:id="@+id/fullnameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -101,27 +101,27 @@
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/fullname"
+                    android:id="@+id/profile_input_fullname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@+id/tv_fullname" />
                 
                 <TextView
-                    android:id="@+id/tv_address"
+                    android:id="@+id/addressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:text="Tên đường *"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/fullname"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_input_fullname"
                     tools:ignore="HardcodedText" />
 
                 <EditText
@@ -131,14 +131,14 @@
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/addressText" />
 
                 <TextView
-                    android:id="@+id/tv_city"
+                    android:id="@+id/cityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -155,11 +155,11 @@
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="@id/phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_city" />
+                    app:layout_constraintEnd_toEndOf="@id/profile_input_phone"
+                    app:layout_constraintStart_toStartOf="@id/profile_input_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
 
 
                 <TextView
@@ -174,7 +174,7 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/tv_birthday"
+                    android:id="@+id/dateofBirthtv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -206,17 +206,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:inputType="datetime"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/birthday"
-                    app:layout_constraintStart_toStartOf="@+id/birthday"
-                    app:layout_constraintTop_toTopOf="@+id/birthday"
+                    android:textColor="@color/sky"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintStart_toStartOf="@+id/profile_input_dateofbirth"
+                    app:layout_constraintTop_toTopOf="@+id/profile_input_dateofbirth"
                     tools:ignore="TextViewEdits" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
                     android:layout_marginBottom="@dimen/_50sdp"
                     android:background="@drawable/blue_round_button"
                     android:backgroundTint="@color/sunset"

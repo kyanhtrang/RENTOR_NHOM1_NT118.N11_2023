@@ -100,7 +100,11 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
+<<<<<<< Updated upstream
             Intent intent = new Intent(this, LoginActivity.class);
+=======
+            Intent intent = new Intent(this, CustomerMainActivity.class);
+>>>>>>> Stashed changes
             startActivity(intent);
         }
 
