@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity{
                                                 Log.d("TAG", "Đăng nhập với email link thành công");
                                                 AuthResult result = task.getResult();
 
-                                                if (!result.getAdditionalUserInfo().isNewUser()) {
+                                                if (result.getAdditionalUserInfo().isNewUser()) {
                                                     Toast.makeText(RegisterActivity.this, "User này đã tồn tại", Toast.LENGTH_LONG).show();
                                                     firebaseUser.delete();
                                                 } else {
