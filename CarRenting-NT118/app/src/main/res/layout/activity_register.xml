@@ -107,6 +107,7 @@
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
         tools:ignore="HardcodedText,TextFields" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
