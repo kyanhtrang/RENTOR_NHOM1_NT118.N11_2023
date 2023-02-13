@@ -212,7 +212,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/profile_btnupdate"
+                    android:id="@+id/btn_update"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_24sdp"

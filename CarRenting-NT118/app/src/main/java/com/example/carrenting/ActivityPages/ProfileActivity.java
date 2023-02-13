@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -38,17 +39,20 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class ProfileActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
-    private Button dateButton, updatebtn;
+    private Button dateButton,btnUpdate;
     private Uri mImageURI;
     private ImageView  imgAvatar;
     private String imageID;
     private String documentId, downloadUrl, uploadtype;
     private FirebaseUser firebaseUser;
     private FirebaseFirestore dtb_user;
+    private DocumentReference docRef;
     private EditText phonenumber, email, fullname, address, city;
     private User user = new User();
     ActivityResultLauncher<String> AvatarpickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
@@ -68,12 +72,14 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         init();
         getinfo();
-        updatebtn.setOnClickListener(new View.OnClickListener() {
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateinfo();
             }
         });
+
         imgAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
         fullname = findViewById(R.id.profile_input_fullname);
         address = findViewById(R.id.profile_input_address);
         city = findViewById(R.id.profile_input_city);
-        updatebtn = findViewById(R.id.profile_btnupdate);
+        btnUpdate = findViewById(R.id.btn_update);
         imgAvatar = findViewById(R.id.img_avatar_profile_input_fragment);
 
         dtb_user = FirebaseFirestore.getInstance();
@@ -226,7 +232,30 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
     private void updateinfo(){
-        //
+
+        docRef = dtb_user.collection("Users").document(firebaseUser.getUid());
+        Map<String, Object> data = new HashMap<>();
+        data.put("username", user.getUsername());
+        data.put("address", user.getAddress());
+        data.put("city", user.getCity());
+        data.put("avatarURL", user.getAvatarURL());
+        data.put("birthday", user.getDateOfBirth());
+        docRef.update(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                       Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ProfileActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+
     }
     private void getinfo(){
         user.setUser_id(firebaseUser.getUid());
