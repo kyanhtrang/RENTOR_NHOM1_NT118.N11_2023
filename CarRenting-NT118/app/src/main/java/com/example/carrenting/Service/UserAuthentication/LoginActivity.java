@@ -137,16 +137,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void updateUIRegister(FirebaseUser user) {
-        if (user != null) {
-            if (user.isEmailVerified()){
+//        if (user != null) {
+//            if (user.isEmailVerified()){
                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 startActivity(intent);
-            }
-        }
-        else {
-            txtemail.setVisibility(View.GONE);
-            txtpassword.setVisibility(View.GONE);
-        }
+//            }
+//        }
+//        else {
+//            txtemail.setVisibility(View.GONE);
+//            txtpassword.setVisibility(View.GONE);
+//        }
     }
     private void updateUILogin(FirebaseUser user) {
 //        if (user != null) {
