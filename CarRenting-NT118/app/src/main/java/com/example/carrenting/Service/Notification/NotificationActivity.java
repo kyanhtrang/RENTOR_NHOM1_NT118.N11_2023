@@ -72,7 +72,7 @@ public class NotificationActivity extends AppCompatActivity {
 
                             Notification temp = new Notification();
                             temp.setNotiID(document.getId());
-                            temp.setProvideID(document.get("ProviderID").toString());
+                            temp.setProvideID(document.get("ProvideID").toString());
                             temp.setVehicle_id(document.get("vehicle_id").toString());
                             temp.setStatus(document.get("Status").toString());
                             ProvideID = temp.getProvideID();
@@ -80,14 +80,32 @@ public class NotificationActivity extends AppCompatActivity {
                             noti_status=temp.getStatus();
 
                             tv_id.setText(NotiID);
-                            if (noti_status == "Đang chờ"){
+//                            if (noti_status == "Đang chờ"){
+//                                tv_status.setText("Đang chờ");
+//                            } else {
+//                                if (noti_status == "Đã xác nhận"){
+//                                    tv_status.setText("Đã xác nhận");
+//                                }
+//                                else tv_status.setText("Không được xác nhận");
+//                            }
+
+                            if(noti_status.equals( "Dang cho"))
+                            {
                                 tv_status.setText("Đang chờ");
-                            } else {
-                                if (noti_status == "Đã xác nhận"){
+                            }
+                            else
+                            {
+                                if(noti_status.equals( "Xac nhan"))
+                                {
                                     tv_status.setText("Đã xác nhận");
                                 }
-                                else tv_status.setText("Không được xác nhận");
+                                else
+                                {
+                                    tv_status.setText("Không được xác nhận");
+                                }
+
                             }
+
                             getuser(ProvideID);
                             getvehicle(vehicle_id);
                         }
@@ -139,9 +157,9 @@ public class NotificationActivity extends AppCompatActivity {
 
                                 User user = new User();
                                 user.setUser_id(document.get("user_id").toString());
-                                user.setUsername(document.get("user_fullname").toString());
+                                user.setUsername(document.get("username").toString());
                                 user.setEmail(document.get("email").toString());
-                                user.setPhoneNumber(document.get("phonenumber").toString());
+                                user.setPhoneNumber(document.get("phoneNumber").toString());
                                 name.setText(user.getUsername());
                                 email.setText(user.getEmail());
                                 phoneNumber.setText(user.getPhoneNumber());

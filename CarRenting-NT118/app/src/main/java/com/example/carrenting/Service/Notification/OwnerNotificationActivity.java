@@ -12,24 +12,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
+import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OwnerNotificationActivity extends AppCompatActivity {
 
     FirebaseFirestore dtb;
     Intent intent;
-    String ProvideID, vehicle_id;
+    String CustomerID, vehicle_id;
     String NotiID,noti_status;
+    private Notification temp = new Notification();
 
 
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
@@ -57,47 +63,69 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
 
-                            Notification temp = new Notification();
+//                            Notification temp = new Notification();
                             temp.setNotiID(document.getId());
-                            temp.setProvideID(document.get("ProviderID").toString());
+                            temp.setCustomerID(document.get("CustomerID").toString());
                             temp.setVehicle_id(document.get("vehicle_id").toString());
                             temp.setStatus(document.get("Status").toString());
-                            ProvideID = temp.getProvideID();
+                            CustomerID = temp.getCustomerID();
                             vehicle_id = temp.getVehicle_id();
                             noti_status=temp.getStatus();
 
                             tv_id.setText(NotiID);
-                            if (noti_status == "Đang chờ"){
+
+                            if(noti_status.equals( "Dang cho"))
+                            {
                                 tv_status.setText("Đang chờ");
-                            } else {
-                                if (noti_status == "Đã xác nhận"){
+                            }
+                            else
+                            {
+                                if(noti_status.equals( "Xac nhan"))
+                                {
                                     tv_status.setText("Đã xác nhận");
                                 }
-                                else tv_status.setText("Không được xác nhận");
-                            }
+                                else
+                                {
+                                    tv_status.setText("Không được xác nhận");
+                                }
 
-                            getuser(ProvideID);
+                            }
+                            getuser(CustomerID);
                             getvehicle(vehicle_id);
-                            OwnerConfirm(noti_status);
+
                         }
                     } else {
                         Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-        btn_back.setOnClickListener(new View.OnClickListener() {
+//        btn_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(OwnerNotificationActivity.this, OwnerMainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        btn_huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OwnerNotificationActivity.this, OwnerMainActivity.class);
-                startActivity(intent);
+                Toast.makeText(OwnerNotificationActivity.this, "Click btn Hủy", Toast.LENGTH_SHORT).show();
+                update_noti_huy();
             }
         });
 
+        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(OwnerNotificationActivity.this, "Click btn Xac nhan", Toast.LENGTH_SHORT).show();
+                update_noti_xacnhan();
+            }
+        });
     }
 
     private void getuser(String ProvideID){
         dtb.collection("Users")
-                .whereEqualTo("user_id", ProvideID)
+                .whereEqualTo("user_id", CustomerID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -107,9 +135,9 @@ public class OwnerNotificationActivity extends AppCompatActivity {
 
                                 User user = new User();
                                 user.setUser_id(document.get("user_id").toString());
-                                user.setUsername(document.get("user_fullname").toString());
+                                user.setUsername(document.get("username").toString());
                                 user.setEmail(document.get("email").toString());
-                                user.setPhoneNumber(document.get("phonenumber").toString());
+                                user.setPhoneNumber(document.get("phoneNumber").toString());
                                 name.setText(user.getUsername());
                                 email.setText(user.getEmail());
                                 phoneNumber.setText(user.getPhoneNumber());
@@ -147,21 +175,45 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                 });
     }
 
-    private void OwnerConfirm(String status)
-    {
-        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private void update_noti_huy(){
 
+        Map<String, Object> data = new HashMap<>();
+        data.put("Status", "Khong xac nhan");
+        dtb.collection("Notification").document(temp.getNotiID()).update(data)
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(OwnerNotificationActivity.this, "Đã hủy đơn hàng", Toast.LENGTH_LONG).show();
+                    tv_status.setText("Không được xác nhận");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(OwnerNotificationActivity.this, "Lỗi hủy đơn hàng", Toast.LENGTH_LONG).show();
+                }
+            });
 
-            }
-        });
-        btn_huy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
+    private void update_noti_xacnhan(){
 
-            }
-        });
+        Map<String, Object> data = new HashMap<>();
+        data.put("Status", "Xac nhan");
+        dtb.collection("Notification").document(temp.getNotiID()).update(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(OwnerNotificationActivity.this, "Đã xác nhận", Toast.LENGTH_LONG).show();
+                        tv_status.setText("Đã xác nhận");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(OwnerNotificationActivity.this, "Lỗi hủy đơn hàng", Toast.LENGTH_LONG).show();
+                    }
+                });
+
     }
 
 
@@ -172,7 +224,6 @@ public class OwnerNotificationActivity extends AppCompatActivity {
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
         tv_DiaDiem=findViewById(R.id.noti_DiaDiem);
-
 
         tv_Gia=findViewById(R.id.txtview_noti_price);
         pickup=findViewById(R.id.noti_pickup);

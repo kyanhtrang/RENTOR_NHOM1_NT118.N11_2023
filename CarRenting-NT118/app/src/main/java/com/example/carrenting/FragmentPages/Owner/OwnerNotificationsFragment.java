@@ -32,8 +32,8 @@ import java.util.ArrayList;
 
 public class OwnerNotificationsFragment extends Fragment {
 
-
     RecyclerView recyclerView;
+//    NotificationAdapter notificationAdapter;
     OwnerNotificationAdapter ownerNotificationAdapter;
     ArrayList<Notification> notifications;
     FirebaseFirestore dtb_noti;
@@ -66,25 +66,29 @@ public class OwnerNotificationsFragment extends Fragment {
         notifications = new ArrayList<Notification>();
         ownerNotificationAdapter = new OwnerNotificationAdapter(OwnerNotificationsFragment.this,notifications);
         recyclerView.setAdapter(ownerNotificationAdapter);
+        Toast.makeText(getContext(), "UserID "+ current_user_id, Toast.LENGTH_SHORT).show();
 
         EventChangeListener();
+
         return view;
     }
+
 
     private void EventChangeListener()
     {
 
         dtb_noti.collection("Notification")
-                .whereEqualTo("ProviderID", current_user_id)
+                .whereEqualTo("ProvideID", current_user_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
+
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Notification temp = new Notification();
                                 temp.setNotiID(document.get("NotiID").toString());
-                                temp.setProvideID(document.get("ProviderID").toString());
+                                temp.setProvideID(document.get("ProvideID").toString());
                                 temp.setCustomerID(document.get("CustomerID").toString());
                                 temp.setStatus(document.get("Status").toString());
                                 temp.setCustomerID(document.get("vehicle_id").toString());

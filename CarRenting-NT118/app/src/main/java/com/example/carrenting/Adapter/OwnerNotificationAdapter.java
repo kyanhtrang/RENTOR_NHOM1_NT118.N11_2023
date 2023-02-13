@@ -13,6 +13,7 @@ import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Notification.NotificationActivity;
+import com.example.carrenting.Service.Notification.OwnerNotificationActivity;
 
 import java.util.ArrayList;
 
@@ -42,12 +43,28 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
 
         noti = mNoti.get(position);
         holder.name.setText(noti.getName_Provide());
-        holder.status.setText(noti.getStatus());
+//        holder.status.setText(noti.getStatus());
+        if(noti.getStatus().equals( "Dang cho"))
+        {
+            holder.status.setText("Đang chờ");
+        }
+        else
+        {
+            if(noti.getStatus().equals( "Xac nhan"))
+            {
+                holder.status.setText("Nhà cung cấp đã xác nhận");
+            }
+            else
+            {
+                holder.status.setText("Nhà cung cấp không xác nhận");
+            }
+
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), NotificationActivity.class);
+                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), OwnerNotificationActivity.class);
                 intent.putExtra("NotiID", noti.getNotiID());
                 ownerNotificationsFragment.startActivity(intent);
             }

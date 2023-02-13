@@ -76,8 +76,10 @@ public class CustomerNotificationFragment extends Fragment {
         notifications = new ArrayList<Notification>();
         notificationAdapter = new NotificationAdapter(CustomerNotificationFragment.this,notifications);
         recyclerView.setAdapter(notificationAdapter);
+        Toast.makeText(getContext(), "UserID "+ current_user_id, Toast.LENGTH_SHORT).show();
 
         EventChangeListener();
+
         return view;
     }
 

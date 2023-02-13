@@ -44,7 +44,23 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         noti = mNoti.get(position);
         holder.name.setText(noti.getName_Provide());
-        holder.status.setText(noti.getStatus());
+        if(noti.getStatus().equals( "Dang cho"))
+        {
+            holder.status.setText("Đang chờ");
+        }
+        else
+        {
+            if(noti.getStatus().equals( "Xac nhan"))
+            {
+                holder.status.setText("Nhà cung cấp đã xác nhận");
+            }
+            else
+            {
+                holder.status.setText("Nhà cung cấp không xác nhận");
+            }
+
+        }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

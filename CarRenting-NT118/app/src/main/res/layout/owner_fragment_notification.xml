@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue5"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentPages.Customer.CustomerNotificationFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:text="Thông báo"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/ic_delete"-->
+    <!--        android:layout_width="25dp"-->
+    <!--        android:layout_height="35dp"-->
+    <!--        android:background="@drawable/ic_delete"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/tv_title"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/tv_title"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:layout_marginEnd="35dp"-->
+    <!--        tools:ignore="InefficientWeight,MissingConstraints" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_message"-->
+    <!--        android:layout_width="175dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Trò chuyện"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:background="@drawable/blue_round_border"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/tv_title"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:layout_marginStart="15dp"-->
+    <!--        tools:ignore="HardcodedText,MissingConstraints" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_noti"-->
+    <!--        android:layout_width="175dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Thông báo"-->
+    <!--        android:textSize="18sp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/tv_title"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:background="@drawable/blue_round_border"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:layout_marginEnd="15dp"-->
+    <!--        tools:ignore="HardcodedText,MissingConstraints" />-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/frame_layout_noti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
