@@ -59,7 +59,6 @@ public class RegisterActivity extends AppCompatActivity{
     private Boolean isValid = true;
     private FirebaseFirestore dtbUser;
     private User user;
-    private Handler handler = new Handler();
 
 
     private void init(){
@@ -128,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity{
         }
         progressDialog.show();
 
-        Log.e(TAG, Email + Password);
         mAuth.createUserWithEmailAndPassword(Email, Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -139,24 +137,6 @@ public class RegisterActivity extends AppCompatActivity{
 
                             firebaseUser = mAuth.getCurrentUser();
 
-<<<<<<< Updated upstream
-                            String email = null;
-                            if (mAuth.isSignInWithEmailLink(emailLink)) {
-                                email = user.getEmail();
-                            }
-                            Toast.makeText(RegisterActivity.this,email,Toast.LENGTH_LONG).show();
-                            mAuth.signInWithEmailLink(email, emailLink)
-                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d("TAG", "Đăng nhập với email link thành công");
-                                                AuthResult result = task.getResult();
-
-                                                if (result.getAdditionalUserInfo().isNewUser()) {
-                                                    Toast.makeText(RegisterActivity.this, "User này đã tồn tại", Toast.LENGTH_LONG).show();
-                                                    firebaseUser.delete();
-=======
                             if (firebaseUser != null) {
                                 firebaseUser.sendEmailVerification()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -165,20 +145,17 @@ public class RegisterActivity extends AppCompatActivity{
                                                 if (task.isSuccessful()) {
                                                     Log.d("TAG", "Verification email sent to " + Email);
                                                     createUser();
->>>>>>> Stashed changes
+
                                                 } else {
                                                     Log.e("TAG", "sendEmailVerification failed!", task.getException());
                                                 }
                                             }
                                         });
                             }
-                            updateUIRegister(firebaseUser);
                         }
                         else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "Không thể tạo User", task.getException());
                             Toast.makeText(RegisterActivity.this, "Không thể tạo User",Toast.LENGTH_SHORT).show();
-                            updateUIRegister(null);
                         }
                         progressDialog.cancel();
                     }
@@ -213,18 +190,6 @@ public class RegisterActivity extends AppCompatActivity{
         return valid;
     }
 
-    private void updateUIRegister(FirebaseUser user) {
-        if (user != null) {
-            if (user.isEmailVerified()){
-                Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
-                startActivity(intent);
-            }
-        }
-        else {
-            inputEmail.setVisibility(View.GONE);
-            inputPass.setVisibility(View.GONE);
-        }
-    }
 
     private void createUser(){
         user = new User();
