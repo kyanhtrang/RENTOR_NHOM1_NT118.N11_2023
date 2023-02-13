@@ -10,14 +10,12 @@ public class User implements Parcelable{
     private String username;
     private String avatarURL;
 
-    private String driverLicense;
     private String dateOfBirth;
 
     private String phoneNumber;
 
     private String address;
     private String city;
-    private String postalCode;
 
     private String password;
 
@@ -26,7 +24,16 @@ public class User implements Parcelable{
 
 
     public User() {
-
+        address = "";
+        email = "";
+        user_id = "";
+        username = "";
+        avatarURL = "";
+        dateOfBirth = "";
+        phoneNumber = "";
+        city = "";
+        ciCardFront = "";
+        ciCardBehind = "";
     }
 
     protected User(Parcel in) {
@@ -34,12 +41,10 @@ public class User implements Parcelable{
         user_id = in.readString();
         username = in.readString();
         avatarURL = in.readString();
-        driverLicense = in.readString();
         dateOfBirth = in.readString();
         phoneNumber = in.readString();
         address = in.readString();
         city = in.readString();
-        postalCode = in.readString();
         ciCardFront = in.readString();
         ciCardBehind = in.readString();
     }
@@ -108,15 +113,6 @@ public class User implements Parcelable{
         this.username = username;
     }
 
-    public String getDriverLicense() {
-        return driverLicense;
-    }
-
-    public void setDriverLicense(String driverLicense) {
-        this.driverLicense = driverLicense;
-    }
-
-
     public String getDateOfBirth() {
         return dateOfBirth;
     }
@@ -149,14 +145,6 @@ public class User implements Parcelable{
         this.city = city;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -166,17 +154,15 @@ public class User implements Parcelable{
     }
 
 
-    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String address, String city, String postalCode, String password, String ciCardFront, String ciCardBehind) {
+    public User(String email, String user_id, String username, String avatarURL, String dateOfBirth, String phoneNumber, String address, String city, String password, String ciCardFront, String ciCardBehind) {
         this.email = email;
         this.user_id = user_id;
         this.username = username;
         this.avatarURL = avatarURL;
-        this.driverLicense = driverLicense;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.city = city;
-        this.postalCode = postalCode;
         this.password = password;
         this.ciCardFront = ciCardFront;
         this.ciCardBehind = ciCardBehind;
@@ -204,12 +190,10 @@ public class User implements Parcelable{
         dest.writeString(user_id);
         dest.writeString(username);
         dest.writeString(avatarURL);
-        dest.writeString(driverLicense);
         dest.writeString(dateOfBirth);
         dest.writeString(phoneNumber);
         dest.writeString(address);
         dest.writeString(city);
-        dest.writeString(postalCode);
         dest.writeString(ciCardFront);
         dest.writeString(ciCardBehind);
     }

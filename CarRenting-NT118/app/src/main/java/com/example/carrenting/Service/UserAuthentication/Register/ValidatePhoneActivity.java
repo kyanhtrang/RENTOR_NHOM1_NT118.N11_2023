@@ -182,7 +182,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         getOtpNumberFour = findViewById(R.id.otpNumberFour);
         getOtpNumberFive = findViewById(R.id.otpNumberFive);
         otpNumberSix = findViewById(R.id.optNumberSix);
-        btnSendCode = findViewById(R.id.btnValidate);
+        btnSendCode = findViewById(R.id.btn_signup);
         tvResend = findViewById(R.id.tvResend);
     }
 }

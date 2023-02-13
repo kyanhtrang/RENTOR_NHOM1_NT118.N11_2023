@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout"
         app:passwordToggleDrawable="@drawable/show_password_selector">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTxtPasswordAgain"
+            android:id="@+id/reinput_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtTxtPhoneLayout"
         >
     <EditText
-        android:id="@+id/edtTxtEmail"
+        android:id="@+id/input_email"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@color/white"
@@ -120,7 +120,7 @@
         app:passwordToggleDrawable="@drawable/show_password_selector"
         app:passwordToggleEnabled="true"        >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTxtPassword"
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -146,7 +146,7 @@
         >
 
         <EditText
-            android:id="@+id/edtTxtCode"
+            android:id="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -161,12 +161,14 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnValidate"
+        android:id="@+id/btn_signup"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_35sdp"
         android:background="@drawable/blue_round_button"
+        android:backgroundTint="@color/sunset"
         android:text="Đăng ký"
+        android:textSize="@dimen/_20ssp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordAgainLayout"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordAgainLayout"
