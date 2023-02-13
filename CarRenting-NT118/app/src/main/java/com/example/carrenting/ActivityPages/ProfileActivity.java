@@ -246,11 +246,8 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
-<<<<<<< Updated upstream
-=======
                         Intent intent = new Intent(ProfileActivity.this, ProfileManagement.class);
                         startActivity(intent);
->>>>>>> Stashed changes
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -259,10 +256,6 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
                     }
                 });
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }
 
     private void getinfo(){
