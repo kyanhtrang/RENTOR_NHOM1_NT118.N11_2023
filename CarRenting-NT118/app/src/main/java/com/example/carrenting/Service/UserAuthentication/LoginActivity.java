@@ -104,34 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
     }
-<<<<<<< Updated upstream
-    private void updateUIRegister(FirebaseUser user) {
-//        if (user != null) {
-//            if (user.isEmailVerified()){
-                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                startActivity(intent);
-//            }
-//        }
-//        else {
-//            txtemail.setVisibility(View.GONE);
-//            txtpassword.setVisibility(View.GONE);
-//        }
-=======
 
-
-
-    private void updateUILogin(FirebaseUser user) {
-        if (user != null) {
-            if (user.isEmailVerified()){
-                Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
-                startActivity(intent);
-            }
-        }
-        else {
-            Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
-            startActivity(intent);
-        }
->>>>>>> Stashed changes
     }
     private boolean validateForm() {
         boolean valid = true;
