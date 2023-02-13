@@ -27,6 +27,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -44,6 +46,7 @@ import java.util.UUID;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
+    private FirebaseUser firebaseUser;
     private String documentId, downloadUrl;
     private Uri mImageURI;
     private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number;
@@ -112,6 +115,8 @@ public class AddVehicleActivity extends AppCompatActivity {
         dtb_vehicle = FirebaseFirestore.getInstance();
         String availability = vehicle_available.isChecked() ? "available" : "unavailable";
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         Map<String, Object> vehicle = new HashMap<>();
         vehicle.put("vehicle_name", vehicle_name.getText().toString());
         vehicle.put("seats", vehicle_seats.getText().toString());
@@ -120,6 +125,8 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle.put("plate_number", vehicle_number.getText().toString());
         vehicle.put("availability", availability);
         vehicle.put("imageURL", downloadUrl);
+        vehicle.put("provider_id", firebaseUser.getUid());
+        vehicle.put("provider_name", firebaseUser.getDisplayName());
         dtb_vehicle.collection("Vehicles")
                 .add(vehicle)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
