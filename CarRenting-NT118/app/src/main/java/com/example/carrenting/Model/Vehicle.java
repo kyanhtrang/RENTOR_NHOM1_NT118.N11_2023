@@ -3,7 +3,7 @@ package com.example.carrenting.Model;
 import android.net.Uri;
 
 public class Vehicle {
-    String vehicle_id;
+    String vehicle_id, provider_id, provider_name;
     String owner_name, owner_gmail, owner_phone, owner_address;
     String vehicle_name, vehicle_price, vehicle_seats, vehicle_number, vehicle_availability;
     String vehicle_imageURL;
@@ -11,8 +11,10 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String vehicle_id, String owner_name, String owner_gmail, String owner_phone, String owner_address, String vehicle_name, String vehicle_price, String vehicle_seats, String vehicle_number, String vehicle_availability, String vehicle_imageURL) {
+    public Vehicle(String vehicle_id, String provider_id, String provider_name, String owner_name, String owner_gmail, String owner_phone, String owner_address, String vehicle_name, String vehicle_price, String vehicle_seats, String vehicle_number, String vehicle_availability, String vehicle_imageURL) {
         this.vehicle_id = vehicle_id;
+        this.provider_id = provider_id;
+        this.provider_name = provider_name;
         this.owner_name = owner_name;
         this.owner_gmail = owner_gmail;
         this.owner_phone = owner_phone;
@@ -23,6 +25,22 @@ public class Vehicle {
         this.vehicle_number = vehicle_number;
         this.vehicle_availability = vehicle_availability;
         this.vehicle_imageURL = vehicle_imageURL;
+    }
+
+    public String getProvider_id() {
+        return provider_id;
+    }
+
+    public void setProvider_id(String provider_id) {
+        this.provider_id = provider_id;
+    }
+
+    public String getProvider_name() {
+        return provider_name;
+    }
+
+    public void setProvider_name(String provider_name) {
+        this.provider_name = provider_name;
     }
 
     public String getVehicle_id() {

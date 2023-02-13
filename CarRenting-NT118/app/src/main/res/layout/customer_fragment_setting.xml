@@ -105,67 +105,9 @@
                     android:layout_marginEnd="15dp"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_social_media"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="-2dp"
-                android:layout_marginBottom="-2dp"
-                android:padding="15dp"
-                android:background="@drawable/yellow_line"
-                app:layout_constraintTop_toBottomOf="@+id/layout_connect"
-                tools:ignore="MissingConstraints">
-                <TextView
-                    android:id="@+id/tv_social_media"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:layout_gravity="center"
-                    android:text="Kết nối mạng xã hội"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_information"
-                    android:textSize="24sp"
-                    android:textColor="@color/sky"
-                    tools:ignore="HardcodedText,MissingConstraints" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_next"
-                    android:layout_marginEnd="15dp"/>
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_banking_info"
-                android:layout_width="match_parent"
-                android:layout_marginTop="-2dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:padding="15dp"
-                app:layout_constraintTop_toBottomOf="@+id/layout_social_media"
-                tools:ignore="MissingConstraints">
-                <TextView
-                    android:id="@+id/tv_banking_info"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="6"
-                    android:text="Thông tin thanh toán"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_social_media"
-                    android:textSize="24sp"
-                    android:textColor="@color/sky"
-                    tools:ignore="HardcodedText,MissingConstraints" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_next"
-                    android:layout_marginEnd="15dp"/>
-            </LinearLayout>
+
+
 
             <LinearLayout
                 android:id="@+id/layout_noti"
@@ -176,7 +118,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/yellow_line"
                 android:padding="15dp"
-                app:layout_constraintTop_toBottomOf="@+id/layout_banking_info"
+                app:layout_constraintTop_toBottomOf="@+id/layout_connect"
                 tools:ignore="MissingConstraints">
                 <TextView
                     android:id="@+id/tv_noti"
@@ -262,7 +204,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_version"
+                android:id="@+id/layout_sign_out"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:orientation="horizontal"
@@ -273,12 +215,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/layout_delete_account"
                 tools:ignore="MissingConstraints">
                 <TextView
-                    android:id="@+id/tv_version"
+                    android:id="@+id/tv_sign_out"
                     android:layout_width="175dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:layout_gravity="center"
-                    android:text="Phiên bản"
+                    android:text="Đăng xuất"
                     app:layout_constraintTop_toBottomOf="@+id/tv_delete_account"
                     android:textSize="24sp"
                     android:textColor="@color/sky"
