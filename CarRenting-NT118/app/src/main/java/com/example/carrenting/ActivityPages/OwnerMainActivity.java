@@ -17,16 +17,17 @@ import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
+import com.example.carrenting.databinding.OwnerActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class OwnerMainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    OwnerActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = OwnerActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         replaceFragment(new OwnerVehicleFragment());
@@ -55,7 +56,7 @@ public class OwnerMainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
+        fragmentTransaction.replace(R.id.frame_layout_owner, fragment);
         fragmentTransaction.commit();
     }
 }
