@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.ProfileManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -244,6 +246,11 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+<<<<<<< Updated upstream
+=======
+                        Intent intent = new Intent(ProfileActivity.this, ProfileManagement.class);
+                        startActivity(intent);
+>>>>>>> Stashed changes
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -252,7 +259,10 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
                     }
                 });
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }
 
     private void getinfo(){
