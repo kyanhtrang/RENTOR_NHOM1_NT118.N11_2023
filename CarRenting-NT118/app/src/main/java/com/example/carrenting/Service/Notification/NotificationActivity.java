@@ -1,6 +1,13 @@
 package com.example.carrenting.Service.Notification;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
@@ -194,4 +202,5 @@ public class NotificationActivity extends AppCompatActivity {
         btn_payment=findViewById(R.id.btn_noti_Payment);
         btn_back=findViewById(R.id.btn_noti_back);
     }
+
 }

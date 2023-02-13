@@ -44,7 +44,6 @@ import java.util.ArrayList;
 public class StartAppActivity extends AppCompatActivity {
     private Button btn_startApp;
     ImageSlider imageSlider;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
