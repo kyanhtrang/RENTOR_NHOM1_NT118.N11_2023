@@ -233,14 +233,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
     private void updateinfo(){
 
-        docRef = dtb_user.collection("Users").document(firebaseUser.getUid());
         Map<String, Object> data = new HashMap<>();
-        data.put("username", user.getUsername());
-        data.put("address", user.getAddress());
-        data.put("city", user.getCity());
-        data.put("avatarURL", user.getAvatarURL());
-        data.put("birthday", user.getDateOfBirth());
-        docRef.update(data)
+        data.put("username", fullname.getText());
+        data.put("address", address.getText());
+        data.put("city", city.getText());
+        data.put("birthday", dateButton.getText());
+        dtb_user.collection("Users").document(user.getUser_id()).update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -251,10 +249,10 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(ProfileActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
-
                     }
                 });
 
+        uploadImage("UsersAvatar");
 
     }
     private void getinfo(){
@@ -271,7 +269,6 @@ public class ProfileActivity extends AppCompatActivity {
                                 user.setEmail(document.get("email").toString());
                                 user.setAddress(document.get("address").toString());
                                 user.setCity(document.get("city").toString());
-
                                 if (document.get("avatarURL").toString()!=null) {
                                     user.setAvatarURL(document.get("avatarURL").toString());
                                     Picasso.get().load(user.getAvatarURL()).into(imgAvatar);

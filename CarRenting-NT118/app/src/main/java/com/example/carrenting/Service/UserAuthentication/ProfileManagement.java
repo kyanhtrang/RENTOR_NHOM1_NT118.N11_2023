@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.ActivityPages.ProfileActivity;
@@ -14,13 +15,14 @@ import com.example.carrenting.R;
 
 public class ProfileManagement extends AppCompatActivity {
 
-   Button btnUpdate;
+   private Button btnUpdate;
+   private ImageView imgAvatar, imgFrontCCCD, imgBehindCCCD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_management);
 
-        btnUpdate = (Button) findViewById(R.id.btn_update);
+        init();
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,5 +31,15 @@ public class ProfileManagement extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void init(){
+        btnUpdate = (Button) findViewById(R.id.btn_update);
+
+        imgAvatar = (ImageView) findViewById(R.id.img_avatar);
+        imgFrontCCCD = (ImageView) findViewById(R.id.img_front_CCCD);
+        imgBehindCCCD = (ImageView) findViewById(R.id.behind_CCCD);
+
+
     }
 }
