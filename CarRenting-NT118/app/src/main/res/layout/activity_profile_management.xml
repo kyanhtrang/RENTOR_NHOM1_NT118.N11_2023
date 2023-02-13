@@ -25,7 +25,7 @@
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_avatar_profile_input_fragment"
+                    android:id="@+id/img_avatar"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
                     android:src="@drawable/ic_person"
@@ -48,7 +48,7 @@
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_input_fragment"
+                    app:layout_constraintTop_toBottomOf="@+id/img_avatar"
                     tools:ignore="HardcodedText" />
 
                 <TextView
