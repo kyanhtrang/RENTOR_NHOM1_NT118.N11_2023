@@ -173,7 +173,6 @@ public class ProfileActivity extends AppCompatActivity {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
@@ -230,18 +229,20 @@ public class ProfileActivity extends AppCompatActivity {
                     });
         }
     }
-    private void updateinfo(){
-
+    private void updateinfo() {
         Map<String, Object> data = new HashMap<>();
-        data.put("username", fullname.getText());
-        data.put("address", address.getText());
-        data.put("city", city.getText());
-        data.put("birthday", dateButton.getText());
-        dtb_user.collection("Users").document(user.getUser_id()).update(data)
+        data.put("username", fullname.getText().toString());
+        data.put("address", address.getText().toString());
+        data.put("city", city.getText().toString());
+        data.put("birthday", dateButton.getText().toString());
+        data.put("avatarURL", downloadUrl);
+
+        dtb_user.collection("Users").document(user.getUser_id())
+                .update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                       Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -251,9 +252,8 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
 
-        uploadImage("UsersAvatar");
-
     }
+
     private void getinfo(){
         user.setUser_id(firebaseUser.getUid());
         dtb_user.collection("Users")
