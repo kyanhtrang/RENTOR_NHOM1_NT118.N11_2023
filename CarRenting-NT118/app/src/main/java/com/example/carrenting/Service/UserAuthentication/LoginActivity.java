@@ -25,6 +25,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnForget;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-    private String email, password;
+    private String email, password, username;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         init();
-
-
 
         overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
 
@@ -94,8 +94,38 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
-                            startActivity(intent);
+                            String uid = firebaseUser.getUid();
+                            FirebaseFirestore.getInstance().collection("Users").document(uid)
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                DocumentSnapshot document = task.getResult();
+                                                if (document.exists()) {
+                                                    // do something with the retrieved data
+                                                    String username = document.getString("username");
+                                                    String phonenumber = document.getString("phoneNumber");
+                                                    if (username != null && username.isEmpty()) {
+                                                        Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
+                                                        intent.putExtra("phone", phonenumber);
+                                                        startActivity(intent);
+                                                    }
+                                                    else
+                                                    {
+                                                        Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
+                                                        startActivity(intent);
+                                                    }
+
+                                                } else {
+                                                    // the document does not exist
+                                                }
+                                            } else {
+                                                // handle the error
+                                            }
+                                        }
+                                    });
+
                         } else {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thất bại.", Toast.LENGTH_SHORT).show();
                             progressDialog.cancel();

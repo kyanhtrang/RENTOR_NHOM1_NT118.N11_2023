@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.CCCDActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -92,7 +93,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(ValidatePhoneActivity.this, ProfileActivity.class);
+                                Intent intent = new Intent(ValidatePhoneActivity.this, CCCDActivity.class);
                                 startActivity(intent);
                             }
                         }

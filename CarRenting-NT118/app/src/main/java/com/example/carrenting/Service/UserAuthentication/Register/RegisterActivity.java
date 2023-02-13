@@ -194,7 +194,7 @@ public class RegisterActivity extends AppCompatActivity{
     private void createUser(){
         user = new User();
         user.setEmail(Email);
-        user.setUsername(Email.substring(0, Email.indexOf("@")));
+        user.setPhoneNumber(Phone);
         user.setUser_id(FirebaseAuth.getInstance().getUid());
         user.setPassword(Password);
 
@@ -211,7 +211,6 @@ public class RegisterActivity extends AppCompatActivity{
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    intent.putExtra("phone", Phone);
                     startActivity(intent);
 
                 }else{

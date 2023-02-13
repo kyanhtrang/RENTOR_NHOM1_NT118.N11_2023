@@ -276,8 +276,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 user.setEmail(document.get("email").toString());
                                 user.setAddress(document.get("address").toString());
                                 user.setCity(document.get("city").toString());
-                                if (document.get("avatarURL").toString()!=null) {
-                                    user.setAvatarURL(document.get("avatarURL").toString());
+                                user.setAvatarURL(document.get("avatarURL").toString());
+                                if (!document.get("avatarURL").toString().isEmpty()) {
                                     Picasso.get().load(user.getAvatarURL()).into(imgAvatar);
                                 }
                                 else {
