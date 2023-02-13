@@ -232,21 +232,25 @@ public class ProfileActivity extends AppCompatActivity {
                     });
         }
     }
-    private void updateinfo(){
-
+    private void updateinfo() {
         Map<String, Object> data = new HashMap<>();
-        data.put("username", fullname.getText());
-        data.put("address", address.getText());
-        data.put("city", city.getText());
-        data.put("birthday", dateButton.getText());
-        dtb_user.collection("Users").document(user.getUser_id()).update(data)
+        data.put("username", fullname.getText().toString());
+        data.put("address", address.getText().toString());
+        data.put("city", city.getText().toString());
+        data.put("birthday", dateButton.getText().toString());
+        if (downloadUrl!=null)
+        {
+            data.put("avatarURL", downloadUrl);
+        }
+
+        dtb_user.collection("Users").document(user.getUser_id())
+                .update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(ProfileActivity.this, ProfileManagement.class);
                         startActivity(intent);
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -255,7 +259,9 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
                     }
                 });
+
     }
+
     private void getinfo(){
         user.setUser_id(firebaseUser.getUid());
         dtb_user.collection("Users")
