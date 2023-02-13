@@ -72,6 +72,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="example.com"
+                    android:scheme="https"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".ActivityPages.TestActivity"
@@ -88,7 +96,10 @@
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
             android:name=".Service.UserAuthentication.Register.RegisterActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+
+        </activity>
+
         <activity
             android:name=".ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
@@ -100,5 +111,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>
+
 
 </manifest>

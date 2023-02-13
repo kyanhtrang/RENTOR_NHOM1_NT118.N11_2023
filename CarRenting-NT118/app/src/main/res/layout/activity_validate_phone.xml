@@ -146,7 +146,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnValidate"
+        android:id="@+id/btn_signup"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginStart="@dimen/_10sdp"
@@ -165,8 +165,8 @@
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:text="Tôi chưa nhận được mã OTP ?"
-        app:layout_constraintStart_toStartOf="@+id/btnValidate"
-        app:layout_constraintTop_toBottomOf="@+id/btnValidate"
+        app:layout_constraintStart_toStartOf="@+id/btn_signup"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -179,7 +179,7 @@
         android:text="Gửi lại"
         android:textColor="@color/sky"
         app:layout_constraintStart_toEndOf="@+id/textview"
-        app:layout_constraintTop_toBottomOf="@+id/btnValidate"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup"
         android:focusable="true"
         tools:ignore="HardcodedText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
