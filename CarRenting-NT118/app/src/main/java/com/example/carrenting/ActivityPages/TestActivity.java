@@ -53,18 +53,18 @@ public class TestActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                temp.setVehicle_id(document.getId());
-                                temp.setOwner_name(document.get("owner").toString());
-                                temp.setVehicle_name(document.get("name").toString());
-                                temp.setOwner_address(document.get("address").toString());
-                                temp.setVehicle_availability(document.get("schedule").toString());
-                                temp.setOwner_phone(document.get("phone").toString());
-
-                                textCarname.setText(temp.getVehicle_name());
-                                textOwner.setText(temp.getOwner_name());
-                                textlocation.setText(temp.getOwner_address());
-                                textphone.setText(temp.getOwner_phone());
-                                texttime.setText(temp.getVehicle_availability());
+//                                temp.setVehicle_id(document.getId());
+//                                temp.setOwner_name(document.get("owner").toString());
+//                                temp.setVehicle_name(document.get("name").toString());
+//                                temp.setOwner_address(document.get("address").toString());
+//                                temp.setVehicle_availability(document.get("schedule").toString());
+//                                temp.setOwner_phone(document.get("phone").toString());
+//
+//                                textCarname.setText(temp.getVehicle_name());
+//                                textOwner.setText(temp.getOwner_name());
+//                                textlocation.setText(temp.getOwner_address());
+//                                textphone.setText(temp.getOwner_phone());
+//                                texttime.setText(temp.getVehicle_availability());
 
                                 Toast.makeText(TestActivity.this, "Success", Toast.LENGTH_LONG).show();
                             }

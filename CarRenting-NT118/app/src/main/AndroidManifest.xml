@@ -64,6 +64,11 @@
         <activity
             android:name=".Service.Notification.NotificationActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".Service.Notification.OwnerNotificationActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Service.Vehicle.AddVehicleActivity"
             android:exported="false" />
