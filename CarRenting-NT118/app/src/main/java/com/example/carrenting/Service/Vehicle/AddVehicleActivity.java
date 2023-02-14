@@ -54,7 +54,7 @@ public class AddVehicleActivity extends AppCompatActivity {
     private CheckBox vehicle_available;
     private Button btnAdd;
     private ImageView vehicle_imgView;
-    private FirebaseFirestore dtb_vehicle, dtb_user;
+    private FirebaseFirestore dtb_vehicle, dtb_user, dtb_update;
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private String imageID;
@@ -85,6 +85,7 @@ public class AddVehicleActivity extends AppCompatActivity {
 
         dtb_vehicle = FirebaseFirestore.getInstance();
         dtb_user = FirebaseFirestore.getInstance();
+        dtb_update = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         user.setUser_id(firebaseUser.getUid());
     }
@@ -150,7 +151,8 @@ public class AddVehicleActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         vehicle.setVehicle_id(documentReference.getId());
-
+                                        Log.e("", vehicle.getVehicle_id());
+                                        updateData(vehicle.getVehicle_id());
                                         Intent intent = new Intent(AddVehicleActivity.this, OwnerMainActivity.class);
                                         startActivity(intent);
                                         toast("Thêm xe thành công");
@@ -168,6 +170,27 @@ public class AddVehicleActivity extends AppCompatActivity {
                         //
                         Toast.makeText(AddVehicleActivity.this, "Không thể lấy thông tin", Toast.LENGTH_LONG).show();
                     }
+                }
+
+                private void updateData(String vehicle_id) {
+                    Log.e("", vehicle_id);
+                    Map<String, Object> data = new HashMap<>();
+                    data.put("vehicle_id", vehicle_id);
+
+                    dtb_update.collection("Vehicles").document(vehicle_id)
+                            .update(data)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(AddVehicleActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AddVehicleActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
+                                }
+                            });
                 }
             });
     }
