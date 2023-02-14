@@ -1,24 +1,35 @@
 package com.example.carrenting.Model;
 
-import android.net.Uri;
-
 public class Vehicle {
     String vehicle_id, provider_id, provider_name;
-    String owner_name, owner_gmail, owner_phone, owner_address;
+    String owner_name, provider_gmail, provider_phone, provider_address;
     String vehicle_name, vehicle_price, vehicle_seats, vehicle_number, vehicle_availability;
     String vehicle_imageURL;
 
     public Vehicle() {
+        this.vehicle_id = "";
+        this.owner_name = "";
+        this.provider_id = "";
+        this.provider_name = "";
+        this.provider_gmail = "";
+        this.provider_phone = "";
+        this.provider_address = "";
+        this.vehicle_name = "";
+        this.vehicle_price = "";
+        this.vehicle_seats = "";
+        this.vehicle_number = "";
+        this.vehicle_availability = "";
+        this.vehicle_imageURL = "";
     }
 
-    public Vehicle(String vehicle_id, String provider_id, String provider_name, String owner_name, String owner_gmail, String owner_phone, String owner_address, String vehicle_name, String vehicle_price, String vehicle_seats, String vehicle_number, String vehicle_availability, String vehicle_imageURL) {
+    public Vehicle(String vehicle_id, String provider_id, String provider_name, String owner_name, String provider_gmail, String provider_phone, String provider_address, String vehicle_name, String vehicle_price, String vehicle_seats, String vehicle_number, String vehicle_availability, String vehicle_imageURL) {
         this.vehicle_id = vehicle_id;
+        this.owner_name = owner_name;
         this.provider_id = provider_id;
         this.provider_name = provider_name;
-        this.owner_name = owner_name;
-        this.owner_gmail = owner_gmail;
-        this.owner_phone = owner_phone;
-        this.owner_address = owner_address;
+        this.provider_gmail = provider_gmail;
+        this.provider_phone = provider_phone;
+        this.provider_address = provider_address;
         this.vehicle_name = vehicle_name;
         this.vehicle_price = vehicle_price;
         this.vehicle_seats = vehicle_seats;
@@ -59,28 +70,28 @@ public class Vehicle {
         this.owner_name = owner_name;
     }
 
-    public String getOwner_gmail() {
-        return owner_gmail;
+    public String getProvider_gmail() {
+        return provider_gmail;
     }
 
-    public void setOwner_gmail(String owner_gmail) {
-        this.owner_gmail = owner_gmail;
+    public void setProvider_gmail(String provider_gmail) {
+        this.provider_gmail = provider_gmail;
     }
 
-    public String getOwner_phone() {
-        return owner_phone;
+    public String getProvider_phone() {
+        return provider_phone;
     }
 
-    public void setOwner_phone(String owner_phone) {
-        this.owner_phone = owner_phone;
+    public void setProvider_phone(String provider_phone) {
+        this.provider_phone = provider_phone;
     }
 
-    public String getOwner_address() {
-        return owner_address;
+    public String getProvider_address() {
+        return provider_address;
     }
 
-    public void setOwner_address(String owner_address) {
-        this.owner_address = owner_address;
+    public void setProvider_address(String provider_address) {
+        this.provider_address = provider_address;
     }
 
     public String getVehicle_name() {

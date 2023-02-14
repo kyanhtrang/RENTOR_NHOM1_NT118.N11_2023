@@ -1,15 +1,7 @@
 package com.example.carrenting.Service.Notification;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,34 +9,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
-import com.example.carrenting.Model.Order;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.PrimitiveIterator;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -187,10 +165,10 @@ public class NotificationActivity extends AppCompatActivity {
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_availability(document.get("availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
-                                temp.setOwner_address(document.get("vehicle_address").toString());
+                                temp.setProvider_address(document.get("vehicle_address").toString());
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
-                                tv_DiaDiem.setText(temp.getOwner_address());
+                                tv_DiaDiem.setText(temp.getProvider_address());
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();

@@ -105,8 +105,6 @@ public class ProfileActivity extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btn_update);
         imgAvatar = findViewById(R.id.img_avatar_profile_input_fragment);
 
-
-
         //date of birth button
         initDatePicker();
         dateButton = findViewById(R.id.profile_input_dateofbirth);
