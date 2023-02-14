@@ -52,8 +52,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Toast.makeText(ForgotPasswordActivity.this, "Một email xác nhận đã được gửi tới địa chỉ email của bạn", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
-                                startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(ForgotPasswordActivity.this, "Không thể gửi email xác nhận", Toast.LENGTH_SHORT).show();
                             }
