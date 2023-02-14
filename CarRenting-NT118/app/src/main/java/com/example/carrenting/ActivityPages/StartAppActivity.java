@@ -93,7 +93,7 @@ public class StartAppActivity extends AppCompatActivity {
 
             userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {s
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
                         //Toast.makeText(StartAppActivity.this, "Success", Toast.LENGTH_LONG).show();
                         User user = task.getResult().toObject(User.class);

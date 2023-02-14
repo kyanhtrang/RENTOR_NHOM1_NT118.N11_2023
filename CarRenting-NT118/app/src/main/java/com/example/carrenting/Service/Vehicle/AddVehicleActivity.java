@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,9 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
+import com.example.carrenting.ActivityPages.ProfileActivity;
+import com.example.carrenting.Model.User;
+import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,7 +41,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -53,11 +54,12 @@ public class AddVehicleActivity extends AppCompatActivity {
     private CheckBox vehicle_available;
     private Button btnAdd;
     private ImageView vehicle_imgView;
-    private FirebaseFirestore dtb_vehicle;
+    private FirebaseFirestore dtb_vehicle, dtb_user;
     private FirebaseStorage storage;
-    private StorageReference storageRef;
-    private DocumentReference documentRef;
+    private StorageReference storageReference;
     private String imageID;
+    private User user = new User();
+    private Vehicle vehicle = new Vehicle();
 
     ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
@@ -71,7 +73,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                 }
             });
 
-    private void findViewByIds() {
+    private void init() {
         vehicle_name = findViewById(R.id.et_name);
         vehicle_seats = findViewById(R.id.et_seats);
         vehicle_price = findViewById(R.id.et_price);
@@ -80,6 +82,11 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle_available = findViewById(R.id.cb_availability);
         vehicle_imgView = findViewById(R.id.img_view);
         btnAdd = findViewById(R.id.btn_add);
+
+        dtb_vehicle = FirebaseFirestore.getInstance();
+        dtb_user = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
     }
 
 
@@ -87,7 +94,10 @@ public class AddVehicleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
-        findViewByIds();
+
+
+        init();
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,39 +122,54 @@ public class AddVehicleActivity extends AppCompatActivity {
 
     private void addVehicle() {
 
-        dtb_vehicle = FirebaseFirestore.getInstance();
-        String availability = vehicle_available.isChecked() ? "available" : "unavailable";
+        dtb_user.collection("Users")
+            .whereEqualTo("user_id", user.getUser_id())
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()){
+                        for (QueryDocumentSnapshot document : task.getResult()){
+                            vehicle.setProvider_id(document.get("user_id").toString());
+                            vehicle.setProvider_name(document.get("username").toString());
+                            vehicle.setProvider_address(document.get("address").toString() + " " + document.get("city").toString());
+                            vehicle.setProvider_gmail(document.get("email").toString());
+                            vehicle.setProvider_phone(document.get("phoneNumber").toString());
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                            vehicle.setVehicle_name(vehicle_name.getText().toString());
+                            vehicle.setVehicle_seats(vehicle_seats.getText().toString());
+                            vehicle.setVehicle_price(vehicle_price.getText().toString() + " VND");
+                            vehicle.setOwner_name(vehicle_owner.getText().toString());
+                            vehicle.setVehicle_number(vehicle_number.getText().toString());
+                            vehicle.setVehicle_availability("available");
+                            vehicle.setVehicle_imageURL(downloadUrl);
 
-        Map<String, Object> vehicle = new HashMap<>();
-        vehicle.put("vehicle_name", vehicle_name.getText().toString());
-        vehicle.put("seats", vehicle_seats.getText().toString());
-        vehicle.put("vehicle_price", vehicle_price.getText().toString() + " VND");
-        vehicle.put("owner_name", vehicle_owner.getText().toString());
-        vehicle.put("plate_number", vehicle_number.getText().toString());
-        vehicle.put("availability", availability);
-        vehicle.put("imageURL", downloadUrl);
-        vehicle.put("provider_id", firebaseUser.getUid());
-        vehicle.put("provider_name", firebaseUser.getDisplayName());
-        dtb_vehicle.collection("Vehicles")
-                .add(vehicle)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        DocumentReference documentRef = documentReference;
-                        documentId = documentReference.getId();
-                        Intent intent = new Intent(AddVehicleActivity.this, OwnerMainActivity.class);
-                        startActivity(intent);
-                        toast("Thêm xe thành công");
+                            dtb_vehicle.collection("Vehicles")
+                                .add(vehicle)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        vehicle.setVehicle_id(documentReference.getId());
+
+                                        Intent intent = new Intent(AddVehicleActivity.this, OwnerMainActivity.class);
+                                        startActivity(intent);
+                                        toast("Thêm xe thành công");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        toast("Thêm xe thất bại");
+                                    }
+                                });
+                        }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        toast("Thêm xe thất bại");
+                    else {
+                        //
+                        Toast.makeText(AddVehicleActivity.this, "Không thể lấy thông tin", Toast.LENGTH_LONG).show();
                     }
-                });
+                }
+            });
     }
 
     private boolean FullFill() {
@@ -164,14 +189,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         toast.show();
     }
 
-
     private void uploadImage() {
-
-        //Firebase
-        FirebaseStorage storage;
-        StorageReference storageReference;
-
-        // Initialize storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 

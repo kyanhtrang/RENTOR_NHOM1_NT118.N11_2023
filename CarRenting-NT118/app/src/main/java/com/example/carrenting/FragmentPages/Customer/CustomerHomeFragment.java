@@ -137,11 +137,11 @@ public class CustomerHomeFragment extends Fragment {
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
-                                temp.setVehicle_imageURL(document.get("imageURL").toString());
-                                temp.setVehicle_availability(document.get("availability").toString());
+                                temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
+                                /*temp.setVehicle_availability(document.get("availability").toString());
                                 temp.setVehicle_number(document.get("plate_number").toString());
                                 temp.setVehicle_seats(document.get("seats").toString());
-                                temp.setOwner_name(document.get("owner_name").toString());
+                                temp.setOwner_name(document.get("owner_name").toString());*/
                                 vehicles.add(temp);
                                 adapter.notifyDataSetChanged();
                             }

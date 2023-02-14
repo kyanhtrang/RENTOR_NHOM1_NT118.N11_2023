@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -56,14 +55,14 @@ public class TestActivity extends AppCompatActivity {
                                 temp.setVehicle_id(document.getId());
                                 temp.setOwner_name(document.get("owner").toString());
                                 temp.setVehicle_name(document.get("name").toString());
-                                temp.setOwner_address(document.get("address").toString());
+                                temp.setProvider_address(document.get("address").toString());
                                 temp.setVehicle_availability(document.get("schedule").toString());
-                                temp.setOwner_phone(document.get("phone").toString());
+                                temp.setProvider_phone(document.get("phone").toString());
 
                                 textCarname.setText(temp.getVehicle_name());
                                 textOwner.setText(temp.getOwner_name());
-                                textlocation.setText(temp.getOwner_address());
-                                textphone.setText(temp.getOwner_phone());
+                                textlocation.setText(temp.getProvider_address());
+                                textphone.setText(temp.getProvider_phone());
                                 texttime.setText(temp.getVehicle_availability());
 
                                 Toast.makeText(TestActivity.this, "Success", Toast.LENGTH_LONG).show();
