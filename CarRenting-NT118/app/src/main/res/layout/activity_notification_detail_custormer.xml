@@ -477,7 +477,6 @@
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/round_card"
-                    android:enabled="false"
                     android:text="XÁC NHẬN VÀ THANH TOÁN"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_18ssp"

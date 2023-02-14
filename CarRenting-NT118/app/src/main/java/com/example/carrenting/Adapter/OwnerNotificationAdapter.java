@@ -5,14 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Notification.NotificationActivity;
+import com.example.carrenting.Service.Notification.OwnerNotificationActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -21,7 +29,8 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
     Notification noti;
     ArrayList<Notification> mNoti;
     NotificationActivity notificationActivity;
-    String NotiIDAdapter="";
+    String NotiIDAdapter="", CustomerID, Name;
+    FirebaseFirestore dtb;
 
 
     public OwnerNotificationAdapter(OwnerNotificationsFragment mContext, ArrayList<Notification>mNoti){
@@ -41,13 +50,34 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
     public void onBindViewHolder(@NonNull NotificationAdapter.MyViewHolder holder, int position) {
 
         noti = mNoti.get(position);
-        holder.name.setText(noti.getName_Provide());
-        holder.status.setText(noti.getStatus());
+        dtb = FirebaseFirestore.getInstance();
+        CustomerID=noti.getCustomerID();
+        getuser(CustomerID);
+        holder.name.setText(Name);
+
+        holder.id.setText(noti.getNotiID());
+
+        if(noti.getStatus().equals( "Dang cho"))
+        {
+            holder.status.setText("Đang chờ");
+        }
+        else
+        {
+            if(noti.getStatus().equals( "Xac nhan"))
+            {
+                holder.status.setText("Nhà cung cấp đã xác nhận");
+            }
+            else
+            {
+                holder.status.setText("Nhà cung cấp không xác nhận");
+            }
+
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), NotificationActivity.class);
+                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), OwnerNotificationActivity.class);
                 intent.putExtra("NotiID", noti.getNotiID());
                 ownerNotificationsFragment.startActivity(intent);
             }
@@ -70,6 +100,28 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
 
 
         }
+    }
+    private void getuser(String Customerid){
+        dtb.collection("Users")
+                .whereEqualTo("user_id",Customerid)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                User user = new User();
+                                user.setUser_id(document.get("user_id").toString());
+                                user.setUsername(document.get("username").toString());
+
+                                Name=user.getUsername();
+                            }
+                        } else {
+
+                        }
+                    }
+                });
     }
 
 
