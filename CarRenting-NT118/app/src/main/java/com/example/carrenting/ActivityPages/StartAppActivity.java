@@ -25,6 +25,7 @@ import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Notification.NotificationActivity;
+import com.example.carrenting.Service.UserAuthentication.CCCDActivity;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
 import com.example.carrenting.Service.Vehicle.VehicleCardActivity;
@@ -92,7 +93,7 @@ public class StartAppActivity extends AppCompatActivity {
 
             userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {s
                     if(task.isSuccessful()){
                         //Toast.makeText(StartAppActivity.this, "Success", Toast.LENGTH_LONG).show();
                         User user = task.getResult().toObject(User.class);

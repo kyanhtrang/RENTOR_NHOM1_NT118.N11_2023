@@ -97,7 +97,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/behind_CCCD"
+                android:id="@+id/img_behind_CCCD"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_200sdp"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -108,7 +108,7 @@
                 tools:ignore="MissingConstraints" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnUpdate"
+                android:id="@+id/update_img"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/buttonSize"
                 android:layout_marginTop="@dimen/_30sdp"
@@ -123,7 +123,7 @@
                 android:layout_marginStart="@dimen/_75sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/_20sdp"
-                app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
+                app:layout_constraintTop_toBottomOf="@+id/img_behind_CCCD"
                 tools:ignore="HardcodedText,MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
