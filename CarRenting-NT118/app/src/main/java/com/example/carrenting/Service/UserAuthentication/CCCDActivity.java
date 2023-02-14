@@ -48,6 +48,7 @@ public class CCCDActivity extends AppCompatActivity {
     private Button btnUpdate;
     private FirebaseFirestore dtb_user;
     private FirebaseUser firebaseUser;
+    private User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class CCCDActivity extends AppCompatActivity {
 
         dtb_user = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
     }
 
     ActivityResultLauncher<String> pickFrontImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
@@ -221,10 +223,12 @@ public class CCCDActivity extends AppCompatActivity {
 
     private void SaveImageInFirestore()
     {
+        user.setCiCardFront(frontUrl);
+        user.setCiCardBehind(behindUrl);
 
         Map<String, Object> data = new HashMap<>();
-        data.put("ciCardFront", frontUrl);
-        data.put("ciCardBehind", behindUrl);
+        data.put("ciCardFront", user.getCiCardFront());
+        data.put("ciCardBehind", user.getCiCardBehind());
 
         dtb_user.collection("Users").document(firebaseUser.getUid())
                 .update(data)
