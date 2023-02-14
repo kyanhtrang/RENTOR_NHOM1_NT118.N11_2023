@@ -196,7 +196,6 @@ public class RegisterActivity extends AppCompatActivity{
         user.setEmail(Email);
         user.setPhoneNumber(Phone);
         user.setUser_id(FirebaseAuth.getInstance().getUid());
-        user.setPassword(Password);
 
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .build();

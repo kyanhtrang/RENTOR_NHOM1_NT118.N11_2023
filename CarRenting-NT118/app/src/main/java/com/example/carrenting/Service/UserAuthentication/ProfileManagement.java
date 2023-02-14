@@ -1,7 +1,6 @@
 package com.example.carrenting.Service.UserAuthentication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
 
@@ -38,7 +36,7 @@ public class ProfileManagement extends AppCompatActivity {
 
         imgAvatar = (ImageView) findViewById(R.id.img_avatar);
         imgFrontCCCD = (ImageView) findViewById(R.id.img_front_CCCD);
-        imgBehindCCCD = (ImageView) findViewById(R.id.behind_CCCD);
+        imgBehindCCCD = (ImageView) findViewById(R.id.img_behind_CCCD);
 
 
     }

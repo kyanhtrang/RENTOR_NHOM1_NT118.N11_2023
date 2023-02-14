@@ -10,14 +10,12 @@ public class User implements Parcelable{
     private String username;
     private String avatarURL;
 
-    private String dateOfBirth;
+    private String birthday;
 
     private String phoneNumber;
 
     private String address;
     private String city;
-
-    private String password;
 
     private String ciCardFront;
     private String ciCardBehind;
@@ -29,7 +27,7 @@ public class User implements Parcelable{
         user_id = "";
         username = "";
         avatarURL = "";
-        dateOfBirth = "";
+        birthday = "";
         phoneNumber = "";
         city = "";
         ciCardFront = "";
@@ -41,7 +39,7 @@ public class User implements Parcelable{
         user_id = in.readString();
         username = in.readString();
         avatarURL = in.readString();
-        dateOfBirth = in.readString();
+        birthday = in.readString();
         phoneNumber = in.readString();
         address = in.readString();
         city = in.readString();
@@ -113,12 +111,12 @@ public class User implements Parcelable{
         this.username = username;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getPhoneNumber() {
@@ -145,25 +143,16 @@ public class User implements Parcelable{
         this.city = city;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 
     public User(String email, String user_id, String username, String avatarURL, String dateOfBirth, String phoneNumber, String address, String city, String password, String ciCardFront, String ciCardBehind) {
         this.email = email;
         this.user_id = user_id;
         this.username = username;
         this.avatarURL = avatarURL;
-        this.dateOfBirth = dateOfBirth;
+        this.birthday = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.city = city;
-        this.password = password;
         this.ciCardFront = ciCardFront;
         this.ciCardBehind = ciCardBehind;
     }
@@ -190,7 +179,7 @@ public class User implements Parcelable{
         dest.writeString(user_id);
         dest.writeString(username);
         dest.writeString(avatarURL);
-        dest.writeString(dateOfBirth);
+        dest.writeString(birthday);
         dest.writeString(phoneNumber);
         dest.writeString(address);
         dest.writeString(city);

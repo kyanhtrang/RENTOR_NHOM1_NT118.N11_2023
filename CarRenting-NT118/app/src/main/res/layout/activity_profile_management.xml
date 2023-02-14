@@ -278,7 +278,7 @@
                     app:layout_constraintStart_toStartOf="@id/tv_behind_CCCD"
                     app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"/>
                 <ImageView
-                    android:id="@+id/behind_CCCD"
+                    android:id="@+id/img_behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -300,7 +300,7 @@
                     android:textSize="@dimen/_16ssp"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/tv_behind_CCCD"
-                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/img_behind_CCCD"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     tools:ignore="HardcodedText" />
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DocumentReference docRef;
     private EditText phonenumber, email, fullname, address, city;
     private User user = new User();
+
     ActivityResultLauncher<String> AvatarpickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
                 @Override
@@ -272,10 +273,12 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                user.setUsername(document.get("username").toString());
-                                user.setEmail(document.get("email").toString());
-                                user.setAddress(document.get("address").toString());
-                                user.setCity(document.get("city").toString());
+                                fullname.setText(document.get("username").toString());
+                                email.setText(document.get("email").toString());
+                                phonenumber.setText(document.get("phoneNumber").toString());
+                                address.setText(document.get("address").toString());
+                                city.setText(document.get("city").toString());
+
                                 user.setAvatarURL(document.get("avatarURL").toString());
                                 if (!document.get("avatarURL").toString().isEmpty()) {
                                     Picasso.get().load(user.getAvatarURL()).into(imgAvatar);

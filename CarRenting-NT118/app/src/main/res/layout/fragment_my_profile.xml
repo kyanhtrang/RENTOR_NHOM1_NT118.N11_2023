@@ -296,7 +296,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD" />
 
                 <ImageView
-                    android:id="@+id/behind_CCCD"
+                    android:id="@+id/img_behind_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="235dp"
                     android:layout_marginTop="8dp"
@@ -318,10 +318,10 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:fontFamily="@font/roboto_medium"
-                    app:layout_constraintEnd_toEndOf="@+id/behind_CCCD"
+                    app:layout_constraintEnd_toEndOf="@+id/img_behind_CCCD"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/behind_CCCD"
-                    app:layout_constraintTop_toBottomOf="@+id/behind_CCCD"
+                    app:layout_constraintStart_toStartOf="@+id/img_behind_CCCD"
+                    app:layout_constraintTop_toBottomOf="@+id/img_behind_CCCD"
                     app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
                     />
 
