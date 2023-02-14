@@ -46,6 +46,9 @@
             android:name=".ActivityPages.ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".Service.UserAuthentication.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityPages.OwnerMainActivity"
             android:exported="false">
             <meta-data
@@ -61,6 +64,11 @@
         <activity
             android:name=".Service.Notification.NotificationActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".Service.Notification.OwnerNotificationActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Service.Vehicle.AddVehicleActivity"
             android:exported="false" />

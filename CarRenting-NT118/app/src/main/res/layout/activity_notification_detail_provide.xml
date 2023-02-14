@@ -474,7 +474,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="40dp"
                     android:background="@drawable/round_card"
-                    android:enabled="false"
+
                     android:text="Xác nhận"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -490,7 +490,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginRight="40dp"
                     android:background="@drawable/round_card"
-                    android:enabled="false"
+
                     android:text="Hủy"
                     android:textColor="@color/white"
                     android:textSize="18sp"

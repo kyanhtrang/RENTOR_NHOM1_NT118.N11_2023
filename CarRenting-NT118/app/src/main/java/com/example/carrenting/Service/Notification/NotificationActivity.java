@@ -58,7 +58,7 @@ public class NotificationActivity extends AppCompatActivity {
 
                             Notification temp = new Notification();
                             temp.setNotiID(document.getId());
-                            temp.setProvideID(document.get("ProviderID").toString());
+                            temp.setProvideID(document.get("ProvideID").toString());
                             temp.setVehicle_id(document.get("vehicle_id").toString());
                             temp.setStatus(document.get("Status").toString());
                             ProvideID = temp.getProvideID();
@@ -66,13 +66,21 @@ public class NotificationActivity extends AppCompatActivity {
                             noti_status=temp.getStatus();
 
                             tv_id.setText(NotiID);
-                            if (noti_status == "Đang chờ"){
+                            if(noti_status.equals( "Dang cho"))
+                            {
                                 tv_status.setText("Đang chờ");
-                            } else {
-                                if (noti_status == "Đã xác nhận"){
+                            }
+                            else
+                            {
+                                if(noti_status.equals( "Xac nhan"))
+                                {
                                     tv_status.setText("Đã xác nhận");
                                 }
-                                else tv_status.setText("Không được xác nhận");
+                                else
+                                {
+                                    tv_status.setText("Không được xác nhận");
+                                }
+
                             }
                             getuser(ProvideID);
                             getvehicle(vehicle_id);
@@ -88,18 +96,22 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(noti_status=="đang chờ")
+                if(noti_status.equals( "Dang cho"))
                 {
                     Toast.makeText(NotificationActivity.this, "Nhà cung cấp chưa xác nhận", Toast.LENGTH_SHORT).show();
                 }
-                else if(noti_status=="Không được xác nhận")
-                {
-                    Toast.makeText(NotificationActivity.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
-                }
                 else
                 {
-                    // Payment
-                    Toast.makeText(NotificationActivity.this, "Thanh toan", Toast.LENGTH_SHORT).show();
+                    if(noti_status.equals( "Xac nhan"))
+                    {
+                        // Thanh Toán
+                        Toast.makeText(NotificationActivity.this, "Thanh toan", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(NotificationActivity.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -125,9 +137,9 @@ public class NotificationActivity extends AppCompatActivity {
 
                                 User user = new User();
                                 user.setUser_id(document.get("user_id").toString());
-                                user.setUsername(document.get("user_fullname").toString());
+                                user.setUsername(document.get("username").toString());
                                 user.setEmail(document.get("email").toString());
-                                user.setPhoneNumber(document.get("phonenumber").toString());
+                                user.setPhoneNumber(document.get("phoneNumber").toString());
                                 name.setText(user.getUsername());
                                 email.setText(user.getEmail());
                                 phoneNumber.setText(user.getPhoneNumber());
@@ -171,14 +183,16 @@ public class NotificationActivity extends AppCompatActivity {
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.noti_DiaDiem);
-        tv_Gia=findViewById(R.id.txtview_noti_price);
-        pickup=findViewById(R.id.noti_pickup);
-        dropoff=findViewById(R.id.noti_dropoff);
-        totalCost=findViewById(R.id.txtview_noti_totalCost);
-        tv_status=findViewById(R.id.txtview_noti_status);
+        tv_DiaDiem=findViewById(R.id.tv_noti_DiaDiem);
+
         btn_payment=findViewById(R.id.btn_noti_Payment);
         btn_back=findViewById(R.id.btn_noti_back);
+
+        tv_Gia=findViewById(R.id.txtview_noti_price);
+        pickup=findViewById(R.id.tv_noti_pickup);
+        dropoff=findViewById(R.id.tv_noti_dropoff);
+        totalCost=findViewById(R.id.txtview_noti_totalCost);
+        tv_status=findViewById(R.id.txtview_noti_status);
     }
 
 }

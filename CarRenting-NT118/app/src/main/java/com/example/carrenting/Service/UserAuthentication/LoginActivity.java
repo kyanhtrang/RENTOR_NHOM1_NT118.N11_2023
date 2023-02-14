@@ -20,6 +20,7 @@ import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
 import com.example.carrenting.Service.UserAuthentication.Register.ValidatePhoneActivity;
+import com.google.android.datatransport.runtime.dagger.multibindings.ElementsIntoSet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,20 +66,34 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnForget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                forgotPassword();
+                String iemail = inputEmail.getText().toString();
+
+                try {
+                    if(!iemail.isEmpty()){
+                    Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                    intent.putExtra("email", iemail);
+                    startActivity(intent);
+                }
+                else
+                {
+
+                        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                        startActivity(intent);
+                }
+                }catch (Exception ex)
+                {
+                    Log.e(TAG, ex.toString());
+                }
+
             }
         });
 
     }
-    private void forgotPassword() {
-        progressDialog.show();
-        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-        startActivity(intent);
-        progressDialog.dismiss();
-    }
+
     private void signIn(String email, String password){
         if (!validateForm()){
             return;

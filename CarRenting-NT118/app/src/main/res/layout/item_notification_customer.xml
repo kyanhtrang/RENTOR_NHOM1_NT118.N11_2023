@@ -6,8 +6,8 @@
     android:background="@drawable/vehicle_info_card"
     android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_name"
+    <TextView
+        android:id="@+id/tv_noti_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/bookingID"
+            android:id="@+id/tv_noti_ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
