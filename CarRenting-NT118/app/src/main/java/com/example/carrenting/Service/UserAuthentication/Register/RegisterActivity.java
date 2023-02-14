@@ -209,9 +209,7 @@ public class RegisterActivity extends AppCompatActivity{
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-
+                    finish();
                 }else{
                     View parentLayout = findViewById(android.R.id.content);
                     Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
