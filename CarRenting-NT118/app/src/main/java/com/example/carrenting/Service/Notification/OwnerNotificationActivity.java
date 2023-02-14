@@ -1,9 +1,12 @@
 package com.example.carrenting.Service.Notification;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +39,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
     Intent intent;
     String CustomerID, vehicle_id;
     String NotiID,noti_status;
+    ImageView vehicleImage;
     private Notification temp = new Notification();
 
 
@@ -68,6 +73,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 temp.setCustomerID(document.get("CustomerID").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 temp.setStatus(document.get("Status").toString());
+
                                 CustomerID = temp.getCustomerID();
                                 vehicle_id = temp.getVehicle_id();
                                 noti_status=temp.getStatus();
@@ -160,12 +166,27 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
-                                temp.setVehicle_availability(document.get("availability").toString());
+                                temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
+<<<<<<< Updated upstream
                                 temp.setOwner_address(document.get("vehicle_address").toString());
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getOwner_address());
+=======
+                                temp.setProvider_address(document.get("provider_address").toString());
+
+                                tv_BrandCar.setText(temp.getVehicle_name());
+                                tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
+                                tv_DiaDiem.setText(temp.getProvider_address());
+                                temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
+                                if (!document.get("vehicle_imageURL").toString().isEmpty()) {
+                                    Picasso.get().load(temp.getVehicle_imageURL()).into(vehicleImage);
+                                }
+                                else {
+                                    temp.setVehicle_imageURL("");
+                                }
+>>>>>>> Stashed changes
                             }
                         } else {
                             Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
@@ -233,5 +254,6 @@ public class OwnerNotificationActivity extends AppCompatActivity {
         btn_xacnhan=findViewById(R.id.btn_noti_XacNhan);
         btn_huy=findViewById(R.id.btn_noti_huy);
         btn_back=findViewById(R.id.btn_noti_back);
+        vehicleImage=findViewById(R.id.img_noti_car);
     }
 }

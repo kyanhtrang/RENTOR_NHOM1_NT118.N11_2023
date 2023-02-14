@@ -185,9 +185,14 @@ public class NotificationActivity extends AppCompatActivity {
                                 Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
-                                temp.setVehicle_availability(document.get("availability").toString());
+                                temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
+<<<<<<< Updated upstream
                                 temp.setOwner_address(document.get("vehicle_address").toString());
+=======
+                                temp.setProvider_address(document.get("provider_address").toString());
+
+>>>>>>> Stashed changes
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getOwner_address());
