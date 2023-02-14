@@ -8,20 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.carrenting.Adapter.VehicleAdapter;
-import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VehicleDetailActivity extends AppCompatActivity {
 
@@ -35,7 +30,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_fragment_home);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.vehicle_list);
+        recyclerView = (RecyclerView) findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
