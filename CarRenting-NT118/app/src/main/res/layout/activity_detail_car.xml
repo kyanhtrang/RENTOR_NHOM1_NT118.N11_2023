@@ -123,10 +123,8 @@
                 android:id="@+id/image_location"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-
                 android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_locate_white"
-
                 tools:ignore="ContentDescription" />
 
             <TextView
