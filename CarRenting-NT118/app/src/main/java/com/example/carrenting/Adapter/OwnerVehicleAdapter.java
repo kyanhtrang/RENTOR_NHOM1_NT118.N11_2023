@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;

@@ -2,14 +2,12 @@ package com.example.carrenting.Service.Vehicle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carrenting.ActivityPages.TestActivity;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
