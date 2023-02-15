@@ -168,15 +168,12 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
 
-                                temp.setProvider_address(document.get("vehicle_address").toString());
+
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
                                 temp.setProvider_address(document.get("provider_address").toString());
 
-                                tv_BrandCar.setText(temp.getVehicle_name());
-                                tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
-                                tv_DiaDiem.setText(temp.getProvider_address());
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                 if (!document.get("vehicle_imageURL").toString().isEmpty()) {
                                     Picasso.get().load(temp.getVehicle_imageURL()).into(vehicleImage);
