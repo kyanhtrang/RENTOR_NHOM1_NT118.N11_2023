@@ -6,223 +6,395 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/action_bar_container"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/sky"
-        android:elevation="@dimen/_4sdp"
+    <TextView
+        android:id="@+id/vehicleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông tin xe"
+        android:textColor="@color/sky"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UselessParent">
+        tools:ignore="HardcodedText" />
 
-        <ImageView
-            android:id="@+id/image_back"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_arrow_back"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Thông tin chi tiết"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_22sdp"
-            tools:ignore="HardcodedText" />
-
-    </RelativeLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/vehicle_info_card"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/action_bar_container">
+        app:layout_constraintTop_toBottomOf="@+id/vehicleTitle">
 
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_car"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            app:layout_constraintDimensionRatio="2:1.2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_car_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
+                <ImageView
+                    android:id="@+id/vehicle_img"
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            android:textColor="@color/black"
-            android:textSize="@dimen/_28ssp"
-            app:layout_constraintStart_toStartOf="@id/image_car"
-            app:layout_constraintTop_toBottomOf="@id/image_car"
-            tools:text="Max way(Hal)" />
+                <TextView
+                    android:id="@+id/vehicle_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3803A9F4"
+                    android:padding="15dp"
+                    android:text="500.000 VND"
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_368sdp"
-            android:background="@drawable/rectangle_quarter_radius_top_right"
-            android:backgroundTint="@color/sky"
-            app:layout_constraintTop_toBottomOf="@id/tv_car_name" />
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicle_img" />
 
-        <RelativeLayout
-            android:id="@+id/container_way"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/tv_car_name">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/vehicle_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vehicle_price">
 
-            <ImageView
-                android:id="@+id/image_way"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_send"
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
-                tools:ignore="ContentDescription" />
+                    <TextView
+                        android:id="@+id/notAvailableText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
 
-            <TextView
-                android:id="@+id/tv_way"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_toEndOf="@id/image_way"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_17ssp"
-                tools:ignore="RelativeOverlap"
-                tools:text="Tashkent Yunusobod r-n" />
+                        android:text="Not Available"
+                        android:textColor="#E90202"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </RelativeLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/vehicle_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vehicle_price">
 
-        <RelativeLayout
-            android:id="@+id/container_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/container_way">
+                    <ImageView
+                        android:id="@+id/checkMark"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
-            <ImageView
-                android:id="@+id/image_location"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_locate_white"
-                tools:ignore="ContentDescription" />
+                    <TextView
+                        android:id="@+id/availableText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Available"
+                        android:textColor="#3CFF00"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/checkMark"
+                        app:layout_constraintTop_toTopOf="@+id/checkMark"
+                        tools:ignore="HardcodedText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tv_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_toEndOf="@id/image_location"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_17ssp"
-                tools:ignore="RelativeOverlap"
-                tools:text="Mega planet,Macro " />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/vehicleSpecCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
 
-        </RelativeLayout>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicle_price">
 
-        <RelativeLayout
-            android:id="@+id/container_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/container_location">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/vehicle_info_card"
+                        android:paddingBottom="10dp">
 
-            <ImageView
-                android:id="@+id/image_phone"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_call_white"
-                tools:ignore="ContentDescription" />
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="0dp"
+                            android:layout_height="0.3dp"
+                            android:layout_marginTop="4dp"
+                            android:background="#707070"
 
-            <TextView
-                android:id="@+id/tv_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@id/image_phone"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_17ssp"
-                tools:ignore="RelativeOverlap"
-                tools:text="+998 90 714 41 02 " />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_name" />
 
-        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/owner_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white"
+                            android:text="Thông tin nhà cung cấp"
 
-        <RelativeLayout
-            android:id="@+id/container_schedule_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/container_phone">
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="HardcodedText" />
 
-            <ImageView
-                android:id="@+id/image_schedule_time"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                        <TextView
+                            android:id="@+id/owner_name"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
 
-                android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_date_white"
+                            android:text="Tên nhà cung cấp"
+                            app:layout_constraintStart_toStartOf="@+id/owner_title"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_title"
+                            tools:ignore="HardcodedText" />
 
-                tools:ignore="ContentDescription" />
+                        <TextView
+                            android:id="@+id/tv_owner_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="Địa chỉ"
+                            app:layout_constraintStart_toStartOf="@id/tv_owner_name"
 
-            <TextView
-                android:id="@+id/tv_schedule_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_toEndOf="@id/image_schedule_time"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_17ssp"
-                tools:ignore="RelativeOverlap"
-                tools:text="in 09:00 - 23:00" />
+                            app:layout_constraintBottom_toBottomOf="@+id/owner_address"
 
-        </RelativeLayout>
+                            app:layout_constraintTop_toTopOf="@+id/owner_address"
+                            tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_chon"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/round_card"
-            android:backgroundTint="@color/sunflower"
-            android:text="Chọn xe"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+                        <TextView
+                            android:id="@+id/tv_owner_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="0123456789"
+                            app:layout_constraintBottom_toBottomOf="@+id/owner_phone"
+                            app:layout_constraintStart_toStartOf="@+id/tv_owner_name"
+                            app:layout_constraintTop_toTopOf="@+id/owner_phone"
+                            tools:ignore="HardcodedText" />
 
-            tools:ignore="HardcodedText" />
+                        <TextView
+                            android:id="@+id/owner_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"
+                            android:text="Số điện thoại"
+                            app:layout_constraintStart_toStartOf="@+id/owner_name"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_address"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_owner_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="Tên nhà cung cấp"
+                            app:layout_constraintBottom_toBottomOf="@+id/owner_name"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="75dp"
+                            app:layout_constraintTop_toTopOf="@+id/owner_name"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/owner_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"
+                            android:text="Địa chỉ"
+
+                            app:layout_constraintStart_toStartOf="@+id/owner_name"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_name"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_owner_gmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/white"
+                            android:text="Gmail"
+                            app:layout_constraintStart_toStartOf="@+id/tv_owner_phone"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_owner_phone"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/owner_gmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"
+                            android:text="Gmail"
+                            app:layout_constraintStart_toStartOf="@+id/owner_phone"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_phone"
+                            tools:ignore="HardcodedText" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+
+                    app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
+                    app:layout_constraintStart_toStartOf="@+id/vehicleSpecCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleSpecCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:background="@drawable/vehicle_info_card">
+
+                        <View
+                            android:id="@+id/divider2"
+                            android:layout_width="0dp"
+                            android:layout_height="0.3dp"
+                            android:layout_marginTop="4dp"
+                            android:background="#707070"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicle_title" />
+
+                        <TextView
+                            android:id="@+id/vehicle_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white"
+                            android:text="Thông tin xe"
+
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/vehicle_name"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Tên xe"
+                            app:layout_constraintStart_toStartOf="@+id/vehicle_title"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicle_title"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_vehicle_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="Tên xe"
+                            android:layout_marginStart="175dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/vehicle_name"
+                            app:layout_constraintTop_toTopOf="@+id/vehicle_name"
+                            tools:ignore="HardcodedText" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/vehicle_number"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Biển số xe"
+                            app:layout_constraintStart_toStartOf="@+id/vehicle_name"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicle_name"
+                            tools:ignore="HardcodedText" />
 
+                        <TextView
+                            android:id="@+id/tv_vehicle_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="99C - 999"
+                            android:layout_marginStart="175dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/vehicle_number"
+                            app:layout_constraintTop_toTopOf="@+id/vehicle_number"
+                            tools:ignore="HardcodedText" />
+                        <TextView
+                            android:id="@+id/vehicle_seats"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Số chỗ"
+                            app:layout_constraintStart_toStartOf="@+id/vehicle_number"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicle_number"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/tv_vehicle_seats"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="7"
+                            android:layout_marginStart="175dp"
+                            android:layout_marginBottom="15dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/vehicle_seats"
+                            app:layout_constraintTop_toTopOf="@+id/vehicle_seats"
+                            tools:ignore="HardcodedText" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_book"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Book This Car"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/sunset"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                    app:layout_constraintStart_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

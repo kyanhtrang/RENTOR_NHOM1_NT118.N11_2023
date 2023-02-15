@@ -39,6 +39,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyV
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());
+        holder.provider.setText(vehicle.getProvider_name());
         Glide.with(ownerVehicleFragment.getActivity()).load(vehicle.getVehicle_imageURL()).into(holder.vehicleImage);
     }
 
@@ -49,12 +50,13 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyV
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, price;
+        TextView name, price, provider;
         ImageView vehicleImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.vehicle_name);
             price = itemView.findViewById(R.id.vehicle_price);
+            provider = itemView.findViewById(R.id.provider_name);
             vehicleImage = itemView.findViewById(R.id.img_vehicle);
         }
     }
