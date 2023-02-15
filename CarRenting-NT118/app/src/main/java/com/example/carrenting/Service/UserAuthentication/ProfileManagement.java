@@ -66,6 +66,7 @@ public class ProfileManagement extends AppCompatActivity {
                             tvCity.setText(document.get("city").toString());
                             tvBirthday.setText(document.get("birthday").toString());
                             user.setAvatarURL(document.get("avatarURL").toString());
+
                             if (!document.get("avatarURL").toString().isEmpty()) {
                                 Picasso.get().load(user.getAvatarURL()).into(imgAvatar);
                             }

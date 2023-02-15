@@ -40,7 +40,7 @@ public class VehicleCardActivity extends AppCompatActivity {
 
 
         vehicle_name = findViewById(R.id.vehicle_name);
-        vehicle_price = findViewById(R.id.vehicle_price);
+        vehicle_price = findViewById(R.id.tv_vehicle_price);
         imgCar = findViewById(R.id.img_vehicle);
 
         dtb = FirebaseFirestore.getInstance();

@@ -1,6 +1,6 @@
 package com.example.carrenting.Adapter;
 
-import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +14,9 @@ import com.bumptech.glide.Glide;
 import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHolder>{
 
@@ -44,6 +44,15 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         holder.price.setText(vehicle.getVehicle_price());
         holder.provider.setText(vehicle.getProvider_name());
         Glide.with(customerHomeFragment.getActivity()).load(vehicle.getVehicle_imageURL()).into(holder.vehicleImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(customerHomeFragment.getActivity(), VehicleDetailActivity.class);
+                intent.putExtra("vehicle_id", vehicle.getVehicle_id());
+                customerHomeFragment.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -58,7 +67,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.vehicle_name);
-            price = itemView.findViewById(R.id.vehicle_price);
+            price = itemView.findViewById(R.id.tv_vehicle_price);
             provider = itemView.findViewById(R.id.provider_name);
             vehicleImage = itemView.findViewById(R.id.img_vehicle);
         }
