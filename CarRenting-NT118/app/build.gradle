@@ -146,5 +146,9 @@ dependencies {
     //Picasso - Load Image From URL
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    // Notification
+    def core_version = "1.6.0"
+    implementation "androidx.core:core:$core_version"
+
 }
 apply plugin: 'com.google.gms.google-services'

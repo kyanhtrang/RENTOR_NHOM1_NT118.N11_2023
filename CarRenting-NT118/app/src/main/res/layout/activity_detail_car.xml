@@ -40,11 +40,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/vehicle_info_card"
         android:layout_margin="@dimen/_12sdp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/vehicle_info_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/action_bar_container">
-
 
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -55,8 +55,7 @@
             app:layout_constraintDimensionRatio="2:1.2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-       />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_car_name"
@@ -70,6 +69,7 @@
             app:layout_constraintStart_toStartOf="@id/image_car"
             app:layout_constraintTop_toBottomOf="@id/image_car"
             tools:text="Max way(Hal)" />
+
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
@@ -82,8 +82,8 @@
             android:id="@+id/container_way"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:padding="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/tv_car_name">
 
@@ -114,8 +114,8 @@
             android:id="@+id/container_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:padding="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/container_way">
 
@@ -145,8 +145,8 @@
             android:id="@+id/container_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:padding="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/container_location">
 
@@ -176,10 +176,10 @@
             android:id="@+id/container_schedule_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginHorizontal="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_8sdp"
+            android:padding="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/container_phone">
 
             <ImageView
@@ -207,17 +207,17 @@
         </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_chon"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_chon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="Chọn xe"
-            android:textSize="@dimen/_20ssp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/round_card"
             android:backgroundTint="@color/sunflower"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="@dimen/_30sdp"
+            android:text="Chọn xe"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
 
             tools:ignore="HardcodedText" />
 
