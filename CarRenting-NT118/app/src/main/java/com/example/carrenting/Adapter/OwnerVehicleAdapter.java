@@ -55,7 +55,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyV
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.vehicle_name);
-            price = itemView.findViewById(R.id.vehicle_price);
+            price = itemView.findViewById(R.id.tv_vehicle_price);
             provider = itemView.findViewById(R.id.provider_name);
             vehicleImage = itemView.findViewById(R.id.img_vehicle);
         }

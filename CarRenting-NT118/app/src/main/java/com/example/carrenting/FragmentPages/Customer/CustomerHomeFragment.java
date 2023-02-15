@@ -1,6 +1,7 @@
 package com.example.carrenting.FragmentPages.Customer;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.carrenting.Adapter.VehicleAdapter;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +43,7 @@ public class CustomerHomeFragment extends Fragment {
     VehicleAdapter adapter;
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
+    Vehicle temp = new Vehicle();
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +71,7 @@ public class CustomerHomeFragment extends Fragment {
         } catch (Exception exception){
             Toast.makeText(getContext(), "Exception", Toast.LENGTH_LONG).show();
         }
+
 
         return  mView;
     }
@@ -104,6 +108,7 @@ public class CustomerHomeFragment extends Fragment {
             }
         });
     }
+
     private void EventChangeListener()
     {
         dtb_vehicle.collection("Vehicles")
@@ -114,7 +119,6 @@ public class CustomerHomeFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
@@ -130,4 +134,6 @@ public class CustomerHomeFragment extends Fragment {
                     }
                 });
     }
+
+
 }
