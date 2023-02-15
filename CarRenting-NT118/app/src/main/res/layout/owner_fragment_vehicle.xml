@@ -35,14 +35,18 @@
         app:layout_constraintTop_toTopOf="@+id/tv_title"
         tools:ignore="HardcodedText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vehicle_list"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:padding="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:ignore="MissingConstraints"            >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:paddingBottom="@dimen/_75sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vehicle_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            tools:ignore="MissingConstraints">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
