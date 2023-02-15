@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,7 @@ public class NotificationActivity extends AppCompatActivity {
     Intent intent;
     String ProvideID, vehicle_id;
     String NotiID,noti_status;
+    ImageView vehicleImage;
 
     private CustomerNotificationFragment customerNotification;
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
@@ -169,6 +172,14 @@ public class NotificationActivity extends AppCompatActivity {
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
+
+                                temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
+                                if (!document.get("vehicle_imageURL").toString().isEmpty()) {
+                                    Picasso.get().load(temp.getVehicle_imageURL()).into(vehicleImage);
+                                }
+                                else {
+                                    temp.setVehicle_imageURL("");
+                                }
                             }
                         } else {
                             Toast.makeText(NotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
@@ -193,6 +204,7 @@ public class NotificationActivity extends AppCompatActivity {
         dropoff=findViewById(R.id.tv_noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         tv_status=findViewById(R.id.txtview_noti_status);
+        vehicleImage=findViewById(R.id.img_noti_car);
     }
 
 }
