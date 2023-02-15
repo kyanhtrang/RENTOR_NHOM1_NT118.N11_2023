@@ -33,10 +33,10 @@
                     android:text="CHI TIẾT ĐƠN HÀNG"
                     android:textColor="@color/sky"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/back"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/back" />
+                    app:layout_constraintTop_toTopOf="@+id/btn_noti_back" />
                 <TextView
                     android:id="@+id/tv"
                     android:layout_width="wrap_content"
@@ -97,14 +97,14 @@
                     android:textSize="20dp"
                     ></TextView>
 
+
                 <ImageView
-                    android:id="@+id/img_car"
+                    android:id="@+id/img_noti_car"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/status"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
-
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/status" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/provide_info"
@@ -117,7 +117,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_car">
+                    app:layout_constraintTop_toBottomOf="@+id/img_noti_car">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
