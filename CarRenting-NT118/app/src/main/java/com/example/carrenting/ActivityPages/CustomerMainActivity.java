@@ -1,9 +1,6 @@
 package com.example.carrenting.ActivityPages;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -15,11 +12,8 @@ import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
-import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class CustomerMainActivity extends AppCompatActivity{

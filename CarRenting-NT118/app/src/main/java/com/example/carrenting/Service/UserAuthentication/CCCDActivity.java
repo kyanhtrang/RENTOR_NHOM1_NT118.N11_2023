@@ -1,7 +1,5 @@
 package com.example.carrenting.Service.UserAuthentication;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -12,7 +10,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,8 +25,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -48,6 +43,7 @@ public class CCCDActivity extends AppCompatActivity {
     private Button btnUpdate;
     private FirebaseFirestore dtb_user;
     private FirebaseUser firebaseUser;
+    private User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +84,7 @@ public class CCCDActivity extends AppCompatActivity {
 
         dtb_user = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
     }
 
     ActivityResultLauncher<String> pickFrontImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
@@ -221,10 +218,12 @@ public class CCCDActivity extends AppCompatActivity {
 
     private void SaveImageInFirestore()
     {
+        user.setCiCardFront(frontUrl);
+        user.setCiCardBehind(behindUrl);
 
         Map<String, Object> data = new HashMap<>();
-        data.put("ciCardFront", frontUrl);
-        data.put("ciCardBehind", behindUrl);
+        data.put("ciCardFront", user.getCiCardFront());
+        data.put("ciCardBehind", user.getCiCardBehind());
 
         dtb_user.collection("Users").document(firebaseUser.getUid())
                 .update(data)

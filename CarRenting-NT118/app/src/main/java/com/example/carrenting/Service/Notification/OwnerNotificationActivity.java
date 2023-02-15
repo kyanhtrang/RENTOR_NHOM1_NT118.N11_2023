@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.Model.Notification;
@@ -168,12 +167,11 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
-<<<<<<< Updated upstream
-                                temp.setOwner_address(document.get("vehicle_address").toString());
+
+                                temp.setProvider_address(document.get("vehicle_address").toString());
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
-                                tv_DiaDiem.setText(temp.getOwner_address());
-=======
+                                tv_DiaDiem.setText(temp.getProvider_address());
                                 temp.setProvider_address(document.get("provider_address").toString());
 
                                 tv_BrandCar.setText(temp.getVehicle_name());
@@ -186,7 +184,6 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                                 else {
                                     temp.setVehicle_imageURL("");
                                 }
->>>>>>> Stashed changes
                             }
                         } else {
                             Toast.makeText(OwnerNotificationActivity.this, "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();

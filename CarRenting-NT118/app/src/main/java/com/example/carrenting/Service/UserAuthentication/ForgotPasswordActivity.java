@@ -5,15 +5,13 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,42 +20,45 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
-    private EditText edtEmailResign;
-    private TextView tvResendPassword;
-    private Button btnReturn, btnVerify;
+    private EditText inputEmail;
+    private Button btnContinue;
+    private FirebaseAuth mAuth;
+    private String email;
+
+    private void init()
+    {
+        inputEmail = findViewById(R.id.input_email);
+        btnContinue = findViewById(R.id.btn_continue);
+
+        mAuth = FirebaseAuth.getInstance();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
+        init();
+        inputEmail.setText(email);
 
-        edtEmailResign = findViewById(R.id.edtEmailResign);
-        tvResendPassword = findViewById(R.id.tvResendPassword);
-        btnReturn = findViewById(R.id.btnReturn);
-        btnVerify = findViewById(R.id.btnVerify);
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        btnReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                returnLogin();
+                mAuth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ForgotPasswordActivity.this, "Một email xác nhận đã được gửi tới địa chỉ email của bạn", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(ForgotPasswordActivity.this, "Không thể gửi email xác nhận", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
-        btnVerify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String strEmail = edtEmailResign.getText().toString().trim();
-                SendPassword(strEmail);
-                btnVerify.setVisibility(View.GONE);
-            }
-        });
-        tvResendPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnVerify.setVisibility(View.VISIBLE);
-            }
-        });
+
     }
 
     private void SendPassword(String strEmail) {
@@ -71,11 +72,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void returnLogin() {
-        Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
-        startActivity(intent);
     }
 
 }

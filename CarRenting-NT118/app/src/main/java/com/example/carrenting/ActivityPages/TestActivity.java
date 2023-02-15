@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -53,6 +52,7 @@ public class TestActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+
 //                                temp.setVehicle_id(document.getId());
 //                                temp.setOwner_name(document.get("owner").toString());
 //                                temp.setVehicle_name(document.get("name").toString());
@@ -65,6 +65,7 @@ public class TestActivity extends AppCompatActivity {
 //                                textlocation.setText(temp.getOwner_address());
 //                                textphone.setText(temp.getOwner_phone());
 //                                texttime.setText(temp.getVehicle_availability());
+
 
                                 Toast.makeText(TestActivity.this, "Success", Toast.LENGTH_LONG).show();
                             }

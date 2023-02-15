@@ -7,19 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
-import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
-import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.R;
-import com.example.carrenting.databinding.ActivityMainBinding;
 import com.example.carrenting.databinding.OwnerActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 public class OwnerMainActivity extends AppCompatActivity {
 

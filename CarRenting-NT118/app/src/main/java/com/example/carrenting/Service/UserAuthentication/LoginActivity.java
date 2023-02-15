@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
-import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
 import com.example.carrenting.Service.UserAuthentication.Register.ValidatePhoneActivity;
@@ -27,8 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
@@ -65,20 +61,34 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnForget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                forgotPassword();
+                String iemail = inputEmail.getText().toString();
+
+                try {
+                    if(!iemail.isEmpty()){
+                    Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                    intent.putExtra("email", iemail);
+                    startActivity(intent);
+                }
+                else
+                {
+
+                        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                        startActivity(intent);
+                }
+                }catch (Exception ex)
+                {
+                    Log.e(TAG, ex.toString());
+                }
+
             }
         });
 
     }
-    private void forgotPassword() {
-        progressDialog.show();
-        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-        startActivity(intent);
-        progressDialog.dismiss();
-    }
+
     private void signIn(String email, String password){
         if (!validateForm()){
             return;

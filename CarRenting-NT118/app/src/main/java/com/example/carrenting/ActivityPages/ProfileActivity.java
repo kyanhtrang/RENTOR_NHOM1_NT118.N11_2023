@@ -3,7 +3,6 @@ package com.example.carrenting.ActivityPages;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,12 +17,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.UserAuthentication.ProfileManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -105,13 +102,14 @@ public class ProfileActivity extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btn_update);
         imgAvatar = findViewById(R.id.img_avatar_profile_input_fragment);
 
-        dtb_user = FirebaseFirestore.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
         //date of birth button
         initDatePicker();
         dateButton = findViewById(R.id.profile_input_dateofbirth);
         dateButton.setText(getTodaysDate());
+
+        dtb_user = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
     }
     private String getTodaysDate()
     {
@@ -234,14 +232,21 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
     private void updateinfo() {
+        user.setUsername(fullname.getText().toString());
+        user.setAddress(address.getText().toString());
+        user.setCity(city.getText().toString());
+        user.setBirthday(dateButton.getText().toString());
+        user.setAvatarURL(downloadUrl);
+
         Map<String, Object> data = new HashMap<>();
-        data.put("username", fullname.getText().toString());
-        data.put("address", address.getText().toString());
-        data.put("city", city.getText().toString());
-        data.put("birthday", dateButton.getText().toString());
+        data.put("username", user.getUsername());
+        data.put("address", user.getAddress());
+        data.put("city", user.getCity());
+        data.put("birthday", user.getBirthday());
+
         if (downloadUrl!=null)
         {
-            data.put("avatarURL", downloadUrl);
+            data.put("avatarURL", user.getAvatarURL());
         }
 
         dtb_user.collection("Users").document(user.getUser_id())
@@ -250,7 +255,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ProfileActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ProfileActivity.this, ProfileManagement.class);
+                        Intent intent = new Intent(ProfileActivity.this, CustomerMainActivity.class);
                         startActivity(intent);
                     }
                 })
@@ -264,7 +269,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void getinfo(){
-        user.setUser_id(firebaseUser.getUid());
+
         dtb_user.collection("Users")
                 .whereEqualTo("user_id", user.getUser_id())
                 .get()
