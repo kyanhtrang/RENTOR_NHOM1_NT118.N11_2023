@@ -109,6 +109,18 @@
         </activity>
 
         <activity
+            android:name=".Service.Booking.RequestSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Service.Booking.WriteInformationCheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Service.Booking.ConfirmAndPaymentActivity"
+            android:exported="false" />
+
+
+
+        <activity
             android:name=".ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
 

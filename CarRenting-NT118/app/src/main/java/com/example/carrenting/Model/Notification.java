@@ -4,12 +4,10 @@ package com.example.carrenting.Model;
 public class Notification {
 
 
-    private String CustomerID;
-    private String ProvideID;
-    private String Name_Provide;
-    private String Name_customer;
-    private String Status;
-    private String NotiID;
+    private String customer_id;
+    private String provider_id;
+    private String status;
+    private String noti_id;
     private String vehicle_id;
 
     public Notification()
@@ -17,14 +15,44 @@ public class Notification {
 
     }
 
-    public Notification(String customerID, String provideID, String name_Provide, String name_customer, String status, String notiID, String vehicl_id) {
-        CustomerID = customerID;
-        ProvideID = provideID;
-        Name_Provide = name_Provide;
-        Name_customer = name_customer;
-        Status = status;
-        NotiID = notiID;
-        vehicle_id = vehicl_id;
+    public Notification(String customer_id, String provide_id, String status, String noti_id, String vehicle_id) {
+        this.customer_id = customer_id;
+        this.provider_id = provide_id;
+        this.status = status;
+        this.noti_id = noti_id;
+        this.vehicle_id = vehicle_id;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public String getProvider_id() {
+        return provider_id;
+    }
+
+    public void setProvider_id(String provide_id) {
+        this.provider_id = provide_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNoti_id() {
+        return noti_id;
+    }
+
+    public void setNoti_id(String noti_id) {
+        this.noti_id = noti_id;
     }
 
     public String getVehicle_id() {
@@ -33,63 +61,5 @@ public class Notification {
 
     public void setVehicle_id(String vehicle_id) {
         this.vehicle_id = vehicle_id;
-    }
-
-    public String getNotiID() {
-        return this.NotiID;
-    }
-
-    public void setNotiID(String notiID) {
-        NotiID = notiID;
-    }
-
-    public String getName_Provide() {
-        return Name_Provide;
-    }
-
-    public void setName_Provide(String name_Provide) {
-        Name_Provide = name_Provide;
-    }
-
-    public String getName_customer() {
-        return Name_customer;
-    }
-
-    public void setName_customer(String name_customer) {
-        Name_customer = name_customer;
-    }
-
-    public String getCustomerID() {
-        return CustomerID;
-    }
-
-    public void setCustomerID(String customerID) {
-        CustomerID = customerID;
-    }
-
-    public String getProvideID() {
-        return ProvideID;
-    }
-
-    public void setProvideID(String provideID) {
-        ProvideID = provideID;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
-    @Override
-    public String toString() {
-        return "Notification{" +
-                "Customer ID=" + CustomerID +
-                "Name Customer=" + Name_customer+ '\'' +
-                ", Provide ID='" + ProvideID + '\'' +
-                "Name Provide=" + Name_Provide + '\'' +
-                ", Status='" + Status + '\'' +
-                '}';
     }
 }

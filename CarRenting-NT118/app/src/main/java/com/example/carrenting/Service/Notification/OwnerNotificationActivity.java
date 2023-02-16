@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -46,6 +47,11 @@ public class OwnerNotificationActivity extends AppCompatActivity {
     private TextView tv_id,name,email,phoneNumber, tv_status;// Thông tin nhà cung cấp
     private TextView tv_BrandCar,tv_Gia,tv_DiaDiem,pickup,dropoff,totalCost;// Thông tin xe
     private Button btn_xacnhan,btn_huy,btn_back;
+
+//    APIService apiService;
+//
+//    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +65,7 @@ public class OwnerNotificationActivity extends AppCompatActivity {
 
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
-                .whereEqualTo("NotiID", NotiID)
+                .whereEqualTo("noti_id", NotiID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -68,12 +74,12 @@ public class OwnerNotificationActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
 //                            Notification temp = new Notification();
-                                temp.setNotiID(document.getId());
-                                temp.setCustomerID(document.get("CustomerID").toString());
+                                temp.setNoti_id(document.getId());
+                                temp.setCustomer_id(document.get("customer_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
-                                temp.setStatus(document.get("Status").toString());
+                                temp.setStatus(document.get("status").toString());
 
-                                CustomerID = temp.getCustomerID();
+                                CustomerID = temp.getCustomer_id();
                                 vehicle_id = temp.getVehicle_id();
                                 noti_status=temp.getStatus();
 
@@ -192,8 +198,8 @@ public class OwnerNotificationActivity extends AppCompatActivity {
     private void update_noti_huy(){
 
         Map<String, Object> data = new HashMap<>();
-        data.put("Status", "Khong xac nhan");
-        dtb.collection("Notification").document(temp.getNotiID()).update(data)
+        data.put("status", "Khong xac nhan");
+        dtb.collection("Notification").document(temp.getNoti_id()).update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -212,8 +218,8 @@ public class OwnerNotificationActivity extends AppCompatActivity {
     private void update_noti_xacnhan(){
 
         Map<String, Object> data = new HashMap<>();
-        data.put("Status", "Xac nhan");
-        dtb.collection("Notification").document(temp.getNotiID()).update(data)
+        data.put("status", "Xac nhan");
+        dtb.collection("Notification").document(temp.getNoti_id()).update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

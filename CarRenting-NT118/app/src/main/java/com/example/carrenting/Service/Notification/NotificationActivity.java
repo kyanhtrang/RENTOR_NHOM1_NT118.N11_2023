@@ -51,48 +51,48 @@ public class NotificationActivity extends AppCompatActivity {
 
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
-            .whereEqualTo("NotiID", NotiID)
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
+                .whereEqualTo("noti_id", NotiID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                            Notification temp = new Notification();
-                            temp.setNotiID(document.getId());
-                            temp.setProvideID(document.get("ProvideID").toString());
-                            temp.setVehicle_id(document.get("vehicle_id").toString());
-                            temp.setStatus(document.get("Status").toString());
-                            ProvideID = temp.getProvideID();
-                            vehicle_id = temp.getVehicle_id();
-                            noti_status=temp.getStatus();
+                                Notification temp = new Notification();
+                                temp.setNoti_id(document.getId());
+                                temp.setProvider_id(document.get("provider_id").toString());
+                                temp.setVehicle_id(document.get("vehicle_id").toString());
+                                temp.setStatus(document.get("status").toString());
+                                ProvideID = temp.getProvider_id();
+                                vehicle_id = temp.getVehicle_id();
+                                noti_status=temp.getStatus();
 
-                            tv_id.setText(NotiID);
-                            if(noti_status.equals( "Dang cho"))
-                            {
-                                tv_status.setText("Đang chờ");
-                            }
-                            else
-                            {
-                                if(noti_status.equals( "Xac nhan"))
+                                tv_id.setText(NotiID);
+                                if(noti_status.equals( "Dang cho"))
                                 {
-                                    tv_status.setText("Đã xác nhận");
+                                    tv_status.setText("Đang chờ");
                                 }
                                 else
                                 {
-                                    tv_status.setText("Không được xác nhận");
-                                }
+                                    if(noti_status.equals( "Xac nhan"))
+                                    {
+                                        tv_status.setText("Đã xác nhận");
+                                    }
+                                    else
+                                    {
+                                        tv_status.setText("Không được xác nhận");
+                                    }
 
+                                }
+                                getuser(ProvideID);
+                                getvehicle(vehicle_id);
                             }
-                            getuser(ProvideID);
-                            getvehicle(vehicle_id);
+                        } else {
+                            Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(NotificationActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                     }
-                }
-            });
+                });
 
 
         btn_payment.setOnClickListener(new View.OnClickListener() {

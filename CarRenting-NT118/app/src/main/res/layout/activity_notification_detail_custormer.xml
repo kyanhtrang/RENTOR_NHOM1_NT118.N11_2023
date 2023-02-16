@@ -48,7 +48,7 @@
 
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="130dp"
+                    android:layout_marginLeft="60dp"
                     />
                 <TextView
                     android:id="@+id/txtview_noti_id"
@@ -81,7 +81,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="Trạng thái: "
                     android:textColor="@color/sky"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="60dp"
                     android:textSize="20dp"
 
                     ></TextView>

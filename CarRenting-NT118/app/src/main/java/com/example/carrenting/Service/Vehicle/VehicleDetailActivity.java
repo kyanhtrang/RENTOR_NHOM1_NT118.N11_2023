@@ -54,6 +54,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(VehicleDetailActivity.this, WriteInformationCheckoutActivity.class);
+                i.putExtra("vehicle_id", vehicleID);
                 startActivity(i);
             }
         });
