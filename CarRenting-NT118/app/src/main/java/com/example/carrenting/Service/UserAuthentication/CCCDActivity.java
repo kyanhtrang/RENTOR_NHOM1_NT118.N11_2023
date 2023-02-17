@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.carrenting.ActivityPages.ProfileActivity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -231,7 +230,7 @@ public class CCCDActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(CCCDActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(CCCDActivity.this, ProfileActivity.class);
+                        Intent intent = new Intent(CCCDActivity.this, ProfileManagement.class);
                         startActivity(intent);
                     }
                 }).addOnFailureListener(new OnFailureListener() {

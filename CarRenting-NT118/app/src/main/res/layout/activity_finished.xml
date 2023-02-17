@@ -55,7 +55,7 @@
                 android:layout_marginTop="35dp"
                 android:text="Thường Nhà cung cấp sẽ phản hồi từ 1 đến 2 ngày."
                 android:textColor="@color/white"
-                android:textSize="24dp"
+                android:textSize="@dimen/_18ssp"
                 android:layout_marginStart="@dimen/_30sdp"
                 tools:ignore="HardcodedText" />
 
@@ -80,7 +80,7 @@
                 android:layout_height="@dimen/buttonSize"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:backgroundTint="@color/sunset"
                 android:text="Về trang chủ"
                 android:textColor="@color/white"

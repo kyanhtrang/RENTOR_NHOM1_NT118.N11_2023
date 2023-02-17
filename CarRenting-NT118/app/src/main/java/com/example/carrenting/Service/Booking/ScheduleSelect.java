@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class WriteInformationCheckoutActivity extends AppCompatActivity {
+public class ScheduleSelect extends AppCompatActivity {
     Button btn_request, btn_back;
     TextView NgayNhan, NgayTra;
     TextView GioNhan, GioTra;
@@ -69,7 +69,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_infor_booking_car);
+        setContentView(R.layout.activity_schedule_select);
 
         intent = getIntent();
 
@@ -100,7 +100,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                notify=true;
                 setNotiFirebase();
-                Intent Writeinfor=new Intent(WriteInformationCheckoutActivity.this, RequestSuccessActivity.class);
+                Intent Writeinfor=new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
                 startActivity(Writeinfor);
             }
         });
@@ -108,7 +108,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent Back_DetailCar=new Intent(WriteInformationCheckoutActivity.this, CarDetailActivity.class);
+                Intent Back_DetailCar=new Intent(ScheduleSelect.this, CarDetailActivity.class);
                 intent.putExtra("vehicle_id", vehicle_id);
                 startActivity(Back_DetailCar);
             }
@@ -138,7 +138,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
                                                 noti.setNoti_id(documentReference.getId());
                                                 Log.e("", noti.getNoti_id());
                                                 updateData(noti.getNoti_id());
-                                                Intent intent = new Intent(WriteInformationCheckoutActivity.this, RequestSuccessActivity.class);
+                                                Intent intent = new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
                                                 startActivity(intent);
                                                 toast("Thêm noti thành công");
                                             }
@@ -152,7 +152,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
 
                             }
                         } else {
-                            Toast.makeText(WriteInformationCheckoutActivity.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ScheduleSelect.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -167,13 +167,13 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(WriteInformationCheckoutActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ScheduleSelect.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(WriteInformationCheckoutActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ScheduleSelect.this, "Error updating document", Toast.LENGTH_LONG).show();
                                     }
                                 });
                     }
@@ -215,7 +215,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
 //                                public void onResponse(Call<MyReponse> call, Response<MyReponse> response) {
 //                                    if(response.code()==200){
 //                                        if(response.body().success!=1){
-//                                            Toast.makeText(WriteInformationCheckoutActivity.this,"Failed!",Toast.LENGTH_LONG);
+//                                            Toast.makeText(ScheduleSelect.this,"Failed!",Toast.LENGTH_LONG);
 //                                        }
 //                                    }
 //                                }
