@@ -89,10 +89,7 @@
                     android:scheme="https"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityPages.TestActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity android:name=".Service.Map.MapMainActivity" />
+
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity
             android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
