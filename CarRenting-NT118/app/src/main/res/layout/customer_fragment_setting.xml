@@ -27,10 +27,11 @@
                 android:layout_height="wrap_content"
                 android:text="Họ và tên"
                 android:textColor="@color/sunflower"
-                android:textSize="@dimen/_35sdp"
+                android:textSize="@dimen/_24sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/img_avatar"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 app:layout_constraintStart_toEndOf="@+id/img_avatar"
                 tools:ignore="HardcodedText,MissingConstraints" />
             <de.hdodenhof.circleimageview.CircleImageView
