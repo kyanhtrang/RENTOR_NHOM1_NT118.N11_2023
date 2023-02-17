@@ -5,9 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/vehicle_info_card"
     android:orientation="vertical"
-    android:layout_marginBottom="15dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginBottom="@dimen/_20sdp">
 
     <TextView
         android:id="@+id/tv_noti_name"
@@ -148,8 +146,7 @@
             android:backgroundTint="@color/sunset"
             android:layout_marginLeft="200dp"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/white"
-            ></androidx.appcompat.widget.AppCompatButton>
+            android:textColor="@color/white" />
     </LinearLayout>
 
 
