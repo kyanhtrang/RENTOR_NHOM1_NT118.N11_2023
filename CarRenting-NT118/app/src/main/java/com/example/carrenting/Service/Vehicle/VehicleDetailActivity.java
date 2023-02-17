@@ -42,7 +42,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_fragment_home);
+        setContentView(R.layout.activity_detail_car);
 
         Intent intent = getIntent();
         vehicleID = intent.getStringExtra("vehicle_id");
