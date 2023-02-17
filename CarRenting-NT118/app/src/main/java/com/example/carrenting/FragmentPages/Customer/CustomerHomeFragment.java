@@ -43,6 +43,7 @@ public class CustomerHomeFragment extends Fragment {
     VehicleAdapter adapter;
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
+    Vehicle temp = new Vehicle();
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -118,7 +119,6 @@ public class CustomerHomeFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
