@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginStart="35dp"
                 android:text="Gửi yêu cầu thành công!"
                 android:textColor="@color/sky"
                 android:textSize="@dimen/_24ssp"
@@ -52,11 +52,11 @@
                 android:id="@+id/tv_Traloi"
                 app:layout_constraintTop_toTopOf="@id/view2"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="35dp"
                 android:text="Thường Nhà cung cấp sẽ phản hồi từ 1 đến 2 ngày."
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20ssp"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:textSize="24dp"
+                android:layout_marginStart="@dimen/_30sdp"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -65,11 +65,31 @@
                 android:id="@+id/tv_ThongBao"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Traloi"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:text="Hãy thường xuyên kiểm tra thông báo để tiếp tục giao dịch."
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20ssp"
-                android:layout_marginStart="@dimen/_20sdp"
+
+                android:textSize="@dimen/_18ssp"
+                android:layout_marginStart="@dimen/_30sdp"
+                tools:ignore="HardcodedText" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_noti_Home"
+                android:layout_width="350dp"
+                android:layout_height="@dimen/buttonSize"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:layout_marginLeft="30dp"
+                android:backgroundTint="@color/sunset"
+                android:text="Về trang chủ"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ThongBao"
+
+
                 tools:ignore="HardcodedText" />
 
 

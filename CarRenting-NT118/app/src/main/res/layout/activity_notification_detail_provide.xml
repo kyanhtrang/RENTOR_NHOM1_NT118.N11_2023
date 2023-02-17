@@ -33,10 +33,10 @@
                     android:text="CHI TIẾT ĐƠN HÀNG"
                     android:textColor="@color/sky"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/back"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/back" />
+                    app:layout_constraintTop_toTopOf="@+id/btn_noti_back" />
                 <TextView
                     android:id="@+id/tv"
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
 
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="130dp"
+                    android:layout_marginLeft="60dp"
                     />
                 <TextView
                     android:id="@+id/txtview_noti_id"
@@ -81,7 +81,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="Trạng thái: "
                     android:textColor="@color/sky"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="60dp"
                     android:textSize="20dp"
 
                     ></TextView>

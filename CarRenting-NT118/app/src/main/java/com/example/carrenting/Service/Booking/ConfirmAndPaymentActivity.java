@@ -83,85 +83,85 @@ public class ConfirmAndPaymentActivity extends AppCompatActivity {
             }
         });
 
-            // handle CreateOrder
-            btn_payment.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.O)
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onClick(View v) {
-                    CreateOrder orderApi = new CreateOrder();
+        // handle CreateOrder
+        btn_payment.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                CreateOrder orderApi = new CreateOrder();
 
-                    try {
-                        JSONObject data = orderApi.createOrder(amount);
-                        Log.d("Amount", amount);
+                try {
+                    JSONObject data = orderApi.createOrder(amount);
+                    Log.d("Amount", amount);
 
-                        String code = data.getString("return_code");
-                        Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
+                    String code = data.getString("return_code");
+                    Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
 
-                        if (code.equals("1")) {
-                            txtToken.setText(data.getString("zp_trans_token"));
-                            IsDone();
-                        }
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if (code.equals("1")) {
+                        txtToken.setText(data.getString("zp_trans_token"));
+                        IsDone();
                     }
 
-                    String token = txtToken.getText().toString();
-                    ZaloPaySDK.getInstance().payOrder(ConfirmAndPaymentActivity.this, token, "demozpdk://app", new PayOrderListener() {
-                        @Override
-                        public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
-                                            .setTitle("Payment Success")
-                                            .setMessage(String.format("TransactionId: %s - TransToken: %s", transactionId, transToken))
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                }
-                                            })
-                                            .setNegativeButton("Cancel", null).show();
-                                }
-
-                            });
-                            IsLoading();
-                        }
-
-                        @Override
-                        public void onPaymentCanceled(String zpTransToken, String appTransID) {
-                            new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
-                                    .setTitle("User Cancel Payment")
-                                    .setMessage(String.format("zpTransToken: %s \n", zpTransToken))
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                        }
-                                    })
-                                    .setNegativeButton("Cancel", null).show();
-                        }
-
-                        @Override
-                        public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
-                            new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
-                                    .setTitle("Payment Fail")
-                                    .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), zpTransToken))
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                        }
-                                    })
-                                    .setNegativeButton("Cancel", null).show();
-                        }
-                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
-        }
 
-        @Override
-        protected void onNewIntent(Intent intent) {
-            super.onNewIntent(intent);
-            ZaloPaySDK.getInstance().onResult(intent);
-        }
+                String token = txtToken.getText().toString();
+                ZaloPaySDK.getInstance().payOrder(ConfirmAndPaymentActivity.this, token, "demozpdk://app", new PayOrderListener() {
+                    @Override
+                    public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
+                                        .setTitle("Payment Success")
+                                        .setMessage(String.format("TransactionId: %s - TransToken: %s", transactionId, transToken))
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        })
+                                        .setNegativeButton("Cancel", null).show();
+                            }
+
+                        });
+                        IsLoading();
+                    }
+
+                    @Override
+                    public void onPaymentCanceled(String zpTransToken, String appTransID) {
+                        new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
+                                .setTitle("User Cancel Payment")
+                                .setMessage(String.format("zpTransToken: %s \n", zpTransToken))
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null).show();
+                    }
+
+                    @Override
+                    public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
+                        new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
+                                .setTitle("Payment Fail")
+                                .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), zpTransToken))
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null).show();
+                    }
+                });
+            }
+        });
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ZaloPaySDK.getInstance().onResult(intent);
+    }
+}

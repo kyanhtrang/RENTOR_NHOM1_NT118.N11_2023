@@ -29,8 +29,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     CustomerNotificationFragment customerNotificationFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
-    NotificationActivity notificationActivity;
-    String NotiIDAdapter="";
+
     FirebaseFirestore dtb;
     String Name, ProvideID;
 
@@ -54,10 +53,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         noti = mNoti.get(position);
 
         dtb = FirebaseFirestore.getInstance();
-        ProvideID=noti.getProvideID();
+        ProvideID=noti.getProvider_id();
         getuser(ProvideID);
         holder.name.setText(Name);
-        holder.id.setText(noti.getNotiID());
+        holder.id.setText(noti.getNoti_id());
 
 
         if(noti.getStatus().equals( "Dang cho"))
@@ -80,7 +79,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(customerNotificationFragment.getActivity(), NotificationActivity.class);
-                intent.putExtra("NotiID", noti.getNotiID());
+                intent.putExtra("NotiID", noti.getNoti_id());
                 customerNotificationFragment.startActivity(intent);
             }
         });
@@ -129,10 +128,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 });
     }
 
-    public String getNotiID()
-    {
-        return NotiIDAdapter;
-    }
 
 
 

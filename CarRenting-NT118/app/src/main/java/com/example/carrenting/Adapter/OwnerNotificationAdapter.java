@@ -28,8 +28,8 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
     OwnerNotificationsFragment ownerNotificationsFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
-    NotificationActivity notificationActivity;
-    String NotiIDAdapter="", CustomerID, Name;
+
+    String CustomerID, Name;
     FirebaseFirestore dtb;
 
 
@@ -51,11 +51,11 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
 
         noti = mNoti.get(position);
         dtb = FirebaseFirestore.getInstance();
-        CustomerID=noti.getCustomerID();
+        CustomerID=noti.getCustomer_id();
         getuser(CustomerID);
         holder.name.setText(Name);
 
-        holder.id.setText(noti.getNotiID());
+        holder.id.setText(noti.getNoti_id());
 
         if(noti.getStatus().equals( "Dang cho"))
         {
@@ -78,7 +78,7 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ownerNotificationsFragment.getActivity(), OwnerNotificationActivity.class);
-                intent.putExtra("NotiID", noti.getNotiID());
+                intent.putExtra("NotiID", noti.getNoti_id());
                 ownerNotificationsFragment.startActivity(intent);
             }
         });
@@ -125,10 +125,6 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
     }
 
 
-    public String getNotiID()
-    {
-        return NotiIDAdapter;
-    }
 
 
 }

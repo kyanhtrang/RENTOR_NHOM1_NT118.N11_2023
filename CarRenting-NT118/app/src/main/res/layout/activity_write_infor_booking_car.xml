@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky">
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="0dp"
@@ -25,21 +25,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ĐIỀN THÔNG TIN GIAO DỊCH"
-                    android:textColor="@color/white"
+                    android:textColor="@color/sky"
                     android:textSize="@dimen/_18ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/back"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/back"
+                    app:layout_constraintTop_toTopOf="@+id/btn_noti_back"
                     tools:ignore="HardcodedText" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/back"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:background="@drawable/ic_arrow_back"
+                    android:id="@+id/btn_noti_back"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_arrow_back_blu"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +50,7 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_35sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    app:cardBackgroundColor="@color/sky"
+                    app:cardBackgroundColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/information">
@@ -58,7 +58,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
+                        android:background="@drawable/blue_round_button"
                         android:paddingBottom="@dimen/_10sdp">
 
                         <View
@@ -79,7 +79,7 @@
                             android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:text="Thời gian nhận, trả xe"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/_16ssp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -147,7 +147,7 @@
                                     android:paddingStart="@dimen/_5sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:textSize="@dimen/_14ssp"
-                                    android:textColor="@color/colorPrimary"
+                                    android:textColor="@color/white"
                                     tools:ignore="NestedWeights" />
                             </LinearLayout>
 
@@ -172,7 +172,7 @@
                                     android:layout_weight="1"
                                     android:textSize="@dimen/_14ssp"
                                     android:paddingStart="@dimen/_5sdp"
-                                    android:textColor="@color/colorPrimary"
+                                    android:textColor="@color/white"
                                     tools:ignore="NestedWeights,RtlSymmetry" />
                             </LinearLayout>
                         </LinearLayout>
@@ -249,7 +249,7 @@
                                     android:textSize="@dimen/_14ssp"
                                     android:paddingStart="@dimen/_5sdp"
                                     android:paddingEnd="@dimen/_10sdp"
-                                    android:textColor="@color/sky"
+                                    android:textColor="@color/white"
                                     tools:ignore="NestedWeights" />
                             </LinearLayout>
 
@@ -276,7 +276,7 @@
                                     android:paddingStart="@dimen/_5sdp"
 
                                     android:textSize="@dimen/_14ssp"
-                                    android:textColor="@color/colorPrimary"
+                                    android:textColor="@color/white"
                                     tools:ignore="NestedWeights,RtlSymmetry" />
                             </LinearLayout>
                         </LinearLayout>
@@ -293,7 +293,7 @@
                     android:layout_marginTop="@dimen/_225sdp"
                     android:background="@drawable/round_card"
                     android:text="Gủi yêu cầu thuê xe"
-                    android:textColor="@color/sky"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"

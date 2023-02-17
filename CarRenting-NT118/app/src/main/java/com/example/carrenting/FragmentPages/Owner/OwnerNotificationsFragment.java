@@ -75,7 +75,7 @@ public class OwnerNotificationsFragment extends Fragment {
     {
 
         dtb_noti.collection("Notification")
-                .whereEqualTo("ProvideID", current_user_id)
+                .whereEqualTo("provider_id", current_user_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -83,11 +83,11 @@ public class OwnerNotificationsFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Notification temp = new Notification();
-                                temp.setNotiID(document.get("NotiID").toString());
-                                temp.setProvideID(document.get("ProvideID").toString());
-                                temp.setCustomerID(document.get("CustomerID").toString());
-                                temp.setStatus(document.get("Status").toString());
-                                temp.setCustomerID(document.get("vehicle_id").toString());
+                                temp.setNoti_id(document.get("noti_id").toString());
+                                temp.setProvider_id(document.get("provider_id").toString());
+                                temp.setCustomer_id(document.get("customer_id").toString());
+                                temp.setStatus(document.get("status").toString());
+                                temp.setVehicle_id(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 ownerNotificationAdapter.notifyDataSetChanged();
                             }

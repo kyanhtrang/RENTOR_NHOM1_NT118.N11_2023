@@ -25,11 +25,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -38,7 +33,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class CustomerNotificationFragment extends Fragment {
@@ -80,13 +74,11 @@ public class CustomerNotificationFragment extends Fragment {
         EventChangeListener();
         return view;
     }
-
-
     private void EventChangeListener()
     {
 
         dtb_noti.collection("Notification")
-                .whereEqualTo("CustomerID", current_user_id)
+                .whereEqualTo("customer_id", current_user_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -94,11 +86,11 @@ public class CustomerNotificationFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Notification temp = new Notification();
-                                temp.setNotiID(document.get("NotiID").toString());
-                                temp.setProvideID(document.get("ProvideID").toString());
-                                temp.setCustomerID(document.get("CustomerID").toString());
-                                temp.setStatus(document.get("Status").toString());
-                                temp.setCustomerID(document.get("vehicle_id").toString());
+                                temp.setNoti_id(document.get("noti_id").toString());
+                                temp.setProvider_id(document.get("provider_id").toString());
+                                temp.setCustomer_id(document.get("customer_id").toString());
+                                temp.setStatus(document.get("status").toString());
+                                temp.setVehicle_id(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
                             }

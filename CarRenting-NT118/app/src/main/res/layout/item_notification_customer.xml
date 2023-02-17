@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/vehicle_info_card"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="15dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <TextView
         android:id="@+id/tv_noti_name"
@@ -13,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:textSize="23sp"
-        android:textColor="@color/sky"
+        android:textColor="@color/white"
         tools:text="Tên nhà cung cấp" />
 
     <LinearLayout
@@ -26,9 +29,10 @@
 
         <TextView
             android:id="@+id/bookingIDText"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/white"
+            android:textSize="17dp"
             android:text="ID:"
             android:textStyle="bold" />
 
@@ -37,10 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
+            android:textSize="18dp"
             android:paddingLeft="15dp"
             android:text="1234"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/white" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_pickupDate"
@@ -52,10 +56,12 @@
 
         <TextView
             android:id="@+id/pickupDateText"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Nhận xe" />
+            android:text="Nhận xe"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/pickupDate"
@@ -63,9 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
+            android:textSize="18dp"
+            android:textColor="@color/white"
             android:paddingLeft="15dp"
-            android:text="07:33 p.m January, 1 2020"
-            android:textColor="@color/colorPrimary" />
+            android:text="07:33 p.m January, 1 2020" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,9 +85,11 @@
 
         <TextView
             android:id="@+id/returnDateText"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="17dp"
+            android:textColor="@color/white"
             android:text="Trả xe" />
 
         <TextView
@@ -89,9 +98,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
+            android:textSize="18dp"
             android:paddingLeft="15dp"
             android:text="07:33 p.m January, 10 2020"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/white" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_TrangThai"
@@ -103,9 +113,11 @@
 
         <TextView
             android:id="@+id/tv_"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/white"
             android:text="Trạng thái:" />
 
         <TextView
@@ -114,9 +126,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
+            android:textSize="18dp"
             android:paddingLeft="15dp"
             android:text="Nhà cung cấp đã xác nhận"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/white" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_btn"
@@ -128,13 +141,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="150dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:id="@+id/btn_Detail"
             android:text="Chi tiết"
-            android:textSize="13dp"
-            android:background="@drawable/round_card"
+            android:textSize="16dp"
+            android:backgroundTint="@color/sunset"
             android:layout_marginLeft="200dp"
             android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
             ></androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
