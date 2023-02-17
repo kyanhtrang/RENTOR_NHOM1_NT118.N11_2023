@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Booking.WriteInformationCheckoutActivity;
+import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,7 +42,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_car);
+        setContentView(R.layout.customer_fragment_home);
 
         Intent intent = getIntent();
         vehicleID = intent.getStringExtra("vehicle_id");
@@ -50,6 +51,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
         init();
         getDetail();
 
+        FirebaseFirestore dtb = FirebaseFirestore.getInstance();
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
