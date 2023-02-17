@@ -89,13 +89,10 @@
                     android:scheme="https"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityPages.TestActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity android:name=".Service.Map.MapMainActivity" />
+
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity
-            android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
+            android:name=".Service.UserAuthentication.ValidatePhoneActivity"
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
@@ -103,7 +100,7 @@
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.UserAuthentication.Register.RegisterActivity"
+            android:name=".Service.UserAuthentication.RegisterActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar">
 
         </activity>

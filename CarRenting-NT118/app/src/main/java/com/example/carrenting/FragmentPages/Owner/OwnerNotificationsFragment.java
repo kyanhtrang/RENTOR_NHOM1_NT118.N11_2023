@@ -13,9 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.carrenting.Adapter.NotificationAdapter;
 import com.example.carrenting.Adapter.OwnerNotificationAdapter;
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Notification.NotificationActivity;
@@ -54,7 +52,7 @@ public class OwnerNotificationsFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
-        recyclerView = view.findViewById(R.id.frame_layout_noti);
+        recyclerView = view.findViewById(R.id.noti_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
