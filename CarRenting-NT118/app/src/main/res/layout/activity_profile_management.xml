@@ -241,6 +241,8 @@
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="@+id/birthday"
                     app:layout_constraintStart_toStartOf="@+id/tv_front_CCCD"
                     app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"/>
@@ -283,6 +285,8 @@
                     android:layout_height="@dimen/_200sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/input_image"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="@+id/birthday"
                     app:layout_constraintStart_toStartOf="@+id/tv_behind_CCCD"
                     app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"  />

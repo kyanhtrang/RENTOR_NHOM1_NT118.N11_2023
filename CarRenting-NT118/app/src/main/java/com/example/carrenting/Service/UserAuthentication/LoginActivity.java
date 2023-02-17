@@ -16,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
-import com.example.carrenting.Service.UserAuthentication.Register.ValidatePhoneActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
