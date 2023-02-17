@@ -28,10 +28,12 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CustomerSettingFragment extends Fragment {
 
     private TextView tvName;
-    private ImageView imgAvatar;
+    private CircleImageView imgAvatar;
 
     private FirebaseFirestore dtb_user;
     private FirebaseUser firebaseUser;
