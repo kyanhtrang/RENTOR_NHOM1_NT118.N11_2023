@@ -89,7 +89,11 @@
                     android:scheme="https"/>
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
 
+=======
+        <activity android:name=".Service.Map.MapMainActivity" />
+>>>>>>> Stashed changes
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity
             android:name=".Service.UserAuthentication.ValidatePhoneActivity"

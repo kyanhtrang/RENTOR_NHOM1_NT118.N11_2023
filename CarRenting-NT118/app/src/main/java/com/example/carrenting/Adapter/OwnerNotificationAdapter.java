@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +13,6 @@ import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.example.carrenting.Service.Notification.OwnerNotificationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder>{
+public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
     OwnerNotificationsFragment ownerNotificationsFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
@@ -41,13 +39,13 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<NotificationA
 
     @NonNull
     @Override
-    public NotificationAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ActivityAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ownerNotificationsFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
-        return new NotificationAdapter.MyViewHolder(v);
+        return new ActivityAdapter.MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotificationAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ActivityAdapter.MyViewHolder holder, int position) {
 
         noti = mNoti.get(position);
         dtb = FirebaseFirestore.getInstance();

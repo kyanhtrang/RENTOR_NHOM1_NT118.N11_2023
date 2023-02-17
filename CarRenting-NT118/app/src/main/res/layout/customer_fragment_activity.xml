@@ -19,73 +19,22 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         tools:ignore="HardcodedText,MissingConstraints" />
-    <LinearLayout
-        android:id="@+id/linear_history"
-        android:orientation="horizontal"
-        android:layout_width="@dimen/_75sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_title"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_history"
-            android:layout_marginStart="@dimen/_7sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            tools:ignore="InefficientWeight" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_weight="5"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
-            android:textAlignment="center"
-            android:textStyle="normal"
-            android:text="Lịch sử" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_wait"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:text="Đang chờ"
-        android:textSize="@dimen/_16ssp"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-    <Button
-        android:id="@+id/btn_rate"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:text="Đánh giá"
-        android:textSize="@dimen/_16ssp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/blue_round_border"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        tools:ignore="HardcodedText,MissingConstraints" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wait"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        tools:ignore="MissingConstraints">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:paddingBottom="@dimen/_100sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            tools:ignore="MissingConstraints">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

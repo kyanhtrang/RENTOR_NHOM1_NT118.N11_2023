@@ -6,12 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
+import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
@@ -24,9 +23,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder>{
+public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
 
-    CustomerNotificationFragment customerNotificationFragment;
+    CustomerActivityFragment customerActivityFragment;
     Notification noti;
     ArrayList<Notification> mNoti;
 
@@ -34,8 +33,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     String Name, ProvideID;
 
 
-    public NotificationAdapter(CustomerNotificationFragment mContext, ArrayList<Notification>mNoti){
-        this.customerNotificationFragment=mContext;
+    public ActivityAdapter(CustomerActivityFragment mContext, ArrayList<Notification>mNoti){
+        this.customerActivityFragment=mContext;
         this.mNoti=mNoti;
 
     }
@@ -43,7 +42,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(customerNotificationFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
+        View v = LayoutInflater.from(customerActivityFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -78,9 +77,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(customerNotificationFragment.getActivity(), NotificationActivity.class);
+                Intent intent = new Intent(customerActivityFragment.getActivity(), NotificationActivity.class);
                 intent.putExtra("NotiID", noti.getNoti_id());
-                customerNotificationFragment.startActivity(intent);
+                customerActivityFragment.startActivity(intent);
             }
         });
     }
