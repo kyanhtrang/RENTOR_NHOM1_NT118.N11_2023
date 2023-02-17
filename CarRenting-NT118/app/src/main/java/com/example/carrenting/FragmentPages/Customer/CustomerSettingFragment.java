@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +17,7 @@ import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
-import com.example.carrenting.Service.UserAuthentication.ProfileManagement;
+import com.example.carrenting.Service.UserAuthentication.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -94,7 +93,7 @@ public class CustomerSettingFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ProfileManagement.class);
+                Intent i = new Intent(getActivity(), UserProfile.class);
                 startActivity(i);
                 ((Activity) getActivity()).overridePendingTransition(0, 0);
             }

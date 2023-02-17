@@ -56,7 +56,6 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginBottom="@dimen/_24sdp"
-        android:fontFamily="@font/inter"
         android:gravity="center_horizontal"
         android:shadowDx="0"
         android:shadowDy="4"

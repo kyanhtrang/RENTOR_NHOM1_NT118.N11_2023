@@ -36,14 +36,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.ProfileManagement"
+            android:name=".Service.UserAuthentication.UserProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityPages.ProfileActivity"
+            android:name=".Service.UserAuthentication.ProfileManagement"
             android:exported="false" />
         <activity
             android:name=".Service.UserAuthentication.ForgotPasswordActivity"
@@ -90,9 +90,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Service.Map.MapMainActivity" />
-
-        <activity android:name=".Service.Map.ChatroomActivity" />
         <activity
             android:name=".Service.UserAuthentication.ValidatePhoneActivity"
             android:exported="false"
@@ -111,7 +108,7 @@
             android:name=".Service.Booking.RequestSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".Service.Booking.WriteInformationCheckoutActivity"
+            android:name=".Service.Booking.ScheduleSelect"
             android:exported="false" />
         <activity
             android:name=".Service.Booking.ConfirmAndPaymentActivity"

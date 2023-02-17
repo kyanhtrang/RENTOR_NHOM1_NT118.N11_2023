@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Booking.WriteInformationCheckoutActivity;
+import com.example.carrenting.Service.Booking.ScheduleSelect;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,7 +48,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(VehicleDetailActivity.this, WriteInformationCheckoutActivity.class);
+                Intent i = new Intent(VehicleDetailActivity.this, ScheduleSelect.class);
                 i.putExtra("vehicle_id", vehicleID);
                 startActivity(i);
             }

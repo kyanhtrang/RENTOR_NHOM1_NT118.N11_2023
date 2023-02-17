@@ -23,7 +23,7 @@ public class CarDetailActivity extends AppCompatActivity {
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it1=new Intent(CarDetailActivity.this, WriteInformationCheckoutActivity.class);
+                Intent it1=new Intent(CarDetailActivity.this, ScheduleSelect.class);
             }
         });
     }

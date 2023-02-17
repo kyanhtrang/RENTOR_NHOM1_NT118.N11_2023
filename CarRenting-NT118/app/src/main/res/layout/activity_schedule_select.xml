@@ -296,6 +296,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
+                    android:backgroundTint="@color/sunset"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rental_time"
