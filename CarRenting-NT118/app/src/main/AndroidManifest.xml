@@ -62,11 +62,11 @@
             android:name=".Service.Vehicle.VehicleDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Service.Notification.NotificationActivity"
+            android:name=".Service.Activity.CustomerActivityDetail"
             android:exported="false" />
 
         <activity
-            android:name=".Service.Notification.OwnerNotificationActivity"
+            android:name=".Service.Activity.OwnerActivityDetail"
             android:exported="false" />
 
         <activity
@@ -94,7 +94,7 @@
 
         <activity android:name=".Service.Map.ChatroomActivity" />
         <activity
-            android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
+            android:name=".Service.UserAuthentication.ValidatePhoneActivity"
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
@@ -102,7 +102,7 @@
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.UserAuthentication.Register.RegisterActivity"
+            android:name=".Service.UserAuthentication.RegisterActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar">
 
         </activity>
