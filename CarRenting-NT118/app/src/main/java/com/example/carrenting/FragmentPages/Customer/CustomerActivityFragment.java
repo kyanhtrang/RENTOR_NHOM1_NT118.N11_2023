@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.carrenting.Adapter.ActivityAdapter;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Notification.NotificationActivity;
+import com.example.carrenting.Service.Activity.CustomerActivityDetail;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,8 +38,6 @@ public class CustomerActivityFragment extends Fragment {
     String current_user_id;
     StorageReference storageReference;
     FirebaseAuth firebaseAuth;
-
-    NotificationActivity notificationActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

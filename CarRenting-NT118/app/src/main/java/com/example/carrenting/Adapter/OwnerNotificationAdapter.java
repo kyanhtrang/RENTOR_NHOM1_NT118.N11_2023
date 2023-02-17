@@ -13,7 +13,7 @@ import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Notification.OwnerNotificationActivity;
+import com.example.carrenting.Service.Activity.OwnerActivityDetail;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -75,7 +75,7 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapt
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), OwnerNotificationActivity.class);
+                Intent intent = new Intent(ownerNotificationsFragment.getActivity(), OwnerActivityDetail.class);
                 intent.putExtra("NotiID", noti.getNoti_id());
                 ownerNotificationsFragment.startActivity(intent);
             }

@@ -14,7 +14,7 @@ import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Notification.NotificationActivity;
+import com.example.carrenting.Service.Activity.CustomerActivityDetail;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -77,7 +77,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(customerActivityFragment.getActivity(), NotificationActivity.class);
+                Intent intent = new Intent(customerActivityFragment.getActivity(), CustomerActivityDetail.class);
                 intent.putExtra("NotiID", noti.getNoti_id());
                 customerActivityFragment.startActivity(intent);
             }
