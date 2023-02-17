@@ -6,9 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
 
 
 import androidx.annotation.NonNull;
@@ -18,15 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.Adapter.NotificationAdapter;
 import com.example.carrenting.Model.Notification;
-import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Notification.NotificationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -51,14 +45,8 @@ public class CustomerNotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        progressDialog = new ProgressDialog(getActivity());
-//        progressDialog.setCancelable(false);
-//        progressDialog.setMessage("Đang lấy dữ liệu...");
-//        progressDialog.show();
-        // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.customer_fragment_notification, container, false);
-        recyclerView = view.findViewById(R.id.frame_layout_noti);
+        recyclerView = view.findViewById(R.id.noti_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
