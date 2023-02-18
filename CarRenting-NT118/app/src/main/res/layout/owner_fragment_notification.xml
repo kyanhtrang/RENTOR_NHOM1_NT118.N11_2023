@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentPages.Owner.OwnerActivityFragment">
+    tools:context=".FragmentPages.Owner.OwnerNotificationsFragment">
+
     <TextView
         android:id="@+id/tv_title"
-        android:text="HOẠT ĐỘNG"
+        android:text="THÔNG BÁO"
         android:textStyle="bold"
         android:textSize="@dimen/_30ssp"
         android:textColor="@color/sunset"
@@ -23,14 +24,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        android:paddingBottom="@dimen/_100sdp">
+        android:paddingBottom="@dimen/_75sdp">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_15sdp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             tools:ignore="MissingConstraints">
         </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
