@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
@@ -191,9 +190,9 @@ public class CustomerActivityDetail extends AppCompatActivity {
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.tv_noti_DiaDiem);
+        tv_DiaDiem=findViewById(R.id.txt_checkout_address);
 
-        btn_payment=findViewById(R.id.btn_noti_Payment);
+        btn_payment=findViewById(R.id.btn_checkout_pay);
         btn_back=findViewById(R.id.btn_noti_back);
 
         tv_Gia=findViewById(R.id.txtview_noti_price);

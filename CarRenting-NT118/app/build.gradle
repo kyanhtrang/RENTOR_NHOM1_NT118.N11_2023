@@ -60,6 +60,7 @@ dependencies {
 
     implementation fileTree(dir: '..\\app\\src\\main\\java\\com\\example\\carrenting\\Service\\ZaloPay\\ZPDK', include: ['*.aar', '*.jar'], exclude: [])
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation files('..\\app\\src\\main\\java\\com\\example\\carrenting\\Service\\VNPay\\merchant-1.0.25.aar')
 
 
     testImplementation 'junit:junit:4.13.2'

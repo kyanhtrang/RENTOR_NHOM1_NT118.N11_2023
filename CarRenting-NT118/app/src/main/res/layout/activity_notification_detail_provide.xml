@@ -349,7 +349,7 @@
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/tv_noti_DiaDiem"
+                                    android:id="@+id/txt_checkout_address"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
