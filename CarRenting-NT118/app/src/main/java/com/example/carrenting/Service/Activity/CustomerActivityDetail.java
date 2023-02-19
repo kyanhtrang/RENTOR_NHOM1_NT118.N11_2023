@@ -120,12 +120,12 @@ public class CustomerActivityDetail extends AppCompatActivity {
         }
         else
         {
-            if(noti_status.equals("Thanh Toan"))
+            if(noti_status.equals("Thanh toan"))
             {
                 tv_status.setText("Đang chờ thanh toán");
             }
             else
-            if (noti_status.equals("Khong Xac Nhan"))
+            if (noti_status.equals("Khong xac nhan"))
             {
                 tv_status.setText("Nhà cung cấp không xác nhận");
             }
