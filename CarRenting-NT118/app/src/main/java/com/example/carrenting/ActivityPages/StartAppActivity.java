@@ -15,7 +15,6 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Booking.ConfirmAndPaymentActivity;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -87,7 +86,7 @@ public class StartAppActivity extends AppCompatActivity {
                     }
                 }
             });
-            Intent intent = new Intent(this, ConfirmAndPaymentActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
 

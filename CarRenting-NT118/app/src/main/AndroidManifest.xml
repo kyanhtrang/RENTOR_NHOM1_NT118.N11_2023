@@ -110,11 +110,6 @@
         <activity
             android:name=".Service.Booking.ScheduleSelect"
             android:exported="false" />
-        <activity
-            android:name=".Service.Booking.ConfirmAndPaymentActivity"
-            android:exported="false" />
-
-
 
         <activity
             android:name=".ActivityPages.CustomerMainActivity"

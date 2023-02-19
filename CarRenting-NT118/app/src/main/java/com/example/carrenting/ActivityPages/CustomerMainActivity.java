@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
