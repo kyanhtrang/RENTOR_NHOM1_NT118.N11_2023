@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky"
-    tools:context=".Service.Booking.ConfirmAndPaymentActivity">
+    android:background="@color/white">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +16,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -28,88 +28,84 @@
                     android:layout_height="wrap_content"
 
                     android:text="XÁC NHẬN THÔNG TIN"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_20ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/back"
+                    android:textColor="@color/sky"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/back" />
+                    app:layout_constraintTop_toTopOf="@+id/btn_noti_back" />
                 <TextView
                     android:id="@+id/tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:text="ID:"
-                    android:textColor="@color/Grey"
-                    android:textSize="@dimen/_20ssp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
-                    app:layout_constraintBottom_toTopOf="@id/img_car"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_id"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    tools:ignore="HardcodedText" />
+                    android:textColor="@color/sky"
+                    android:textSize="20sp"
 
+                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="60dp"
+                    />
                 <TextView
-                    android:id="@+id/tv_id"
+                    android:id="@+id/txtview_noti_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginStart="@dimen/_5sdp"
                     android:text="id giao dich"
-                    android:textColor="@color/Grey"
+                    android:textColor="@color/sky"
+                    android:textSize="20sp"
 
-                    android:textSize="@dimen/_20ssp"
-                    app:layout_constraintBottom_toTopOf="@id/img_car"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
-                    tools:ignore="HardcodedText" />
+                    app:layout_constraintLeft_toRightOf="@+id/tv"
+                    android:layout_marginLeft="10dp"
+                    />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/back"
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/ic_arrow_back"
+                    android:id="@+id/btn_noti_back"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_arrow_back_blu"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/img_car"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_220sdp"
-                    android:layout_marginTop="@dimen/_24sdp"
-                    app:layout_constraintTop_toTopOf="@+id/tv_id"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
 
+                <ImageView
+                    android:id="@+id/img_checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtview_noti_id" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/rental_time"
+                    android:id="@+id/provide_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
 
-                    app:cardBackgroundColor="@color/colorPrimary"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_car">
+                    app:layout_constraintTop_toBottomOf="@+id/img_checkout">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="@dimen/_10sdp">
+                        android:background="@drawable/blue_round_button"
+                        android:paddingBottom="10dp">
 
                         <View
                             android:id="@+id/divider"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:background="@color/sky"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
+                            android:layout_marginTop="4dp"
+                            android:background="#707070"
+                            android:scrollbarThumbHorizontal="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -119,20 +115,20 @@
                             android:id="@+id/driverDetailText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_24sdp"
-                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="4dp"
 
                             android:text="Thông tin nhà cung cấp"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_18ssp"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_16sdp"
-                            android:layout_marginEnd="@dimen/_24sdp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="24dp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/driverDetailText"
@@ -145,20 +141,19 @@
 
                                 <TextView
                                     android:id="@+id/nameText"
-                                    android:layout_width="@dimen/_50sdp"
+                                    android:layout_width="50dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Name:"
-                                    tools:ignore="HardcodedText" />
+                                    android:text="Họ Tên:"
+                                    android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/name"
-                                    android:layout_width="0dp"
+                                    android:id="@+id/txt_checkout_owner"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="@dimen/_14sdp"
                                     android:text="Mr. Jenil Vekaria"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -166,25 +161,24 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingTop="@dimen/_10sdp">
+                                android:paddingTop="10dp">
 
                                 <TextView
                                     android:id="@+id/emailText"
-                                    android:layout_width="@dimen/_50sdp"
+                                    android:layout_width="50dp"
                                     android:layout_height="wrap_content"
 
-                                    android:text="Email:"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white"
+                                    android:text="Email:" />
 
                                 <TextView
-                                    android:id="@+id/email"
-                                    android:layout_width="0dp"
+                                    android:id="@+id/txt_checkout_email"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="@dimen/_14sdp"
                                     android:text="jenilvekaria@yahoo.ca"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -192,25 +186,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingTop="@dimen/_10sdp">
+                                android:paddingTop="10dp">
 
                                 <TextView
                                     android:id="@+id/phoneNumberText"
-                                    android:layout_width="@dimen/_50sdp"
+                                    android:layout_width="50dp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Phone:"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white"
+                                    android:text="SĐT:" />
 
                                 <TextView
-                                    android:id="@+id/phoneNumber"
-                                    android:layout_width="0dp"
+                                    android:id="@+id/txt_checkout_phonenumber"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="@dimen/_14sdp"
                                     android:text="(416) 000 0000"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white" />
 
                             </LinearLayout>
 
@@ -222,29 +214,30 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/personalInfoText"
+                    android:id="@+id/Vehicle_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_24sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_24sdp"
-                    app:cardBackgroundColor="@color/colorPrimary"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rental_time">
+                    app:layout_constraintTop_toBottomOf="@+id/provide_info">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="@dimen/_10sdp">
+                        android:background="@drawable/blue_round_button"
+                        android:paddingBottom="10dp"
+                        android:id="@+id/layout_noti_Vehicle">
 
                         <View
                             android:id="@+id/divider1"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:background="@color/sky"
+                            android:layout_marginTop="4dp"
+                            android:background="#707070"
                             android:scrollbarThumbHorizontal="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -256,22 +249,21 @@
                             android:id="@+id/tv_InforCar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_24sdp"
-                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="4dp"
 
                             android:text="Thông tin xe"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/_18ssp"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="HardcodedText" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
                             android:id="@+id/linearLayout"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginEnd="@dimen/_24sdp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="24dp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="@+id/divider1"
                             app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
@@ -281,112 +273,110 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingBottom="@dimen/_5sdp">
+                                android:paddingBottom="5dp">
 
                                 <TextView
-                                    android:id="@+id/tv_BrandCar"
+                                    android:id="@+id/txt_checkout_vehicle"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-
-                                    android:text="2020 Toyota Avalon"
-                                    android:textColor="@color/colorPrimary"
-                                    android:textSize="@dimen/_18ssp"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white"
+                                    android:text="Bugatti Chiron"
+                                    android:textSize="18sp" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginBottom="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/rateText"
-                                    android:layout_width="@dimen/_75sdp"
+                                    android:id="@+id/gia"
+                                    android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Giá:"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white"
+                                    android:text="Giá:" />
 
                                 <TextView
-                                    android:id="@+id/rate"
+                                    android:id="@+id/txt_checkout_price"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="15dp"
                                     android:text="100.000(VNĐ)/Ngày"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginBottom="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/totalDaysText"
-                                    android:layout_width="@dimen/_75sdp"
+                                    android:id="@+id/noti_DiaDiem"
+                                    android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Địa điểm:"
-                                    tools:ignore="HardcodedText" />
+                                    android:text="Nơi đỗ xe:"
+
+                                    android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/totalDays"
+                                    android:id="@+id/txt_checkout_address"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="15dp"
                                     android:text="Đà Lạt"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white"/>
                             </LinearLayout>
 
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginBottom="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/pickupText"
-                                    android:layout_width="@dimen/_75sdp"
+                                    android:id="@+id/noti_pickup"
+                                    android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Nhận xe:"
-                                    tools:ignore="HardcodedText" />
+                                    android:text="Ngày nhận:"
+
+                                    android:textColor="@color/white" />
                                 <TextView
-                                    android:id="@+id/pickup"
+                                    android:id="@+id/txt_checkout_pickup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="15dp"
                                     android:text="11:00PM\t\tWeb, Dec 05"
-                                    android:textColor="@color/colorPrimary"
+                                    android:textColor="@color/white"
                                     tools:layout_editor_absoluteX="125dp"
                                     tools:layout_editor_absoluteY="269dp"
-                                    tools:ignore="HardcodedText" />
+                                    />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginBottom="5dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/dropoffText"
-                                    android:layout_width="@dimen/_75sdp"
+                                    android:id="@+id/noti_dropoff"
+                                    android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Trả xe:"
-                                    tools:ignore="HardcodedText" />
+                                    android:text="Ngày trả:"
+
+                                    android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/dropoff"
+                                    android:id="@+id/txt_checkout_dropoff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:paddingLeft="15dp"
                                     android:text="03:00PM\t\tWeb, Dec 17"
-                                    android:textColor="@color/colorPrimary"
-                                    tools:ignore="HardcodedText" />
+                                    android:textColor="@color/white" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -394,9 +384,9 @@
                             android:id="@+id/divider2"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:background="@color/sky"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
+                            android:layout_marginTop="8dp"
+                            android:background="#707070"
+                            android:scrollbarThumbHorizontal="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -405,8 +395,8 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginEnd="@dimen/_24sdp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="24dp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
@@ -419,65 +409,52 @@
                                 android:orientation="horizontal">
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:layout_marginBottom="5dp"
                                     android:layout_weight="1"
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/totalText"
+                                        android:id="@+id/txtview_noti_totalText"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Tổng tiền cần thanh toán:"
-                                        tools:ignore="HardcodedText,NestedWeights" />
+                                        android:textColor="@color/white"
+                                        android:text="Tổng tiền cần thanh toán:" />
 
                                     <TextView
-                                        android:id="@+id/totalCost"
+                                        android:id="@+id/txt_checkout_totalcost"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-
-                                        android:text="1.200.000 VNĐ"
-                                        android:textColor="@color/sky"
-                                        android:textSize="@dimen/_24ssp"
-                                        tools:ignore="HardcodedText" />
+                                        android:textColor="@color/white"
+                                        android:textSize="24sp"
+                                        android:text="1.200.000 VNĐ"/>
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_Payment"
-                    android:layout_width="0dp"
+                    android:id="@+id/btn_checkout_pay"
+                    android:layout_width="@dimen/_260sdp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_16sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:background="@drawable/round_card"
-                    android:enabled="false"
                     android:text="XÁC NHẬN VÀ THANH TOÁN"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_18ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
-                    app:layout_constraintStart_toStartOf="@+id/personalInfoText"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"
-                    tools:ignore="HardcodedText" />
-                <TextView
-                    android:id="@+id/txtToken"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_30sdp"
-                    android:layout_marginBottom="@dimen/_30sdp"
-                    android:textColor="@color/sunflower"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
-                    app:layout_constraintStart_toStartOf="@+id/personalInfoText"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"  />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Vehicle_info"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

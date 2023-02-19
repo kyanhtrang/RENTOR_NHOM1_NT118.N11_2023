@@ -2,6 +2,7 @@ package com.example.carrenting.Service.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,17 +12,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+import com.vnpay.authentication.VNP_AuthenticationActivity;
+import com.vnpay.authentication.VNP_SdkCompletedCallback;
 
 import java.util.ArrayList;
 
@@ -29,10 +32,11 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
     FirebaseFirestore dtb;
     Intent intent;
-    String ProvideID, vehicle_id;
+    String ProvideID, vehicle_id, ownername, owneremail, ownerphone, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
     String NotiID,noti_status;
     ImageView vehicleImage;
-
+    String vnp_url, vnp_tmnCode;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();
     private TextView tv_id,name,email,phoneNumber, tv_status;// Thông tin nhà cung cấp
     private TextView tv_BrandCar,tv_Gia,tv_DiaDiem,pickup,dropoff,totalCost;// Thông tin xe
@@ -76,6 +80,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                     if(noti_status.equals( "Xac nhan"))
                                     {
                                         tv_status.setText("Đã xác nhận");
+                                        btn_payment.setVisibility(View.VISIBLE);
                                     }
                                     else
                                     {
@@ -85,6 +90,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 }
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
+                                setstatus();
                             }
                         } else {
                             Toast.makeText(CustomerActivityDetail.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -96,24 +102,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(noti_status.equals( "Dang cho"))
-                {
-                    Toast.makeText(CustomerActivityDetail.this, "Nhà cung cấp chưa xác nhận", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    if(noti_status.equals( "Xac nhan"))
-                    {
-                        // Thanh Toán
-                        Toast.makeText(CustomerActivityDetail.this, "Thanh toan", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        Toast.makeText(CustomerActivityDetail.this, "Nhà cung cấp không xác nhận", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
+                openSdk();
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +113,28 @@ public class CustomerActivityDetail extends AppCompatActivity {
         });
 
     }
+    private void setstatus(){
+        if(noti_status.equals( "Dang cho"))
+        {
+            tv_status.setText("Nhà cung cấp chưa xác nhận");
+        }
+        else
+        {
+            if(noti_status.equals("Thanh toan"))
+            {
+                tv_status.setText("Đang chờ thanh toán");
+            }
+            else
+            if (noti_status.equals("Khong xac nhan"))
+            {
+                tv_status.setText("Nhà cung cấp không xác nhận");
+            }
+            else{
+                tv_status.setText("Đã xác nhận thuê xe");
+            }
 
+        }
+    }
     private void getuser(String ProvideID){
         dtb.collection("Users")
                 .whereEqualTo("user_id", ProvideID)
@@ -136,10 +146,13 @@ public class CustomerActivityDetail extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 User user = new User();
+                                ownername = document.get("username").toString();
+                                owneremail = document.get("email").toString();
+                                ownerphone = document.get("phoneNumber").toString();
                                 user.setUser_id(document.get("user_id").toString());
-                                user.setUsername(document.get("username").toString());
-                                user.setEmail(document.get("email").toString());
-                                user.setPhoneNumber(document.get("phoneNumber").toString());
+                                user.setUsername(ownername);
+                                user.setEmail(owneremail);
+                                user.setPhoneNumber(ownerphone);
                                 name.setText(user.getUsername());
                                 email.setText(user.getEmail());
                                 phoneNumber.setText(user.getPhoneNumber());
@@ -162,10 +175,15 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
                                 Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
-                                temp.setVehicle_name(document.get("vehicle_name").toString());
+
+                                vehiclename = document.get("vehicle_name").toString();
+                                vehicleprice = document.get("vehicle_price").toString();
+                                vehicleaddress = document.get("provider_address").toString();
+
+                                temp.setVehicle_name(vehiclename);
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
-                                temp.setVehicle_price(document.get("vehicle_price").toString());
-                                temp.setProvider_address(document.get("provider_address").toString());
+                                temp.setVehicle_price(vehicleprice);
+                                temp.setProvider_address(vehicleaddress);
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
@@ -184,24 +202,64 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
+    private void openSdk(){
+        db = FirebaseFirestore.getInstance();
+        db.collection("VNPayCredentials")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot info : task.getResult()){
+                                vnp_url = info.get("vnp_Url").toString();
+                                vnp_tmnCode = info.get("vnp_TmnCode").toString();
+                                vnpparam();
+                                VNP_AuthenticationActivity.setSdkCompletedCallback(new VNP_SdkCompletedCallback() {
+                                    @Override
+                                    public void sdkAction(String s) {
+                                        Log.wtf("Payment", "action" + s);
+                                    }});
+                            }
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("Payment", e.toString());
+                        return;
+                    }
+                });
 
+    }
+    private void vnpparam(){
+        Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
+        intent.putExtra("url",vnp_url);
+        intent.putExtra("tmp_code",vnp_tmnCode);
+        intent.putExtra("scheme","RequestSuccessActivity");
+        intent.putExtra("is_sandbox", true);
+    }
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
+        tv_status=findViewById(R.id.txtview_noti_status);
+
         email=findViewById(R.id.txtview_noti_email);
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.tv_noti_DiaDiem);
+        tv_DiaDiem=findViewById(R.id.txt_checkout_address);
 
-        btn_payment=findViewById(R.id.btn_noti_Payment);
+        btn_payment=findViewById(R.id.btn_checkout_pay);
         btn_back=findViewById(R.id.btn_noti_back);
 
         tv_Gia=findViewById(R.id.txtview_noti_price);
         pickup=findViewById(R.id.tv_noti_pickup);
         dropoff=findViewById(R.id.tv_noti_dropoff);
         totalCost=findViewById(R.id.txtview_noti_totalCost);
-        tv_status=findViewById(R.id.txtview_noti_status);
         vehicleImage=findViewById(R.id.img_noti_car);
+
+        btn_payment.setVisibility(View.GONE);
+        btn_payment.setEnabled(false);
     }
 
 }

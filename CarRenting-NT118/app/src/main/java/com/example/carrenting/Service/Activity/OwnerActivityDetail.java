@@ -239,7 +239,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
         name=findViewById(R.id.txtview_noti_name);
         phoneNumber=findViewById(R.id.txtview_noti_phoneNumber);
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
-        tv_DiaDiem=findViewById(R.id.tv_noti_DiaDiem);
+        tv_DiaDiem=findViewById(R.id.txt_checkout_address);
 
         tv_Gia=findViewById(R.id.txtview_noti_price);
         pickup=findViewById(R.id.tv_noti_pickup);
