@@ -1,6 +1,7 @@
 package com.example.carrenting.Adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerHomeFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
-
         return new MyViewHolder(v);
     }
 
@@ -49,7 +49,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(customerHomeFragment.getActivity(), VehicleDetailActivity.class);
-                intent.putExtra("vehicle_id", vehicle.getVehicle_id());
+                Log.e("Vehicle Adapter", vehicle.getVehicle_id() + " position " + position);
                 customerHomeFragment.startActivity(intent);
             }
         });
@@ -61,7 +61,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView name, price, provider;
         ImageView vehicleImage;
         public MyViewHolder(@NonNull View itemView) {
