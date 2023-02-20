@@ -1,6 +1,10 @@
 package com.example.carrenting.Service.Activity;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.Model.CreateOrder;
@@ -39,10 +44,12 @@ import vn.zalopay.sdk.listeners.PayOrderListener;
 public class CustomerActivityDetail extends AppCompatActivity {
 
     FirebaseFirestore dtb;
+    CreateOrder orderApi;
     Intent intent;
     String ProvideID, vehicle_id, ownername, owneremail, ownerphone, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
     String NotiID,noti_status;
-    String amount = "10000";
+    String amount = "1000";
+    String token;
     ImageView vehicleImage;
     String vnp_url, vnp_tmnCode;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -120,10 +127,14 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
 
         findViewById(R.id.btn_customer_pay).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 //asd
-                checkout();
+                orderApi = new CreateOrder();
+                createorder();
+                checkout(token);
                 Log.d("CustomerActivityDetail", "Clicked");
             }
         });
@@ -136,32 +147,69 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
     }
 
-    private void checkout(){
-        CreateOrder orderApi = new CreateOrder();
+    private void createorder(){
         try {
             JSONObject data = orderApi.createOrder(amount);
             String code = data.getString("returncode");
             if (code.equals("1")) {
-                String token = data.getString("zptranstoken");
-                ZaloPaySDK.getInstance().payOrder(CustomerActivityDetail.this, token, "demozpdk://app", new PayOrderListener() {
-                    @Override
-                    public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
-                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onPaymentCanceled(String zpTransToken, String appTransID) {
-                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán bị hủy", Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
-                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán thất bại", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                token = data.getString("zptranstoken");
+                //Log.e("Token", token);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+    private void checkout(String token){
+        ZaloPaySDK.getInstance().payOrder(CustomerActivityDetail.this, token, "demozpdk://app", new PayOrderListener() {
+
+            @Override
+            public void onPaymentSucceeded(String s, String s1, String s2) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.e("Transaction Token", s);
+                        new AlertDialog.Builder(CustomerActivityDetail.this)
+                                .setTitle("Payment Success")
+                                .setMessage(String.format("TransactionId: %s - TransToken: %s", s, s1))
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onPaymentCanceled(String s, String s1) {
+                Log.e("Transaction Token", s);
+                new AlertDialog.Builder(CustomerActivityDetail.this)
+                        .setTitle("User Cancel Payment")
+                        .setMessage(String.format("zpTransToken: %s \n", s))
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setNegativeButton("Cancel", null).show();
+            }
+
+            @Override
+            public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
+                Log.e("Transaction Token", s);
+                new AlertDialog.Builder(CustomerActivityDetail.this)
+                        .setTitle("Payment Fail")
+                        .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), s))
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setNegativeButton("Cancel", null).show();
+            }
+        });
     }
     private void setstatus(){
         if(noti_status.equals( "Dang cho"))
@@ -273,4 +321,9 @@ public class CustomerActivityDetail extends AppCompatActivity {
         //btn_payment.setEnabled(false);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ZaloPaySDK.getInstance().onResult(intent);
+    }
 }
