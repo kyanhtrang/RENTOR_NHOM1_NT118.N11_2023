@@ -26,9 +26,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
     private TextView providerName, providerGmail, providerPhone, providerAddress;
     private TextView vehicleName, vehiclePrice, vehicleNumber, vehicleSeats, vehicleOwner;
     private Button btnBook;
-
     private String vehicleID;
-
     private FirebaseFirestore dtb_vehicle;
     private Vehicle vehicle = new Vehicle();
 

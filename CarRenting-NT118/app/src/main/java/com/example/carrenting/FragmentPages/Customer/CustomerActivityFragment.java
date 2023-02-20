@@ -1,6 +1,7 @@
 package com.example.carrenting.FragmentPages.Customer;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.carrenting.Adapter.ActivityAdapter;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Activity.CustomerActivityDetail;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,7 +61,6 @@ public class CustomerActivityFragment extends Fragment {
         EventChangeListener();
         return view;
     }
-
     private void EventChangeListener()
     {
 

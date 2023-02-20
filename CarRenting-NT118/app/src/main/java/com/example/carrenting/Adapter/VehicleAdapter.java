@@ -20,23 +20,19 @@ import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import java.util.ArrayList;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHolder>{
-
     CustomerHomeFragment customerHomeFragment;
     Vehicle vehicle;
     ArrayList<Vehicle> vehicles;
-
     public VehicleAdapter(CustomerHomeFragment context, ArrayList<Vehicle> vehicles) {
         this.customerHomeFragment = context;
         this.vehicles = vehicles;
     }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerHomeFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
         return new MyViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         vehicle = vehicles.get(position);
@@ -44,13 +40,13 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         holder.price.setText(vehicle.getVehicle_price());
         holder.provider.setText(vehicle.getProvider_name());
         Glide.with(customerHomeFragment.getActivity()).load(vehicle.getVehicle_imageURL()).into(holder.vehicleImage);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(customerHomeFragment.getActivity(), VehicleDetailActivity.class);
-                Log.e("Vehicle Adapter", vehicle.getVehicle_id() + " position " + position);
+                intent.putExtra("vehicle_id", vehicle.getVehicle_id());
                 customerHomeFragment.startActivity(intent);
+
             }
         });
     }
@@ -59,7 +55,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     public int getItemCount() {
         return vehicles.size();
     }
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, price, provider;
         ImageView vehicleImage;
@@ -70,5 +65,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
             provider = itemView.findViewById(R.id.provider_name);
             vehicleImage = itemView.findViewById(R.id.img_vehicle);
         }
+
     }
 }

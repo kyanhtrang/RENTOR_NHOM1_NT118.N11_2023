@@ -126,7 +126,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 });
 
 
-        findViewById(R.id.btn_customer_pay).setOnClickListener(new View.OnClickListener() {
+        btn_payment.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @SuppressLint("SetTextI18n")
             @Override
@@ -153,7 +153,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
             String code = data.getString("returncode");
             if (code.equals("1")) {
                 token = data.getString("zptranstoken");
-                //Log.e("Token", token);
+                Log.e("Token", token);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,8 +161,8 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
     }
     private void checkout(String token){
-        ZaloPaySDK.getInstance().payOrder(CustomerActivityDetail.this, token, "demozpdk://app", new PayOrderListener() {
 
+        ZaloPaySDK.getInstance().payOrder(CustomerActivityDetail.this, token, "demozpdk://app", new PayOrderListener() {
             @Override
             public void onPaymentSucceeded(String s, String s1, String s2) {
                 runOnUiThread(new Runnable() {
@@ -181,7 +181,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
             }
-
             @Override
             public void onPaymentCanceled(String s, String s1) {
                 Log.e("Transaction Token", s);
@@ -195,7 +194,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         })
                         .setNegativeButton("Cancel", null).show();
             }
-
             @Override
             public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
                 Log.e("Transaction Token", s);
@@ -210,6 +208,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         .setNegativeButton("Cancel", null).show();
             }
         });
+        Log.e("Token", token);
     }
     private void setstatus(){
         if(noti_status.equals( "Dang cho"))

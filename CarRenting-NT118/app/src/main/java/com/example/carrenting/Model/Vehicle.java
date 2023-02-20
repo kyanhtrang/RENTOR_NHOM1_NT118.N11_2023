@@ -6,6 +6,7 @@ public class Vehicle {
     String vehicle_name, vehicle_price, vehicle_seats, vehicle_number, vehicle_availability;
     String vehicle_imageURL;
 
+
     public Vehicle() {
         this.vehicle_id = "";
         this.owner_name = "";
@@ -141,4 +142,5 @@ public class Vehicle {
     public void setVehicle_imageURL(String vehicle_imageURL) {
         this.vehicle_imageURL = vehicle_imageURL;
     }
+
 }
