@@ -467,7 +467,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_checkout_pay"
+                    android:id="@+id/btn_customer_pay"
                     android:layout_width="350dp"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_20sdp"
