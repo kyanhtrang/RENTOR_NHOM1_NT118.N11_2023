@@ -2,6 +2,7 @@ package com.example.carrenting.Service.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carrenting.Model.CreateOrder;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.ZaloPay.Constant.AppInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +27,14 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import vn.zalopay.sdk.Environment;
+import vn.zalopay.sdk.ZaloPayError;
+import vn.zalopay.sdk.ZaloPaySDK;
+import vn.zalopay.sdk.listeners.PayOrderListener;
 
 public class CustomerActivityDetail extends AppCompatActivity {
 
@@ -32,6 +42,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
     Intent intent;
     String ProvideID, vehicle_id, ownername, owneremail, ownerphone, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
     String NotiID,noti_status;
+    String amount = "10000";
     ImageView vehicleImage;
     String vnp_url, vnp_tmnCode;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,6 +59,12 @@ public class CustomerActivityDetail extends AppCompatActivity {
         String OrderID = intent.getStringExtra("NotiID");
         NotiID = OrderID;
         init();
+
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        ZaloPaySDK.init(AppInfo.APP_ID, Environment.SANDBOX);
 
         dtb = FirebaseFirestore.getInstance();
         dtb.collection("Notification")
@@ -71,14 +88,19 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 tv_id.setText(NotiID);
                                 if(noti_status.equals( "Dang cho"))
                                 {
-                                    tv_status.setText("Đang chờ");
+                                    tv_status.setText("Chưa được xác nhận");
                                 }
                                 else
                                 {
+                                    if(tv_status.equals( "Thanh toan"))
+                                    {
+                                        tv_status.setText("Đang chờ thanh toán");
+                                        btn_payment.setVisibility(View.VISIBLE);
+                                    }
+                                    else
                                     if(noti_status.equals( "Xac nhan"))
                                     {
                                         tv_status.setText("Đã xác nhận");
-                                        btn_payment.setVisibility(View.VISIBLE);
                                     }
                                     else
                                     {
@@ -97,10 +119,12 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 });
 
 
-        btn_payment.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_customer_pay).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                //asd
+                checkout();
+                Log.d("CustomerActivityDetail", "Clicked");
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +134,34 @@ public class CustomerActivityDetail extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void checkout(){
+        CreateOrder orderApi = new CreateOrder();
+        try {
+            JSONObject data = orderApi.createOrder(amount);
+            String code = data.getString("returncode");
+            if (code.equals("1")) {
+                String token = data.getString("zptranstoken");
+                ZaloPaySDK.getInstance().payOrder(CustomerActivityDetail.this, token, "demozpdk://app", new PayOrderListener() {
+                    @Override
+                    public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
+                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPaymentCanceled(String zpTransToken, String appTransID) {
+                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán bị hủy", Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
+                        Toast.makeText(CustomerActivityDetail.this, "Thanh toán thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     private void setstatus(){
         if(noti_status.equals( "Dang cho"))
@@ -123,14 +175,12 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 tv_status.setText("Đang chờ thanh toán");
             }
             else
-            if (noti_status.equals("Khong xac nhan"))
-            {
+            if (noti_status.equals("Khong xac nhan")) {
                 tv_status.setText("Nhà cung cấp không xác nhận");
             }
             else{
                 tv_status.setText("Đã xác nhận thuê xe");
             }
-
         }
     }
     private void getuser(String ProvideID){
@@ -200,7 +250,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
-
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         tv_status=findViewById(R.id.txtview_noti_status);
@@ -211,7 +260,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
         tv_BrandCar=findViewById(R.id.txtview_noti_BrandCar);
         tv_DiaDiem=findViewById(R.id.txt_checkout_address);
 
-        btn_payment=findViewById(R.id.btn_checkout_pay);
+        btn_payment=findViewById(R.id.btn_customer_pay);
         btn_back=findViewById(R.id.btn_noti_back);
 
         tv_Gia=findViewById(R.id.txtview_noti_price);
@@ -220,8 +269,8 @@ public class CustomerActivityDetail extends AppCompatActivity {
         totalCost=findViewById(R.id.txtview_noti_totalCost);
         vehicleImage=findViewById(R.id.img_noti_car);
 
-        btn_payment.setVisibility(View.GONE);
-        btn_payment.setEnabled(false);
+        //btn_payment.setVisibility(View.GONE);
+        //btn_payment.setEnabled(false);
     }
 
 }

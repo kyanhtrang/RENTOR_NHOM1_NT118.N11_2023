@@ -29,14 +29,14 @@ public class CreateOrder {
         private CreateOrderData(String amount) throws Exception {
             long appTime = new Date().getTime();
             AppId = String.valueOf(AppInfo.APP_ID);
-            AppUser = "Android_Demo";
+            AppUser = AppInfo.APP_NAME;
             AppTime = String.valueOf(appTime);
             Amount = amount;
             AppTransId = Helpers.getAppTransId();
             EmbedData = "{}";
             Items = "[]";
             BankCode = "zalopayapp";
-            Description = "Merchant pay for order #" + Helpers.getAppTransId();
+            Description = "Thanh toán dịch vụ trên DinhNT - #" + Helpers.getAppTransId();
             String inputHMac = String.format("%s|%s|%s|%s|%s|%s|%s",
                     this.AppId,
                     this.AppTransId,
@@ -50,18 +50,18 @@ public class CreateOrder {
         }
     }
 
-     public JSONObject createOrder(String amount) throws Exception {
+    public JSONObject createOrder(String amount) throws Exception {
         CreateOrderData input = new CreateOrderData(amount);
 
         RequestBody formBody = new FormBody.Builder()
-                .add("app_id", input.AppId)
-                .add("app_user", input.AppUser)
-                .add("app_time", input.AppTime)
+                .add("appid", input.AppId)
+                .add("appuser", input.AppUser)
+                .add("apptime", input.AppTime)
                 .add("amount", input.Amount)
-                .add("app_trans_id", input.AppTransId)
-                .add("embed_data", input.EmbedData)
+                .add("apptransid", input.AppTransId)
+                .add("embeddata", input.EmbedData)
                 .add("item", input.Items)
-                .add("bank_code", input.BankCode)
+                .add("bankcode", input.BankCode)
                 .add("description", input.Description)
                 .add("mac", input.Mac)
                 .build();
