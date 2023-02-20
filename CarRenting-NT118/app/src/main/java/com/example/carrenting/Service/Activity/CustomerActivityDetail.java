@@ -23,8 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
-import com.vnpay.authentication.VNP_AuthenticationActivity;
-import com.vnpay.authentication.VNP_SdkCompletedCallback;
 
 import java.util.ArrayList;
 
@@ -102,7 +100,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openSdk();
+                //
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -202,43 +200,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
-    private void openSdk(){
-        db = FirebaseFirestore.getInstance();
-        db.collection("VNPayCredentials")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot info : task.getResult()){
-                                vnp_url = info.get("vnp_Url").toString();
-                                vnp_tmnCode = info.get("vnp_TmnCode").toString();
-                                vnpparam();
-                                VNP_AuthenticationActivity.setSdkCompletedCallback(new VNP_SdkCompletedCallback() {
-                                    @Override
-                                    public void sdkAction(String s) {
-                                        Log.wtf("Payment", "action" + s);
-                                    }});
-                            }
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Payment", e.toString());
-                        return;
-                    }
-                });
 
-    }
-    private void vnpparam(){
-        Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
-        intent.putExtra("url",vnp_url);
-        intent.putExtra("tmp_code",vnp_tmnCode);
-        intent.putExtra("scheme","RequestSuccessActivity");
-        intent.putExtra("is_sandbox", true);
-    }
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         tv_status=findViewById(R.id.txtview_noti_status);
