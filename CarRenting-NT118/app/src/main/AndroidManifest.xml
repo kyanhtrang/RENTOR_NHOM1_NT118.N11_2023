@@ -12,6 +12,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <queries>
+        <package android:name="vn.com.vng.zalopay" />
+        <package android:name="vn.com.vng.zalopay.sbmc"/>
+    </queries>
+
     <application
         android:name=".Model.UserClient"
         android:allowBackup="true"
@@ -75,7 +80,8 @@
         <activity
             android:name=".ActivityPages.StartAppActivity"
             android:exported="true"
-            android:theme="@style/Theme.CarRenting.NoActionBar">
+            android:theme="@style/Theme.CarRenting.NoActionBar"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -84,9 +90,8 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data
-                    android:host="example.com"
-                    android:scheme="https"/>
+                <data   android:host="app"
+                        android:scheme="demozpdk"/>
             </intent-filter>
         </activity>
 
