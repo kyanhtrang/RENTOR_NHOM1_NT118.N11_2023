@@ -1,5 +1,6 @@
 package com.example.carrenting.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Vehicle.UpdateVehicle;
+import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 
 import java.util.ArrayList;
 
@@ -41,6 +44,15 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyV
         holder.price.setText(vehicle.getVehicle_price());
         holder.provider.setText(vehicle.getProvider_name());
         Glide.with(ownerVehicleFragment.getActivity()).load(vehicle.getVehicle_imageURL()).into(holder.vehicleImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
+                intent.putExtra("vehicle_id", vehicle.getVehicle_id());
+                ownerVehicleFragment.startActivity(intent);
+            }
+        });
     }
 
     @Override
