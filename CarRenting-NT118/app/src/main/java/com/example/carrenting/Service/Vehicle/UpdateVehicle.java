@@ -54,6 +54,8 @@ public class UpdateVehicle extends AppCompatActivity {
         vehiclePrice = findViewById(R.id.et_price);
         vehicleOwner = findViewById(R.id.et_owner);
 
+        vehicleImage = findViewById(R.id.img_view);
+
         dtb_vehicle = FirebaseFirestore.getInstance();
     }
 
@@ -86,10 +88,13 @@ public class UpdateVehicle extends AppCompatActivity {
                                 vehicle.setVehicle_number(document.get("vehicle_number").toString());
                                 vehicleNumber.setText(vehicle.getVehicle_number());
 
+                                vehicle.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
+
                                 if (!document.get("vehicle_imageURL").toString().isEmpty()) {
                                     vehicle.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                     Picasso.get().load(vehicle.getVehicle_imageURL()).into(vehicleImage);
-                                } else {
+                                }
+                                else {
                                     vehicle.setVehicle_imageURL("");
                                 }
 

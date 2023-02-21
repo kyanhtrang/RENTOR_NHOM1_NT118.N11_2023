@@ -19,7 +19,7 @@ import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 
 import java.util.ArrayList;
 
-public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHolder>{
+public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapter.MyViewHolder>{
     OwnerVehicleFragment ownerVehicleFragment;
     Vehicle vehicle;
     ArrayList<Vehicle> vehicles;
@@ -31,14 +31,14 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyV
 
     @NonNull
     @Override
-    public VehicleAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OwnerVehicleAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ownerVehicleFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
 
-        return new VehicleAdapter.MyViewHolder(v);
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VehicleAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OwnerVehicleAdapter.MyViewHolder holder, int position) {
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());
