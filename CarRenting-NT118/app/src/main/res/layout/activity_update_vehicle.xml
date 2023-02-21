@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_5sdp"
-    tools:context=".Service.Vehicle.AddVehicleActivity">
+    tools:context=".Service.Vehicle.UpdateVehicle">
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -29,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
-                    android:text="Thêm mới xe"
+                    android:text="Thông tin xe"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_30ssp"
                     android:textStyle="bold"
@@ -159,11 +158,11 @@
                     tools:ignore="TextFields" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add"
+                    android:id="@+id/btn_update"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_marginTop="@dimen/_25sdp"
-                    android:text="Thêm"
+                    android:text="Cập nhật"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
                     android:layout_marginBottom="@dimen/_25sdp"
@@ -180,6 +179,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_120sdp"
                     android:background="@drawable/yellow_line"
+                    android:layout_marginTop="@dimen/_15sdp"
                     app:layout_constraintEnd_toEndOf="@+id/et_number"
                     app:layout_constraintStart_toStartOf="@+id/et_number"
                     app:layout_constraintTop_toBottomOf="@+id/et_number">

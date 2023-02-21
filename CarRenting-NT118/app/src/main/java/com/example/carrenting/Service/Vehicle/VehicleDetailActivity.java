@@ -40,6 +40,7 @@ public class VehicleDetailActivity extends AppCompatActivity {
         vehicle.setVehicle_id(vehicleID);
 
         init();
+
         getDetail();
 
         FirebaseFirestore dtb = FirebaseFirestore.getInstance();
