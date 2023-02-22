@@ -75,7 +75,6 @@ public class AddVehicleActivity extends AppCompatActivity {
         vehicle_price = findViewById(R.id.et_price);
         vehicle_owner = findViewById(R.id.et_owner);
         vehicle_number = findViewById(R.id.et_number);
-        vehicle_available = findViewById(R.id.cb_availability);
         vehicle_imgView = findViewById(R.id.img_view);
         btnAdd = findViewById(R.id.btn_add);
 

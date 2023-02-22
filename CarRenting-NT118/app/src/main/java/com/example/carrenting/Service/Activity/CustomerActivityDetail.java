@@ -168,7 +168,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.e("Transaction Token", s);
+                        Log.e("Transaction Token", token);
                         new AlertDialog.Builder(CustomerActivityDetail.this)
                                 .setTitle("Payment Success")
                                 .setMessage(String.format("TransactionId: %s - TransToken: %s", s, s1))

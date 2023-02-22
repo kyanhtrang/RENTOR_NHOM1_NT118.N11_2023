@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.carrenting.Adapter.OwnerVehicleAdapter;
+import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
@@ -45,7 +46,11 @@ public class OwnerVehicleFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Vehicle> vehicles;
     OwnerVehicleAdapter adapter;
+
     FirebaseFirestore dtb_vehicle;
+    private FirebaseUser firebaseUser;
+    private User user = new User();
+
     ProgressDialog progressDialog;
     private View view;
     private Button btnAdd;
@@ -67,10 +72,10 @@ public class OwnerVehicleFragment extends Fragment {
         });
 
 
-        progressDialog = new ProgressDialog(getActivity());
+/*        progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();
+        progressDialog.show();*/
 
         recyclerView = view.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);
@@ -80,6 +85,9 @@ public class OwnerVehicleFragment extends Fragment {
         vehicles = new ArrayList<Vehicle>();
         adapter = new OwnerVehicleAdapter(OwnerVehicleFragment.this, vehicles);
         recyclerView.setAdapter(adapter);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
 
         try {
             EventChangeListener();
@@ -122,8 +130,7 @@ public class OwnerVehicleFragment extends Fragment {
     private void EventChangeListener()
     {
         dtb_vehicle.collection("Vehicles")
-                .orderBy("vehicle_name", Query.Direction.ASCENDING)
-                .whereEqualTo("provider_id", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .whereEqualTo("provider_id", user.getUser_id())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -138,7 +145,7 @@ public class OwnerVehicleFragment extends Fragment {
                                 temp.setProvider_name(document.get("provider_name").toString());
                                 vehicles.add(temp);
                                 adapter.notifyDataSetChanged();
-                                progressDialog.cancel();
+/*                                progressDialog.cancel();*/
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();
