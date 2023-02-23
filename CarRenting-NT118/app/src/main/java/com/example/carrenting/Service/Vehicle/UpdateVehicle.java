@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +31,7 @@ public class UpdateVehicle extends AppCompatActivity {
 
     private ImageView vehicleImage;
     private TextView vehicleName, vehiclePrice, vehicleNumber, vehicleSeats, vehicleOwner;
-    private Button btnUpdate;
+    private Button btnUpdate, btnDelete;
 
     private String vehicleID;
 
@@ -56,11 +57,18 @@ public class UpdateVehicle extends AppCompatActivity {
                 update();
             }
         });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                delete();
+            }
+        });
 
     }
     private void init()
     {
         btnUpdate = findViewById(R.id.btn_updatevehicle);
+        btnDelete = findViewById(R.id.btn_deletevehicle);
 // -------------------------------------------------
         vehicleName = findViewById(R.id.et_vehiclename);
         vehicleNumber = findViewById(R.id.et_platenumber);
@@ -71,6 +79,7 @@ public class UpdateVehicle extends AppCompatActivity {
         vehicleImage = findViewById(R.id.img_view);
 //--------------------------------------------------
         dtb_vehicle = FirebaseFirestore.getInstance();
+        vehicleName.setEnabled(false);
     }
     private void getDetail() {
         dtb_vehicle.collection("Vehicles")
@@ -120,16 +129,11 @@ public class UpdateVehicle extends AppCompatActivity {
     private void update(){
         Map<String, Object> data = new HashMap<>();
         Boolean flag = false;
-        String nameupdate = vehicleName.getText().toString();
         String platenumber = vehicleNumber.getText().toString();
         String seats = vehicleSeats.getText().toString();
         String price = vehiclePrice.getText().toString();
         String ownername = vehicleOwner.getText().toString();
 
-        if (!nameupdate.equals(vehicle.getVehicle_name())){
-            data.put("vehicle_name", nameupdate);
-            flag = true;
-        }
         if (!platenumber.equals(vehicle.getVehicle_number())){
             data.put("vehicle_number",platenumber);
             flag = true;
@@ -165,5 +169,24 @@ public class UpdateVehicle extends AppCompatActivity {
                         }
                     });
         }
+    }
+    private void delete(){
+        dtb_vehicle.collection("Vehicles")
+                .document(vehicleID)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Delete Vehicle", "Xóa xe thành công");
+                        Toast.makeText(UpdateVehicle.this, "Xóa xe thành công", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Delete Vehicle", "Không thể xóa xe", e);
+                        Toast.makeText(UpdateVehicle.this, "Không thể xóa xe", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
