@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,23 +43,28 @@ public class UpdateVehicle extends AppCompatActivity {
 
         getDetail();
 
-    }
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
+
+    }
     private void init()
     {
-        btnUpdate = findViewById(R.id.btn_update);
-
+        btnUpdate = findViewById(R.id.btn_updatevehicle);
+// -------------------------------------------------
         vehicleName = findViewById(R.id.et_name);
         vehicleNumber = findViewById(R.id.et_number);
         vehicleSeats = findViewById(R.id.et_seats);
         vehiclePrice = findViewById(R.id.et_price);
         vehicleOwner = findViewById(R.id.et_owner);
-
+//--------------------------------------------------
         vehicleImage = findViewById(R.id.img_view);
-
+//--------------------------------------------------
         dtb_vehicle = FirebaseFirestore.getInstance();
     }
-
     private void getDetail() {
         dtb_vehicle.collection("Vehicles")
                 .whereEqualTo("vehicle_id", vehicle.getVehicle_id())
@@ -103,5 +109,8 @@ public class UpdateVehicle extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void update(){
+        
     }
 }

@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.Model.Vehicle;
+import com.example.carrenting.Model.onClickInterface;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.UpdateVehicle;
-import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 
 import java.util.ArrayList;
 
@@ -23,17 +23,17 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
     OwnerVehicleFragment ownerVehicleFragment;
     Vehicle vehicle;
     ArrayList<Vehicle> vehicles;
-
-    public OwnerVehicleAdapter(OwnerVehicleFragment context, ArrayList<Vehicle> vehicles) {
+    onClickInterface onClickInterface;
+    public OwnerVehicleAdapter(OwnerVehicleFragment context, ArrayList<Vehicle> vehicles, onClickInterface onClickInterface) {
         this.ownerVehicleFragment = context;
         this.vehicles = vehicles;
+        this.onClickInterface = onClickInterface;
     }
 
     @NonNull
     @Override
     public OwnerVehicleAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ownerVehicleFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
-
         return new MyViewHolder(v);
     }
 
@@ -48,6 +48,8 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onClickInterface.setClick(position);
+                vehicle = vehicles.get(position);
                 Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
                 intent.putExtra("vehicle_id", vehicle.getVehicle_id());
                 ownerVehicleFragment.startActivity(intent);
