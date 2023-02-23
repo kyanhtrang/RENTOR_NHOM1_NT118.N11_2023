@@ -9,15 +9,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UpdateVehicle extends AppCompatActivity {
 
@@ -46,7 +52,7 @@ public class UpdateVehicle extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                update();
             }
         });
 
@@ -111,6 +117,44 @@ public class UpdateVehicle extends AppCompatActivity {
                 });
     }
     private void update(){
+        Map<String, Object> data = new HashMap<>();
+        Boolean flag = false;
         String nameupdate = vehicleName.getText().toString();
+        String platenumber = vehicleNumber.getText().toString();
+        String seats = vehicleSeats.getText().toString();
+        String price = vehiclePrice.getText().toString();
+        String ownername = vehicleOwner.getText().toString();
+
+        if (!nameupdate.equals(vehicle.getVehicle_name())){
+            data.put("vehicle_name", nameupdate);
+            flag = true;
+        }
+        if (!platenumber.equals(vehicle.getVehicle_number())){
+            data.put("vehicle_number",platenumber);
+            flag = true;
+        }
+        if (!seats.equals(vehicle.getVehicle_seats())){
+            data.put("vehicle_seats", seats);
+            flag = true;
+        }
+        if (!price.equals(vehicle.getVehicle_price())){
+            data.put("vehicle_price", price);
+            flag = true;
+        }
+        if (!ownername.equals(vehicle.getOwner_name())){
+            data.put("owner_name", ownername);
+            flag = true;
+        }
+        if (flag) {
+            dtb_vehicle.collection("Vehicles")
+                    .document(vehicleID)
+                    .set(data, SetOptions.merge())
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(UpdateVehicle.this, "Không thể cập nhật thông tin", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 }
