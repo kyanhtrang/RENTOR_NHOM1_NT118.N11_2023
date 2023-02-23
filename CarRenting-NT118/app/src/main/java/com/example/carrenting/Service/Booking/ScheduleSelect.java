@@ -107,10 +107,7 @@ public class ScheduleSelect extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent Back_DetailCar=new Intent(ScheduleSelect.this, CarDetailActivity.class);
-                intent.putExtra("vehicle_id", vehicle_id);
-                startActivity(Back_DetailCar);
+                onStop();
             }
         });
     }
