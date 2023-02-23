@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.example.carrenting.Adapter.OwnerVehicleAdapter;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
+import com.example.carrenting.Model.onClickInterface;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.AddVehicleActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,6 +51,7 @@ public class OwnerVehicleFragment extends Fragment {
     FirebaseFirestore dtb_vehicle;
     private FirebaseUser firebaseUser;
     private User user = new User();
+    private onClickInterface onclickInterface;
 
     ProgressDialog progressDialog;
     private View view;
@@ -57,9 +59,16 @@ public class OwnerVehicleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.owner_fragment_vehicle,
-                container, false);
+        view = inflater.inflate(R.layout.owner_fragment_vehicle, container, false);
         btnAdd = (Button) view.findViewById(R.id.btn_add);
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(int position) {
+                vehicles.indexOf(position);
+                Log.d("Position: ","Position is " + position);
+                adapter.notifyDataSetChanged();
+            }
+        };
         btnAdd.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -72,10 +81,10 @@ public class OwnerVehicleFragment extends Fragment {
         });
 
 
-/*        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();*/
+        progressDialog.show();
 
         recyclerView = view.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);
@@ -83,7 +92,7 @@ public class OwnerVehicleFragment extends Fragment {
 
         dtb_vehicle = FirebaseFirestore.getInstance();
         vehicles = new ArrayList<Vehicle>();
-        adapter = new OwnerVehicleAdapter(OwnerVehicleFragment.this, vehicles);
+        adapter = new OwnerVehicleAdapter(OwnerVehicleFragment.this, vehicles, onclickInterface);
         recyclerView.setAdapter(adapter);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -95,6 +104,7 @@ public class OwnerVehicleFragment extends Fragment {
         } catch (Exception exception){
             Toast.makeText(getContext(), "Exception", Toast.LENGTH_LONG).show();
         }
+        progressDialog.cancel();
         return view;
     }
 

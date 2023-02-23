@@ -40,17 +40,16 @@ public class OwnerActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-//        progressDialog = new ProgressDialog(getActivity());
-//        progressDialog.setCancelable(false);
-//        progressDialog.setMessage("Đang lấy dữ liệu...");
-//        progressDialog.show();
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.customer_fragment_activity, container, false);
         recyclerView = view.findViewById(R.id.activity_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Đang lấy dữ liệu...");
+        progressDialog.show();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         dtb_noti = FirebaseFirestore.getInstance();
@@ -62,6 +61,8 @@ public class OwnerActivityFragment extends Fragment {
         recyclerView.setAdapter(ownerNotificationAdapter);
 
         EventChangeListener();
+
+        progressDialog.dismiss();
         return view;
     }
     private void EventChangeListener()

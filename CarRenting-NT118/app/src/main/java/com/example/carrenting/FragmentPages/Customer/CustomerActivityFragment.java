@@ -42,12 +42,17 @@ public class CustomerActivityFragment extends Fragment {
     FirebaseAuth firebaseAuth;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.customer_fragment_activity, container, false);
         recyclerView = view.findViewById(R.id.activity_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Đang lấy dữ liệu...");
+        progressDialog.show();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         dtb_noti = FirebaseFirestore.getInstance();
@@ -80,12 +85,12 @@ public class CustomerActivityFragment extends Fragment {
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
+                                progressDialog.cancel();
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin đơn hàng ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
     }
 }
