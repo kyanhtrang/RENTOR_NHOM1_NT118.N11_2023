@@ -46,12 +46,12 @@
                     android:layout_marginTop="@dimen/_15sdp"
                     android:text="Tên xe"
                     android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_vehiclename"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/et_name"
+                    android:id="@+id/et_vehiclename"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_30sdp"
@@ -72,19 +72,19 @@
                     android:text="Số chỗ"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_vehiclename"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/et_seats"
+                    android:id="@+id/et_vehicleseats"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:inputType="number"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_15ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_name"
-                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintEnd_toEndOf="@+id/et_vehiclename"
+                    app:layout_constraintStart_toStartOf="@+id/et_vehiclename"
                     app:layout_constraintTop_toBottomOf="@+id/tv_seats" />
 
                 <TextView
@@ -95,19 +95,19 @@
                     android:text="Giá"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_seats"
+                    app:layout_constraintTop_toBottomOf="@+id/et_vehicleseats"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/et_price"
+                    android:id="@+id/et_vehicleprice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:inputType="numberDecimal"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_15ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_name"
-                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintEnd_toEndOf="@+id/et_vehiclename"
+                    app:layout_constraintStart_toStartOf="@+id/et_vehiclename"
                     app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
                 <TextView
@@ -118,19 +118,19 @@
                     android:text="Chủ xe"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_price"
+                    app:layout_constraintTop_toBottomOf="@+id/et_vehicleprice"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/et_owner"
+                    android:id="@+id/et_vehicleowner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:ems="10"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_15ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_price"
-                    app:layout_constraintStart_toStartOf="@+id/et_price"
+                    app:layout_constraintEnd_toEndOf="@+id/et_vehicleprice"
+                    app:layout_constraintStart_toStartOf="@+id/et_vehicleprice"
                     app:layout_constraintTop_toBottomOf="@+id/tv_owner" />
 
                 <TextView
@@ -141,19 +141,19 @@
                     android:text="Biển số xe"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_owner"
-                    app:layout_constraintTop_toBottomOf="@+id/et_owner"
+                    app:layout_constraintTop_toBottomOf="@+id/et_vehicleowner"
                     tools:ignore="HardcodedText" />
 
                 <EditText
-                    android:id="@+id/et_number"
+                    android:id="@+id/et_platenumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
                     android:inputType="textPersonName"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_15ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_name"
-                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintEnd_toEndOf="@+id/et_vehiclename"
+                    app:layout_constraintStart_toStartOf="@+id/et_vehiclename"
                     app:layout_constraintTop_toBottomOf="@+id/tv_number"
                     tools:ignore="TextFields" />
 
@@ -167,9 +167,9 @@
                     android:textSize="@dimen/_14ssp"
                     android:layout_marginBottom="@dimen/_25sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/et_number"
+                    app:layout_constraintEnd_toEndOf="@+id/et_platenumber"
                     android:background="@drawable/red_round_button"
-                    app:layout_constraintStart_toStartOf="@+id/et_number"
+                    app:layout_constraintStart_toStartOf="@+id/et_platenumber"
                     app:layout_constraintTop_toBottomOf="@+id/img_card"
                     tools:ignore="HardcodedText" />
 
@@ -180,9 +180,9 @@
                     android:layout_height="@dimen/_120sdp"
                     android:background="@drawable/yellow_line"
                     android:layout_marginTop="@dimen/_15sdp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_number"
-                    app:layout_constraintStart_toStartOf="@+id/et_number"
-                    app:layout_constraintTop_toBottomOf="@+id/et_number">
+                    app:layout_constraintEnd_toEndOf="@+id/et_platenumber"
+                    app:layout_constraintStart_toStartOf="@+id/et_platenumber"
+                    app:layout_constraintTop_toBottomOf="@+id/et_platenumber">
                     <ImageView
                         android:id="@+id/img_view"
                         android:layout_width="match_parent"

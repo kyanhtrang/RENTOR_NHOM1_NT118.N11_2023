@@ -55,11 +55,11 @@ public class UpdateVehicle extends AppCompatActivity {
     {
         btnUpdate = findViewById(R.id.btn_updatevehicle);
 // -------------------------------------------------
-        vehicleName = findViewById(R.id.et_name);
-        vehicleNumber = findViewById(R.id.et_number);
-        vehicleSeats = findViewById(R.id.et_seats);
-        vehiclePrice = findViewById(R.id.et_price);
-        vehicleOwner = findViewById(R.id.et_owner);
+        vehicleName = findViewById(R.id.et_vehiclename);
+        vehicleNumber = findViewById(R.id.et_platenumber);
+        vehicleSeats = findViewById(R.id.et_vehicleseats);
+        vehiclePrice = findViewById(R.id.et_vehicleprice);
+        vehicleOwner = findViewById(R.id.et_vehicleowner);
 //--------------------------------------------------
         vehicleImage = findViewById(R.id.img_view);
 //--------------------------------------------------
@@ -111,6 +111,6 @@ public class UpdateVehicle extends AppCompatActivity {
                 });
     }
     private void update(){
-        
+        String nameupdate = vehicleName.getText().toString();
     }
 }
