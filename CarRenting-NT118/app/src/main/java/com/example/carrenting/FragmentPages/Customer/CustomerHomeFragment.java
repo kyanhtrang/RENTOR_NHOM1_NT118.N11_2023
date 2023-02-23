@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.carrenting.Adapter.VehicleAdapter;
 import com.example.carrenting.Model.Vehicle;
+import com.example.carrenting.Model.onClickInterface;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,13 +44,21 @@ public class CustomerHomeFragment extends Fragment {
     VehicleAdapter adapter;
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
-    int count = 0;
+    private onClickInterface onclickInterface;
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.customer_fragment_home, container, false);
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(int position) {
+                vehicles.indexOf(position);
+                Log.d("Position: ","Position is " + position);
+                adapter.notifyDataSetChanged();
+            }
+        };
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
@@ -60,9 +69,10 @@ public class CustomerHomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
         dtb_vehicle = FirebaseFirestore.getInstance();
         vehicles = new ArrayList<Vehicle>();
-        adapter = new VehicleAdapter(CustomerHomeFragment.this, vehicles);
+        adapter = new VehicleAdapter(CustomerHomeFragment.this, vehicles, onclickInterface);
         recyclerView.setAdapter(adapter);
 
         try {
@@ -119,7 +129,6 @@ public class CustomerHomeFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Vehicle temp = new Vehicle();
-                                count++;
                                 temp.setVehicle_id(document.getId());
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());

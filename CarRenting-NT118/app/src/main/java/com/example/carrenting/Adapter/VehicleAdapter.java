@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.Model.Vehicle;
+import com.example.carrenting.Model.onClickInterface;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 
@@ -23,9 +25,11 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     CustomerHomeFragment customerHomeFragment;
     Vehicle vehicle;
     ArrayList<Vehicle> vehicles;
-    public VehicleAdapter(CustomerHomeFragment context, ArrayList<Vehicle> vehicles) {
+    onClickInterface onClickInterface;
+    public VehicleAdapter(CustomerHomeFragment context, ArrayList<Vehicle> vehicles, onClickInterface onClickInterface) {
         this.customerHomeFragment = context;
         this.vehicles = vehicles;
+        this.onClickInterface = onClickInterface;
     }
     @NonNull
     @Override
@@ -34,7 +38,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         return new MyViewHolder(v);
     }
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());
@@ -43,10 +47,11 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onClickInterface.setClick(position);
+                vehicle = vehicles.get(position);
                 Intent intent = new Intent(customerHomeFragment.getActivity(), VehicleDetailActivity.class);
                 intent.putExtra("vehicle_id", vehicle.getVehicle_id());
                 customerHomeFragment.startActivity(intent);
-
             }
         });
     }
