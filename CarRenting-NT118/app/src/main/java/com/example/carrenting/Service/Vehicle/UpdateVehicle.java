@@ -15,6 +15,7 @@ import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -153,6 +154,14 @@ public class UpdateVehicle extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(UpdateVehicle.this, "Không thể cập nhật thông tin", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                    })
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(UpdateVehicle.this, "Câp nhật thông tin thành công", Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     });
         }
