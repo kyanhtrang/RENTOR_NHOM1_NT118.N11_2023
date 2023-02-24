@@ -42,7 +42,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(customerActivityFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
+        View v = LayoutInflater.from(customerActivityFragment.getActivity()).inflate(R.layout.item_notification, parent, false);
         return new MyViewHolder(v);
     }
 

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
@@ -41,7 +40,7 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapt
     @NonNull
     @Override
     public ActivityAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(ownerActivityFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
+        View v = LayoutInflater.from(ownerActivityFragment.getActivity()).inflate(R.layout.item_notification, parent, false);
         return new ActivityAdapter.MyViewHolder(v);
     }
 

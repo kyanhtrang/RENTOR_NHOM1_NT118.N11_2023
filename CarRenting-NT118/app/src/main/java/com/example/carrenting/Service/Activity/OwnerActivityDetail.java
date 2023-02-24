@@ -51,7 +51,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification_detail_provide);
+        setContentView(R.layout.owner_booking_detail);
         intent = getIntent();
 
         String OrderID = intent.getStringExtra("NotiID");
