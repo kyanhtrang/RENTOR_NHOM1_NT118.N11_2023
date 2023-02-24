@@ -64,11 +64,11 @@ public class CustomerActivityFragment extends Fragment {
         recyclerView.setAdapter(notificationAdapter);
 
         EventChangeListener();
+        progressDialog.cancel();
         return view;
     }
     private void EventChangeListener()
     {
-
         dtb_noti.collection("Notification")
                 .whereEqualTo("customer_id", current_user_id)
                 .get()
@@ -85,7 +85,6 @@ public class CustomerActivityFragment extends Fragment {
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 notifications.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
-                                progressDialog.cancel();
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin đơn hàng ", Toast.LENGTH_SHORT).show();
