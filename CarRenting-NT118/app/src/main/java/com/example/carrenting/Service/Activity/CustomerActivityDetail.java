@@ -25,15 +25,19 @@ import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.ZaloPay.Constant.AppInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
@@ -135,6 +139,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 createorder();
                 checkout(token);
                 Log.d("CustomerActivityDetail", "Clicked");
+                postpayment();
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +150,27 @@ public class CustomerActivityDetail extends AppCompatActivity {
         });
 
     }
-
+    private void postpayment() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("status", "Da thanh toan");
+    dtb.collection("Notification")
+            .document(NotiID)
+            .set(data, SetOptions.merge())
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(CustomerActivityDetail.this, "Cập nhật thông tin thanh toán thành công", Toast.LENGTH_LONG).show();
+                    Log.d("Payment", "Done");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(CustomerActivityDetail.this, "Cập nhật thông tin thanh toán thất bại", Toast.LENGTH_LONG).show();
+                    Log.d("Payment", "Fail");
+                }
+            });
+    }
     private void createorder(){
         try {
             JSONObject data = orderApi.createOrder(amount);
