@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.ActivityPages.OwnerMainActivity;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
@@ -36,7 +36,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
     String CustomerID, vehicle_id;
     String NotiID,noti_status;
     ImageView vehicleImage;
-    private Notification temp = new Notification();
+    private Activity temp = new Activity();
 
 
     private ArrayList<Vehicle> ls = new ArrayList<Vehicle>();

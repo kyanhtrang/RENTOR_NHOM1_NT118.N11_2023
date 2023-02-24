@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Activity.CustomerActivityDetail;
@@ -26,38 +26,28 @@ import java.util.ArrayList;
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
 
     CustomerActivityFragment customerActivityFragment;
-    Notification noti;
-    ArrayList<Notification> mNoti;
-
+    Activity noti;
+    ArrayList<Activity> mNoti;
     FirebaseFirestore dtb;
     String Name, ProvideID;
-
-
-    public ActivityAdapter(CustomerActivityFragment mContext, ArrayList<Notification>mNoti){
+    public ActivityAdapter(CustomerActivityFragment mContext, ArrayList<Activity>mNoti){
         this.customerActivityFragment=mContext;
         this.mNoti=mNoti;
-
     }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(customerActivityFragment.getActivity()).inflate(R.layout.item_notification_customer, parent, false);
         return new MyViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         noti = mNoti.get(position);
-
         dtb = FirebaseFirestore.getInstance();
         ProvideID=noti.getProvider_id();
         getuser(ProvideID);
         holder.name.setText(Name);
         holder.id.setText(noti.getNoti_id());
-
-
         if(noti.getStatus().equals( "Dang cho"))
         {
             holder.status.setText("Nhà cung cấp chưa xác nhận");

@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.carrenting.Adapter.OwnerNotificationAdapter;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +31,7 @@ public class OwnerActivityFragment extends Fragment {
 
     RecyclerView recyclerView;
     OwnerNotificationAdapter ownerNotificationAdapter;
-    ArrayList<Notification> notifications;
+    ArrayList<Activity> activities;
     FirebaseFirestore dtb_noti;
     ProgressDialog progressDialog;
     String current_user_id;
@@ -56,8 +56,8 @@ public class OwnerActivityFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         current_user_id = firebaseAuth.getCurrentUser().getUid();
 
-        notifications = new ArrayList<Notification>();
-        ownerNotificationAdapter = new OwnerNotificationAdapter(OwnerActivityFragment.this,notifications);
+        activities = new ArrayList<Activity>();
+        ownerNotificationAdapter = new OwnerNotificationAdapter(OwnerActivityFragment.this, activities);
         recyclerView.setAdapter(ownerNotificationAdapter);
 
         EventChangeListener();
@@ -76,13 +76,13 @@ public class OwnerActivityFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Notification temp = new Notification();
+                                Activity temp = new Activity();
                                 temp.setNoti_id(document.get("noti_id").toString());
                                 temp.setProvider_id(document.get("provider_id").toString());
                                 temp.setCustomer_id(document.get("customer_id").toString());
                                 temp.setStatus(document.get("status").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
-                                notifications.add(temp);
+                                activities.add(temp);
                                 ownerNotificationAdapter.notifyDataSetChanged();
                             }
                         } else {

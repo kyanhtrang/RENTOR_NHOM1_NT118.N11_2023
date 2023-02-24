@@ -1,7 +1,7 @@
 package com.example.carrenting.Model;
 
 
-public class Notification {
+public class Activity {
 
 
     private String customer_id;
@@ -14,12 +14,12 @@ public class Notification {
 
     private String pickup;
 
-    public Notification()
+    public Activity()
     {
 
     }
 
-    public Notification(String customer_id, String provide_id, String status, String noti_id, String vehicle_id) {
+    public Activity(String customer_id, String provide_id, String status, String noti_id, String vehicle_id) {
         this.customer_id = customer_id;
         this.provider_id = provide_id;
         this.status = status;

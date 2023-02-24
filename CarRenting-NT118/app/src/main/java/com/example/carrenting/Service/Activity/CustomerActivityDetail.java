@@ -19,7 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.Model.CreateOrder;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
@@ -88,7 +88,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Notification temp = new Notification();
+                                Activity temp = new Activity();
                                 temp.setNoti_id(document.getId());
                                 temp.setProvider_id(document.get("provider_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
