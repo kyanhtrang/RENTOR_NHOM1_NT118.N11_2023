@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,7 +49,7 @@ public class ScheduleSelect extends AppCompatActivity {
     Intent intent;
     String vehicle_id;
     FirebaseFirestore dtb_Vehicle, dtb_Noti,dtb_update;
-    private Notification noti = new Notification();
+    private Activity noti = new Activity();
     String current_user_id;
     StorageReference storageReference;
     FirebaseAuth firebaseAuth;

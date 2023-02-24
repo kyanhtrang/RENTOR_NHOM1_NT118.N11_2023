@@ -19,7 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.Model.CreateOrder;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
@@ -53,6 +53,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
     String NotiID,noti_status;
     String amount = "1000";
     String token;
+    int bit;
     ImageView vehicleImage;
     String vnp_url, vnp_tmnCode;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,6 +69,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
         String OrderID = intent.getStringExtra("NotiID");
         NotiID = OrderID;
+
         init();
 
         StrictMode.ThreadPolicy policy = new
@@ -86,11 +88,16 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Notification temp = new Notification();
+                                Activity temp = new Activity();
                                 temp.setNoti_id(document.getId());
                                 temp.setProvider_id(document.get("provider_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 temp.setStatus(document.get("status").toString());
+                                temp.setDropoff(document.get("dropoff").toString());
+                                temp.setPickup(document.get("pickup").toString());
+
+                                vehiclepickup = temp.getPickup();
+                                vehicledrop = temp.getDropoff();
                                 ProvideID = temp.getProvider_id();
                                 vehicle_id = temp.getVehicle_id();
                                 noti_status=temp.getStatus();
@@ -121,6 +128,10 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
                                 setstatus();
+                                pickup.setText(vehiclepickup);
+                                dropoff.setText(vehicledrop);
+                                totalcost = calculate(vehiclepickup, vehicledrop);
+                                totalCost.setText(totalcost);
                             }
                         } else {
                             Toast.makeText(CustomerActivityDetail.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -319,6 +330,36 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private String calculate(String a, String b){
+        int result = 0, day = 1, month = 1, year = 1;
+        day = Integer.parseInt(b.substring(0,b.indexOf("/")))- Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(0, a.indexOf("/"));
+        b = b.substring(0, b.indexOf("/"));
+        month = Integer.parseInt(b.substring(0,b.indexOf("/")))- Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(0, a.indexOf("/"));
+        b = b.substring(0, b.indexOf("/"));
+        year = Integer.parseInt(b.substring(0,b.indexOf(" ")))- Integer.parseInt(a.substring(0,a.indexOf(" ")));
+        a = a.substring(0, a.indexOf(" "));
+        b = b.substring(0, b.indexOf(" "));
+
+        if (month <= 0){
+            month = 12;
+            year--;
+        }
+        if (day <= 0) {
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                month--;
+                day = 30;
+                if (month == 2) day = 28;
+            }
+        }
+        if (month <= 0){
+            month = 12;
+            year--;
+        }
+        result = year * 365 + month * 30 + day;
+        return String.valueOf(result * Integer.parseInt(vehicleprice));
     }
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
