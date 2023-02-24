@@ -104,7 +104,6 @@ public class RegisterActivity extends AppCompatActivity{
             isValid = false;
         }
     }
-
     private void createAccount(){
 
         Phone = inputPhone.getText().toString();
@@ -179,8 +178,6 @@ public class RegisterActivity extends AppCompatActivity{
 
         return valid;
     }
-
-
     private void createUser(){
         user = new User();
         user.setEmail(Email);

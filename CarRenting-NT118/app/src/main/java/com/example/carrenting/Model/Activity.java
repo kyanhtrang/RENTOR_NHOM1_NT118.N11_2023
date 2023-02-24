@@ -15,6 +15,7 @@ public class Activity {
     private String pickup;
 
     public Activity()
+
     {
 
     }
@@ -69,6 +70,7 @@ public class Activity {
 
     public void setPickup(String pickup) {
         this.pickup = pickup;
+
     }
 
     public void setDropoff(String dropoff) {
@@ -82,4 +84,5 @@ public class Activity {
     public String getPickup() {
         return pickup;
     }
+
 }

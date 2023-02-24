@@ -17,6 +17,7 @@ import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
+import com.example.carrenting.Service.UserAuthentication.UpdatePassword;
 import com.example.carrenting.Service.UserAuthentication.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -88,6 +89,20 @@ public class CustomerSettingFragment extends Fragment {
                 ((Activity) getActivity()).overridePendingTransition(0, 0);
             }
         });
+
+        LinearLayout changePass = (LinearLayout) view.findViewById(R.id.layout_change_password);
+        changePass.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(getActivity(), UpdatePassword.class);
+                startActivity(i);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
+            }
+        });
+
+
 
         LinearLayout profile = (LinearLayout) view.findViewById(R.id.layout_information);
         profile.setOnClickListener(new View.OnClickListener() {
