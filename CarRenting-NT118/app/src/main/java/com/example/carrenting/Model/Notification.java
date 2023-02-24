@@ -9,7 +9,8 @@ public class Notification {
     private String status;
     private String noti_id;
     private String vehicle_id;
-
+    private String pickup;
+    private String dropoff;
     public Notification()
     {
 
@@ -61,5 +62,21 @@ public class Notification {
 
     public void setVehicle_id(String vehicle_id) {
         this.vehicle_id = vehicle_id;
+    }
+
+    public String getDropoff() {
+        return dropoff;
+    }
+
+    public void setDropoff(String dropoff) {
+        this.dropoff = dropoff;
+    }
+
+    public String getPickup() {
+        return pickup;
+    }
+
+    public void setPickup(String pickup) {
+        this.pickup = pickup;
     }
 }

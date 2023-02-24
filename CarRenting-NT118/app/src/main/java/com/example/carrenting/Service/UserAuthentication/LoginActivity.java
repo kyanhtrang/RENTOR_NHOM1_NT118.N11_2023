@@ -205,9 +205,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
-
         overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -225,7 +223,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         btnForget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -250,7 +247,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void signIn(String email, String password){
@@ -308,7 +304,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
     private boolean validateForm() {
         boolean valid = true;
@@ -340,7 +335,6 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         dtbUser = FirebaseFirestore.getInstance();
     }
-
     private void createUser() {
         user.setUser_id(FirebaseAuth.getInstance().getUid());
 

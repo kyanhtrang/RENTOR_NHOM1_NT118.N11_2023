@@ -27,7 +27,6 @@ public class UserProfile extends AppCompatActivity {
    private Button btnUpdate;
    private ImageView imgAvatar, imgFrontCCCD, imgBehindCCCD;
    private TextView tvPhone, tvEmail, tvName, tvAddress, tvCity, tvBirthday;
-
    private FirebaseFirestore dtb_user;
    private FirebaseUser firebaseUser;
    private User user = new User();

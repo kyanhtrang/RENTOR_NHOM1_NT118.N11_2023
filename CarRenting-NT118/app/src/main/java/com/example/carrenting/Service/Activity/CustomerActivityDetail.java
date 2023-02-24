@@ -182,7 +182,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     private void checkout(String token){
 
@@ -343,7 +342,21 @@ public class CustomerActivityDetail extends AppCompatActivity {
         //btn_payment.setVisibility(View.GONE);
         //btn_payment.setEnabled(false);
     }
-
+    private int getday(String date){
+        int day = 31;
+        //
+        return day;
+    }
+    private int getmonth(String date){
+        int month = 12;
+        //
+        return month;
+    }
+    private int getyear(String date){
+        int year = 2022;
+        //
+        return year;
+    }
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
