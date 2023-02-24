@@ -75,7 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     String uid = user.getUid();
 
-                                    createUser();
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    DocumentReference docRef = db.collection("User").document(uid);
 
                                     FirebaseFirestore.getInstance().collection("Users").document(uid)
                                             .get()
@@ -100,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                                         } else {
                                                             // the document does not exist
+                                                            createUser();
                                                         }
                                                     } else {
                                                         // handle the error
@@ -267,37 +269,38 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             String uid = firebaseUser.getUid();
-                            FirebaseFirestore.getInstance().collection("Users").document(uid)
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                            if (task.isSuccessful()) {
-                                                DocumentSnapshot document = task.getResult();
-                                                if (document.exists()) {
-                                                    // do something with the retrieved data
-                                                    String username = document.getString("username");
-                                                    String phonenumber = document.getString("phoneNumber");
-                                                    if (username != null && username.isEmpty()) {
-                                                        Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
-                                                        intent.putExtra("phone", phonenumber);
-                                                        startActivity(intent);
-                                                    }
-                                                    else
-                                                    {
-                                                        Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
-                                                        startActivity(intent);
-                                                        onStop();
-                                                    }
 
-                                                } else {
-                                                    // the document does not exist
+                            FirebaseFirestore.getInstance().collection("Users").document(uid)
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                // do something with the retrieved data
+                                                String username = document.getString("username");
+                                                String phonenumber = document.getString("phoneNumber");
+                                                if (username != null && username.isEmpty()) {
+                                                    Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
+                                                    intent.putExtra("phone", phonenumber);
+                                                    startActivity(intent);
                                                 }
+                                                else
+                                                {
+                                                    Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
+                                                    startActivity(intent);
+                                                    onStop();
+                                                }
+
                                             } else {
-                                                // handle the error
+                                                // the document does not exist
                                             }
+                                        } else {
+                                            // handle the error
                                         }
-                                    });
+                                    }
+                                });
 
                         } else {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thất bại.", Toast.LENGTH_SHORT).show();
@@ -339,7 +342,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void createUser() {
-        user = new User();
         user.setUser_id(FirebaseAuth.getInstance().getUid());
 
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
