@@ -342,8 +342,24 @@ public class CustomerActivityDetail extends AppCompatActivity {
         year = Integer.parseInt(b.substring(0,b.indexOf(" ")))- Integer.parseInt(a.substring(0,a.indexOf(" ")));
         a = a.substring(0, a.indexOf(" "));
         b = b.substring(0, b.indexOf(" "));
-        result = year * 365 + month * 30 ;
-        return String.valueOf(result);
+
+        if (month <= 0){
+            month = 12;
+            year--;
+        }
+        if (day <= 0) {
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                month--;
+                day = 30;
+                if (month == 2) day = 28;
+            }
+        }
+        if (month <= 0){
+            month = 12;
+            year--;
+        }
+        result = year * 365 + month * 30 + day;
+        return String.valueOf(result * Integer.parseInt(vehicleprice));
     }
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
