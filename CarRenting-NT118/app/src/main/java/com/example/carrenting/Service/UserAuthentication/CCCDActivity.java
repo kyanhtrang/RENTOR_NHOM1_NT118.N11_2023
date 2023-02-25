@@ -134,12 +134,16 @@ public class CCCDActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+/*
                             Toast.makeText(CCCDActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+*/
                             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     frontUrl = uri.toString();
+/*
                                     Toast.makeText(getBaseContext(), "Upload success! URL - " + frontUrl, Toast.LENGTH_SHORT).show();
+*/
                                 }
                             });
                         }
@@ -187,12 +191,16 @@ public class CCCDActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+/*
                             Toast.makeText(CCCDActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+*/
                             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     behindUrl = uri.toString();
+/*
                                     Toast.makeText(getBaseContext(), "Upload success! URL - " + behindUrl, Toast.LENGTH_SHORT).show();
+*/
                                 }
                             });
                         }
@@ -229,7 +237,9 @@ public class CCCDActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+/*
                         Toast.makeText(CCCDActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+*/
                         Intent intent = new Intent(CCCDActivity.this, ProfileManagement.class);
                         startActivity(intent);
                     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,11 +55,10 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDb = FirebaseFirestore.getInstance();
 
-        if (!phoneNumber.startsWith("+84"))
-        {
-            phoneNumber = "+84" + phoneNumber;
+        if (phoneNumber.startsWith("0")) {
+            phoneNumber = "+84" + phoneNumber.substring(1, phoneNumber.length());
         }
-        Toast.makeText(this,phoneNumber,Toast.LENGTH_LONG).show();
+        Log.wtf("Phone Number", "Phone number is : " + phoneNumber);
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,8 +72,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
                 if(otpValid) {
                     // send otp to the user
-                    String otp = otpNumberOne.getText().toString() + getOtpNumberTwo.getText().toString() + getOtpNumberThree.getText().toString() + getOtpNumberFour.getText().toString() +
-                            getOtpNumberFive.getText().toString() + otpNumberSix.getText().toString();
+                    String otp = otpNumberOne.getText().toString() + getOtpNumberTwo.getText().toString() + getOtpNumberThree.getText().toString() + getOtpNumberFour.getText().toString() + getOtpNumberFive.getText().toString() + otpNumberSix.getText().toString();
 
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp);
 
@@ -90,7 +89,9 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+/*
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
+*/
                                 Intent intent = new Intent(ValidatePhoneActivity.this, CCCDActivity.class);
                                 startActivity(intent);
                             }
@@ -115,26 +116,22 @@ public class ValidatePhoneActivity extends AppCompatActivity {
     private void VerifyPhoneNumber(String phoneNumber){
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber(phoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
+                .setTimeout(15L, TimeUnit.SECONDS)
                 .setActivity(this)
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                         verifyAuthentication(phoneAuthCredential);
                         tvResend.setVisibility(View.GONE);
-
                     }
-
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
                         Toast.makeText(ValidatePhoneActivity.this, "OTP Verification Failed.", Toast.LENGTH_SHORT).show();
                     }
-
-                    //@SuppressLint("RestrictedApi")
                     @Override
                     public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verificationId, forceResendingToken);
-                        Toast.makeText(ValidatePhoneActivity.this, "onCodeSent:" + forceResendingToken, Toast.LENGTH_SHORT).show();
+                        Log.e("ValidatePhone", "onCodeSent:" + forceResendingToken);
                         mVerificationId = verificationId;
                         mResendToken = forceResendingToken;
                         tvResend.setVisibility(View.GONE);
@@ -157,10 +154,12 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         VerifyPhoneNumber(phoneNumber);
     }
     public void verifyAuthentication(PhoneAuthCredential credential){
-        firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        firebaseAuth.getCurrentUser()
+                .linkWithCredential(credential)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(ValidatePhoneActivity.this, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ValidatePhoneActivity.this, "Đã gửi OTP xác thực", Toast.LENGTH_SHORT).show();
                 // send to dashboard.
             }
         });

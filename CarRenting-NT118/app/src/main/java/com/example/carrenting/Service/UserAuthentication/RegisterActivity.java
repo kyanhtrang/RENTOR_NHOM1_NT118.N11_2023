@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity{
 
     private static final String TAG = "RegisterActivity";
 
-    @Pattern(regex = "[0-9]{9}", message = "Vui lòng nhập đúng số điện thoại")
+    @Pattern(regex = "[0-9]{10}", message = "Vui lòng nhập đúng số điện thoại")
     private EditText inputPhone;
     @Email
     private EditText inputEmail;
@@ -132,9 +132,10 @@ public class RegisterActivity extends AppCompatActivity{
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Verification email sent to " + Email, Toast.LENGTH_LONG).show();
-                                                    createUser();
 
+                                                    Toast.makeText(RegisterActivity.this, "Verification email sent to " + Email, Toast.LENGTH_LONG).show();
+
+                                                    createUser();
                                                 } else {
                                                     Log.e("TAG", "sendEmailVerification failed!", task.getException());
                                                 }

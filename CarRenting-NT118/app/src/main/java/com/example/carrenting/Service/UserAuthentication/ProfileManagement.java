@@ -52,7 +52,6 @@ public class ProfileManagement extends AppCompatActivity {
     private String documentId, downloadUrl, uploadtype;
     private FirebaseUser firebaseUser;
     private FirebaseFirestore dtb_user;
-    private DocumentReference docRef;
     private EditText phonenumber, email, fullname, address, city;
     private User user = new User();
 
@@ -112,8 +111,7 @@ public class ProfileManagement extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         user.setUser_id(firebaseUser.getUid());
     }
-    private String getTodaysDate()
-    {
+    private String getTodaysDate()  {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -121,12 +119,10 @@ public class ProfileManagement extends AppCompatActivity {
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return makeDateString(day, month, year);
     }
-    private String makeDateString(int day, int month, int year)
-    {
+    private String makeDateString(int day, int month, int year) {
         return getMonthFormat(month) + " " + day + " " + year;
     }
-    private String getMonthFormat(int month)
-    {
+    private String getMonthFormat(int month) {
         if(month == 1)
             return "01";
         if(month == 2)
@@ -159,8 +155,7 @@ public class ProfileManagement extends AppCompatActivity {
     {
         datePickerDialog.show();
     }
-    private void initDatePicker()
-    {
+    private void initDatePicker() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
         {
             @Override
@@ -205,7 +200,9 @@ public class ProfileManagement extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+/*
                             Toast.makeText(ProfileManagement.this, "Uploaded", Toast.LENGTH_SHORT).show();
+*/
                             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -290,6 +287,8 @@ public class ProfileManagement extends AppCompatActivity {
                                 phonenumber.setText(document.get("phoneNumber").toString());
                                 address.setText(document.get("address").toString());
                                 city.setText(document.get("city").toString());
+
+                                dateButton.setText(document.get("birthday").toString());
 
                                 user.setAvatarURL(document.get("avatarURL").toString());
                                 if (!document.get("avatarURL").toString().isEmpty()) {

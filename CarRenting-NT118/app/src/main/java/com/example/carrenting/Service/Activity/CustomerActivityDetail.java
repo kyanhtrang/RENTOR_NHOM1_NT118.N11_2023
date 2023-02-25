@@ -314,7 +314,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 temp.setVehicle_price(vehicleprice);
                                 temp.setProvider_address(vehicleaddress);
                                 tv_BrandCar.setText(temp.getVehicle_name());
-                                tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
+                                tv_Gia.setText(temp.getVehicle_price() + "/ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
 
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
@@ -334,33 +334,40 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
     private String calculate(String a, String b){
         int result = 0, day = 1, month = 1, year = 1;
-        day = Integer.parseInt(b.substring(0,b.indexOf("/")))- Integer.parseInt(a.substring(0,a.indexOf("/")));
-        a = a.substring(0, a.indexOf("/"));
-        b = b.substring(0, b.indexOf("/"));
-        month = Integer.parseInt(b.substring(0,b.indexOf("/")))- Integer.parseInt(a.substring(0,a.indexOf("/")));
-        a = a.substring(0, a.indexOf("/"));
-        b = b.substring(0, b.indexOf("/"));
-        year = Integer.parseInt(b.substring(0,b.indexOf(" ")))- Integer.parseInt(a.substring(0,a.indexOf(" ")));
-        a = a.substring(0, a.indexOf(" "));
-        b = b.substring(0, b.indexOf(" "));
-
-        if (month <= 0){
+        day = Integer.parseInt(b.substring(0,b.indexOf("/")));
+        day = day - Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(a.indexOf("/")+1, a.length());
+        b = b.substring(b.indexOf("/")+1, b.length());
+        month = Integer.parseInt(b.substring(0,b.indexOf("/")));
+        month = month - Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(a.indexOf("/")+1, a.length());
+        b = b.substring(b.indexOf("/")+1, b.length());
+        year = Integer.parseInt(b.substring(0,3)) - Integer.parseInt(a.substring(0,3));
+        a = a.substring(4, a.length());
+        b = b.substring(4, b.length());
+        Log.e("day", String.valueOf(day));
+        Log.e("month", String.valueOf(month));
+        Log.e("year", String.valueOf(year));
+        if (month < 0){
             month = 12;
             year--;
         }
-        if (day <= 0) {
+        if (day < 0) {
             if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
                 month--;
                 day = 30;
                 if (month == 2) day = 28;
             }
         }
-        if (month <= 0){
+        if (month < 0){
             month = 12;
             year--;
         }
         result = year * 365 + month * 30 + day;
-        return String.valueOf(result * Integer.parseInt(vehicleprice));
+        Log.e("Total Day", "Total Day is : " + String.valueOf(result));
+        String total = String.valueOf(result * Integer.parseInt(vehicleprice.substring(0, vehicleprice.indexOf(' '))));
+        Log.e("Total", "Total price : " + total);
+        return total;
     }
 
     public void init(){
