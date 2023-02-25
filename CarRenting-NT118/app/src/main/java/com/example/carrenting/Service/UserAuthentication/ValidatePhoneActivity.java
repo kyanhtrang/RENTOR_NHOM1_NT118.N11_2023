@@ -89,6 +89,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+
 /*
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
 */
@@ -131,7 +132,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                     @Override
                     public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verificationId, forceResendingToken);
-                        Log.e("ValidatePhone", "onCodeSent:" + forceResendingToken);
+                        Toast.makeText(ValidatePhoneActivity.this, "Đã gửi OTP xác thực", Toast.LENGTH_SHORT).show();
                         mVerificationId = verificationId;
                         mResendToken = forceResendingToken;
                         tvResend.setVisibility(View.GONE);
@@ -159,7 +160,6 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(ValidatePhoneActivity.this, "Đã gửi OTP xác thực", Toast.LENGTH_SHORT).show();
                 // send to dashboard.
             }
         });
