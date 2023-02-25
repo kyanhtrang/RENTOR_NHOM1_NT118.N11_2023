@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
+
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.Activity.OwnerActivityDetail;
@@ -24,14 +25,14 @@ import java.util.ArrayList;
 
 public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
     OwnerActivityFragment ownerActivityFragment;
-    Notification noti;
-    ArrayList<Notification> mNoti;
+    Activity noti;
+    ArrayList<Activity> mNoti;
 
     String CustomerID, Name;
     FirebaseFirestore dtb;
 
 
-    public OwnerNotificationAdapter(OwnerActivityFragment mContext, ArrayList<Notification>mNoti){
+    public OwnerNotificationAdapter(OwnerActivityFragment mContext, ArrayList<Activity>mNoti){
         this.ownerActivityFragment=mContext;
         this.mNoti=mNoti;
 

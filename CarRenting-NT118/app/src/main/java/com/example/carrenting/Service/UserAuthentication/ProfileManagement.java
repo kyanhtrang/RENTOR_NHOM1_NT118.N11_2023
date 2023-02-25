@@ -300,6 +300,7 @@ public class ProfileManagement extends AppCompatActivity {
                         }
                     }
                 });
+        if (email.getText().toString().isEmpty()) email.setEnabled(true);
     }
 
 }

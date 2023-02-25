@@ -19,21 +19,25 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.Model.CreateOrder;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.ZaloPay.Constant.AppInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
@@ -49,6 +53,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
     String NotiID,noti_status;
     String amount = "1000";
     String token;
+    int bit;
     ImageView vehicleImage;
     String vnp_url, vnp_tmnCode;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -64,6 +69,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
 
         String OrderID = intent.getStringExtra("NotiID");
         NotiID = OrderID;
+
         init();
 
         StrictMode.ThreadPolicy policy = new
@@ -82,11 +88,16 @@ public class CustomerActivityDetail extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Notification temp = new Notification();
+                                Activity temp = new Activity();
                                 temp.setNoti_id(document.getId());
                                 temp.setProvider_id(document.get("provider_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 temp.setStatus(document.get("status").toString());
+                                temp.setDropoff(document.get("dropoff").toString());
+                                temp.setPickup(document.get("pickup").toString());
+
+                                vehiclepickup = temp.getPickup();
+                                vehicledrop = temp.getDropoff();
                                 ProvideID = temp.getProvider_id();
                                 vehicle_id = temp.getVehicle_id();
                                 noti_status=temp.getStatus();
@@ -117,6 +128,10 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
                                 setstatus();
+                                pickup.setText(vehiclepickup);
+                                dropoff.setText(vehicledrop);
+                                totalcost = calculate(vehiclepickup, vehicledrop);
+                                totalCost.setText(totalcost);
                             }
                         } else {
                             Toast.makeText(CustomerActivityDetail.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -135,6 +150,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                 createorder();
                 checkout(token);
                 Log.d("CustomerActivityDetail", "Clicked");
+                postpayment();
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +161,27 @@ public class CustomerActivityDetail extends AppCompatActivity {
         });
 
     }
-
+    private void postpayment() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("status", "Da thanh toan");
+    dtb.collection("Notification")
+            .document(NotiID)
+            .set(data, SetOptions.merge())
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(CustomerActivityDetail.this, "Cập nhật thông tin thanh toán thành công", Toast.LENGTH_LONG).show();
+                    Log.d("Payment", "Done");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(CustomerActivityDetail.this, "Cập nhật thông tin thanh toán thất bại", Toast.LENGTH_LONG).show();
+                    Log.d("Payment", "Fail");
+                }
+            });
+    }
     private void createorder(){
         try {
             JSONObject data = orderApi.createOrder(amount);
@@ -157,7 +193,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     private void checkout(String token){
 
@@ -296,8 +331,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
-<<<<<<< Updated upstream
-=======
 
     private String calculate(String a, String b){
         int result = 0, day = 1, month = 1, year = 1;
@@ -329,7 +362,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
         result = year * 365 + month * 30 + day;
         return String.valueOf(result * Integer.parseInt(vehicleprice));
     }
->>>>>>> Stashed changes
+
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         tv_status=findViewById(R.id.txtview_noti_status);
@@ -352,7 +385,21 @@ public class CustomerActivityDetail extends AppCompatActivity {
         //btn_payment.setVisibility(View.GONE);
         //btn_payment.setEnabled(false);
     }
-
+    private int getday(String date){
+        int day = 31;
+        //
+        return day;
+    }
+    private int getmonth(String date){
+        int month = 12;
+        //
+        return month;
+    }
+    private int getyear(String date){
+        int year = 2022;
+        //
+        return year;
+    }
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

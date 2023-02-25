@@ -1,7 +1,6 @@
 package com.example.carrenting.FragmentPages.Customer;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.Adapter.ActivityAdapter;
-import com.example.carrenting.Model.Notification;
+import com.example.carrenting.Model.Activity;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Activity.CustomerActivityDetail;
-import com.example.carrenting.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +31,7 @@ public class CustomerActivityFragment extends Fragment {
 
     RecyclerView recyclerView;
     ActivityAdapter notificationAdapter;
-    ArrayList<Notification> notifications;
+    ArrayList<Activity> activities;
     FirebaseFirestore dtb_noti;
     ProgressDialog progressDialog;
     String current_user_id;
@@ -59,16 +56,16 @@ public class CustomerActivityFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         current_user_id = firebaseAuth.getCurrentUser().getUid();
 
-        notifications = new ArrayList<Notification>();
-        notificationAdapter = new ActivityAdapter(CustomerActivityFragment.this,notifications);
+        activities = new ArrayList<Activity>();
+        notificationAdapter = new ActivityAdapter(CustomerActivityFragment.this, activities);
         recyclerView.setAdapter(notificationAdapter);
 
         EventChangeListener();
+        progressDialog.cancel();
         return view;
     }
     private void EventChangeListener()
     {
-
         dtb_noti.collection("Notification")
                 .whereEqualTo("customer_id", current_user_id)
                 .get()
@@ -77,15 +74,14 @@ public class CustomerActivityFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Notification temp = new Notification();
+                                Activity temp = new Activity();
                                 temp.setNoti_id(document.get("noti_id").toString());
                                 temp.setProvider_id(document.get("provider_id").toString());
                                 temp.setCustomer_id(document.get("customer_id").toString());
                                 temp.setStatus(document.get("status").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
-                                notifications.add(temp);
+                                activities.add(temp);
                                 notificationAdapter.notifyDataSetChanged();
-                                progressDialog.cancel();
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin đơn hàng ", Toast.LENGTH_SHORT).show();
