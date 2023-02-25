@@ -293,13 +293,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-<<<<<<< Updated upstream
-                    Toast.makeText(LoginActivity.this, "Tạo user thành công",Toast.LENGTH_LONG).show();
-=======
-/*
                     Toast.makeText(LoginActivity.this, "Tạo tài khoản thành công",Toast.LENGTH_LONG).show();
-*/
->>>>>>> Stashed changes
+
                 } else {
                     View parentLayout = findViewById(android.R.id.content);
                     Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
