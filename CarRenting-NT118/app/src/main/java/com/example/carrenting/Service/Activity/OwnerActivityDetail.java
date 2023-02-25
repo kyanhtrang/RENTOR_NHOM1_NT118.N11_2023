@@ -76,6 +76,9 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                 temp.setCustomer_id(document.get("customer_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 temp.setStatus(document.get("status").toString());
+                                
+                                vehiclepickup = document.get("pickup").toString();
+                                vehicledrop = document.get("dropoff").toString();
 
                                 CustomerID = temp.getCustomer_id();
                                 vehicle_id = temp.getVehicle_id();
@@ -210,8 +213,6 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                 vehiclename = document.get("vehicle_name").toString();
                                 vehicleprice = document.get("vehicle_price").toString();
                                 vehicleaddress = document.get("provider_address").toString();
-                                vehiclepickup = document.get("pickup").toString();
-                                vehicledrop = document.get("dropoff").toString();
 
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
