@@ -2,6 +2,7 @@ package com.example.carrenting.Service.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,7 +34,8 @@ public class OwnerActivityDetail extends AppCompatActivity {
 
     FirebaseFirestore dtb;
     Intent intent;
-    String CustomerID, vehicle_id;
+    String ProvideID, vehicle_id, ownername, owneremail, ownerphone, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
+    String CustomerID;
     String NotiID,noti_status;
     ImageView vehicleImage;
     private Activity temp = new Activity();
@@ -129,6 +131,44 @@ public class OwnerActivityDetail extends AppCompatActivity {
         });
     }
 
+    private String calculate(String a, String b){
+        int result = 0, day = 1, month = 1, year = 1;
+        day = Integer.parseInt(b.substring(0,b.indexOf("/")));
+        day = day - Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(a.indexOf("/")+1, a.length());
+        b = b.substring(b.indexOf("/")+1, b.length());
+        month = Integer.parseInt(b.substring(0,b.indexOf("/")));
+        month = month - Integer.parseInt(a.substring(0,a.indexOf("/")));
+        a = a.substring(a.indexOf("/")+1, a.length());
+        b = b.substring(b.indexOf("/")+1, b.length());
+        year = Integer.parseInt(b.substring(0,3)) - Integer.parseInt(a.substring(0,3));
+        a = a.substring(4, a.length());
+        b = b.substring(4, b.length());
+        Log.e("day", String.valueOf(day));
+        Log.e("month", String.valueOf(month));
+        Log.e("year", String.valueOf(year));
+        if (month < 0){
+            month = 12;
+            year--;
+        }
+        if (day < 0) {
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                month--;
+                day = 30;
+                if (month == 2) day = 28;
+            }
+        }
+        if (month < 0){
+            month = 12;
+            year--;
+        }
+        result = year * 365 + month * 30 + day;
+        Log.e("Total Day", "Total Day is : " + String.valueOf(result));
+        //Log.d("Price", "Vehicle Price is : "+ vehicleprice.substring(0, vehicleprice.indexOf(" VND")-1));
+        String total = String.valueOf(result * Integer.parseInt(tv_Gia.getText().toString().substring(0, tv_Gia.getText().toString().indexOf(" "))));
+        Log.e("Total", "Total price : " + total);
+        return total;
+    }
     private void getuser(String ProvideID){
         dtb.collection("Users")
                 .whereEqualTo("user_id", CustomerID)
@@ -166,15 +206,25 @@ public class OwnerActivityDetail extends AppCompatActivity {
 
                                 Vehicle temp = new Vehicle();
                                 temp.setVehicle_id(document.getId());
+
+                                vehiclename = document.get("vehicle_name").toString();
+                                vehicleprice = document.get("vehicle_price").toString();
+                                vehicleaddress = document.get("provider_address").toString();
+
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(document.get("vehicle_price").toString());
 
 
                                 tv_BrandCar.setText(temp.getVehicle_name());
-                                tv_Gia.setText(temp.getVehicle_price() + " Đ /ngày");
+                                tv_Gia.setText(temp.getVehicle_price() + "/ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
                                 temp.setProvider_address(document.get("provider_address").toString());
+
+                                pickup.setText(vehiclepickup);
+                                dropoff.setText(vehicledrop);
+                                totalcost = calculate(vehiclepickup, vehicledrop);
+                                totalCost.setText(totalcost);
 
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                 if (!document.get("vehicle_imageURL").toString().isEmpty()) {
