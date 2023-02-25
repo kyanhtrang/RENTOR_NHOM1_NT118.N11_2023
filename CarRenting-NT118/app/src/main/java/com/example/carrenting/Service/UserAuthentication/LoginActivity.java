@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
 
                 AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
 
@@ -203,7 +204,6 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             String uid = firebaseUser.getUid();
 
@@ -213,6 +213,8 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         if (task.isSuccessful()) {
+                                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
+
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 // do something with the retrieved data
@@ -291,7 +293,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
+<<<<<<< Updated upstream
                     Toast.makeText(LoginActivity.this, "Tạo user thành công",Toast.LENGTH_LONG).show();
+=======
+/*
+                    Toast.makeText(LoginActivity.this, "Tạo tài khoản thành công",Toast.LENGTH_LONG).show();
+*/
+>>>>>>> Stashed changes
                 } else {
                     View parentLayout = findViewById(android.R.id.content);
                     Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
