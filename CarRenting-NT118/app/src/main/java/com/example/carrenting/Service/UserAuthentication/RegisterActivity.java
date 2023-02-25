@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity{
 
     private static final String TAG = "RegisterActivity";
 
-    @Pattern(regex = "[0-9]{9}", message = "Vui lòng nhập đúng số điện thoại")
+    @Pattern(regex = "[0-9]{10}", message = "Vui lòng nhập đúng số điện thoại")
     private EditText inputPhone;
     @Email
     private EditText inputEmail;

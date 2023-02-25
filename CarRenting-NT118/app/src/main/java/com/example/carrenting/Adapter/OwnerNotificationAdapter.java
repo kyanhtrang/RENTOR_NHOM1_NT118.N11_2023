@@ -96,8 +96,6 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapt
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             status=itemView.findViewById(R.id.tv_Status);
-
-
         }
     }
     private void getuser(String Customerid){
