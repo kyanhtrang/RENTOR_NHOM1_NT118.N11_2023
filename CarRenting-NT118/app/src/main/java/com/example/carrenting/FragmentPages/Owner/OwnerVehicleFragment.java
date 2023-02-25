@@ -81,10 +81,10 @@ public class OwnerVehicleFragment extends Fragment {
         });
 
 
-        progressDialog = new ProgressDialog(getActivity());
+/*        progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();
+        progressDialog.show();*/
 
         recyclerView = view.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);

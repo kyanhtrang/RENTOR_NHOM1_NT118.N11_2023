@@ -124,65 +124,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-/*
-    private void firebaseAuthWithGoogle(String idToken) {
-
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
-
-                            createUser();
-
-                            String uid = firebaseUser.getUid();
-                            FirebaseFirestore.getInstance().collection("Users").document(uid)
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                            if (task.isSuccessful()) {
-                                                DocumentSnapshot document = task.getResult();
-                                                if (document.exists()) {
-                                                    // do something with the retrieved data
-                                                    String username = document.getString("username");
-                                                    String phonenumber = document.getString("phoneNumber");
-                                                    if (username != null && username.isEmpty()) {
-                                                        Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
-                                                        intent.putExtra("phone", phonenumber);
-                                                        startActivity(intent);
-                                                    }
-                                                    else
-                                                    {
-                                                        Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
-                                                        startActivity(intent);
-                                                        onStop();
-                                                    }
-
-                                                } else {
-                                                    // the document does not exist
-                                                }
-                                            } else {
-                                                // handle the error
-                                            }
-                                        }
-                                    });
-
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-    }
-*/
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 

@@ -29,7 +29,8 @@
 
                     android:text="CHI TIẾT ĐƠN HÀNG"
                     android:textColor="@color/sky"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +41,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="ID:"
+                    android:textStyle="bold"
                     android:textColor="@color/sky"
                     android:textSize="20sp"
 
@@ -70,6 +72,7 @@
                     android:background="@drawable/ic_arrow_back_blu"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,10 +81,12 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="Trạng thái: "
                     android:textColor="@color/sky"
-                    android:layout_marginLeft="60dp"
-                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="60dp"
+                    android:textSize="20sp"
 
-                    ></TextView>
+                    tools:ignore="HardcodedText" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,30 +95,29 @@
                     app:layout_constraintLeft_toRightOf="@+id/status"
                     android:text="đang chờ "
                     android:textColor="@color/sky"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="20dp"
-                    ></TextView>
-
+                    android:layout_marginStart="5dp"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/img_noti_car"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/status" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/provide_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/img_noti_car"
+                    app:layout_constraintStart_toStartOf="@id/img_noti_car"
                     app:layout_constraintTop_toBottomOf="@+id/img_noti_car">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,11 +130,10 @@
                             android:id="@+id/divider"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:background="@color/sky"
                             android:scrollbarThumbHorizontal="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/driverDetailText" />
 
@@ -143,7 +146,7 @@
 
                             android:text="Thông tin nhà cung cấp"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/_14ssp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -240,12 +243,9 @@
                     android:id="@+id/Vehicle_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:layout_constraintEnd_toEndOf="@id/img_noti_car"
+                    app:layout_constraintStart_toStartOf="@id/img_noti_car"
                     app:layout_constraintTop_toBottomOf="@+id/provide_info">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -277,7 +277,7 @@
 
                             android:text="Thông tin xe"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/_14ssp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -462,29 +462,25 @@
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 </androidx.cardview.widget.CardView>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_customer_pay"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/buttonSize"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_16sdp"
-                    android:layout_marginLeft="30dp"
                     android:background="@drawable/round_card"
+                    android:backgroundTint="@color/sunset"
                     android:text="XÁC NHẬN VÀ THANH TOÁN"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_18ssp"
+                    android:layout_margin="@dimen/_15sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/img_noti_car"
+                    app:layout_constraintStart_toStartOf="@+id/img_noti_car"
                     app:layout_constraintTop_toBottomOf="@+id/Vehicle_info"
-
-
                     tools:ignore="HardcodedText" />
-
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
