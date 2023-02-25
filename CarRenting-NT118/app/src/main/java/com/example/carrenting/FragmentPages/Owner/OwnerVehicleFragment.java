@@ -104,7 +104,7 @@ public class OwnerVehicleFragment extends Fragment {
         } catch (Exception exception){
             Toast.makeText(getContext(), "Exception", Toast.LENGTH_LONG).show();
         }
-        progressDialog.cancel();
+/*        progressDialog.cancel();*/
         return view;
     }
 
