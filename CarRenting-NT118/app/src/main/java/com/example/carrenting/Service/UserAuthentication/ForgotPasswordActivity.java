@@ -46,7 +46,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                email = inputEmail.getText().toString();
                 mAuth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {

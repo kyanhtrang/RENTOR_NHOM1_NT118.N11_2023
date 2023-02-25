@@ -174,7 +174,10 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     if(!iemail.isEmpty()){
                     Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                    intent.putExtra("email", iemail);
+                    if(!iemail.isEmpty())
+                    {
+                        intent.putExtra("email", iemail);
+                    }
                     startActivity(intent);
                 }
                 else

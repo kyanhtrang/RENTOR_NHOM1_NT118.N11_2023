@@ -114,6 +114,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         });
 
     }
+
     private void VerifyPhoneNumber(String phoneNumber){
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber(phoneNumber)
@@ -161,6 +162,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 // send to dashboard.
+                Toast.makeText(ValidatePhoneActivity.this, "Đã gửi OTP xác thực", Toast.LENGTH_SHORT).show();
             }
         });
     }
