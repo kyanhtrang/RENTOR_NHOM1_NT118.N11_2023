@@ -237,12 +237,14 @@ public class ProfileManagement extends AppCompatActivity {
         user.setCity(city.getText().toString());
         user.setBirthday(dateButton.getText().toString());
         user.setAvatarURL(downloadUrl);
+        user.setEmail(email.getText().toString());
 
         Map<String, Object> data = new HashMap<>();
         data.put("username", user.getUsername());
         data.put("address", user.getAddress());
         data.put("city", user.getCity());
         data.put("birthday", user.getBirthday());
+        data.put("email", user.getEmail());
 
         if (downloadUrl!=null)
         {
@@ -295,6 +297,7 @@ public class ProfileManagement extends AppCompatActivity {
                                 else {
                                     user.setAvatarURL("");
                                 }
+
                             }
                         }
                         else {

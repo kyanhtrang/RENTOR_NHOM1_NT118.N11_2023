@@ -132,8 +132,9 @@ public class RegisterActivity extends AppCompatActivity{
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Verification email sent to " + Email,Toast.LENGTH_SHORT).show();
-                                                    Log.d("TAG", "Verification email sent to " + Email);
+
+                                                    Toast.makeText(RegisterActivity.this, "Verification email sent to " + Email, Toast.LENGTH_LONG).show();
+
                                                     createUser();
                                                 } else {
                                                     Log.e("TAG", "sendEmailVerification failed!", task.getException());
