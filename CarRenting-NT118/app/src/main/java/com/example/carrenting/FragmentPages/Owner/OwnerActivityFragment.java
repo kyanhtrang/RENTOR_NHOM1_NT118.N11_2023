@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.carrenting.Adapter.OwnerNotificationAdapter;
+import com.example.carrenting.Adapter.OwnerActivityAdapter;
 import com.example.carrenting.Model.Activity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class OwnerActivityFragment extends Fragment {
 
     RecyclerView recyclerView;
-    OwnerNotificationAdapter ownerNotificationAdapter;
+    OwnerActivityAdapter ownerActivityAdapter;
     ArrayList<Activity> activities;
     FirebaseFirestore dtb_noti;
     ProgressDialog progressDialog;
@@ -57,8 +57,8 @@ public class OwnerActivityFragment extends Fragment {
         current_user_id = firebaseAuth.getCurrentUser().getUid();
 
         activities = new ArrayList<Activity>();
-        ownerNotificationAdapter = new OwnerNotificationAdapter(OwnerActivityFragment.this, activities);
-        recyclerView.setAdapter(ownerNotificationAdapter);
+        ownerActivityAdapter = new OwnerActivityAdapter(OwnerActivityFragment.this, activities);
+        recyclerView.setAdapter(ownerActivityAdapter);
 
         EventChangeListener();
 
@@ -83,7 +83,7 @@ public class OwnerActivityFragment extends Fragment {
                                 temp.setStatus(document.get("status").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 activities.add(temp);
-                                ownerNotificationAdapter.notifyDataSetChanged();
+                                ownerActivityAdapter.notifyDataSetChanged();
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin đơn hàng ", Toast.LENGTH_SHORT).show();
