@@ -128,10 +128,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 getuser(ProvideID);
                                 getvehicle(vehicle_id);
                                 setstatus();
-                                pickup.setText(vehiclepickup);
-                                dropoff.setText(vehicledrop);
-                                totalcost = calculate(vehiclepickup, vehicledrop);
-                                totalCost.setText(totalcost);
+
                             }
                         } else {
                             Toast.makeText(CustomerActivityDetail.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
@@ -313,9 +310,15 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
                                 temp.setVehicle_price(vehicleprice);
                                 temp.setProvider_address(vehicleaddress);
+
                                 tv_BrandCar.setText(temp.getVehicle_name());
                                 tv_Gia.setText(temp.getVehicle_price() + "/ngày");
                                 tv_DiaDiem.setText(temp.getProvider_address());
+
+                                pickup.setText(vehiclepickup);
+                                dropoff.setText(vehicledrop);
+                                totalcost = calculate(vehiclepickup, vehicledrop);
+                                totalCost.setText(totalcost);
 
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                 if (!document.get("vehicle_imageURL").toString().isEmpty()) {
@@ -365,7 +368,8 @@ public class CustomerActivityDetail extends AppCompatActivity {
         }
         result = year * 365 + month * 30 + day;
         Log.e("Total Day", "Total Day is : " + String.valueOf(result));
-        String total = String.valueOf(result * Integer.parseInt(vehicleprice.substring(0, vehicleprice.indexOf(' '))));
+        //Log.d("Price", "Vehicle Price is : "+ vehicleprice.substring(0, vehicleprice.indexOf(" VND")-1));
+        String total = String.valueOf(result * Integer.parseInt(tv_Gia.getText().toString().substring(0, tv_Gia.getText().toString().indexOf(" "))));
         Log.e("Total", "Total price : " + total);
         return total;
     }
