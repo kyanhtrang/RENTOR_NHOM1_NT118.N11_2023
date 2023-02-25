@@ -324,6 +324,8 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                 totalcost = calculate(vehiclepickup, vehicledrop);
                                 totalCost.setText(totalcost);
 
+                                amount = totalcost;
+
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                 if (!document.get("vehicle_imageURL").toString().isEmpty()) {
                                     Picasso.get().load(temp.getVehicle_imageURL()).into(vehicleImage);

@@ -34,7 +34,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
 
     FirebaseFirestore dtb;
     Intent intent;
-    String ProvideID, vehicle_id, ownername, owneremail, ownerphone, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
+    String ProvideID, vehicle_id, vehiclename, vehicleprice, vehicleaddress, vehiclepickup, vehicledrop, totalcost;
     String CustomerID;
     String NotiID,noti_status;
     ImageView vehicleImage;
@@ -110,7 +110,6 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                         tv_status.setText("Đã thanh toán");
                                     }
                                 }
-
                                 getuser(CustomerID);
                                 getvehicle(vehicle_id);
 
