@@ -132,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity{
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Log.d("TAG", "Verification email sent to " + Email);
+                                                    Toast.makeText(RegisterActivity.this, "Verification email sent to " + Email, Toast.LENGTH_LONG).show();
                                                     createUser();
 
                                                 } else {
