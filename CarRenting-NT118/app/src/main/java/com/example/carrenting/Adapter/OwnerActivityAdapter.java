@@ -58,17 +58,26 @@ public class OwnerActivityAdapter extends RecyclerView.Adapter<OwnerActivityAdap
 
         if(noti.getStatus().equals( "Dang cho"))
         {
-            holder.status.setText("Đang chờ");
+            holder.status.setText("Nhà cung cấp chưa xác nhận");
         }
         else
         {
-            if(noti.getStatus().equals( "Xac nhan"))
+            if(noti.getStatus().equals( "Thanh toan"))
             {
-                holder.status.setText("Nhà cung cấp đã xác nhận");
+                holder.status.setText("Đang chờ thanh toán");
             }
             else
+            if (noti.getStatus().equals("Khong xac nhan"))
             {
                 holder.status.setText("Nhà cung cấp không xác nhận");
+            }
+            else
+            if (noti.getStatus().equals("Da thanh toan"))
+            {
+                holder.status.setText("Đã thanh toán");
+            }
+            else {
+                holder.status.setText("Đã xác nhận");
             }
 
         }

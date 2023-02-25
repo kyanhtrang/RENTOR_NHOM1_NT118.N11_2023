@@ -63,8 +63,13 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             {
                 holder.status.setText("Nhà cung cấp không xác nhận");
             }
+            else
+            if (noti.getStatus().equals("Da thanh toan"))
+            {
+                holder.status.setText("Đã thanh toán");
+            }
             else {
-                holder.status.setText("Đã xác nhận thuê xe");
+                holder.status.setText("Đã xác nhận");
             }
 
         }

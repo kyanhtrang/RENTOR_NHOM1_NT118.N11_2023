@@ -115,13 +115,17 @@ public class CustomerActivityDetail extends AppCompatActivity {
                                         btn_payment.setVisibility(View.VISIBLE);
                                     }
                                     else
-                                    if(noti_status.equals( "Xac nhan"))
+                                    if(noti_status.equals("Xac nhan"))
                                     {
                                         tv_status.setText("Đã xác nhận");
                                     }
                                     else
+                                    if (noti_status.equals("Khong duoc xac nhan"))
                                     {
                                         tv_status.setText("Không được xác nhận");
+                                    }
+                                    else {
+                                        tv_status.setText("Đã thanh toán");
                                     }
 
                                 }
@@ -334,7 +338,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
-
     private String calculate(String a, String b){
         int result = 0, day = 1, month = 1, year = 1;
         day = Integer.parseInt(b.substring(0,b.indexOf("/")));
@@ -373,7 +376,6 @@ public class CustomerActivityDetail extends AppCompatActivity {
         Log.e("Total", "Total price : " + total);
         return total;
     }
-
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         tv_status=findViewById(R.id.txtview_noti_status);

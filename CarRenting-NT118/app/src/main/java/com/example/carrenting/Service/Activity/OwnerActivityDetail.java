@@ -88,20 +88,29 @@ public class OwnerActivityDetail extends AppCompatActivity {
 
                                 if(noti_status.equals( "Dang cho"))
                                 {
-                                    tv_status.setText("Đang chờ");
+                                    tv_status.setText("Chưa được xác nhận");
                                 }
                                 else
                                 {
-                                    if(noti_status.equals( "Xac nhan"))
+                                    if(tv_status.equals( "Thanh toan"))
+                                    {
+                                        tv_status.setText("Đang chờ thanh toán");
+                                    }
+                                    else
+                                    if(noti_status.equals("Xac nhan"))
                                     {
                                         tv_status.setText("Đã xác nhận");
                                     }
                                     else
+                                    if (noti_status.equals("Khong duoc xac nhan"))
                                     {
                                         tv_status.setText("Không được xác nhận");
                                     }
-
+                                    else {
+                                        tv_status.setText("Đã thanh toán");
+                                    }
                                 }
+
                                 getuser(CustomerID);
                                 getvehicle(vehicle_id);
 
@@ -133,7 +142,6 @@ public class OwnerActivityDetail extends AppCompatActivity {
             }
         });
     }
-
     private String calculate(String a, String b){
         int result = 0, day = 1, month = 1, year = 1;
         day = Integer.parseInt(b.substring(0,b.indexOf("/")));
@@ -285,8 +293,6 @@ public class OwnerActivityDetail extends AppCompatActivity {
                 });
 
     }
-
-
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         email=findViewById(R.id.txtview_noti_email);
