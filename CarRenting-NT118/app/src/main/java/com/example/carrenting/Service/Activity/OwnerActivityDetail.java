@@ -76,7 +76,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                 temp.setCustomer_id(document.get("customer_id").toString());
                                 temp.setVehicle_id(document.get("vehicle_id").toString());
                                 temp.setStatus(document.get("status").toString());
-                                
+
                                 vehiclepickup = document.get("pickup").toString();
                                 vehicledrop = document.get("dropoff").toString();
 
@@ -224,6 +224,7 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                 tv_DiaDiem.setText(temp.getProvider_address());
                                 temp.setProvider_address(document.get("provider_address").toString());
 
+                                tv_DiaDiem.setText(vehicleaddress);
                                 pickup.setText(vehiclepickup);
                                 dropoff.setText(vehicledrop);
                                 totalcost = calculate(vehiclepickup, vehicledrop);
