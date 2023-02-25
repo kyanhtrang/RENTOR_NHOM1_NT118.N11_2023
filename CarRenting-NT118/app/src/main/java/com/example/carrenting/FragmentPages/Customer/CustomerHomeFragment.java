@@ -135,8 +135,8 @@ public class CustomerHomeFragment extends Fragment {
                                 temp.setVehicle_imageURL(document.get("vehicle_imageURL").toString());
                                 temp.setProvider_name(document.get("provider_name").toString());
                                 vehicles.add(temp);
-                                adapter.notifyDataSetChanged();
-                                progressDialog.cancel();
+                                adapter.notifyDataSetChanged();/*
+                                progressDialog.cancel();*/
                             }
                         } else {
                             Toast.makeText(getContext(), "Không thể lấy thông tin xe", Toast.LENGTH_SHORT).show();

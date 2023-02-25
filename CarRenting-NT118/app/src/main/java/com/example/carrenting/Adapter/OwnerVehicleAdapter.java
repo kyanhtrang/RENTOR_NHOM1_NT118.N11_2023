@@ -39,6 +39,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
 
     @Override
     public void onBindViewHolder(@NonNull OwnerVehicleAdapter.MyViewHolder holder, int position) {
+        final int pos = position;
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());
@@ -48,8 +49,8 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickInterface.setClick(position);
-                vehicle = vehicles.get(position);
+                onClickInterface.setClick(pos);
+                vehicle = vehicles.get(pos);
                 Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
                 intent.putExtra("vehicle_id", vehicle.getVehicle_id());
                 ownerVehicleFragment.startActivity(intent);
