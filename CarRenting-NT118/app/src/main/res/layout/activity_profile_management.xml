@@ -252,7 +252,7 @@
                     android:id="@+id/front_CCCD"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_200sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/stroke"
                     app:layout_constraintEnd_toEndOf="@id/phone"
                     app:layout_constraintStart_toStartOf="@id/tv_front_CCCD"

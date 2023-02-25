@@ -60,10 +60,10 @@ public class CustomerHomeFragment extends Fragment {
             }
         };
 
-        progressDialog = new ProgressDialog(getActivity());
+       /* progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
-        progressDialog.show();
+        progressDialog.show();*/
 
         recyclerView = mView.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);

@@ -331,6 +331,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
                     }
                 });
     }
+
     private String calculate(String a, String b){
         int result = 0, day = 1, month = 1, year = 1;
         day = Integer.parseInt(b.substring(0,b.indexOf("/")))- Integer.parseInt(a.substring(0,a.indexOf("/")));
@@ -361,6 +362,7 @@ public class CustomerActivityDetail extends AppCompatActivity {
         result = year * 365 + month * 30 + day;
         return String.valueOf(result * Integer.parseInt(vehicleprice));
     }
+
     public void init(){
         tv_id=findViewById(R.id.txtview_noti_id);
         tv_status=findViewById(R.id.txtview_noti_status);

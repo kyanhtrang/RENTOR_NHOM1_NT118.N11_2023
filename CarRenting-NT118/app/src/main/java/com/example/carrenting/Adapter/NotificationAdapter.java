@@ -28,7 +28,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         this.customerNotificationFragment = mContext;
         this.title = a;
         this.content =  b;
-
     }
 
     @NonNull

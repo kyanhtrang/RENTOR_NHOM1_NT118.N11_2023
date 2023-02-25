@@ -41,7 +41,7 @@ public class OwnerNotificationAdapter extends RecyclerView.Adapter<ActivityAdapt
     @NonNull
     @Override
     public ActivityAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(ownerActivityFragment.getActivity()).inflate(R.layout.item_notification, parent, false);
+        View v = LayoutInflater.from(ownerActivityFragment.getActivity()).inflate(R.layout.item_activity, parent, false);
         return new ActivityAdapter.MyViewHolder(v);
     }
 
