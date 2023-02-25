@@ -118,8 +118,8 @@ public class ScheduleSelect extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 noti.setVehicle_id(document.get("vehicle_id").toString());
                                 noti.setProvider_id(document.get("provider_id").toString());
-                                noti.setDropoff(NgayNhan.getText().toString() + " " + GioNhan.getText().toString());
-                                noti.setPickup(NgayTra.getText().toString() + " " + GioTra.getText().toString());
+                                noti.setPickup(NgayNhan.getText().toString() + " " + GioNhan.getText().toString());
+                                noti.setDropoff(NgayTra.getText().toString() + " " + GioTra.getText().toString());
                                 noti.setStatus("Dang cho");
 
                                 noti.setCustomer_id(current_user_id);

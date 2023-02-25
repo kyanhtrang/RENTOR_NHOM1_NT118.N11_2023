@@ -300,8 +300,8 @@ public class LoginActivity extends AppCompatActivity {
                     View parentLayout = findViewById(android.R.id.content);
                     Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
                 }
-                progressDialog.cancel();
             }
         });
+        progressDialog.cancel();
     }
 }
