@@ -205,12 +205,16 @@ public class ProfileManagement extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+/*
                             Toast.makeText(ProfileManagement.this, "Uploaded", Toast.LENGTH_SHORT).show();
+*/
                             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     downloadUrl = uri.toString();
+/*
                                     Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+*/
                                 }
                             });
                         }
@@ -255,7 +259,9 @@ public class ProfileManagement extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+/*
                         Toast.makeText(ProfileManagement.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+*/
                         Intent intent = new Intent(ProfileManagement.this, CustomerMainActivity.class);
                         startActivity(intent);
                     }

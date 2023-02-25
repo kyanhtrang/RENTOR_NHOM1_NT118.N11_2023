@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                                     if (task.isSuccessful()) {
+
                                                         DocumentSnapshot document = task.getResult();
                                                         if (document.exists()) {
                                                             // do something with the retrieved data
@@ -276,6 +277,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         dtbUser = FirebaseFirestore.getInstance();
     }
+
     private void createUser() {
         user.setUser_id(FirebaseAuth.getInstance().getUid());
 
@@ -291,7 +293,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
+/*
                     Toast.makeText(LoginActivity.this, "Tạo user thành công",Toast.LENGTH_LONG).show();
+*/
                 } else {
                     View parentLayout = findViewById(android.R.id.content);
                     Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();

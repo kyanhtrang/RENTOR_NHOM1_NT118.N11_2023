@@ -89,7 +89,9 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+/*
                                 Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
+*/
                                 Intent intent = new Intent(ValidatePhoneActivity.this, CCCDActivity.class);
                                 startActivity(intent);
                             }
@@ -157,7 +159,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(ValidatePhoneActivity.this, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ValidatePhoneActivity.this, "Đã gửi OTP xác thực", Toast.LENGTH_SHORT).show();
                 // send to dashboard.
             }
         });
