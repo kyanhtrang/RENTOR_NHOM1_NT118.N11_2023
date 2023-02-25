@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/_32sdp"
         android:text="@string/create_account"
         android:textColor="@color/sunflower"
-        android:textSize="@dimen/_28ssp"
+        android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"
@@ -38,7 +38,7 @@
         android:layout_marginEnd="@dimen/_100sdp"
         android:text="@string/create_account_text_1"
         android:textColor="@color/white"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_14ssp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -92,7 +92,8 @@
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="@+id/edtTxtPhoneLayout"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@id/view3"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtPhoneLayout"
         >
     <EditText
@@ -137,11 +138,10 @@
         android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_25sdp"
-        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@id/edtTxt_emailLayout"
         app:layout_constraintTop_toTopOf="@+id/view3"
         android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        >
+        android:textColorHint="@color/sky">
 
         <EditText
             android:id="@+id/input_phone"
@@ -151,7 +151,6 @@
             android:ems="10"
             android:hint="Số điện thoại"
             android:inputType="text|phone"
-
             android:textColor="@color/sky"
             android:textColorHint="@color/sky"
             tools:ignore="HardcodedText" />
