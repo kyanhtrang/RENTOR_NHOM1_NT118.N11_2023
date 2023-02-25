@@ -210,6 +210,8 @@ public class OwnerActivityDetail extends AppCompatActivity {
                                 vehiclename = document.get("vehicle_name").toString();
                                 vehicleprice = document.get("vehicle_price").toString();
                                 vehicleaddress = document.get("provider_address").toString();
+                                vehiclepickup = document.get("pickup").toString();
+                                vehicledrop = document.get("dropoff").toString();
 
                                 temp.setVehicle_name(document.get("vehicle_name").toString());
                                 temp.setVehicle_availability(document.get("vehicle_availability").toString());
