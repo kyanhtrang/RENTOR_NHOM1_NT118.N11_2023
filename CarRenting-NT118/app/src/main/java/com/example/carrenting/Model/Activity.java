@@ -2,8 +2,6 @@ package com.example.carrenting.Model;
 
 
 public class Activity {
-
-
     private String customer_id;
     private String provider_id;
     private String status;
