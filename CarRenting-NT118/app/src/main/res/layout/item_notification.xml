@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="horizontal"
-android:id="@+id/item_employee_ll_parent"
-android:padding="5dp"
-android:layout_width="match_parent"
-android:layout_height="wrap_content">
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:orientation="horizontal">
+    android:layout_height="70dp"
+    android:background="@drawable/vehicle_info_card"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/_20sdp">
 
-    <TextView
-        android:id="@+id/item_notification_tv_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:textColor="#020202" />
 
-    <TextView
-        android:id="@+id/item_notification_tv_content"
-        android:layout_width="50dp"
+    <LinearLayout
+        android:id="@+id/_bookingID"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:singleLine="true"
-        android:textColor="@color/Black" />
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/tv_noti_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="15dp"
+            android:text="Bạn có một yêu cầu mới!"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
 </LinearLayout>
-</RelativeLayout>
