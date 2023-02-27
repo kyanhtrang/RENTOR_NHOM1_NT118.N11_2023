@@ -12,17 +12,16 @@ import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.R;
-import com.example.carrenting.databinding.ActivityMainBinding;
-
+import com.example.carrenting.databinding.CustomerActivityMainBinding;
 
 public class CustomerMainActivity extends AppCompatActivity{
 
-    ActivityMainBinding binding;
+   CustomerActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = CustomerActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         replaceFragment(new CustomerHomeFragment());
