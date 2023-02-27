@@ -135,7 +135,9 @@ public class ScheduleSelect extends AppCompatActivity {
                                                 updateData(noti.getNoti_id());
                                                 Intent intent = new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
                                                 startActivity(intent);
+/*
                                                 toast("Thêm noti thành công");
+*/
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -163,7 +165,9 @@ public class ScheduleSelect extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+/*
                                         Toast.makeText(ScheduleSelect.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+*/
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
