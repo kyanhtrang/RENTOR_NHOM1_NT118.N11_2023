@@ -187,8 +187,7 @@ public class ProfileManagement extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        if(mImageURI != null)
-        {
+        if(mImageURI != null) {
             imageID = UUID.randomUUID().toString();
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
